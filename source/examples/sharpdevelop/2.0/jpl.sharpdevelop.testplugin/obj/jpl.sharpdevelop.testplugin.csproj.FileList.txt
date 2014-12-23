@@ -1,0 +1,3 @@
+bin\Debug\jpl.sharpdevelop.testplugin.dll
+bin\Debug\jpl.sharpdevelop.testplugin.pdb
+bin\Debug\Jvcsmak.dll

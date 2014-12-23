@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding = "Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="7.00"
+	Name="builder.nant"
+	ProjectGUID="{A76B2D4F-C424-410B-A6F1-7831B5E38E7D}"
+	Keyword="MakeFileProj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="Debug"
+			ConfigurationType="0">
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="$(SolutionDir)tools\nant\win32\bin\Nant.exe -f:$(SolutionDir)build\SharpCvsLib.build build.all"
+				ReBuildCommandLine="$(SolutionDir)tools\nant\win32\bin\Nant.exe -f:$(SolutionDir)build\SharpCvsLib.build build.all"
+				CleanCommandLine="$(SolutionDir)tools\nant\win32\bin\Nant.exe -f:$(SolutionDir)build\SharpCvsLib.build clean"
+				Output="ExternalBuilder.NAnt.exe"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="Release"
+			ConfigurationType="0">
+			<Tool
+				Name="VCNMakeTool"
+				Output="ExternalBuilder.NAnt.exe"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+		<Filter
+			Name="Source Files"
+			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm">
+		</Filter>
+		<Filter
+			Name="Header Files"
+			Filter="h;hpp;hxx;hm;inl;inc">
+		</Filter>
+		<Filter
+			Name="Resource Files"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

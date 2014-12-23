@@ -1,0 +1,71 @@
+<!--
+    Build test classes for library and other apps.
+-->
+<project name="ICSharpCode.SharpCvsLib" default="build">
+    <target name="build">
+        <echo message="${nant.project.basedir}/../../src/SharpCvsLibAssemblyInfo.cs" />
+        
+        <csc    target="exe" 
+                warnaserror="${compile.warnaserror}" 
+                output="${dir.bin}/${name.console.exe}.exe" 
+                debug="${compile.debug}" 
+                define="${compile.define}"
+                doc="${dir.bin}/${name.console.exe}.xml">
+                >
+            <nowarn>
+                <!-- do not report deprecation warnings if not a release build -->
+                <warning number="0618" if="${string::contains(BuildType, 'debug')}" />
+                <!-- do not report missing documentation warnings if not a release build -->
+                <warning number="1591" if="${string::contains(BuildType, 'debug')}"/>
+            </nowarn>
+                
+            <arg value="${compile.unsafe}" />
+            <arg value="${compile.checked}" />
+            
+            <sources basedir="${dir.src}/${name.top-level}.${name.console}/${name.project}">
+                <include name="Main.cs" />
+                <include name="AssemblyHelper.cs"/>
+            </sources>
+
+            <references>
+                <include name="System.dll" />            
+                <include name="System.EnterpriseServices.dll" />
+            </references>
+        </csc>
+
+        <csc    target="library" 
+                warnaserror="${compile.warnaserror}" 
+                output="${dir.bin}/ICSharpCode.SharpCvsLib.Console.dll" 
+                debug="${compile.debug}" 
+                define="${compile.define}"
+                doc="${dir.bin}/ICSharpCode.SharpCvsLib.Console.xml">
+                >
+                
+            <nowarn>
+                <!-- do not report deprecation warnings if not a release build -->
+                <warning number="0618" if="${string::contains(BuildType, 'debug')}" />
+                <!-- do not report missing documentation warnings if not a release build -->
+                <warning number="1591" if="${string::contains(BuildType, 'debug')}"/>
+            </nowarn>
+
+            <arg value="${compile.unsafe}" />
+            <arg value="${compile.checked}" />
+            
+            <sources basedir="${dir.src}/${name.top-level}.${name.console}/${name.project}">
+                <include name="**/*.cs" />
+                <exclude name="Main.cs"/>
+                <exclude name="AssemblyInfo.cs"/>
+            </sources>
+
+            <references>
+                <include name="System.dll" />            
+                <include name="System.EnterpriseServices.dll" />
+                <include name="${dir.lib}/${lib.zip}" />
+                <include name="${dir.lib.ext}/${lib.log4net}" />
+                <include name="${dir.lib.ext}/${lib.nunit}" />
+                <include name="${dir.bin}/${name.top-level}.${name.lib}.dll" />
+            </references>
+        </csc>
+        
+    </target>
+</project>

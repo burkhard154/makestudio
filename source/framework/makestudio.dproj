@@ -1,0 +1,251 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{470766A4-C2E4-4E64-8377-13BE46006E1D}</ProjectGuid>
+        <MainSource>makestudio.dpr</MainSource>
+        <Basis>True</Basis>
+        <Config Condition="'$(Config)'==''">Debug</Config>
+        <AppType>Application</AppType>
+        <FrameworkType>VCL</FrameworkType>
+        <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+        <ProjectVersion>15.3</ProjectVersion>
+        <Base>True</Base>
+        <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <TargetedPlatforms>1</TargetedPlatforms>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
+        <Base_Win32>true</Base_Win32>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
+        <Base_Win64>true</Base_Win64>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
+        <Cfg_1>true</Cfg_1>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_2)'!=''">
+        <Cfg_2>true</Cfg_2>
+        <CfgParent>Base</CfgParent>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_2)'=='true') or '$(Cfg_2_Win32)'!=''">
+        <Cfg_2_Win32>true</Cfg_2_Win32>
+        <CfgParent>Cfg_2</CfgParent>
+        <Cfg_2>true</Cfg_2>
+        <Base>true</Base>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base)'!=''">
+        <Manifest_File>None</Manifest_File>
+        <Icon_MainIcon>msIcon.ico</Icon_MainIcon>
+        <VerInfo_MinorVer>7</VerInfo_MinorVer>
+        <VerInfo_Locale>1031</VerInfo_Locale>
+        <VerInfo_AutoGenVersion>true</VerInfo_AutoGenVersion>
+        <VerInfo_Build>14</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=Project JEDI;FileDescription=Make Utiliy;FileVersion=3.7.6.14;InternalName=JVCSMak;LegalCopyright=www.mozilla.org/mpl/mpl-1.1.html;LegalTrademarks=;OriginalFilename=jvcsmak.exe;ProductName=JEDI Make;ProductVersion=3.5;Comments=</VerInfo_Keys>
+        <VerInfo_MajorVer>3</VerInfo_MajorVer>
+        <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;Winapi;System.Win;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_Release>6</VerInfo_Release>
+        <DCC_UNSAFE_TYPE>true</DCC_UNSAFE_TYPE>
+        <DCC_UNSAFE_CODE>true</DCC_UNSAFE_CODE>
+        <DCC_UNSAFE_CAST>true</DCC_UNSAFE_CAST>
+        <DCC_UsePackage>vcl;rtl;vclx;VclSmp;dbrtl;dbexpress;vcldb;dsnap;dbxcds;inetdb;inet;bdertl;vcldbx;webdsnap;vclie;xmlrtl;inetdbbde;inetdbxpress;websnap;adortl;ibxpress;teeui;teedb;tee;dss;visualclx;visualdbclx;vclactnband;vclshlctrls;IntrawebDB_50_70;Intraweb_50_70;Rave50CLX;Rave50VCL;dclOffice2k;PatchPackd7;AbkStdD7;AdditiveD7rtl;addex1d7rtl;elpackD7;addex2d7rtl;BasicV1D7;ClassV1D7;SpecV1D7;kbmMemD7Run;kprocs7;sq7;aqDockingManagerD7;DJcl;JvStdCtrlsD7R;JvAppFrmD7R;JvCoreD7R;JvBandsD7R;JvBDED7R;JvDBD7R;JvDlgsD7R;JvCmpD7R;JvCryptD7R;JvCtrlsD7R;JvCustomD7R;JvDockingD7R;JvDotNetCtrlsD7R;JvEDID7R;qrpt;JvGlobusD7R;JvHMID7R;JvInspectorD7R;JvInterpreterD7R;JvJansD7R;JvManagedThreadsD7R;JvMMD7R;JvNetD7R;JvPageCompsD7R;JvPluginD7R;JvPrintPreviewD7R;JvSystemD7R;JvTimeFrameworkD7R;JvUIBD7R;JvValidatorsD7R;JvWizardD7R;JvXPCtrlsD7R;cxLibraryVCLD7;dxBarD7;dxComnD7;dxBarDBNavD7;dxBarExtItemsD7;dxBarExtDBItemsD7;dxsbD7;dxDockingD7;dxmdsD7;dxdbtrD7;dxtrmdD7;dxorgcD7;dxdborD7;cxEditorsVCLD7;dxThemeD7;cxDataD7;cxExtEditorsVCLD7;cxPageControlVCLD7;cxGridVCLD7;cxTreeListVCLD7;dsnapcon;cxstoolsd7;imexport;cxLibraryD9;dxBarD9;dxComnD9;dxBarExtItemsD9;cxEditorsD9;dxThemeD9;cxDataD9;cxExtEditorsD9;cxGridD9;cxTreeListD9;$(DCC_UsePackage)</DCC_UsePackage>
+        <DCC_ExeOutput>..\..\bin</DCC_ExeOutput>
+        <DCC_ImageBase>00400000</DCC_ImageBase>
+        <DCC_K>false</DCC_K>
+        <DCC_N>true</DCC_N>
+        <DCC_S>false</DCC_S>
+        <DCC_F>false</DCC_F>
+        <DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
+        <DCC_DcuOutput>..\..\bin</DCC_DcuOutput>
+        <DCC_E>false</DCC_E>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <Icon_MainIcon>jvcsmak_Icon.ico</Icon_MainIcon>
+        <DCC_Namespace>Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Base_Win64)'!=''">
+        <Icon_MainIcon>jvcsmak_Icon.ico</Icon_MainIcon>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_1)'!=''">
+        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+        <DCC_DebugInformation>0</DCC_DebugInformation>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2)'!=''">
+        <DCC_ExeOutput>.\bin</DCC_ExeOutput>
+        <DCC_DcuOutput>.\dcu</DCC_DcuOutput>
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <DCC_Optimize>false</DCC_Optimize>
+        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
+        <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=3.7.6.14;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <Manifest_File>None</Manifest_File>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
+        <DCC_ExeOutput>..\..\bin</DCC_ExeOutput>
+        <Icon_MainIcon>msIcon.ico</Icon_MainIcon>
+        <VerInfo_Locale>1033</VerInfo_Locale>
+        <DCC_DcuOutput>..\..\dcu</DCC_DcuOutput>
+        <DCC_DebugInformation>true</DCC_DebugInformation>
+        <DCC_MapFile>3</DCC_MapFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <DelphiCompile Include="$(MainSource)">
+            <MainSource>MainSource</MainSource>
+        </DelphiCompile>
+        <RcCompile Include="msver.rc">
+            <ContainerId>RC</ContainerId>
+            <Form>msver.res</Form>
+        </RcCompile>
+        <DCCReference Include="msMain.pas">
+            <Form>FormMain</Form>
+        </DCCReference>
+        <DCCReference Include="msRunListEdit.pas">
+            <Form>FormMemo</Form>
+        </DCCReference>
+        <DCCReference Include="msEditDirectories.pas">
+            <Form>FormEditDirectories</Form>
+        </DCCReference>
+        <DCCReference Include="msInfo.pas">
+            <Form>AboutBox</Form>
+        </DCCReference>
+        <DCCReference Include="msEditKeywordsForm.pas">
+            <Form>FormKeywords</Form>
+        </DCCReference>
+        <DCCReference Include="msUtils.pas"/>
+        <DCCReference Include="msTLB.pas"/>
+        <DCCReference Include="msPluginHandler.pas"/>
+        <DCCReference Include="msGlobals.pas"/>
+        <DCCReference Include="msActionHandler.pas"/>
+        <DCCReference Include="msProgram.pas"/>
+        <DCCReference Include="msApplication_impl.pas"/>
+        <DCCReference Include="msResources.pas"/>
+        <DCCReference Include="msVarHandler.pas"/>
+        <DCCReference Include="msVarListInspect.pas">
+            <Form>FormVarlistInspect</Form>
+        </DCCReference>
+        <DCCReference Include="msInternalCommands.pas"/>
+        <DCCReference Include="msEditWhile.pas">
+            <Form>FormEditWhile</Form>
+        </DCCReference>
+        <DCCReference Include="msEditSetVariable.pas">
+            <Form>FormEditSetVariable</Form>
+        </DCCReference>
+        <DCCReference Include="msEditFor.pas">
+            <Form>FormEditFor</Form>
+        </DCCReference>
+        <DCCReference Include="msEditIf.pas">
+            <Form>FormEditIf</Form>
+        </DCCReference>
+        <DCCReference Include="msEditTasks.pas">
+            <Form>FormEditTasks</Form>
+        </DCCReference>
+        <DCCReference Include="msFrmLogbook.pas">
+            <Form>FormLogbook</Form>
+        </DCCReference>
+        <DCCReference Include="msFrmCommands.pas">
+            <Form>FormCommands</Form>
+        </DCCReference>
+        <DCCReference Include="msFrmRunListListbox.pas">
+            <Form>FormRunlistLisbox</Form>
+        </DCCReference>
+        <DCCReference Include="msEditSaveLog.pas">
+            <Form>FormEditSaveLog</Form>
+        </DCCReference>
+        <DCCReference Include="msFrmSelectCommandTypeByExt.pas">
+            <Form>FormSelectCommandtypeByExt</Form>
+        </DCCReference>
+        <DCCReference Include="mshelp.pas"/>
+        <DCCReference Include="mshelpmergerWorkshopError.pas">
+            <Form>FormHelpWorkshopError</Form>
+        </DCCReference>
+        <DCCReference Include="mshelpmerger.pas"/>
+        <DCCReference Include="mshelpmergerRun.pas">
+            <Form>FormHelpmergerRun</Form>
+        </DCCReference>
+        <DCCReference Include="msDotNetUtils.pas"/>
+        <DCCReference Include="msEditComment.pas">
+            <Form>FormEditComment</Form>
+        </DCCReference>
+        <DCCReference Include="msEditInclude.pas">
+            <Form>FormEditInclude</Form>
+        </DCCReference>
+        <RidlCompile Include="makestudio.ridl"/>
+        <BuildConfiguration Include="Debug">
+            <Key>Cfg_2</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Base">
+            <Key>Base</Key>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+    </ItemGroup>
+    <Import Condition="Exists('$(BDS)\Bin\CodeGear.Delphi.Targets')" Project="$(BDS)\Bin\CodeGear.Delphi.Targets"/>
+    <Import Condition="Exists('$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj')" Project="$(APPDATA)\Embarcadero\$(BDSAPPDATABASEDIR)\$(PRODUCTVERSION)\UserTools.proj"/>
+    <ProjectExtensions>
+        <Borland.Personality>Delphi.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Delphi.Personality>
+                <Source>
+                    <Source Name="MainSource">makestudio.dpr</Source>
+                </Source>
+                <VersionInfo>
+                    <VersionInfo Name="IncludeVerInfo">False</VersionInfo>
+                    <VersionInfo Name="AutoIncBuild">True</VersionInfo>
+                    <VersionInfo Name="MajorVer">3</VersionInfo>
+                    <VersionInfo Name="MinorVer">7</VersionInfo>
+                    <VersionInfo Name="Release">6</VersionInfo>
+                    <VersionInfo Name="Build">20</VersionInfo>
+                    <VersionInfo Name="Debug">False</VersionInfo>
+                    <VersionInfo Name="PreRelease">False</VersionInfo>
+                    <VersionInfo Name="Special">False</VersionInfo>
+                    <VersionInfo Name="Private">False</VersionInfo>
+                    <VersionInfo Name="DLL">False</VersionInfo>
+                    <VersionInfo Name="Locale">1031</VersionInfo>
+                    <VersionInfo Name="CodePage">1252</VersionInfo>
+                </VersionInfo>
+                <VersionInfoKeys>
+                    <VersionInfoKeys Name="CompanyName">Project JEDI</VersionInfoKeys>
+                    <VersionInfoKeys Name="FileDescription">Make Utiliy</VersionInfoKeys>
+                    <VersionInfoKeys Name="FileVersion">3.7.6.20</VersionInfoKeys>
+                    <VersionInfoKeys Name="InternalName">JVCSMak</VersionInfoKeys>
+                    <VersionInfoKeys Name="LegalCopyright">www.mozilla.org/mpl/mpl-1.1.html</VersionInfoKeys>
+                    <VersionInfoKeys Name="LegalTrademarks"/>
+                    <VersionInfoKeys Name="OriginalFilename">jvcsmak.exe</VersionInfoKeys>
+                    <VersionInfoKeys Name="ProductName">JEDI Make</VersionInfoKeys>
+                    <VersionInfoKeys Name="ProductVersion">3.5</VersionInfoKeys>
+                    <VersionInfoKeys Name="Comments"/>
+                </VersionInfoKeys>
+                <Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k190.bpl">Microsoft Office 2000 Beispiele für gekapselte Komponenten für Automatisierungsserver</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp190.bpl">Microsoft Office XP Beispiele für gekapselte Komponenten für Automation Server</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Users\Public\Documents\RAD Studio\12.0\Bpl\dclFMXfsTee19.bpl">FastScript 1.9 FMX Tee Components</Excluded_Packages>
+                </Excluded_Packages>
+            </Delphi.Personality>
+            <Platforms>
+                <Platform value="Win32">True</Platform>
+                <Platform value="Win64">False</Platform>
+            </Platforms>
+            <ActiveXProjectInfo>
+                <version>1</version>
+            </ActiveXProjectInfo>
+        </BorlandProject>
+        <ProjectFileVersion>12</ProjectFileVersion>
+    </ProjectExtensions>
+</Project>

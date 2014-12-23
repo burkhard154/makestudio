@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <PersonalityInfo>
+    <Option>
+      <Option Name="Personality">CSharp.Personality</Option>
+      <Option Name="ProjectType">Application</Option>
+      <Option Name="Version">2.0</Option>
+      <Option Name="GUID">{D540AD7E-F10D-4863-9F32-718ED0D84C4D}</Option>
+    </Option>
+  </PersonalityInfo>
+  <CSharp.Personality>
+    <Options>
+        <SelectedOptionSet>
+        <SelectedOptionSet Name="OptionsSet">Debug</SelectedOptionSet>
+      </SelectedOptionSet>
+    
+        <OptionsSet Name="Release">
+        <Options>
+          <Options Name="Warning">4</Options>
+          <Options Name="Incremental">False</Options>
+          <Options Name="DocumentationFile"></Options>
+          <Options Name="DefaultNamespace">dotnetclient.cs</Options>
+          <Options Name="DebugInformation">False</Options>
+          <Options Name="Optimization">True</Options>
+          <Options Name="Overflow">False</Options>
+          <Options Name="ivUnsafe">False</Options>
+          <Options Name="WarningAsError">False</Options>
+          <Options Name="Defines">TRACE</Options>
+          <Options Name="TargetName"></Options>
+          <Options Name="TargetType">Assembly</Options>
+          <Options Name="Main"></Options>
+          <Options Name="BaseAddress">285212672</Options>
+          <Options Name="BuildInOutput">False</Options>
+          <Options Name="OutputDirectory">bin\Release</Options>
+          <Options Name="RunParams"></Options>
+          <Options Name="HostApplication"></Options>
+          <Options Name="Launcher"></Options>
+          <Options Name="UseLauncher">False</Options>
+          <Options Name="DebugCWD"></Options>
+          <Options Name="LoadAllSymbols">True</Options>
+          <Options Name="LoadUnspecifiedSymbols">False</Options>
+          <Options Name="Debug Symbols Search Path"></Options>
+          <Options Name="AspNetUseHostServer">False</Options>
+          <Options Name="AspNetLaunchBrowser">False</Options>
+          <Options Name="AspNetStartPage"></Options>
+          <Options Name="AspNetHostServer">IIS</Options>
+          <Options Name="AspNetCassiniPortIndex">0</Options>
+          <Options Name="AspNetCassiniStartup"></Options>
+          <Options Name="AspNetIISVirtualDirectory"></Options>
+          <Options Name="AspNetHTTPAddress"></Options>
+          <Options Name="AspNetCassiniHTTPAddress"></Options>
+        </Options>
+      </OptionsSet>
+    
+        <OptionsSet Name="Debug">
+        <Options>
+          <Options Name="Warning">4</Options>
+          <Options Name="Incremental">True</Options>
+          <Options Name="DocumentationFile"></Options>
+          <Options Name="DefaultNamespace">dotnetclient.cs</Options>
+          <Options Name="DebugInformation">True</Options>
+          <Options Name="Optimization">False</Options>
+          <Options Name="Overflow">False</Options>
+          <Options Name="ivUnsafe">False</Options>
+          <Options Name="WarningAsError">False</Options>
+          <Options Name="Defines">TRACE;DEBUG</Options>
+          <Options Name="TargetName"></Options>
+          <Options Name="TargetType">Assembly</Options>
+          <Options Name="Main"></Options>
+          <Options Name="BaseAddress">285212672</Options>
+          <Options Name="BuildInOutput">False</Options>
+          <Options Name="OutputDirectory"></Options>
+          <Options Name="RunParams"></Options>
+          <Options Name="HostApplication"></Options>
+          <Options Name="Launcher"></Options>
+          <Options Name="UseLauncher">False</Options>
+          <Options Name="DebugCWD"></Options>
+          <Options Name="LoadAllSymbols">True</Options>
+          <Options Name="LoadUnspecifiedSymbols">False</Options>
+          <Options Name="Debug Symbols Search Path"></Options>
+          <Options Name="AspNetUseHostServer">False</Options>
+          <Options Name="AspNetLaunchBrowser">False</Options>
+          <Options Name="AspNetStartPage"></Options>
+          <Options Name="AspNetHostServer">IIS</Options>
+          <Options Name="AspNetCassiniPortIndex">0</Options>
+          <Options Name="AspNetCassiniStartup">ProjectRun</Options>
+          <Options Name="AspNetIISVirtualDirectory"></Options>
+          <Options Name="AspNetHTTPAddress"></Options>
+          <Options Name="AspNetCassiniHTTPAddress"></Options>
+        </Options>
+      </OptionsSet>
+    
+    </Options>
+    
+    
+    
+    
+    
+    
+    <FileList>
+      <File FileName="$(SystemRoot)\microsoft.net\framework\v1.1.4322\System.dll" ContainerId="DotNetAssemblyCompiler" ModuleName="System" AssemblyName="System" Version="1.0.5000.0"/>
+      <File FileName="$(SystemRoot)\microsoft.net\framework\v1.1.4322\System.Data.dll" ContainerId="DotNetAssemblyCompiler" ModuleName="System.Data" AssemblyName="System.Data" Version="1.0.5000.0"/>
+      <File FileName="$(SystemRoot)\microsoft.net\framework\v1.1.4322\System.XML.dll" ContainerId="DotNetAssemblyCompiler" ModuleName="System.XML" AssemblyName="System.XML" Version="1.0.5000.0"/>
+      <File FileName="Class1.cs" ContainerId="CSharpCompiler" ModuleName="Class1"/>
+      <File FileName="AssemblyInfo.cs" ContainerId="CSharpCompiler" ModuleName="AssemblyInfo"/>
+    </FileList>
+  </CSharp.Personality>
+</BorlandProject>

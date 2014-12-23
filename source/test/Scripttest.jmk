@@ -1,0 +1,21 @@
+{796D9287-1850-46A8-9C28-24E627FBC446} Version=3
+begin Script.PScript
+  Caption=Pascal Script
+  LineCount=12
+  Line1=var sl:TStringList;
+  Line2=    i : Integer;
+  Line3=begin
+  Line4=  sl := TStringList.Create;
+  Line5=  try
+  Line6=    BuildFileList( 'c:\*.*', faAnyFile, sl);
+  Line7=    for i:=0 to sl.Count-1 do
+  Line8=      Writeln( sl[i]);  
+  Line9=  finally
+  Line10=    sl.Free;
+  Line11=  end;
+  Line12=end.
+end
+begin jvcsutils.CopyFilesModule
+  Caption=Copying files
+  FileCount=0
+end

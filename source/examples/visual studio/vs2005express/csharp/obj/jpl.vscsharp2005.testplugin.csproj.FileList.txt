@@ -1,0 +1,6 @@
+obj\Release\ResolveAssemblyReference.cache
+obj\Release\jpl.vscsharp2005.testplugin.csproj.GenerateResource.Cache
+obj\Release\jpl.vscsharp2005.testplugin.EditCommand.resources
+obj\Release\jpl.vscsharp2005.testplugin.Actions.resources
+..\..\..\..\..\..\bin\jpl.vscsharp2005.testplugin.dll
+obj\Release\jpl.vscsharp2005.testplugin.dll

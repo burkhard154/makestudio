@@ -1,0 +1,24 @@
+<project name="Messages" default="rebuild">
+    <property name="configuration" value="debug" failonerror="false"/>
+    
+    <target name="clean" description="Delete all previously compiled binaries.">
+        <delete>
+            <fileset>
+                <include name="**/bin/**" />
+                <include name="**/obj/**" />
+                <include name="**/*.suo" />
+                <include name="**/*.user" />
+            </fileset>
+        </delete>
+    </target>
+    
+    <target name="build" description="Build all targets.">
+        <solution configuration="${configuration}">
+            <projects>
+                <include name="Messages.csproj"/>
+            </projects>
+        </solution>
+    </target>
+    
+    <target name="rebuild" depends="clean, build" />
+</project>

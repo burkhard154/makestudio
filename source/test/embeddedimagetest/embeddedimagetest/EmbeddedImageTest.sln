@@ -1,0 +1,30 @@
+﻿Microsoft Visual Studio Solution File, Format Version 9.00
+# SharpDevelop 2.0.0.1135
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmbeddedImageTest", "EmbeddedImageTest.csproj", "{1261D074-2786-4F7E-B76C-E3831838F311}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{1261D074-2786-4F7E-B76C-E3831838F311}.Debug.ActiveCfg = Debug|.NET
+		{1261D074-2786-4F7E-B76C-E3831838F311}.Debug.Build.0 = Debug|.NET
+		{1261D074-2786-4F7E-B76C-E3831838F311}.Release.ActiveCfg = Release|.NET
+		{1261D074-2786-4F7E-B76C-E3831838F311}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1261D074-2786-4F7E-B76C-E3831838F311}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1261D074-2786-4F7E-B76C-E3831838F311}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1261D074-2786-4F7E-B76C-E3831838F311}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1261D074-2786-4F7E-B76C-E3831838F311}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+EndGlobal

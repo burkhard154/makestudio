@@ -1,0 +1,115 @@
+<!--
+    Build test classes for library and other apps.
+-->
+<project name="ICSharpCode.SharpCvsLib" default="build">
+    <target name="build">
+        <csc    target="library" 
+                warnaserror="${compile.warnaserror}" 
+                output="${dir.bin}/${name.top-level}.${name.project}.${name.tests}.dll" 
+                debug="${compile.debug}" 
+                define="${compile.define}">   
+            <nowarn>
+                <!-- do not report deprecation warnings if not a release build -->
+                <warning number="0618" if="${string::contains(BuildType, 'debug')}" />
+                <!-- do not report missing documentation warnings if not a release build -->
+                <warning number="1591" if="${string::contains(BuildType, 'debug')}"/>
+            </nowarn>
+
+            <arg value="${compile.unsafe}" />
+            <arg value="${compile.checked}" />
+            <sources basedir="${dir.src}">
+                <include name="**/*.cs" />
+                <exclude name="**/*AssemblyInfo.cs"/>
+                
+                <exclude name="**/SspiProtocol.cs" unless="${file::exists(lib.sspi)}"/>
+                <exclude name="**/CvsTransport.cs" unless="${file::exists(lib.sspi)}"/>
+            </sources>
+
+            <references>
+                <include name="System.dll" />            
+                <include name="${dir.lib}/${lib.zip}" />
+                <include name="${dir.lib.ext}/${lib.log4net}" />
+                <include name="${dir.lib.ext}/${lib.nunit}" />
+                
+                <include name="${lib.sspi}" if="${file::exists(lib.sspi)}"/>
+            </references>
+        </csc>
+    </target>
+    <target name="build-sample">
+        <csc    target="library" 
+                warnaserror="${compile.warnaserror}" 
+                output="${dir.bin}/${name.top-level}.${name.project}.${name.tests}-sample.dll" 
+                debug="${compile.debug}" 
+                define="${compile.define}">
+            <nowarn>
+                <!-- do not report deprecation warnings if not a release build -->
+                <warning number="0618" if="${string::contains(BuildType, 'debug')}" />
+                <!-- do not report missing documentation warnings if not a release build -->
+                <warning number="1591" if="${string::contains(BuildType, 'debug')}"/>
+            </nowarn>
+
+            <arg value="${compile.unsafe}" />
+            <arg value="${compile.checked}" />
+            <sources basedir="${dir.src}/${name.top-level}.${name.tests}/${name.project}">
+                <include name="**/*.cs" />
+                <include name="../../${name.top-level}/${name.project}/**.cs" />
+                <include name="../../${name.top-level}.${name.console}/${name.project}/**.cs" />
+                <exclude name="../../${name.top-level}/${name.project}/AssemblyInfo.cs" />
+                <exclude name="../../${name.top-level}.${name.console}/${name.project}/AssemblyInfo.cs" />
+                
+                <exclude name="Commands/*.cs" />
+                <exclude name="Console/Commands/*.cs"/>
+                <exclude name="FileHandler/*.cs" />
+                <exclude name="FileSystem/ManagerTest.cs" />
+                
+                <exclude name="../../${name.top-level}/${name.project}/**/SspiProtocol.cs" unless="${file::exists(lib.sspi)}"/>
+                <exclude name="../../${name.top-level}/${name.project}/**/CvsTransport.cs" unless="${file::exists(lib.sspi)}"/>
+            </sources>
+
+            <references>
+                <include name="System.dll" />            
+                <include name="${dir.lib}/${lib.zip}" />
+                <include name="${dir.lib.ext}/${lib.log4net}" />
+                <include name="${dir.lib.ext}/${lib.nunit}" />
+                
+                <include name="${lib.sspi}" if="${file::exists(lib.sspi)}"/>
+            </references>
+        </csc>
+    </target>
+    <target name="run-tests">
+        <echo message="Results output directory: ${dir.bin}/results" />
+        <mkdir dir="${dir.bin}/tests" />
+        <nunit2 failonerror="false">
+            <formatter type="Xml" usefile="true" extension=".xml" outputdir="${dir.bin}/tests" />
+            <test assemblyname="${dir.bin}/${name.top-level}.${name.project}.${name.tests}.dll" 
+                  appconfig="ICSharpCode.SharpCvsLib.Tests.dll.config"/>
+        </nunit2>
+    </target>
+    <target name="run-tests-sample" depends="build-sample">
+        <echo message="Results output directory: ${dir.bin}/tests" />
+        <mkdir dir="${dir.bin}/tests" />
+
+        <xmlpoke    file="${dir.bin}/${name.top-level}.${name.project}.${name.tests}-sample.dll.config"
+                    xpath="/configuration/configSections/section[@name = 'sharpcvslib']/@type"
+                    value="ICSharpCode.SharpCvsLib.Config.SharpCvsLibConfigHandler,${name.top-level}.${name.project}.${name.tests}-sample" />
+        
+        <xmlpoke    file="${dir.bin}/${name.top-level}.${name.project}.${name.tests}-sample.dll.config"
+                    xpath="/configuration/configSections/section[@name = 'sharpcvslib-tests']/@type"
+                    value="ICSharpCode.SharpCvsLib.Tests.Config.SharpCvsLibTestsConfigHandler,${name.top-level}.${name.project}.${name.tests}-sample" />
+                    
+        <nunit2 failonerror="false">
+            <formatter type="Xml" usefile="true" extension=".xml" outputdir="${dir.bin}/tests" />
+            <test assemblyname="${dir.bin}/${name.top-level}.${name.project}.${name.tests}-sample.dll" 
+                  appconfig="${dir.bin}/${name.top-level}.${name.project}.${name.tests}-sample.dll.config"/>
+        </nunit2>
+    </target>
+    <target name="tests-to-html">
+<!--
+        <nunit2report out="${dir.bin}/tests/index.html" failonerror="false">
+            <fileset>
+                <include name="${dir.bin}/tests/${name.top-level}.${name.project}.${name.tests}-sample.dll-results.xml" />
+            </fileset>
+        </nunit2report>
+-->
+    </target>
+</project>

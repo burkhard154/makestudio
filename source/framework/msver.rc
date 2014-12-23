@@ -1,0 +1,24 @@
+LANGUAGE 0, 0
+1 VERSIONINFO
+FILEVERSION 3,13,5,9
+PRODUCTVERSION 3,13,5,9
+BEGIN
+  BLOCK "StringFileInfo"
+  BEGIN
+    BLOCK "040904E4"
+    BEGIN
+      VALUE "FileVersion", "3.13.5.9\0"
+      VALUE "ProductVersion", "3.13.5.9\0"
+      VALUE "ProductName", "JMake\0"
+      VALUE "CompanyName", "optiMEAS\0"
+      VALUE "FileDescription", "Make Utiliy\0"
+      VALUE "InternalName", "JMake\0"
+      VALUE "LegalCopyright", "www.mozilla.org/mpl/mpl-1.1.html\0"
+      VALUE "OriginalFilename", "jvcsmak.exe\0"
+    END
+  END
+  BLOCK "VarFileInfo"
+  BEGIN
+    VALUE "Translation", 0x0409, 0x04E4
+  END
+END

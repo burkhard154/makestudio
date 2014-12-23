@@ -1,0 +1,133 @@
+<project name="${name.project}" default="build.all">
+    <!-- P A T H  I N F O R M A T I O N -->
+    <property name="dir.base" value="${nant.project.basedir}/.." />
+    <property name="dir.bin" value="${dir.base}/bin" /> 
+    <property name="dir.build" value="${dir.base}/build" />
+    <property name="dir.conf" value="${dir.base}/conf" />
+    <property name="dir.dist" value="${dir.base}/dist" />
+    <property name="dir.doc" value="${dir.base}/doc" />
+    <property name="dir.external-build" value="${dir.base}/.externalToolBuilders" />
+    <property name="dir.examples" value="${dir.base}/examples"/>
+    <property name="dir.src" value="${dir.base}/src" />
+    <property name="dir.lib" value="${dir.base}/lib" />
+    <property name="dir.lib.ext" value="${dir.lib}/ext" />
+    <property name="dir.release" value="${dir.base}/release" />
+    <property name="dir.tools" value="${dir.base}/tools"/>
+    
+    <property name="dir.doc.msdn" value="${dir.dist}/doc/api/msdn" />
+    <property name="license" value="license.html" />
+    <!-- P A T H  I N F O R M A T I O N -->
+    
+    <!-- L I B R A R I E S -->
+    <property name="name.top-level" value="ICSharpCode" />
+    <property name="name.project" value="SharpCvsLib" />
+    <property name="name.lib" value="${name.project}" />    
+    <property name="name.console" value="Console" />
+    <property name="name.console.exe" value="cvs" />
+    <property name="name.tests" value="Tests" />
+
+
+    <property name="lib.log4net" value="log4net.dll" />
+    <property name="lib.nunit" value="nunit.framework.dll" />    
+    <property name="lib.zip" value="ICSharpCode.SharpZipLib.dll" />
+    
+    <!-- Used for including sspi support or not -->
+    <property name="lib.sspi" value="${dir.lib.ext}\DocsVision.Remoting.dll"/>
+    <!-- L I B R A R I E S -->
+
+    <tstamp property="build.date" pattern="yyyy/MM/dd hh:mm:ss" verbose="true" />
+    <tstamp property="current.year" pattern="yyyy" verbose="true"/>
+    <!-- TODO: Create a NAnt task to get this using the working dir, etc. -->
+    <property name="cvs.branch" value="HEAD" />
+    <property name="nant.settings.defaultframework" value="${framework::get-target-framework()}"/>
+    
+    <property name="util.copy" value="pscp" />
+    <property name="name.developer" value="drakmar" />
+    <property name="sf.username" value="${name.developer}@shell.sourceforge.net" />
+    <property name="sf.location.nightly" value="/home/groups/s/sh/sharpcvslib/htdocs/nightly-build/${cvs.branch}" />
+    <property name="sf.location.release" value="/home/groups/s/sh/sharpcvslib/htdocs" />
+
+
+    <!-- V E R S I O N  I N F O R M A T I O N -->
+    <property name="BuildType" value="debug"/>
+    <property name="assembly.start-date" value="2001-01-01" />  <!-- This is a guess at the start date, it is used to generate the current version number. -->
+    <property name="assembly.title" value="Concurrent Versions System (sharpCVS) (client)" />
+    <property name="assembly.copyright.text" value="Mike Krueger 2001-2002, SharpCvsLib Developers 2003-${current.year}
+
+CVS may be copied only under the terms of the GNU General Public License,
+a copy of which can be found with the CVS distribution kit." />
+    <property name="assembly.copyright.href" value="http://sharpcvslib.sourceforge.net/license.html" />
+    <property name="assembly.description" value="${nant.platform.name}; ${nant.settings.defaultframework}; ${build.date}" />
+    <property name="assembly.company" value="SharpCvsLib - http://sharpcvslib.sourceforge.net" />
+    <!-- V E R S I O N  I N F O R M A T I O N -->
+    
+    <!-- C O M P I L E R  S E T T I N G S -->
+    <property name="compile.warnaserror" value="false" />
+    <property name="compile.debug" value="${string::contains(BuildType, 'debug')}" />
+    <property name="compile.unsafe" value="/unsafe-" />
+    <property name="compile.checked" value="/checked-" />
+    <property name="compile.define" value="DEBUG;TRACE" />
+    <!-- C O M P I L E R  S E T T I N G S -->
+    
+    <!-- C V S  I N F O R M A T I O N -->
+    <property name="cvs.root" value=":ext:${name.developer}@cvs.sourceforge.net:/cvsroot/sharpcvslib"/>
+    <property name="cvs.module" value="sharpcvslib"/>
+    <!-- C V S  I N F O R M A T I O N -->
+    
+    <!-- D O C U M E N T A T I O N -->
+    <property name="doc.title" value="${name.project}" />
+    <property name="doc.copyright.text" value="${assembly.copyright.text}" />
+    <property name="doc.copyright.href" value="${assembly.copyright.href}" />
+    <!-- D O C U M E N T A T I O N -->
+    
+    
+    <!-- U T I L I T Y  T A S K S -->
+    <target name="guid" description="Output a guid value.">
+        <script language="C#" failonerror="true">
+            <references>
+                <include name="System.Xml.dll"/>
+            </references>
+            <code>
+                <![CDATA[
+                    public static void ScriptMain(Project project)
+                    {
+                        try
+                        {
+                            //setNewGuid(project, "msi.guid.product");
+                            //setNewGuid(project, "msi.guid.upgrade");
+                            System.Console.WriteLine(String.Format("Guid: {0}", GetNewGuid()));
+                        }
+                        finally
+                        {
+                        }
+                    }
+                    
+                    private static string GetNewGuid () {
+                        return System.Guid.NewGuid().ToString().ToUpper();
+                    }
+
+                    private static void setNewGuid(Project project, string propertyName)
+                    {
+                        string template = "<property name=\"" + propertyName + "\" value=\"{0}\" />";
+                        string guidstring = GetNewGuid();
+                        System.Xml.XmlDocument TaskDocument = new System.Xml.XmlDocument();
+                        TaskDocument.LoadXml(String.Format(template, guidstring));
+                        System.Xml.XmlNode taskNode = TaskDocument.SelectSingleNode("property");
+                        NAnt.Core.Task task = project.CreateTask(taskNode);
+                        task.Execute();
+                     }
+                 ]]>
+            </code>
+        </script>
+    </target>
+    <target name="deploy" description="Used by VS.NET build events to deploy compiled output">
+        <copy overwrite="true" todir="${dir.bin}">
+            <fileset basedir="${project.outputdir}">
+                <include name="*"/>
+                <exclude name="*BuildEvent.bat"/>
+            </fileset>
+        </copy>
+    </target>
+    <!-- U T I L I T Y  T A S K S -->
+    
+</project>

@@ -1,0 +1,41 @@
+<!--
+    Build file for the cvs library files.
+-->
+<project name="ICSharpCode.SharpCvsLib" default="build">
+    <target name="build">
+        <csc    target="library" 
+                warnaserror="${compile.warnaserror}" 
+                output="${dir.bin}/${name.top-level}.${name.lib}.dll" 
+                debug="${compile.debug}" 
+                define="${compile.define}" 
+                doc="${dir.bin}/${name.top-level}.${name.lib}.xml">
+            <nowarn>
+                <!-- do not report deprecation warnings if not a release build -->
+                <warning number="0618" if="${string::contains(BuildType, 'debug')}" />
+                <!-- do not report missing documentation warnings if not a release build -->
+                <warning number="1591" if="${string::contains(BuildType, 'debug')}"/>
+            </nowarn>
+
+                
+            <arg value="${compile.unsafe}" />
+            <arg value="${compile.checked}" />
+            
+            <sources basedir="${dir.src}/${name.top-level}/${name.project}">
+                <include name="**/*.cs" />
+                <include name="../../SharpCvsLibAssemblyInfo.cs" />
+                
+                <exclude name="**/SspiProtocol.cs" unless="${file::exists(lib.sspi)}"/>
+                <exclude name="**/CvsTransport.cs" unless="${file::exists(lib.sspi)}"/>
+            </sources>
+            
+            <references>
+                <include name="System.dll" /> 
+                <include name="${dir.lib}/${lib.zip}" />
+                <include name="${dir.lib.ext}/${lib.log4net}" />
+                
+                <include name="${lib.sspi}" if="${file::exists(lib.sspi)}"/>
+            </references>
+            
+        </csc>
+    </target>
+</project>

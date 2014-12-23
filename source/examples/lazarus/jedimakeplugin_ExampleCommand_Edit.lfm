@@ -1,0 +1,55 @@
+object FormEditExample_commandParams: TFormEditExample_commandParams
+  ActiveControl = Edit1
+  Caption = 'FormEditParams'
+  ClientHeight = 136
+  ClientWidth = 346
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  PixelsPerInch = 96
+  TextHeight = 13
+  HorzScrollBar.Page = 345
+  VertScrollBar.Page = 135
+  Left = 440
+  Height = 136
+  Top = 305
+  Width = 346
+  object Label1: TLabel
+    Caption = 'Label1'
+    Color = clNone
+    ParentColor = False
+    Left = 16
+    Height = 14
+    Top = 8
+    Width = 32
+  end
+  object Edit1: TEdit
+    TabOrder = 0
+    Text = 'Edit1'
+    Left = 16
+    Height = 21
+    Top = 24
+    Width = 305
+  end
+  object Button1: TButton
+    BorderSpacing.InnerBorder = 4
+    Caption = 'Ok'
+    Default = True
+    ModalResult = 1
+    TabOrder = 1
+    Left = 64
+    Height = 25
+    Top = 56
+    Width = 75
+  end
+  object Button2: TButton
+    BorderSpacing.InnerBorder = 4
+    Cancel = True
+    Caption = 'Abbrechen'
+    ModalResult = 2
+    TabOrder = 2
+    Left = 144
+    Height = 25
+    Top = 56
+    Width = 75
+  end
+end
