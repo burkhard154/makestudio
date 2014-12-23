@@ -1,0 +1,18 @@
+{ Dies ist eine automatisch erzeugte Lazarus-Ressourcendatei }
+
+LazarusResources.Add('TFormEditExample_commandParams','FORMDATA',[
+  'TPF0'#30'TFormEditExample_commandParams'#29'FormEditExample_commandParams'#13
+  +'ActiveControl'#7#5'Edit1'#7'Caption'#6#14'FormEditParams'#12'ClientHeight'#3
+  +#136#0#11'ClientWidth'#3'Z'#1#11'Font.Height'#2#245#9'Font.Name'#6#13'MS San'
+  +'s Serif'#13'PixelsPerInch'#2'`'#10'TextHeight'#2#13#18'HorzScrollBar.Page'#3
+  +'Y'#1#18'VertScrollBar.Page'#3#135#0#4'Left'#3#184#1#6'Height'#3#136#0#3'Top'
+  +#3'1'#1#5'Width'#3'Z'#1#0#6'TLabel'#6'Label1'#7'Caption'#6#6'Label1'#5'Color'
+  +#7#6'clNone'#11'ParentColor'#8#4'Left'#2#16#6'Height'#2#14#3'Top'#2#8#5'Widt'
+  +'h'#2' '#0#0#5'TEdit'#5'Edit1'#8'TabOrder'#2#0#4'Text'#6#5'Edit1'#4'Left'#2
+  +#16#6'Height'#2#21#3'Top'#2#24#5'Width'#3'1'#1#0#0#7'TButton'#7'Button1'#25
+  +'BorderSpacing.InnerBorder'#2#4#7'Caption'#6#2'Ok'#7'Default'#9#11'ModalResu'
+  +'lt'#2#1#8'TabOrder'#2#1#4'Left'#2'@'#6'Height'#2#25#3'Top'#2'8'#5'Width'#2
+  +'K'#0#0#7'TButton'#7'Button2'#25'BorderSpacing.InnerBorder'#2#4#6'Cancel'#9#7
+  +'Caption'#6#9'Abbrechen'#11'ModalResult'#2#2#8'TabOrder'#2#2#4'Left'#3#144#0
+  +#6'Height'#2#25#3'Top'#2'8'#5'Width'#2'K'#0#0#0
+]);

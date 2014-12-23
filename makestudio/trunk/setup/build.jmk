@@ -1,0 +1,285 @@
+{796D9287-1850-46A8-9C28-24E627FBC446} Version=3
+begin Delphi32.SetDelphiVersion
+  Caption=Delphi32 Version setzten
+  Ignore=0
+  Delphiversion=12
+end
+begin delphi.SelectDelphiPlatform
+  Caption=Select Delphi Platform
+  Ignore=0
+  Platform=1
+end
+begin delphi32.EditNamespaces
+  Caption=Preset Delphi Namespaces
+  Ignore=0
+  Namespaces=System;System.Win;WinApi;Vcl;Vcl.Imaging;Data;xml
+end
+begin command.comment
+  Caption=Finding the absolute path to source....
+  Ignore=0
+  Value=Finding the absolute path to source....
+end
+begin Script.PScript
+  Caption=Pascal Script
+  Ignore=0
+  LineCount=10
+  Line1=var s:String;
+  Line2=begin
+  Line3=  s := VarGet( 'ActiveScriptFile');
+  Line4=  s := ExtractFilePath( s);
+  Line5=  s := RemoveBackslash( s);
+  Line6=  s := ExtractFilePath( s); 
+  Line7=  s := RemoveBackslash( s);
+  Line8=  VarSet( 'BASEPATH', s);
+  Line9=  //ShowMessage( 'BASEPATH='+s);
+  Line10=end.
+end
+begin jvcsmak.setvariable
+  Caption=Set variable <DOTNETBINPATH> = C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin
+  Ignore=0
+  Varname=DOTNETBINPATH
+  DataType=0
+  Value=C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin
+  Operation=0
+  Append=0
+  Versionfilename=
+  DateTimeFormat=YYYY-MM-DD HH:MM:SS
+  VersionFormat=%V1.%V2.%V3.%V4
+  ReplaceVars=0
+end
+begin utils.mkdir
+  Caption=Verzeichnisse erstellen
+  Ignore=0
+  DirectoryCount=3
+  Directory1=%BASEPATH%\bin\
+  Directory2=%BASEPATH%\dcu\
+  Directory3=%BASEPATH%\bin\
+end
+begin jvcsutils.batchinternal
+  Caption=Internal Batch command list
+  Ignore=0
+  ReplaceVars=1
+  BatchLineCount=6
+  BatchLine1=v:
+  BatchLine2=cd %BASEPATH%\
+  BatchLine3=del %BASEPATH%\bin\*.jpl
+  BatchLine4=del %BASEPATH%\bin\*.dll
+  BatchLine5=rem del %BASEPATH%\bin\*.exe
+  BatchLine6=svn update jmake
+end
+begin resources.EditVersion
+  Caption=Edit Version Resource
+  Ignore=0
+  Filename=%BASEPATH%\jmakver.rc
+  IncreaseType=3
+  FileVersionKey=FileVersion
+  IncreaseSet=1
+  NewVersionValue=0.0.0.0
+end
+begin delphi32.brcc32
+  Caption=Resource Compiler 32-bit <%BASEPATH%\jmakver.rc>
+  Ignore=0
+  RCFile=%BASEPATH%\jmakver.rc
+  Options=
+  =
+end
+begin jvcsutils.batchinternal
+  Caption=Internal Batch command list
+  Ignore=0
+  ReplaceVars=1
+  BatchLineCount=1
+  BatchLine1=svn commit -m "updated by build process" %BASEPATH%\jmakver.rc
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (jvcsmak.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\jvcsmak.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N.\dcu
+  OutputDir=.\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (EasyBackup_JVCSMakPlugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\plugins\plugineasybackup\EasyBackup_JVCSMakPlugin.dpr
+  Action=8
+  CompilerSwitch=-V- -N..\..\dcu
+  OutputDir=..\..\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (jvcs_JVCSMakPlugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\plugins\pluginjvcs\jvcs_JVCSMakPlugin.dpr
+  Action=8
+  CompilerSwitch=-V- -N..\..\dcu
+  OutputDir=..\..\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (passolo_JVCSMakPlugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\plugins\pluginpassolo\passolo_JVCSMakPlugin.dpr
+  Action=8
+  CompilerSwitch=-V- -N..\..\dcu
+  OutputDir=..\..\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (utils_JVCSMakPlugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\plugins\pluginutils\utils_JVCSMakPlugin.dpr
+  Action=8
+  CompilerSwitch=-V- -N..\..\dcu
+  OutputDir=..\..\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (wise_JVCSMakPlugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\plugins\pluginwise\wise_JVCSMakPlugin.dpr
+  Action=8
+  CompilerSwitch=-V- -N..\..\dcu
+  OutputDir=..\..\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (delphi32_JVCSMakPlugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\plugins\plugindelphi32\delphi32_JVCSMakPlugin.dpr
+  Action=8
+  CompilerSwitch=-V- -N..\..\dcu
+  OutputDir=..\..\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (dialogs_JVCSMakPlugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\plugins\plugindialogs\dialogs_JVCSMakPlugin.dpr
+  Action=8
+  CompilerSwitch=-V- -N..\..\dcu
+  OutputDir=..\..\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (helpandmanual_JVCSMakPlugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\plugins\pluginhelpandmanual\helpandmanual_JVCSMakPlugin.dpr
+  Action=8
+  CompilerSwitch=-V- -N..\..\dcu
+  OutputDir=..\..\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (resources_JVCSMakPlugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\plugins\pluginversion\resources_JVCSMakPlugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N..\..\dcu
+  OutputDir=..\..\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (zip_JMakPlugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\plugins\pluginzip\zip_JMakPlugin.dpr
+  Action=8
+  CompilerSwitch=-V- -N..\..\dcu
+  OutputDir=..\..\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (pscript_JMakPlugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\plugins\pluginpscript\pscript_JMakPlugin.dpr
+  Action=8
+  CompilerSwitch=-V- -N..\..\dcu
+  OutputDir=..\..\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (innosetup_JMakPlugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\plugins\plugininnosetup\innosetup_JMakPlugin.dpr
+  Action=8
+  CompilerSwitch=-V- -N..\..\dcu
+  OutputDir=..\..\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (nsis_JMakPlugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\plugins\pluginnsis\nsis_JMakPlugin.dpr
+  Action=8
+  CompilerSwitch=-V- -N..\..\dcu
+  OutputDir=..\..\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (codewizard.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\plugins\wizard\codewizard.dpr
+  Action=8
+  CompilerSwitch=-V- -N..\..\dcu
+  OutputDir=..\..\bin
+  SearchPathCount=0
+end
+begin jvcsutils.batchinternal
+  Caption=Internal Batch command list
+  Ignore=0
+  ReplaceVars=1
+  BatchLineCount=16
+  BatchLine1=md %BASEPATH%\bin\CodeTemplate
+  BatchLine2=copy /Y %BASEPATH%\plugins\wizard\resources\*.ico %BASEPATH%\bin\CodeTemplate
+  BatchLine3=copy /Y %BASEPATH%\plugins\wizard\resources\*.pas %BASEPATH%\bin\CodeTemplate
+  BatchLine4=copy /Y %BASEPATH%\plugins\wizard\resources\*.dfm %BASEPATH%\bin\CodeTemplate
+  BatchLine5=copy /Y %BASEPATH%\plugins\wizard\resources\*.dpr %BASEPATH%\bin\CodeTemplate
+  BatchLine6=copy /Y %BASEPATH%\plugins\wizard\resources\*.cs %BASEPATH%\bin\CodeTemplate
+  BatchLine7=copy /Y %BASEPATH%\plugins\wizard\resources\*.resx %BASEPATH%\bin\CodeTemplate
+  BatchLine8=copy /Y %BASEPATH%\plugins\wizard\resources\*.h %BASEPATH%\bin\CodeTemplate
+  BatchLine9=copy /Y %BASEPATH%\plugins\wizard\resources\*.cpp %BASEPATH%\bin\CodeTemplate
+  BatchLine10=copy /Y %BASEPATH%\plugins\wizard\resources\*.ui %BASEPATH%\bin\CodeTemplate
+  BatchLine11=copy /Y %BASEPATH%\plugins\wizard\resources\*.prj %BASEPATH%\bin\CodeTemplate
+  BatchLine12=copy /Y %BASEPATH%\plugins\wizard\resources\*.bmp %BASEPATH%\bin\CodeTemplate
+  BatchLine13=copy /Y %BASEPATH%\plugins\wizard\resources\*.png %BASEPATH%\bin\CodeTemplate
+  BatchLine14=
+  BatchLine15=
+  BatchLine16=  
+end
+begin jvcsutils.batchinternal
+  Caption=Internal Batch command list
+  Ignore=0
+  ReplaceVars=1
+  BatchLineCount=5
+  BatchLine1=REM generate jvcsmak.dll
+  BatchLine2=v:
+  BatchLine3=cd %BASEPATH%
+  BatchLine4="%DOTNETBINPATH%\tlbimp" %BASEPATH%\jvcsmak.tlb /transform:dispret /verbose /namespace:JediMake
+  BatchLine5=copy jvcsmak.dll .\bin
+end
+begin jvcsmak.setvariable
+  Caption=Read version information into variable <JVCSMAKVERSION>
+  Ignore=0
+  Varname=JVCSMAKVERSION
+  DataType=0
+  Value=
+  Operation=6
+  Append=0
+  Versionfilename=%BASEPATH%\bin\jvcsmak.exe
+  DateTimeFormat=YYYY-MM-DD HH:MM:SS
+  VersionFormat=%V1.%V2 Revision%V3 Build%V4
+  ReplaceVars=0
+end
+begin innosetup.innosetup5.project
+  Caption=Inno Setup <%BASEPATH%\setup\Jvcsmak.iss>
+  Ignore=0
+  ProjectFile=%BASEPATH%\setup\Jvcsmak.iss
+  OutputFile=%BASEPATH%\setup\Output\JVCSMake %JVCSMAKVERSION% Setup
+  Options=
+end
+begin jvcsutils.batchmodule
+  Caption=External Batch file - Cleanup.bat
+  Ignore=0
+  BatchFile=%BASEPATH%\Cleanup.bat
+end

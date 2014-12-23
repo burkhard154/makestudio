@@ -1,0 +1,28 @@
+<Combine fileversion="1.0" name="SharpCvsLib" description="Cvs library for c#">
+  <StartMode startupentry="SharpCvsLib" single="True">
+    <Execute entry="SharpCvsLib" type="None" />
+    <Execute entry="SharpCvsLib.Tests" type="None" />
+    <Execute entry="SharpCvslib.Console" type="None" />
+    <Execute entry="SharpCvslib.Console.Lib" type="None" />
+  </StartMode>
+  <Entries>
+    <Entry filename=".\SharpCvsLib.prjx" />
+    <Entry filename=".\SharpCvsLib.Tests.prjx" />
+    <Entry filename=".\SharpCvslib.Console.prjx" />
+    <Entry filename=".\SharpCvslib.Console.Lib.prjx" />
+  </Entries>
+  <Configurations active="Debug">
+    <Configuration name="Release">
+      <Entry name="SharpCvsLib" configurationname="Debug" build="False" />
+      <Entry name="SharpCvsLib.Tests" configurationname="Debug" build="False" />
+      <Entry name="SharpCvslib.Console" configurationname="Debug" build="False" />
+      <Entry name="SharpCvslib.Console.Lib" configurationname="Debug" build="False" />
+    </Configuration>
+    <Configuration name="Debug">
+      <Entry name="SharpCvsLib" configurationname="Debug" build="False" />
+      <Entry name="SharpCvsLib.Tests" configurationname="Debug" build="False" />
+      <Entry name="SharpCvslib.Console" configurationname="Debug" build="False" />
+      <Entry name="SharpCvslib.Console.Lib" configurationname="Debug" build="False" />
+    </Configuration>
+  </Configurations>
+</Combine>

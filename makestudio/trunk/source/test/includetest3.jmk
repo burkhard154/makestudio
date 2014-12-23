@@ -1,0 +1,20 @@
+{796D9287-1850-46A8-9C28-24E627FBC446} Version=3
+begin jvcsmak.setvariable
+  Caption=Set variable <Test3> = Level 3
+  Varname=Test3
+  DataType=0
+  Value=Level 3
+  Operation=0
+  Append=0
+  Versionfilename=
+  DateTimeFormat=YYYY-MM-DD HH:MM:SS
+  VersionFormat=%V1.%V2.%V3.%V4
+  ReplaceVars=0
+end
+begin dialogs.msgbox
+  Caption=Messagebox
+  Text=Tiefste Ebene erreicht
+  Buttons=[mbOK]
+  Style=0
+  ReturnValue=
+end

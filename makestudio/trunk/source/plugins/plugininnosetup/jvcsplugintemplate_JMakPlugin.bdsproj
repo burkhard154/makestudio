@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <PersonalityInfo>
+    <Option>
+      <Option Name="Personality">CSharp.Personality</Option>
+      <Option Name="ProjectType">Assembly</Option>
+      <Option Name="Version">1.0</Option>
+      <Option Name="GUID">{D830A3F4-D805-49CB-A0D8-7C8C4F8076B3}</Option>
+    </Option>
+  </PersonalityInfo>
+  <CSharp.Personality>
+    <Options>
+        <SelectedOptionSet>
+        <SelectedOptionSet Name="OptionsSet">Debug</SelectedOptionSet>
+      </SelectedOptionSet>
+    
+        <OptionsSet Name="Release">
+        <Options>
+          <Options Name="Warning">4</Options>
+          <Options Name="Incremental">False</Options>
+          <Options Name="DocumentationFile"></Options>
+          <Options Name="DefaultNamespace">jvcsplugintemplate_JMakPlugin</Options>
+          <Options Name="DebugInformation">False</Options>
+          <Options Name="Optimization">True</Options>
+          <Options Name="Overflow">False</Options>
+          <Options Name="ivUnsafe">False</Options>
+          <Options Name="WarningAsError">False</Options>
+          <Options Name="Defines">TRACE</Options>
+          <Options Name="TargetName"></Options>
+          <Options Name="TargetType">Assembly</Options>
+          <Options Name="Main"></Options>
+          <Options Name="BaseAddress">285212672</Options>
+          <Options Name="BuildInOutput">False</Options>
+          <Options Name="OutputDirectory">bin\Release</Options>
+          <Options Name="RunParams"></Options>
+          <Options Name="HostApplication"></Options>
+          <Options Name="Launcher"></Options>
+          <Options Name="UseLauncher">False</Options>
+          <Options Name="DebugCWD"></Options>
+          <Options Name="RemotePath"></Options>
+          <Options Name="RemoteHost"></Options>
+          <Options Name="RemoteLauncher"></Options>
+          <Options Name="RemoteDebug">False</Options>
+          <Options Name="RemoteCWD"></Options>
+          <Options Name="AspNetUseHostServer">False</Options>
+          <Options Name="AspNetLaunchBrowser">False</Options>
+          <Options Name="AspNetStartPage"></Options>
+          <Options Name="AspNetHostServer">IIS</Options>
+          <Options Name="AspNetCassiniVirtualDirectory"></Options>
+          <Options Name="AspNetIISVirtualDirectory"></Options>
+          <Options Name="AspNetHTTPAddress"></Options>
+        </Options>
+      </OptionsSet>
+    
+        <OptionsSet Name="Debug">
+        <Options>
+          <Options Name="Warning">4</Options>
+          <Options Name="Incremental">True</Options>
+          <Options Name="DocumentationFile"></Options>
+          <Options Name="DefaultNamespace">jvcsplugintemplate_JMakPlugin</Options>
+          <Options Name="DebugInformation">True</Options>
+          <Options Name="Optimization">False</Options>
+          <Options Name="Overflow">False</Options>
+          <Options Name="ivUnsafe">False</Options>
+          <Options Name="WarningAsError">False</Options>
+          <Options Name="Defines">TRACE;DEBUG</Options>
+          <Options Name="TargetName"></Options>
+          <Options Name="TargetType">Assembly</Options>
+          <Options Name="Main"></Options>
+          <Options Name="BaseAddress">285212672</Options>
+          <Options Name="BuildInOutput">False</Options>
+          <Options Name="OutputDirectory">bin\Debug</Options>
+          <Options Name="RunParams"></Options>
+          <Options Name="HostApplication"></Options>
+          <Options Name="Launcher"></Options>
+          <Options Name="UseLauncher">False</Options>
+          <Options Name="DebugCWD"></Options>
+          <Options Name="RemotePath"></Options>
+          <Options Name="RemoteHost"></Options>
+          <Options Name="RemoteLauncher"></Options>
+          <Options Name="RemoteDebug">False</Options>
+          <Options Name="RemoteCWD"></Options>
+          <Options Name="AspNetUseHostServer">False</Options>
+          <Options Name="AspNetLaunchBrowser">False</Options>
+          <Options Name="AspNetStartPage"></Options>
+          <Options Name="AspNetHostServer">IIS</Options>
+          <Options Name="AspNetCassiniVirtualDirectory"></Options>
+          <Options Name="AspNetIISVirtualDirectory"></Options>
+          <Options Name="AspNetHTTPAddress"></Options>
+        </Options>
+      </OptionsSet>
+    
+    </Options>
+    <FileList/>
+  </CSharp.Personality>
+</BorlandProject>

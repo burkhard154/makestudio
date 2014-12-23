@@ -1,0 +1,216 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{31F6133E-A4BE-4BB7-87BE-75C297CDD275}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="makestudio.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ms.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\plugindelphi32\delphi32_Plugin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\plugindelphinet\DelphiDotNet_Plugin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\plugindialogs\dialogs_Plugin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\plugineasybackup\EasyBackup_Plugin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\pluginhelpandmanual\helpandmanual_Plugin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\plugininnosetup\innosetup_Plugin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\pluginjvcs\jvcs_Plugin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\pluginnsis\nsis_Plugin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\pluginpassolo\passolo_Plugin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\pluginpscript\pscript_Plugin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\pluginutils\utils_Plugin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\pluginversion\resources_Plugin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\pluginzip\zip_Plugin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\wizard\MakeStudioPluginWizard.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="makestudio">
+        <MSBuild Projects="makestudio.dproj"/>
+    </Target>
+    <Target Name="makestudio:Clean">
+        <MSBuild Projects="makestudio.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="makestudio:Make">
+        <MSBuild Projects="makestudio.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ms">
+        <MSBuild Projects="ms.dproj"/>
+    </Target>
+    <Target Name="ms:Clean">
+        <MSBuild Projects="ms.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ms:Make">
+        <MSBuild Projects="ms.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="delphi32_Plugin">
+        <MSBuild Projects="..\plugins\plugindelphi32\delphi32_Plugin.dproj"/>
+    </Target>
+    <Target Name="delphi32_Plugin:Clean">
+        <MSBuild Projects="..\plugins\plugindelphi32\delphi32_Plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="delphi32_Plugin:Make">
+        <MSBuild Projects="..\plugins\plugindelphi32\delphi32_Plugin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DelphiDotNet_Plugin">
+        <MSBuild Projects="..\plugins\plugindelphinet\DelphiDotNet_Plugin.dproj"/>
+    </Target>
+    <Target Name="DelphiDotNet_Plugin:Clean">
+        <MSBuild Projects="..\plugins\plugindelphinet\DelphiDotNet_Plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DelphiDotNet_Plugin:Make">
+        <MSBuild Projects="..\plugins\plugindelphinet\DelphiDotNet_Plugin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="dialogs_Plugin">
+        <MSBuild Projects="..\plugins\plugindialogs\dialogs_Plugin.dproj"/>
+    </Target>
+    <Target Name="dialogs_Plugin:Clean">
+        <MSBuild Projects="..\plugins\plugindialogs\dialogs_Plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="dialogs_Plugin:Make">
+        <MSBuild Projects="..\plugins\plugindialogs\dialogs_Plugin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="EasyBackup_Plugin">
+        <MSBuild Projects="..\plugins\plugineasybackup\EasyBackup_Plugin.dproj"/>
+    </Target>
+    <Target Name="EasyBackup_Plugin:Clean">
+        <MSBuild Projects="..\plugins\plugineasybackup\EasyBackup_Plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EasyBackup_Plugin:Make">
+        <MSBuild Projects="..\plugins\plugineasybackup\EasyBackup_Plugin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="helpandmanual_Plugin">
+        <MSBuild Projects="..\plugins\pluginhelpandmanual\helpandmanual_Plugin.dproj"/>
+    </Target>
+    <Target Name="helpandmanual_Plugin:Clean">
+        <MSBuild Projects="..\plugins\pluginhelpandmanual\helpandmanual_Plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="helpandmanual_Plugin:Make">
+        <MSBuild Projects="..\plugins\pluginhelpandmanual\helpandmanual_Plugin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="innosetup_Plugin">
+        <MSBuild Projects="..\plugins\plugininnosetup\innosetup_Plugin.dproj"/>
+    </Target>
+    <Target Name="innosetup_Plugin:Clean">
+        <MSBuild Projects="..\plugins\plugininnosetup\innosetup_Plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="innosetup_Plugin:Make">
+        <MSBuild Projects="..\plugins\plugininnosetup\innosetup_Plugin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="jvcs_Plugin">
+        <MSBuild Projects="..\plugins\pluginjvcs\jvcs_Plugin.dproj"/>
+    </Target>
+    <Target Name="jvcs_Plugin:Clean">
+        <MSBuild Projects="..\plugins\pluginjvcs\jvcs_Plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="jvcs_Plugin:Make">
+        <MSBuild Projects="..\plugins\pluginjvcs\jvcs_Plugin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="nsis_Plugin">
+        <MSBuild Projects="..\plugins\pluginnsis\nsis_Plugin.dproj"/>
+    </Target>
+    <Target Name="nsis_Plugin:Clean">
+        <MSBuild Projects="..\plugins\pluginnsis\nsis_Plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="nsis_Plugin:Make">
+        <MSBuild Projects="..\plugins\pluginnsis\nsis_Plugin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="passolo_Plugin">
+        <MSBuild Projects="..\plugins\pluginpassolo\passolo_Plugin.dproj"/>
+    </Target>
+    <Target Name="passolo_Plugin:Clean">
+        <MSBuild Projects="..\plugins\pluginpassolo\passolo_Plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="passolo_Plugin:Make">
+        <MSBuild Projects="..\plugins\pluginpassolo\passolo_Plugin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="pscript_Plugin">
+        <MSBuild Projects="..\plugins\pluginpscript\pscript_Plugin.dproj"/>
+    </Target>
+    <Target Name="pscript_Plugin:Clean">
+        <MSBuild Projects="..\plugins\pluginpscript\pscript_Plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="pscript_Plugin:Make">
+        <MSBuild Projects="..\plugins\pluginpscript\pscript_Plugin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="utils_Plugin">
+        <MSBuild Projects="..\plugins\pluginutils\utils_Plugin.dproj"/>
+    </Target>
+    <Target Name="utils_Plugin:Clean">
+        <MSBuild Projects="..\plugins\pluginutils\utils_Plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="utils_Plugin:Make">
+        <MSBuild Projects="..\plugins\pluginutils\utils_Plugin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="resources_Plugin">
+        <MSBuild Projects="..\plugins\pluginversion\resources_Plugin.dproj"/>
+    </Target>
+    <Target Name="resources_Plugin:Clean">
+        <MSBuild Projects="..\plugins\pluginversion\resources_Plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="resources_Plugin:Make">
+        <MSBuild Projects="..\plugins\pluginversion\resources_Plugin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="zip_Plugin">
+        <MSBuild Projects="..\plugins\pluginzip\zip_Plugin.dproj"/>
+    </Target>
+    <Target Name="zip_Plugin:Clean">
+        <MSBuild Projects="..\plugins\pluginzip\zip_Plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="zip_Plugin:Make">
+        <MSBuild Projects="..\plugins\pluginzip\zip_Plugin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="MakeStudioPluginWizard">
+        <MSBuild Projects="..\plugins\wizard\MakeStudioPluginWizard.dproj"/>
+    </Target>
+    <Target Name="MakeStudioPluginWizard:Clean">
+        <MSBuild Projects="..\plugins\wizard\MakeStudioPluginWizard.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MakeStudioPluginWizard:Make">
+        <MSBuild Projects="..\plugins\wizard\MakeStudioPluginWizard.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="makestudio;ms;delphi32_Plugin;DelphiDotNet_Plugin;dialogs_Plugin;EasyBackup_Plugin;helpandmanual_Plugin;innosetup_Plugin;jvcs_Plugin;nsis_Plugin;passolo_Plugin;pscript_Plugin;utils_Plugin;resources_Plugin;zip_Plugin;MakeStudioPluginWizard"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="makestudio:Clean;ms:Clean;delphi32_Plugin:Clean;DelphiDotNet_Plugin:Clean;dialogs_Plugin:Clean;EasyBackup_Plugin:Clean;helpandmanual_Plugin:Clean;innosetup_Plugin:Clean;jvcs_Plugin:Clean;nsis_Plugin:Clean;passolo_Plugin:Clean;pscript_Plugin:Clean;utils_Plugin:Clean;resources_Plugin:Clean;zip_Plugin:Clean;MakeStudioPluginWizard:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="makestudio:Make;ms:Make;delphi32_Plugin:Make;DelphiDotNet_Plugin:Make;dialogs_Plugin:Make;EasyBackup_Plugin:Make;helpandmanual_Plugin:Make;innosetup_Plugin:Make;jvcs_Plugin:Make;nsis_Plugin:Make;passolo_Plugin:Make;pscript_Plugin:Make;utils_Plugin:Make;resources_Plugin:Make;zip_Plugin:Make;MakeStudioPluginWizard:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -1,0 +1,222 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <ProjectOptions>
+    <PathDelim Value="\"/>
+    <Version Value="5"/>
+    <General>
+      <MainUnit Value="0"/>
+      <TargetFileExt Value=".exe"/>
+    </General>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IgnoreBinaries Value="False"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
+      <ExcludeFileFilter Value="*.(bak|ppu|ppw|o|so);*~;backup"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+        <LaunchingApplication PathPlusParams="/usr/X11R6/bin/xterm -T 'Lazarus Run Output' -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
+      </local>
+    </RunParams>
+    <Units Count="24">
+      <Unit0>
+        <Filename Value="jedimakeplugin_Example_D7.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <CursorPos X="1" Y="1"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="20"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="jedimakeplugin_Actions.pas"/>
+        <ComponentName Value="FormActions"/>
+        <HasResources Value="True"/>
+        <ResourceFilename Value="jedimakeplugin_Actions.lrs"/>
+        <UnitName Value="jedimakeplugin_Actions"/>
+        <CursorPos X="11" Y="40"/>
+        <TopLine Value="8"/>
+        <UsageCount Value="10"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="..\..\lib\jvcsmak_tlb_lazarus.pas"/>
+        <UnitName Value="jvcsmak_TLB_Lazarus"/>
+        <CursorPos X="41" Y="3"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="10"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="jedimakeplugin_Actiontest.pas"/>
+        <ComponentName Value="FormActionTest"/>
+        <HasResources Value="True"/>
+        <UnitName Value="jedimakeplugin_Actiontest"/>
+        <CursorPos X="1" Y="1"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="10"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="jedimakeplugin_ExampleCommand.pas"/>
+        <UnitName Value="jedimakeplugin_ExampleCommand"/>
+        <CursorPos X="57" Y="41"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="10"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="jedimakeplugin_ExampleCommand_Edit.dfm"/>
+        <CursorPos X="1" Y="1"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="10"/>
+        <SyntaxHighlighter Value="LFM"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="jedimakeplugin_ExampleCommand_Edit.pas"/>
+        <ComponentName Value="FormEditExample_commandParams"/>
+        <HasResources Value="True"/>
+        <ResourceFilename Value="jedimakeplugin_ExampleCommand_Edit.lrs"/>
+        <UnitName Value="jedimakeplugin_ExampleCommand_Edit"/>
+        <CursorPos X="25" Y="36"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="10"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="jedimakeplugin_Vars.pas"/>
+        <UnitName Value="jedimakeplugin_Vars"/>
+        <CursorPos X="17" Y="6"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="10"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="C:\lazarus\components\codetools\pascalparsertool.pas"/>
+        <UnitName Value="PascalParserTool"/>
+        <CursorPos X="28" Y="3084"/>
+        <TopLine Value="2895"/>
+        <UsageCount Value="10"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="C:\lazarus\components\codetools\stdcodetools.pas"/>
+        <UnitName Value="StdCodeTools"/>
+        <CursorPos X="31" Y="304"/>
+        <TopLine Value="297"/>
+        <UsageCount Value="10"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="C:\lazarus\components\synedit\synhighlighterpas.pp"/>
+        <UnitName Value="SynHighlighterPas"/>
+        <CursorPos X="15" Y="987"/>
+        <TopLine Value="959"/>
+        <UsageCount Value="10"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="C:\lazarus\fpcsrc\packages\extra\winunits\jwaadstlb.pas"/>
+        <UnitName Value="JwaAdsTLB"/>
+        <CursorPos X="23" Y="10291"/>
+        <TopLine Value="10245"/>
+        <UsageCount Value="10"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="C:\lazarus\fpcsrc\packages\extra\winunits\jedi.inc"/>
+        <CursorPos X="21" Y="898"/>
+        <TopLine Value="825"/>
+        <UsageCount Value="10"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="C:\lazarus\fpcsrc\packages\extra\winunits\activex.pp"/>
+        <UnitName Value="ActiveX"/>
+        <CursorPos X="75" Y="535"/>
+        <TopLine Value="507"/>
+        <UsageCount Value="10"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="..\..\lib\lzlib.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="LzLib"/>
+        <CursorPos X="42" Y="62"/>
+        <TopLine Value="14"/>
+        <UsageCount Value="20"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="C:\lazarus\fpcsrc\rtl\win32\windows.pp"/>
+        <UnitName Value="windows"/>
+        <CursorPos X="1" Y="1"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="10"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="C:\lazarus\fpcsrc\rtl\win32\classes.pp"/>
+        <UnitName Value="Classes"/>
+        <CursorPos X="1" Y="1"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="10"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="C:\lazarus\lcl\forms.pp"/>
+        <UnitName Value="Forms"/>
+        <CursorPos X="37" Y="139"/>
+        <TopLine Value="111"/>
+        <UsageCount Value="10"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="C:\lazarus\lcl\controls.pp"/>
+        <UnitName Value="Controls"/>
+        <CursorPos X="26" Y="763"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="10"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="C:\lazarus\lcl\lclclasses.pp"/>
+        <UnitName Value="LCLClasses"/>
+        <CursorPos X="30" Y="38"/>
+        <TopLine Value="10"/>
+        <UsageCount Value="10"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="C:\lazarus\fpcsrc\rtl\objpas\classes\classesh.inc"/>
+        <CursorPos X="22" Y="1329"/>
+        <TopLine Value="1323"/>
+        <UsageCount Value="10"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="C:\lazarus\fpcsrc\fcl\classes\classesh.inc"/>
+        <CursorPos X="36" Y="1379"/>
+        <TopLine Value="1361"/>
+        <UsageCount Value="10"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="C:\lazarus\fpcsrc\rtl\objpas\classes\compon.inc"/>
+        <CursorPos X="3" Y="572"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="10"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="C:\lazarus\fpcsrc\packages\extra\winunits\comobj.pp"/>
+        <UnitName Value="comobj"/>
+        <CursorPos X="35" Y="1"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="10"/>
+      </Unit23>
+    </Units>
+    <JumpHistory Count="0" HistoryIndex="-1"/>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="5"/>
+    <PathDelim Value="\"/>
+    <SearchPaths>
+      <OtherUnitFiles Value="V:\projects\jedivcs\src\jedivcsmake\;$(LazarusDir)\lcl\units\$(TargetCPU)-$(TargetOS)\;V:\projects\jedivcs\src\jedivcsmake\lib\"/>
+    </SearchPaths>
+    <CodeGeneration>
+      <Generate Value="Faster"/>
+    </CodeGeneration>
+    <Other>
+      <CompilerPath Value="$(CompPath)"/>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="2">
+      <Item1>
+        <Name Value="ECodetoolError"/>
+      </Item1>
+      <Item2>
+        <Name Value="EFOpenError"/>
+      </Item2>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

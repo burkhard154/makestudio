@@ -1,0 +1,90 @@
+<html>
+<head>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=Windows-1252">
+</head>
+<body>
+<pre>
+<table width=100% bgcolor=#CFCFE5><tr> <td> <font face=arial size=+3>
+Build Log
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+<h3>------- Build started: Project: builder.nant, Configuration: Debug|Win32 -------
+</h3>
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Command Lines
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Creating temporary file "C:\DOCUME~1\CLAYTO~1\LOCALS~1\Temp\BAT000001.bat" with contents
+[
+@echo off
+E:\dev\src\sharpcvslib\sharpcvslib\tools\nant\Nant.exe -f:E:\dev\src\sharpcvslib\sharpcvslib\build\SharpCvsLib.build build.all
+if errorlevel 1 goto VCReportError
+goto VCEnd
+:VCReportError
+echo Project : error PRJ0019: A tool returned an error code from "Performing Makefile project actions"
+exit 1
+:VCEnd
+]
+Creating command line "C:\DOCUME~1\CLAYTO~1\LOCALS~1\Temp\BAT000001.bat"
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Output Window
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>Performing Makefile project actions
+NAnt 0.85 (Build 0.85.1690.0; net-1.0.win32; nightly; 17/08/2004)
+Copyright (C) 2001-2004 Gerry Shaw
+http://nant.sourceforge.net
+Buildfile: file:///E:/dev/src/sharpcvslib/sharpcvslib/build/SharpCvsLib.build
+Target(s) specified: build.all 
+  [include] E:\dev\src\sharpcvslib\sharpcvslib\build\SharpCvsLib.build(6,6):
+  [include] Build file 'E:\dev\src\sharpcvslib\sharpcvslib\build\SharpCvsLib.local.xml' does not exist.
+   [tstamp] September 8, 2004 10:39:19 PM.
+   [tstamp] build.date = 2004/09/08 10:39:19.
+   [tstamp] September 8, 2004 10:39:19 PM.
+   [tstamp] current.year = 2004.
+clean:
+     [echo] Binary file directory: E:\dev\src\sharpcvslib\sharpcvslib\build/../bin
+   [delete] Deleting directory 'E:\dev\src\sharpcvslib\sharpcvslib\bin'.
+build.all:
+setup:
+
+    [mkdir] Creating directory 'E:\dev\src\sharpcvslib\sharpcvslib\bin\tests'.
+     [copy] Copying 1 file to 'E:\dev\src\sharpcvslib\sharpcvslib\bin'.
+     [copy] Copying 1 file to 'E:\dev\src\sharpcvslib\sharpcvslib\bin'.
+     [copy] Copying 3 files to 'E:\dev\src\sharpcvslib\sharpcvslib\bin'.
+     [copy] Copying 1 file to 'E:\dev\src\sharpcvslib\sharpcvslib\bin\ICSharpCode.SharpCvsLib.Tests-sample.dll.config'.
+     [copy] Copying 1 file to 'E:\dev\src\sharpcvslib\sharpcvslib\bin'.
+update.version:
+    [ifnot] E:\dev\src\sharpcvslib\sharpcvslib\build\SharpCvsLib.build(23,10): Attribute 'propertyexists' for <ifnot ... /> is deprecated.  Use <if test="${property::exists('propertyname')}"> instead.
+  [version] Build number '0.36.4408.8156'.
+     [echo] Generating assembly info for version 0.36.4408.8156
+  [asminfo] Generated file 'E:\dev\src\sharpcvslib\sharpcvslib\src\SharpCvsLibAssemblyInfo.cs'.
+     [echo] Building assembly version 0.36.4408.8156
+setup:
+update.version:
+    [ifnot] E:\dev\src\sharpcvslib\sharpcvslib\build\SharpCvsLib.build(23,10): Attribute 'propertyexists' for <ifnot ... /> is deprecated.  Use <if test="${property::exists('propertyname')}"> instead.
+     [echo] Building assembly version 0.36.4408.8156
+build.lib:
+     [nant] E:\dev\src\sharpcvslib\sharpcvslib\build\SharpCvsLib.build.xml build
+            Buildfile: file:///E:/dev/src/sharpcvslib/sharpcvslib/build/SharpCvsLib.build.xml
+            Target(s) specified: build 
+            
+            
+            build:
+            
+                  [csc] Compiling 151 files to 'E:\dev\src\sharpcvslib\sharpcvslib\bin\ICSharpCode.SharpCvsLib.dll'.
+                  [csc] e:\dev\src\sharpcvslib\sharpcvslib\src\ICSharpCode\SharpCvsLib\Commands\XmlLogCommand.cs(172,21): warning CS0618: 'System.Xml.Xsl.XslTransform.Transform(string, string)' is obsolete: 'You should pass XmlResolver to Transform() method'
+                  [csc] error CS0016: Could not write to output file 'e:\dev\src\sharpcvslib\sharpcvslib\bin\ICSharpCode.SharpCvsLib.dll' -- 'The process cannot access the file because it is being used by another process. '
+            
+            BUILD FAILED
+            
+            E:\dev\src\sharpcvslib\sharpcvslib\build\SharpCvsLib.build.xml(6,10):
+            External Program Failed: C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\csc.exe (return code was 1)
+            
+            Total time: 2.7 seconds.
+            
+BUILD FAILED - 1 non-fatal error(s), 2 warning(s)
+Nested build failed.  Refer to build log for exact reason.
+Total time: 5.8 seconds.
+Project : error PRJ0019: A tool returned an error code from "Performing Makefile project actions"
+</pre></table><table width=100% bgcolor=#DFDFE5><tr><td><font face=arial size=+2>
+Results
+</font></table><table width=* cellspacing=0 cellpadding=0><tr><td width=0 bgcolor=#EDEDF5>&nbsp;</td><td width=0 bgcolor=#FFFFFF>&nbsp;</td><td width=*><pre>
+Build log was saved at "file://e:\dev\src\sharpcvslib\sharpcvslib\.externalToolBuilders\builder.nant\Debug\BuildLog.htm"
+builder.nant - 1 error(s), 1 warning(s)</pre></table><table   width=100% height=20 bgcolor=#CFCFE5><tr><td><font face=arial size=+2>
+</font></table></body></html>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<project name="Sharpcvslib Examples" default="build">
+    <target name="*">
+        <nant target="${target::get-current-target()}">
+            <buildfiles>
+                <include name="**/*.build" />
+                <exclude name="examples.build" />
+            </buildfiles>
+        </nant>
+    </target>
+</project>

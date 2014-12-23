@@ -1,0 +1,18 @@
+Microsoft HTML Help Compiler 4.74.8702
+
+Compiling v:\projects\jedivcs\src\jedivcsmake\doc\Help\JvcsMak\Startup\Jvcsmak.chm
+
+Jvcsmak.htm
+Jvcsmak.HHC
+Jvcsmak.HHK
+mainform.jpg
+
+Compile time: 0 minutes, 0 seconds
+3	Topics
+4	Local links
+0	Internet links
+1	Graphic
+
+
+Created v:\projects\jedivcs\src\jedivcsmake\doc\Help\JvcsMak\Startup\Jvcsmak.chm, 155,334 bytes
+Compression increased file by 2,015 bytes.

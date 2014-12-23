@@ -1,0 +1,94 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1261D074-2786-4F7E-B76C-E3831838F311}</ProjectGuid>
+    <RootNamespace>EmbeddedImageTest</RootNamespace>
+    <AssemblyName>EmbeddedImageTest</AssemblyName>
+    <OutputType>WinExe</OutputType>
+    <ApplicationIcon>App.ico</ApplicationIcon>
+    <RunPostBuildEvent>OnSuccessfulBuild</RunPostBuildEvent>
+    <NoConfig>false</NoConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <NoStdLib>false</NoStdLib>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>bin\Debug\</OutputPath>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <NoStdLib>false</NoStdLib>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+    <OutputPath>bin\Release\</OutputPath>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data">
+      <HintPath>..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <HintPath>..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml">
+      <HintPath>..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Form1.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="ImageContainer.cs" />
+    <EmbeddedResource Include="imgs\active_network_connection16.bmp" />
+    <EmbeddedResource Include="imgs\adjust.bmp" />
+    <EmbeddedResource Include="imgs\card.bmp" />
+    <EmbeddedResource Include="imgs\channel.bmp" />
+    <EmbeddedResource Include="imgs\characteristiccurve.bmp" />
+    <EmbeddedResource Include="imgs\characteristiccurve_sel.bmp" />
+    <EmbeddedResource Include="imgs\data.bmp" />
+    <EmbeddedResource Include="imgs\data_sel.bmp" />
+    <EmbeddedResource Include="imgs\delete_connection16.bmp" />
+    <EmbeddedResource Include="imgs\device.bmp" />
+    <EmbeddedResource Include="imgs\deviceconfig.bmp" />
+    <EmbeddedResource Include="imgs\folder_open16.bmp" />
+    <EmbeddedResource Include="imgs\folders.bmp" />
+    <EmbeddedResource Include="imgs\group_user16.bmp" />
+    <EmbeddedResource Include="imgs\monitor2.bmp" />
+    <EmbeddedResource Include="imgs\onlinefamos.bmp" />
+    <EmbeddedResource Include="imgs\open.bmp" />
+    <EmbeddedResource Include="imgs\point_delete.bmp" />
+    <EmbeddedResource Include="imgs\preferences16.bmp" />
+    <EmbeddedResource Include="imgs\prepare.bmp" />
+    <EmbeddedResource Include="imgs\reset.bmp" />
+    <EmbeddedResource Include="imgs\save_green16.bmp" />
+    <EmbeddedResource Include="imgs\start.bmp" />
+    <EmbeddedResource Include="imgs\start2.bmp" />
+    <EmbeddedResource Include="imgs\start3.bmp" />
+    <EmbeddedResource Include="imgs\stop.bmp" />
+    <EmbeddedResource Include="imgs\undo.bmp" />
+    <EmbeddedResource Include="imgs\user_delete2.bmp" />
+    <EmbeddedResource Include="imgs\wait.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+</Project>

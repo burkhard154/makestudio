@@ -1,0 +1,296 @@
+// ************************************************************************ //
+// WARNUNG
+// -------
+// Diese Datei wird von dem Typbibliotheks-Importer oder dem Typbibliothekseditor
+// erzeugt. Außer Syntaxfehlern analysiert der Editor an der Datei vorgenommene
+// Änderungen. Wenn Sie aber Änderungen mit dem Editor vornehmen, wird diese
+// Datei neu erzeugt und Kommentare oder Formatänderungen gehen verloren.
+// ************************************************************************ //
+// Datei erzeugt am 23.12.2014 17:26:56 (- $Rev: 12980 $, 367924473).
+
+[
+  uuid(09828B26-2D82-4B16-90D1-517D298B3612),
+  version(1.0),
+  helpstring("jvcsmak Bibliothek")
+
+]
+library jvcsmak
+{
+
+  importlib("stdole2.tlb");
+
+  interface IJApplication;
+  coclass JApplication;
+  interface IActionCallback;
+  interface ICommand;
+  interface ICommandCallback;
+  interface IVars;
+  interface IExecCallback;
+  interface IPlugin;
+  interface IJApplication2;
+  interface ICommand2;
+
+
+  [
+    uuid(59B5757F-054B-457F-9E56-8981699A378A),
+    version(1.0)
+  ]
+  enum varBaseType
+  {
+    varBaseString = 0,
+    varBaseBool = 1,
+    varBaseInteger = 2,
+    varBaseFloat = 3,
+    varBaseIDispatch = 4
+  };
+
+  [
+    uuid(EB2FAC3C-941F-49EE-A055-420D896B8EF6),
+    version(1.0)
+  ]
+  enum EMakeKind
+  {
+    mkGUI = 0,
+    mkCommandLine = 1,
+    mkServer = 2
+  };
+
+  [
+    uuid(4DFCA7C8-8EB9-4999-BECC-EA475A1D7C59),
+    version(1.0)
+  ]
+  enum EResultType
+  {
+    jerOK = 0,
+    jerWarning = 1,
+    jerError = 2
+  };
+
+  [
+    uuid(2B09765A-9813-4C0C-B5A2-B8D250F7D006),
+    version(1.0),
+    helpstring("Interface for Application-Object"),
+    dual,
+    oleautomation
+  ]
+  interface IJApplication: IDispatch
+  {
+    [id(0x000000C9), helpstring("loads a program")]
+    HRESULT _stdcall LoadFromFile([in] BSTR Filename, [out, retval] VARIANT_BOOL* Resturns);
+    [id(0x000000CA), helpstring("Run the program")]
+    HRESULT _stdcall Run(void);
+    [id(0x000000D4), helpstring("Adds a Command type")]
+    HRESULT _stdcall AddCommandType([in] BSTR CommandName, [in] BSTR CommandHint, [in] BSTR CommandCategory, [in] Picture* Bitmap, [in] BSTR DragDropFileExtensions, [in] long CompatibilityIndex, [in]  IDispatch* Callback);
+    [id(0x000000CF)]
+    HRESULT _stdcall AddMenuAction([in] BSTR ActionName, [in] BSTR Caption, [in] BSTR Hint, [in] Picture* Bitmap, [in]  IDispatch* Callback);
+    [id(0x000000CC), helpstring("Writes a logbook message")]
+    HRESULT _stdcall LogMessage([in] BSTR Value);
+    [id(0x000000CD), helpstring("Add lines for additional information in the info dialog e.g. versions etc")]
+    HRESULT _stdcall AddAdditionalInfo([in] BSTR Value);
+    [id(0x000000CE), helpstring("Add lines for credits in the info dialog")]
+    HRESULT _stdcall AddCreditInfo([in] BSTR Value);
+    [propget, id(0x000000D0)]
+    HRESULT _stdcall ApplicationRegKey([out, retval] BSTR* Value);
+    [propget, id(0x000000D1)]
+    HRESULT _stdcall ApplicationDataFolder([out, retval] BSTR* Value);
+    [id(0x000000D2)]
+    HRESULT _stdcall AddCommandCategory([in] BSTR aCaption, [in] Picture* aPicture);
+    [propget, id(0x000000D3)]
+    HRESULT _stdcall Variables([out, retval] IVars** Value);
+    [id(0x000000CB)]
+    HRESULT _stdcall ExecCmdLine([in] BSTR App, [in] BSTR Args, [in] BSTR Dir, [in] IExecCallback* Callback, [out, retval] long* Returns);
+    [id(0x000000D5), helpstring("Calls the help file with the given topic - if topic is empty, the help content is called")]
+    HRESULT _stdcall ShowHelp([in] BSTR Topic);
+    [id(0x000000D6), helpstring("Setting the status text")]
+    HRESULT _stdcall SetStatus([in] BSTR Text);
+    [id(0x000000D7)]
+    HRESULT _stdcall AddCommandByFile([in] BSTR Filename);
+    [id(0x000000D8)]
+    HRESULT _stdcall AddCommand([in] BSTR CommandID);
+  };
+
+  [
+    uuid(D1697D20-4E2F-4B3C-B39C-C6B96C78D55B),
+    version(1.0),
+    helpstring("Interface for PluginCallback-Object"),
+    dual,
+    oleautomation
+  ]
+  interface IActionCallback: IDispatch
+  {
+    [id(0x000000C9)]
+    HRESULT _stdcall Execute([in] BSTR Action);
+  };
+
+  [
+    uuid(59CD4BBC-FC46-4361-9C3A-A22A02FAF63E),
+    version(1.0),
+    helpstring("Interface for Command-Object"),
+    dual,
+    oleautomation
+  ]
+  interface ICommand: IDispatch
+  {
+    [id(0x000000C9)]
+    HRESULT _stdcall MeasureItem([in] long Handle, [in] VARIANT_BOOL BriefView, [out, retval] long* Returns);
+    [id(0x000000CA)]
+    HRESULT _stdcall EditItem([out, retval] VARIANT_BOOL* Returns);
+    [id(0x000000CD)]
+    HRESULT _stdcall ExecuteItem([out, retval] VARIANT_BOOL* Returns);
+    [id(0x000000CE)]
+    HRESULT _stdcall DrawItem([in] long Handle, [in] long Left, [in] long Top, [in] long Right, [in] long Bottom, [in] VARIANT_BOOL Selected, [in] VARIANT_BOOL BriefView, [in] OLE_COLOR BkColor, [out, retval] VARIANT_BOOL* Returns);
+    [id(0x000000CF), helpstring("Used for drag and drop")]
+    HRESULT _stdcall SetFilename([in] BSTR Filename);
+    [propget, id(0x000000D0)]
+    HRESULT _stdcall Caption([out, retval] BSTR* Value);
+    [propput, id(0x000000D0)]
+    HRESULT _stdcall Caption([in] BSTR Value);
+    [propget, id(0x000000D1)]
+    HRESULT _stdcall ParamValues([in] BSTR ParamName, [out, retval] BSTR* Value);
+    [propput, id(0x000000D1)]
+    HRESULT _stdcall ParamValues([in] BSTR ParamName, [in] BSTR Value);
+    [propget, id(0x000000D2)]
+    HRESULT _stdcall ParamNames([in] long Index, [out, retval] BSTR* Value);
+    [propget, id(0x000000D3)]
+    HRESULT _stdcall ParamCount([out, retval] long* Value);
+  };
+
+  [
+    uuid(B9BFA24F-B70B-4FA2-AF6E-8BB796A0AE3E),
+    version(1.0),
+    helpstring("Callback from jvcsmak to the plugin"),
+    dual,
+    oleautomation
+  ]
+  interface ICommandCallback: IDispatch
+  {
+    [id(0x000000C9), helpstring("Called by JVCSMAK to create a new module")]
+    HRESULT _stdcall CreateCommand([out, retval]  IDispatch** Module);
+    [id(0x000000CA), helpstring("Called by JVCSMAK when \"the execution is canceled\" has changed - should be connected with a global variable in the plugin")]
+    HRESULT _stdcall SetCanceled([in] VARIANT_BOOL aCanceled);
+    [id(0x000000CB)]
+    HRESULT _stdcall GetIdentifier([out, retval] BSTR* Returns);
+  };
+
+  [
+    uuid(08E22200-8DFB-4F72-A339-DB2DDB258FE8),
+    version(1.0),
+    dual,
+    oleautomation
+  ]
+  interface IVars: IDispatch
+  {
+    [propget, id(0x000000C9)]
+    HRESULT _stdcall Count([out, retval] long* Value);
+    [propget, id(0x000000CA)]
+    HRESULT _stdcall Values([in] BSTR Varname, [out, retval] VARIANT* Value);
+    [propput, id(0x000000CA)]
+    HRESULT _stdcall Values([in] BSTR Varname, [in] VARIANT Value);
+    [propget, id(0x000000CB)]
+    HRESULT _stdcall ValuesByIdx([in] long Index, [out, retval] VARIANT* Value);
+    [propput, id(0x000000CB)]
+    HRESULT _stdcall ValuesByIdx([in] long Index, [in] VARIANT Value);
+    [propget, id(0x000000CC)]
+    HRESULT _stdcall Names([in] long Index, [out, retval] BSTR* Value);
+    [id(0x000000CD)]
+    HRESULT _stdcall AddVar([in] BSTR Varname);
+    [id(0x000000CE)]
+    HRESULT _stdcall DeleteVar([in] BSTR Varname);
+    [id(0x000000CF)]
+    HRESULT _stdcall IdxOfVar([in] BSTR Varname, [out, retval] long* Returns);
+    [id(0x000000D0)]
+    HRESULT _stdcall VarExists([in] BSTR Varname, [out, retval] VARIANT_BOOL* Returns);
+    [id(0x000000D1)]
+    HRESULT _stdcall BaseDataType([in] BSTR Varname, [out, retval] enum varBaseType* Returns);
+    [id(0x000000D2)]
+    HRESULT _stdcall ReplaceVarsInString([in] BSTR Value, [out, retval] BSTR* Returns);
+  };
+
+  [
+    uuid(9722F0A3-D7EC-4DD6-880C-3C2DDE25259D),
+    version(1.0),
+    dual,
+    oleautomation
+  ]
+  interface IExecCallback: IDispatch
+  {
+    [id(0x000000C9)]
+    HRESULT _stdcall CaptureOutput([in] BSTR Line, [in, out] VARIANT_BOOL* Aborted);
+  };
+
+  [
+    uuid(584C09E1-6443-4181-87E3-2ED1248A7217),
+    version(1.0),
+    dual,
+    oleautomation
+  ]
+  interface IPlugin: IDispatch
+  {
+    [id(0x00000005)]
+    HRESULT _stdcall RegisterPlugin([in] IJApplication* AJVCSMakApp, [out, retval] long* Returns);
+    [propget, id(0x00000001)]
+    HRESULT _stdcall Name([out, retval] BSTR* Value);
+    [propget, id(0x00000002)]
+    HRESULT _stdcall Author([out, retval] BSTR* Value);
+    [propget, id(0x00000003)]
+    HRESULT _stdcall Description([out, retval] BSTR* Value);
+    [propget, id(0x00000004)]
+    HRESULT _stdcall RequiredPlugins([out, retval] BSTR* Value);
+    [id(0x00000006)]
+    HRESULT _stdcall UnregisterPlugin([out, retval] long* Returns);
+    [propget, id(0x00000007)]
+    HRESULT _stdcall MinorVersion([out, retval] long* Value);
+    [propget, id(0x00000008)]
+    HRESULT _stdcall MajorVersion([out, retval] long* Value);
+    [propget, id(0x00000009)]
+    HRESULT _stdcall OptionsPageGUID([out, retval] struct GUID* Value);
+    [id(0x0000000A)]
+    HRESULT _stdcall AfterAllPluginsLoaded(void);
+  };
+
+  [
+    uuid(0073C47F-0B26-4D9B-9035-53ECF1C2E70F),
+    version(1.0),
+    dual,
+    oleautomation
+  ]
+  interface IJApplication2: IJApplication
+  {
+    [propget, id(0x0000012D)]
+    HRESULT _stdcall MakeKind([out, retval] enum EMakeKind* Value);
+    [propget, id(0x0000012E)]
+    HRESULT _stdcall ApplicationHandle([out, retval] long* Value);
+    [propget, id(0x0000012F)]
+    HRESULT _stdcall ApplicationLanguage([out, retval] BSTR* Value);
+  };
+
+  [
+    uuid(BA02E57D-A446-44AE-827B-35E275C80271),
+    version(1.0),
+    helpstring("Implements an next version command interface"),
+    dual,
+    oleautomation
+  ]
+  interface ICommand2: ICommand
+  {
+    [propget, id(0x0000012D), helpstring("if false, Caption and PreviewText are used - otherwise drawing functions from ICommand are used")]
+    HRESULT _stdcall OwnerDraw([out, retval] VARIANT_BOOL* Value);
+    [propget, id(0x0000012E), helpstring("if ownerdraw is false, PreviewText returns additional informations about the command")]
+    HRESULT _stdcall PreviewText([out, retval] BSTR* Value);
+    [id(0x0000012F), helpstring("send a notification to the command")]
+    HRESULT _stdcall Notify([in] BSTR Notification, [in] VARIANT Parameter, [out, retval] VARIANT* Returns);
+    [propget, id(0x00000130), helpstring("Reference to a PropertyInterface (to be defined)")]
+    HRESULT _stdcall Properties([out, retval]  IDispatch** Value);
+  };
+
+  [
+    uuid(7F8F8634-63D3-460A-BA05-4CED8E2A4CAD),
+    version(1.0),
+    helpstring("Application Object")
+  ]
+  coclass JApplication
+  {
+    [default] interface IJApplication;
+  };
+
+};

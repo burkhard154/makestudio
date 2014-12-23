@@ -1,0 +1,7 @@
+V:\projekte\burkhard\jmake\bin\jpl.vscs2010.testplugin.dll
+V:\projekte\burkhard\jmake\bin\jpl.vscs2010.testplugin.pdb
+V:\projekte\burkhard\jmake\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.EditCommand.resources
+V:\projekte\burkhard\jmake\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.Properties.Resources.resources
+V:\projekte\burkhard\jmake\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.csproj.GenerateResource.Cache
+V:\projekte\burkhard\jmake\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.dll
+V:\projekte\burkhard\jmake\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.pdb

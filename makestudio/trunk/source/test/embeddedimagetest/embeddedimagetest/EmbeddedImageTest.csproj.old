@@ -1,0 +1,240 @@
+<VisualStudioProject>
+    <CSHARP
+        ProjectType = "Local"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{1261D074-2786-4F7E-B76C-E3831838F311}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = "App.ico"
+                AssemblyKeyContainerName = ""
+                AssemblyName = "EmbeddedImageTest"
+                AssemblyOriginatorKeyFile = ""
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "WinExe"
+                PreBuildEvent = ""
+                PostBuildEvent = ""
+                RootNamespace = "EmbeddedImageTest"
+                RunPostBuildEvent = "OnBuildSuccess"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DEBUG;TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "false"
+                    OutputPath = "bin\Debug\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+                <Config
+                    Name = "Release"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "false"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "true"
+                    OutputPath = "bin\Release\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                    HintPath = "..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+                />
+                <Reference
+                    Name = "System.Drawing"
+                    AssemblyName = "System.Drawing"
+                    HintPath = "..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
+                />
+                <Reference
+                    Name = "System.Windows.Forms"
+                    AssemblyName = "System.Windows.Forms"
+                    HintPath = "..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                    HintPath = "..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "App.ico"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Form1.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Form1.resx"
+                    DependentUpon = "Form1.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "ImageContainer.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "imgs\active_network_connection16.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\adjust.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\card.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\channel.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\characteristiccurve.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\characteristiccurve_sel.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\data.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\data_sel.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\delete_connection16.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\device.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\deviceconfig.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\folder_open16.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\folders.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\group_user16.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\monitor2.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\onlinefamos.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\open.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\point_delete.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\preferences16.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\prepare.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\reset.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\save_green16.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\start.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\start2.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\start3.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\stop.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\undo.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\user_delete2.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "imgs\wait.bmp"
+                    BuildAction = "EmbeddedResource"
+                />
+            </Include>
+        </Files>
+    </CSHARP>
+</VisualStudioProject>
+

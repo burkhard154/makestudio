@@ -1,0 +1,6 @@
+{796D9287-1850-46A8-9C28-24E627FBC446} Version=3
+begin resources.EditVersion
+  Caption=Versionsresourcen bearbeiten
+  Filename=V:\projects\jedivcs\src\jedivcsmake\jvcsmak.res
+  IncreaseType=3
+end

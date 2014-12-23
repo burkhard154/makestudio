@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<PersonalityInfo>
+		<Option>
+			<Option Name="Personality">Default.Personality</Option>
+			<Option Name="ProjectType"></Option>
+			<Option Name="Version">1.0</Option>
+			<Option Name="GUID">{6D31CB24-BF43-4044-AA00-9DC6E4216F09}</Option>
+		</Option>
+	</PersonalityInfo>
+	<Default.Personality>  
+    
+    <Projects>
+      <Projects Name="clrwin32host.exe">clrwin32host.bdsproj</Projects>
+      <Projects Name="dotnetclient.test.dll">dotnetclient.test.bdsproj</Projects>
+      <Projects Name="dotnetclient.cs.dll">dotnetclient.cs.bdsproj</Projects>
+      <Projects Name="Targets">clrwin32host.exe dotnetclient.test.dll dotnetclient.cs.dll</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>  <StarTeamAssociation></StarTeamAssociation>
+  <StarTeamNonRelativeFiles></StarTeamNonRelativeFiles>
+</BorlandProject>
