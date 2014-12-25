@@ -35,7 +35,7 @@ uses
   msTLB;
 
 var
-  jvcsmak: IJApplication;
+  MakeStudio: IJApplication;
   FCanceled: Boolean = False;
 
 resourcestring
@@ -61,7 +61,7 @@ const
   sOutputfile='OutputFile';
   sOptions='Options';
 
-  stdcRegKey = 'Software\JEDI\JVCSMAK';
+  stdcRegKey = 'Software\JEDI\MakeStudio';
   stdcRegNSISExe = 'makensis.exe';
   stdcPathNSIS = 'NSIS';
 

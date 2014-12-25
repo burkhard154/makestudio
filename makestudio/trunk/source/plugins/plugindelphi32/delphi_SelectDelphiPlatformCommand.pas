@@ -108,7 +108,7 @@ const
       //Name=SelectDelphiPlatform; Hint, Category
       //Extension=txt (could be more than one extension - separated by ;)
       //no compatibility - module did not exist before
-      jvcsmak.AddCommandType('SelectDelphiPlatform', 'Your Hint here!', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('SelectDelphiPlatform', 'Your Hint here!', stCategory, P, 'txt', -1,
         ICommandCallback(PluginSelectDelphiPlatformCallback));
 
 }
@@ -175,13 +175,13 @@ function TPluginSelectDelphiPlatform.ExecuteItem: WordBool;
 begin
   Canceled := False;
   SetCompilerPlatform( FPlatform);
-  jvcsmak.LogMessage( StrSelectedDelphiPlat + PlatformToStr( GetCompilerPlatform));
+  MakeStudio.LogMessage( StrSelectedDelphiPlat + PlatformToStr( GetCompilerPlatform));
   if FPlatform<>GetCompilerPlatform then begin
-    jvcsmak.LogMessage( StrFATALCannotSetTh);
-    jvcsmak.LogMessage( StrCurrentDelphiVersi+GetVersionText);
+    MakeStudio.LogMessage( StrFATALCannotSetTh);
+    MakeStudio.LogMessage( StrCurrentDelphiVersi+GetVersionText);
   end;
 
-  jvcsmak.LogMessage('');
+  MakeStudio.LogMessage('');
   Result := True;
 end;
 

@@ -6,12 +6,12 @@
 // Änderungen. Wenn Sie aber Änderungen mit dem Editor vornehmen, wird diese
 // Datei neu erzeugt und Kommentare oder Formatänderungen gehen verloren.
 // ************************************************************************ //
-// Datei erzeugt am 23.12.2014 17:26:56 (- $Rev: 12980 $, 367924473).
+// Datei erzeugt am 25.12.2014 15:39:26 (- $Rev: 12980 $, 94807345).
 
 [
   uuid(09828B26-2D82-4B16-90D1-517D298B3612),
   version(1.0),
-  helpstring("jvcsmak Bibliothek")
+  helpstring("Makestudio Library")
 
 ]
 library jvcsmak

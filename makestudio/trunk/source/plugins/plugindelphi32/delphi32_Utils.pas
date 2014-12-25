@@ -289,7 +289,7 @@ var
   I: Integer;
 begin
   for I := 0 to sl.Count - 1 do
-    jvcsmak.LogMessage(sl[I]);
+    MakeStudio.LogMessage(sl[I]);
 end;
 
 function GetDelphiVersion: TDelphiVersion;
@@ -585,11 +585,11 @@ begin
       S := S + ';';
     for I := 0 to PathList.Count - 1 do
     begin
-      S1 := jvcsmak.Variables.ReplaceVarsInString(PathList[I]);
+      S1 := MakeStudio.Variables.ReplaceVarsInString(PathList[I]);
       if Pos(UpperCase(S1 + ';'), UpperCase(S)) = 0 then
       begin
         S := S + S1 + ';';
-        jvcsmak.LogMessage(Format(stdAddingSearchPath, [S1]));
+        MakeStudio.LogMessage(Format(stdAddingSearchPath, [S1]));
       end;
     end;
     try
@@ -612,7 +612,7 @@ var
 
   function Normalize(S: string): string;
   begin
-    Result := jvcsmak.Variables.ReplaceVarsInString(UpperCase(PathRemoveSeparator(S)));
+    Result := MakeStudio.Variables.ReplaceVarsInString(UpperCase(PathRemoveSeparator(S)));
   end;
 
 begin
@@ -640,7 +640,7 @@ begin
           begin
             if Pos(Normalize(PathList[I]), Normalize(sl[K])) > 0 then
             begin
-              jvcsmak.LogMessage(Format(stdRemoveSearchPath, [sl[K]]));
+              MakeStudio.LogMessage(Format(stdRemoveSearchPath, [sl[K]]));
               sl.Delete(K)
             end
             else
@@ -650,7 +650,7 @@ begin
           begin
             if Normalize(PathList[I]) = Normalize(sl[K]) then
             begin
-              jvcsmak.LogMessage(Format(stdRemoveSearchPath, [sl[K]]));
+              MakeStudio.LogMessage(Format(stdRemoveSearchPath, [sl[K]]));
               sl.Delete(K)
             end
             else
@@ -765,7 +765,7 @@ begin
   FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, nil, GetLastError, LANG_NEUTRAL,
     // Default language
     ch, 511, nil);
-  jvcsmak.LogMessage(StrPas(ch));
+  MakeStudio.LogMessage(StrPas(ch));
 end;
 
 function GetLibraryKey: String;
@@ -1334,7 +1334,7 @@ begin
   with TRegistry.Create do
     try
       RootKey := HKEY_CURRENT_USER;
-      OpenKey(jvcsmak.ApplicationRegKey, True);
+      OpenKey(MakeStudio.ApplicationRegKey, True);
       if ValueExists('DelphiVersion') then
         SetDelphiVersion(TDelphiVersion(ReadInteger('DelphiVersion')));
       if ValueExists('Platform') then
@@ -1349,7 +1349,7 @@ begin
   with TRegistry.Create do
     try
       RootKey := HKEY_CURRENT_USER;
-      OpenKey(jvcsmak.ApplicationRegKey, True);
+      OpenKey(MakeStudio.ApplicationRegKey, True);
       WriteInteger('DelphiVersion', Ord(GetDelphiVersion));
       WriteInteger('Platform', Ord(GetCompilerPlatform));
     finally
@@ -1414,31 +1414,31 @@ end;
 
 procedure PublishVars;
 begin
-  jvcsmak.Variables.Values[stvarDelphiVersion] := GetVersionText;
+  MakeStudio.Variables.Values[stvarDelphiVersion] := GetVersionText;
 
   if GetDelphiVersion < dver2005 then
-    jvcsmak.Variables.Values[stvarDelphiRootDir] := GetDelphiRootPathLong
+    MakeStudio.Variables.Values[stvarDelphiRootDir] := GetDelphiRootPathLong
   else
-    jvcsmak.Variables.Values[stvarDelphiRootDir] := '';
+    MakeStudio.Variables.Values[stvarDelphiRootDir] := '';
 
   if GetDelphiVersion > dver7 then
   begin
-    jvcsmak.Variables.Values[stvarBDSProjectDir] := GetBDSProjectsPath;
-    jvcsmak.Variables.Values[stvarBDSDir] := GetDelphiRootPathLong;
+    MakeStudio.Variables.Values[stvarBDSProjectDir] := GetBDSProjectsPath;
+    MakeStudio.Variables.Values[stvarBDSDir] := GetDelphiRootPathLong;
   end
   else
   begin
-    jvcsmak.Variables.Values[stvarBDSProjectDir] := '';
-    jvcsmak.Variables.Values[stvarBDSDir] := '';
+    MakeStudio.Variables.Values[stvarBDSProjectDir] := '';
+    MakeStudio.Variables.Values[stvarBDSDir] := '';
   end;
 
-  jvcsmak.Variables.Values[stvarRegDelphiRootKey] := GetDelphiRootKey;
-  jvcsmak.Variables.Values[stvarDelphiSearchPath] := GetDelphiSearchPath;
-  jvcsmak.Variables.Values[stvarBPLDir] := GetDelphiBPLPath;
-  jvcsmak.Variables.Values[stvarDCPDir] := GetDelphiDCPPath;
+  MakeStudio.Variables.Values[stvarRegDelphiRootKey] := GetDelphiRootKey;
+  MakeStudio.Variables.Values[stvarDelphiSearchPath] := GetDelphiSearchPath;
+  MakeStudio.Variables.Values[stvarBPLDir] := GetDelphiBPLPath;
+  MakeStudio.Variables.Values[stvarDCPDir] := GetDelphiDCPPath;
 
-  if not jvcsmak.Variables.VarExists(stvarNamespaces) then
-    jvcsmak.Variables.Values[stvarNamespaces] := stNamespaces;
+  if not MakeStudio.Variables.VarExists(stvarNamespaces) then
+    MakeStudio.Variables.Values[stvarNamespaces] := stNamespaces;
 end;
 
 function QuoteSeparetedList(Separated: String): String;

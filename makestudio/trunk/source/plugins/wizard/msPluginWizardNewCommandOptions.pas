@@ -8,7 +8,7 @@ Software distributed under the License is distributed on an "AS IS" basis,
 WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
 the specific language governing rights and limitations under the License.
 
-The Original Code is: JVCSMakPluginWizardOptions.pas
+The Original Code is: MakeStudioPluginWizardOptions.pas
 
 The Initial Developer of the original code (JEDI VCS) is:
   Uwe Schuster (jedivcs@bitcommander.de)
@@ -28,7 +28,7 @@ Unit history:
 
 -----------------------------------------------------------------------------*)
 
-unit JVCSMakPluginWizardOptions;
+unit msPluginWizardNewCommandOptions;
 
 {$I jedi.inc}
 
@@ -36,69 +36,54 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, ExtDlgs, JVCSMakPluginWizardCommon;
+  Dialogs, StdCtrls, ExtCtrls, ExtDlgs, msPluginWizardCommon;
 
 type
-  TJVCSMakePluginWizardOptionsForm = class(TForm)
-    Panel1: TPanel;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    lbMenuActionPath: TLabel;
+  TmsPluginWizardNewCommandForm = class(TForm)
+    OpenPictureDialog: TOpenPictureDialog;
+    Panel2: TPanel;
+    GroupBox1: TGroupBox;
+    cbAddMPLHeader: TCheckBox;
+    Panel4: TPanel;
+    GroupBox3: TGroupBox;
     Label6: TLabel;
-    edPluginName: TEdit;
-    edPluginAuthor: TEdit;
-    edPluginHint: TEdit;
-    edPluginCategory: TEdit;
-    edFilesPrefix: TEdit;
-    edMenuActionPath: TEdit;
-    edCommandName: TEdit;
-    cbMenuAction: TCheckBox;
-    cbSampleVar: TCheckBox;
-    cbSamplePaintCode: TCheckBox;
-    OK: TButton;
-    Cancel: TButton;
     Label7: TLabel;
     lbCommandTypeName: TLabel;
-    Label8: TLabel;
     Label9: TLabel;
-    Label10: TLabel;
+    Label8: TLabel;
     Label11: TLabel;
     Label12: TLabel;
-    edTestActionCaption: TEdit;
-    lbTestActionCaption: TLabel;
+    Label10: TLabel;
+    lbCSharpNY2: TLabel;
     imgCommando: TImage;
-    OpenPictureDialog: TOpenPictureDialog;
-    imgAction: TImage;
     Label13: TLabel;
+    edCommandName: TEdit;
     btnLoadCommandoImage: TButton;
-    btnLoadActionImage: TButton;
-    lbimgAction: TLabel;
-    procedure cbMenuActionClick(Sender: TObject);
+    cbSampleVar: TCheckBox;
+    cbSamplePaintCode: TCheckBox;
+    Cancel: TButton;
+    OK: TButton;
+    Label1: TLabel;
+    edFilesPrefix: TEdit;
     procedure FormCreate(Sender: TObject);
     procedure edCommandNameChange(Sender: TObject);
     procedure btnLoadActionImageClick(Sender: TObject);
   private
     { Private declarations }
-    FWizardKind: TJVCSMakPluginWizardKind;
+    FWizardKind: TMakeStudioPluginWizardKind;
     procedure LoadPictureWithDialog(AImage: TImage);
-    procedure SetWizardKind(AValue: TJVCSMakPluginWizardKind);
+    procedure SetWizardKind(AValue: TMakeStudioPluginWizardKind);
   public
     { Public declarations }
-    property WizardKind: TJVCSMakPluginWizardKind read FWizardKind write SetWizardKind;
+    property WizardKind: TMakeStudioPluginWizardKind read FWizardKind write SetWizardKind;
   end;
 
-function GetPluginOptions(AWizardKind: TJVCSMakPluginWizardKind; AParameterList: TStrings;
-  ACommandoBitmap, AActionBitmap: TBitmap): Boolean;
+function GetNewCommandOptions(AWizardKind: TMakeStudioPluginWizardKind; AParameterList: TStrings;
+  ACommandoBitmap: TBitmap): Boolean;
 
 implementation
 
 uses wizard_parser;
-
-resourcestring
-  StrWrongPictureSize = 'Wrong picture size <> 16x16';
 
 {$R *.dfm}
 
@@ -128,12 +113,12 @@ begin
       Result := Result + S[I] + S[I];
 end;
 
-function GetPluginOptions(AWizardKind: TJVCSMakPluginWizardKind; AParameterList: TStrings;
-  ACommandoBitmap, AActionBitmap: TBitmap): Boolean;
+function GetNewCommandOptions(AWizardKind: TMakeStudioPluginWizardKind; AParameterList: TStrings;
+  ACommandoBitmap: TBitmap): Boolean;
 var
   OldDirectory: string;
 begin
-  with TJVCSMakePluginWizardOptionsForm.Create(Application) do
+  with TmsPluginWizardNewCommandForm.Create(Application) do
   try
     OldDirectory := GetCurrentDir;
     try
@@ -145,29 +130,17 @@ begin
     if Result then
     begin
       ACommandoBitmap.Assign(imgCommando.Picture.Bitmap);
-      AActionBitmap.Assign(imgAction.Picture.Bitmap);
       with AParameterList do
       begin
-        Add(Format('%s=%s', [FilesPrefixParameterName, edFilesPrefix.Text]));
         Add(Format('PLUGINIDENTIFIER=%s', [edFilesPrefix.Text]));
-        Add(Format('PLUGINNAME=%s', [edPluginName.Text]));
-        Add(Format('PLUGINAUTHOR=%s', [edPluginAuthor.Text]));
-        Add(Format('PLUGINHINT=%s', [edPluginHint.Text]));
-        Add(Format('PLUGINCATEGORY=%s', [edPluginCategory.Text]));
-
-        Add(Format('BLOCKMENUACTION=%s', [BoolToStr(cbMenuAction.Checked)]));
-        if FWizardKind = wkCSharp then
-          Add(Format('MENUACTIONPATH=%s', [DoubleSlash(edMenuActionPath.Text)]))
-        else
-          Add(Format('MENUACTIONPATH=%s', [edMenuActionPath.Text]));
-        Add(Format('%s=%s', [TestActionCaptionParameterName, edTestActionCaption.Text]));
-        Add(Format('COMMANDNAME=%s', [edCommandName.Text]));
         Add(Format('COMMANDCOMPONENTNAME=%s', [ MakeValidIdent( edCommandName.Text)]));
+        Add(Format('COMMANDNAME=%s', [edCommandName.Text]));
         Add(Format('COMMANDIDENTIFIER=%s', [lbCommandTypeName.Caption]));
         Add(Format('BLOCKSAMPLEVAR=%s', [BoolToStr(cbSampleVar.Checked)]));
         Add(Format('SAMPLEVARNAME=%s', ['TestEntry']));
         Add(Format('SAMPLEVARVALUE=%s', ['TestValue']));
         Add(Format('BLOCKSAMPLEPAINTCODE=%s', [BoolToStr(cbSamplePaintCode.Checked)]));
+        Add(Format('BLOCKHEADER=%s', [BoolToStr(cbAddMPLHeader.Checked)]));
       end;
     end;
   finally
@@ -175,25 +148,12 @@ begin
   end;
 end;
 
-procedure TJVCSMakePluginWizardOptionsForm.cbMenuActionClick(
-  Sender: TObject);
+procedure TmsPluginWizardNewCommandForm.FormCreate(Sender: TObject);
 begin
-  lbMenuActionPath.Enabled := cbMenuAction.Checked;
-  edMenuActionPath.Enabled := cbMenuAction.Checked;
-  lbTestActionCaption.Enabled := cbMenuAction.Checked;
-  edTestActionCaption.Enabled := cbMenuAction.Checked;
-  lbimgAction.Enabled := cbMenuAction.Checked;
-  imgAction.Enabled := cbMenuAction.Checked;
-  btnLoadActionImage.Enabled := cbMenuAction.Checked;
-end;
-
-procedure TJVCSMakePluginWizardOptionsForm.FormCreate(Sender: TObject);
-begin
-  cbMenuActionClick(nil);
   edCommandNameChange(nil);
 end;
 
-procedure TJVCSMakePluginWizardOptionsForm.edCommandNameChange(
+procedure TmsPluginWizardNewCommandForm.edCommandNameChange(
   Sender: TObject);
 var
   S: string;
@@ -217,7 +177,7 @@ begin
   end;
 end;
 
-procedure TJVCSMakePluginWizardOptionsForm.LoadPictureWithDialog(AImage: TImage);
+procedure TmsPluginWizardNewCommandForm.LoadPictureWithDialog(AImage: TImage);
 var
   Bmp: TBitmap;
 begin
@@ -229,28 +189,25 @@ begin
       if (Bmp.Width = 16) and (Bmp.Height = 16) then
         AImage.Picture.Assign(Bmp)
       else
-        raise Exception.Create(StrWrongPictureSize);
+        raise Exception.Create('Wrong Size <> 16x16');
     finally
       Bmp.Free;
     end;
   end;
 end;
 
-procedure TJVCSMakePluginWizardOptionsForm.btnLoadActionImageClick(
+procedure TmsPluginWizardNewCommandForm.btnLoadActionImageClick(
   Sender: TObject);
 begin
-  if Sender = btnLoadActionImage then
-    LoadPictureWithDialog(imgAction)
-  else
-    LoadPictureWithDialog(imgCommando);
+  LoadPictureWithDialog(imgCommando);
 end;
 
-procedure TJVCSMakePluginWizardOptionsForm.SetWizardKind(AValue: TJVCSMakPluginWizardKind);
+procedure TmsPluginWizardNewCommandForm.SetWizardKind(AValue: TMakeStudioPluginWizardKind);
 begin
   if FWizardKind <> AValue then
   begin
     FWizardKind := AValue;
-    cbMenuActionClick(nil);
+    lbCSharpNY2.Visible := FWizardKind = wkCSharp;
     edCommandNameChange(nil);
   end;
 end;

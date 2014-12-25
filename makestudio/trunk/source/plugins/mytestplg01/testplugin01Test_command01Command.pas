@@ -53,7 +53,7 @@ var
 
       //Create and register Callback for the command type
       PluginTest_command01Callback := TPluginTest_command01Callback.Create(nil);
-      jvcsmak.AddCommandType('Test_command01', '', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('Test_command01', '', stCategory, P, 'txt', -1,
         ICommandCallback(PluginTest_command01Callback));
 **** End Sample Code  *******}
 
@@ -154,8 +154,8 @@ end;
 function TPluginTest_command01.ExecuteItem: WordBool;
 begin
   FCanceled := False;
-  jvcsmak.LogMessage(FCaption + ' ' + FTestValue);
-  jvcsmak.LogMessage('Executing Test_command01...');
+  MakeStudio.LogMessage(FCaption + ' ' + FTestValue);
+  MakeStudio.LogMessage('Executing Test_command01...');
   Result := True;
 end;
 

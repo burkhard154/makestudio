@@ -53,7 +53,7 @@ begin
 end;
 
 //:Indentifies this DLL-Version
-procedure JVCSMAKPlugin; stdcall;
+procedure MakeStudioPlugin; stdcall;
 begin
 end;
 
@@ -82,13 +82,13 @@ begin
 end;
 
 //:Register an initialize Plugin
-function RegisterPlugin(AJVCSMAKApp: IJApplication): Integer; stdcall;
+function RegisterPlugin(AMakeStudioApp: IJApplication): Integer; stdcall;
 var
   P: Picture;
 begin
   Result := 0;
-  jvcsmak := AJVCSMAKApp;
-  with jvcsmak do
+  MakeStudio := AMakeStudioApp;
+  with MakeStudio do
   begin
     try
       //Create form with actions and ModuleCallback
@@ -97,7 +97,7 @@ begin
 
       //add actions
       {GetPictureFromImageList(Form3.ImageList1, Form3.acTestaction1.ImageIndex, P);
-      jvcsmak.AddMenuAction(Form3.acTestaction1.Name,
+      MakeStudio.AddMenuAction(Form3.acTestaction1.Name,
                              Form3.acTestaction1.Caption,
                              Form3.acTestaction1.Hint,
                              P,
@@ -114,21 +114,21 @@ dmmtJVCSSync=3, dmmtPassolo=4, dmmtWise=5, dmmtMkdir=6);
       //compatibility - 4
       //Callback for the Moduletype
       PassoloCommandCallback := TPassoloCommandCallback.Create(nil);
-      jvcsmak.AddCommandType(stdPassoloCaption, '', stdCategory, P, '.lpu',
+      MakeStudio.AddCommandType(stdPassoloCaption, '', stdCategory, P, '.lpu',
                              4, ICommandCallback(PassoloCommandCallback));
 
 
       //Credits
-      jvcsmak.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
+      MakeStudio.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
 
       //Additional Info
-      //jvcsmak.AddAdditionalInfo(struPluginHint);
+      //MakeStudio.AddAdditionalInfo(struPluginHint);
 
       //Variables
-      jvcsmak.Variables.AddVar('passolo_fVersion');
-      jvcsmak.Variables.Values['passolo_fVersion'] := stdcFVersion;
-      jvcsmak.Variables.AddVar('passolo_lVersion');
-      jvcsmak.Variables.Values['passolo_lVersion'] := stdcLVersion;
+      MakeStudio.Variables.AddVar('passolo_fVersion');
+      MakeStudio.Variables.Values['passolo_fVersion'] := stdcFVersion;
+      MakeStudio.Variables.AddVar('passolo_lVersion');
+      MakeStudio.Variables.Values['passolo_lVersion'] := stdcLVersion;
 
 
     except
@@ -176,7 +176,7 @@ exports
   GetMajorVersion,
   AfterAllPluginsLoaded,
   GetOptionsPageGUID,
-  JVCSMAKPlugin;
+  MakeStudioPlugin;
 
 begin
 end.

@@ -262,7 +262,7 @@ var
       ch,
       511,
       nil);
-    jvcsmak.LogMessage(StrPas(ch));
+    MakeStudio.LogMessage(StrPas(ch));
   end;
 
 
@@ -274,20 +274,20 @@ begin
 
   if not FileExists(WiseExec) then
   begin
-    jvcsmak.LogMessage('> Error: ' + stdErrNoWiseExec + ' :-(');
+    MakeStudio.LogMessage('> Error: ' + stdErrNoWiseExec + ' :-(');
     Result := False;
     Exit;
   end;
 
   if Projects.Count = 0 then
   begin
-    jvcsmak.LogMessage('> Error: ' + stdErrNoProjects + ' :-(');
+    MakeStudio.LogMessage('> Error: ' + stdErrNoProjects + ' :-(');
     Result := False;
     Exit;
   end;
 
-  jvcsmak.LogMessage(stdBreak);
-  jvcsmak.LogMessage(stdStartingBatch);
+  MakeStudio.LogMessage(stdBreak);
+  MakeStudio.LogMessage(stdStartingBatch);
 
   ForceDirectories(Path + 'Compile');
 
@@ -300,13 +300,13 @@ begin
     for I := 0 to Projects.Count - 1 do
     begin
       sl.Add('"' + WiseExec + '" /c "' + Projects[I] + '" > ' + Path + 'Compile\prg.txt');
-      jvcsmak.LogMessage('"' + WiseExec + '" /c "' + Projects[I] + '"');
+      MakeStudio.LogMessage('"' + WiseExec + '" /c "' + Projects[I] + '"');
     end;
     sl.Add('dir ' + Path + ' > ' + Path + 'Compile\result.txt');
     sl.SaveToFile(Path + 'Compile\prg.bat');
 
     //execute
-    R := jvcsmak.ExecCmdLine( Path + 'Compile\prg.bat', '', '', nil);
+    R := MakeStudio.ExecCmdLine( Path + 'Compile\prg.bat', '', '', nil);
     if R > 32 then
     begin
       while not FileExists(Path + 'Compile\result.txt') do
@@ -327,8 +327,8 @@ begin
       //copy setups to OutputDir and remove old setups
       if Length(OutputDir) > 0 then
       begin
-        jvcsmak.LogMessage('');
-        jvcsmak.LogMessage(stdMovingFiles);
+        MakeStudio.LogMessage('');
+        MakeStudio.LogMessage(stdMovingFiles);
         ForceDirectories(OutputDir);
         for I := 0 to Projects.Count - 1 do
         begin
@@ -340,7 +340,7 @@ begin
           CopyFile(PAnsiChar(old_setup), PAnsiChar(new_setup), False);
 {$ENDIF}
           DeleteFile(old_setup);
-          jvcsmak.LogMessage('Move "' + old_setup + '" to "' + new_setup + '"');
+          MakeStudio.LogMessage('Move "' + old_setup + '" to "' + new_setup + '"');
         end;
       end;
 
@@ -357,7 +357,7 @@ begin
       end;
 
       for I:=0 to sl1.Count-1 do
-        jvcsmak.LogMessage(sl1[I]);
+        MakeStudio.LogMessage(sl1[I]);
     end
     else
       LastErrorMsg;

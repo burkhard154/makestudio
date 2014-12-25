@@ -26,7 +26,7 @@
 
   Unit history:
 
-  2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to JVCSMAK
+  2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to MakeStudio
   2003/11/28  USchuster - 2nd Migrationstep
   (- changed TActionManager, TActionMainMenuBar and TActionToolBar
   to TActionList, TMainMenu and TToolBar
@@ -41,7 +41,7 @@
   - fixed selection of Delphiversion for D5
   2004/02/24  USchuster - Update to JVCL 3.0 / JCL 1.90 (mantis #1353)
   2004/05/01  USchuster - changes according to the latest version of msModuleDataClass.pas
-  2005/01/02  BSchranz  - Migration to JVCSMak with external plugins
+  2005/01/02  BSchranz  - Migration to MakeStudio with external plugins
   2005/02/04  USchuster - preparations for check in
   2005/08/12  BSchranz  - command line version "jmak.exe" added
   2005/08/25  BSchranz  - Docking added, copy, paste..., debugging
@@ -323,7 +323,7 @@ begin
 {$IFDEF DELPHI10_UP}
   JvToolBar1.DrawingStyle := ComCtrls.dsGradient;
 {$ENDIF DELPHI10_UP}
-  JvAppRegistryStorage.Root := GetJVCSMakBaseRegistryKey;
+  JvAppRegistryStorage.Root := GetMakeStudioBaseRegistryKey;
   Actionhandler.ActionList := ActionList1;
   Actionhandler.PluginMenu := Extra1;
   Caption := stCaption;
@@ -723,7 +723,7 @@ begin
   if mst <> nil then
   begin
     mst.ApplicationName := PathAddSeparator(ExtractFilePath(Forms.Application.ExeName)) +
-      'jvcsmake.exe';
+      'MakeStudioe.exe';
     mst.Parameters := '"' + Programhandler.Filename + '"';
     mst.WorkingDirectory := ExtractFilePath(Forms.Application.ExeName);
     mst.Save;

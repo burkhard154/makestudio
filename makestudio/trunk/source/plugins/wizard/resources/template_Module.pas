@@ -109,7 +109,7 @@ const
       //Name=%COMMANDNAME%; Hint, Category
       //Extension=txt (could be more than one extension - separated by ;)
       //no compatibility - module did not exist before
-      jvcsmak.AddCommandType('%COMMANDNAME%', 'Your Hint here!', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('%COMMANDNAME%', 'Your Hint here!', stCategory, P, 'txt', -1,
         ICommandCallback(Plugin%COMMANDIDENTIFIER%Callback));
   
 }  
@@ -161,9 +161,9 @@ function TPlugin%COMMANDIDENTIFIER%.ExecuteItem: WordBool;
 begin
   FCanceled := False;
   {$IFDEF BLOCKSAMPLEVAR}
-  jvcsmak.LogMessage(FCaption + ' ' + FTestValue);
+  MakeStudio.LogMessage(FCaption + ' ' + FTestValue);
   {$ENDIF BLOCKSAMPLEVAR}
-  jvcsmak.LogMessage('Executing %COMMANDNAME%...');
+  MakeStudio.LogMessage('Executing %COMMANDNAME%...');
   Result := True;
 end;
 

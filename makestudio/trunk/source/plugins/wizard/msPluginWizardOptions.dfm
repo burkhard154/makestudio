@@ -1,10 +1,10 @@
-object JVCSMakePluginWizardOptionsForm: TJVCSMakePluginWizardOptionsForm
+object msPluginWizardOptionsForm: TmsPluginWizardOptionsForm
   Left = 192
   Top = 107
   BorderStyle = bsDialog
   Caption = 'JEDI VCS Make Plugin Wizard'
-  ClientHeight = 441
-  ClientWidth = 384
+  ClientHeight = 543
+  ClientWidth = 473
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,128 +15,196 @@ object JVCSMakePluginWizardOptionsForm: TJVCSMakePluginWizardOptionsForm
   Position = poScreenCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 16
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 384
-    Height = 441
+    Width = 473
+    Height = 543
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0
     DesignSize = (
-      384
-      441)
+      473
+      543)
     object Label1: TLabel
-      Left = 16
-      Top = 20
-      Width = 43
-      Height = 13
+      Left = 20
+      Top = 25
+      Width = 53
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Plugin ID'
     end
     object Label2: TLabel
-      Left = 16
-      Top = 44
-      Width = 28
-      Height = 13
+      Left = 20
+      Top = 54
+      Width = 37
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Name'
     end
     object Label3: TLabel
-      Left = 16
-      Top = 68
-      Width = 31
-      Height = 13
+      Left = 20
+      Top = 84
+      Width = 38
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Author'
     end
     object Label4: TLabel
-      Left = 16
-      Top = 92
-      Width = 19
-      Height = 13
+      Left = 20
+      Top = 113
+      Width = 23
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Hint'
     end
     object Label5: TLabel
-      Left = 16
-      Top = 116
-      Width = 42
-      Height = 13
+      Left = 20
+      Top = 143
+      Width = 55
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Category'
     end
     object lbMenuActionPath: TLabel
-      Left = 16
-      Top = 172
-      Width = 51
-      Height = 13
+      Left = 20
+      Top = 212
+      Width = 62
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Menu path'
     end
     object Label6: TLabel
-      Left = 16
-      Top = 252
-      Width = 47
-      Height = 13
+      Left = 20
+      Top = 310
+      Width = 62
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Command'
     end
     object Label7: TLabel
-      Left = 120
-      Top = 272
-      Width = 61
-      Height = 13
+      Left = 148
+      Top = 335
+      Width = 78
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Class postfix:'
     end
     object lbCommandTypeName: TLabel
-      Left = 192
-      Top = 272
-      Width = 107
-      Height = 13
+      Left = 236
+      Top = 335
+      Width = 142
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'lbCommandTypeName'
     end
     object Label8: TLabel
-      Left = 120
-      Top = 288
-      Width = 9
-      Height = 13
+      Left = 148
+      Top = 354
+      Width = 11
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = '->'
     end
     object Label9: TLabel
-      Left = 136
-      Top = 288
-      Width = 74
-      Height = 13
+      Left = 167
+      Top = 354
+      Width = 97
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Command class'
     end
     object Label10: TLabel
-      Left = 136
-      Top = 304
-      Width = 90
-      Height = 13
+      Left = 167
+      Top = 374
+      Width = 116
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Command callback'
     end
     object Label11: TLabel
-      Left = 240
-      Top = 288
-      Width = 38
-      Height = 13
+      Left = 295
+      Top = 354
+      Width = 48
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Label11'
     end
     object Label12: TLabel
-      Left = 240
-      Top = 304
-      Width = 38
-      Height = 13
+      Left = 295
+      Top = 374
+      Width = 48
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Label12'
     end
     object lbTestActionCaption: TLabel
-      Left = 16
-      Top = 196
-      Width = 36
-      Height = 13
+      Left = 20
+      Top = 241
+      Width = 46
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Caption'
     end
     object imgCommando: TImage
-      Left = 120
-      Top = 324
+      Left = 148
+      Top = 399
       Width = 16
       Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       AutoSize = True
       Picture.Data = {
         07544269746D617036040000424D360400000000000036000000280000001000
@@ -177,11 +245,15 @@ object JVCSMakePluginWizardOptionsForm: TJVCSMakePluginWizardOptionsForm
       Transparent = True
     end
     object imgAction: TImage
-      Left = 120
-      Top = 220
+      Left = 148
+      Top = 271
       Width = 16
       Height = 16
       Hint = 'This image will be copied into the target directory'
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       AutoSize = True
       Picture.Data = {
         07544269746D617036040000424D360400000000000036000000280000001000
@@ -222,106 +294,158 @@ object JVCSMakePluginWizardOptionsForm: TJVCSMakePluginWizardOptionsForm
       Transparent = True
     end
     object Label13: TLabel
-      Left = 16
-      Top = 324
-      Width = 67
-      Height = 13
+      Left = 20
+      Top = 399
+      Width = 83
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Image (16x16)'
     end
     object lbimgAction: TLabel
-      Left = 16
-      Top = 220
-      Width = 67
-      Height = 13
+      Left = 20
+      Top = 271
+      Width = 83
+      Height = 16
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Image (16x16)'
     end
     object edPluginName: TEdit
-      Left = 120
-      Top = 40
-      Width = 249
-      Height = 21
+      Left = 148
+      Top = 49
+      Width = 306
+      Height = 24
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabOrder = 1
       Text = 'Plugin Template'
     end
     object edPluginAuthor: TEdit
-      Left = 120
-      Top = 64
-      Width = 249
-      Height = 21
+      Left = 148
+      Top = 79
+      Width = 306
+      Height = 24
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabOrder = 2
       Text = 'Burkhard Schranz (burkhard.schranz@optimeas.de)'
     end
     object edPluginHint: TEdit
-      Left = 120
-      Top = 88
-      Width = 249
-      Height = 21
+      Left = 148
+      Top = 108
+      Width = 306
+      Height = 24
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabOrder = 3
       Text = 'Plugin for <>'
     end
     object edPluginCategory: TEdit
-      Left = 120
-      Top = 112
-      Width = 249
-      Height = 21
+      Left = 148
+      Top = 138
+      Width = 306
+      Height = 24
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabOrder = 4
       Text = 'None'
     end
     object edFilesPrefix: TEdit
-      Left = 120
-      Top = 16
-      Width = 249
-      Height = 21
+      Left = 148
+      Top = 20
+      Width = 306
+      Height = 24
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabOrder = 0
       Text = 'myPlugin'
     end
     object edMenuActionPath: TEdit
-      Left = 120
-      Top = 168
-      Width = 249
-      Height = 21
+      Left = 148
+      Top = 207
+      Width = 306
+      Height = 24
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabOrder = 6
       Text = 'Testplugin\TestItem\'
     end
     object edCommandName: TEdit
-      Left = 120
-      Top = 248
-      Width = 249
-      Height = 21
+      Left = 148
+      Top = 305
+      Width = 306
+      Height = 24
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabOrder = 9
       Text = 'Testcommand'
       OnChange = edCommandNameChange
     end
     object cbMenuAction: TCheckBox
-      Left = 16
-      Top = 144
-      Width = 137
-      Height = 17
+      Left = 20
+      Top = 177
+      Width = 168
+      Height = 21
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Add a menu action'
       TabOrder = 5
       OnClick = cbMenuActionClick
     end
     object cbSampleVar: TCheckBox
-      Left = 16
-      Top = 352
-      Width = 353
-      Height = 17
+      Left = 20
+      Top = 433
+      Width = 434
+      Height = 21
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Add Sample Variables'
       TabOrder = 11
     end
     object cbSamplePaintCode: TCheckBox
-      Left = 16
-      Top = 376
-      Width = 337
-      Height = 17
+      Left = 20
+      Top = 463
+      Width = 414
+      Height = 21
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Add Sample code for owner draw commands'
       TabOrder = 12
     end
     object OK: TButton
-      Left = 116
-      Top = 403
-      Width = 73
-      Height = 25
+      Left = 143
+      Top = 496
+      Width = 90
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Anchors = [akRight, akBottom]
       Caption = 'OK'
       Default = True
@@ -329,10 +453,14 @@ object JVCSMakePluginWizardOptionsForm: TJVCSMakePluginWizardOptionsForm
       TabOrder = 13
     end
     object Cancel: TButton
-      Left = 196
-      Top = 403
-      Width = 73
-      Height = 25
+      Left = 241
+      Top = 496
+      Width = 90
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Anchors = [akRight, akBottom]
       Cancel = True
       Caption = 'Cancel'
@@ -340,27 +468,39 @@ object JVCSMakePluginWizardOptionsForm: TJVCSMakePluginWizardOptionsForm
       TabOrder = 14
     end
     object edTestActionCaption: TEdit
-      Left = 120
-      Top = 192
-      Width = 249
-      Height = 21
+      Left = 148
+      Top = 236
+      Width = 306
+      Height = 24
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       TabOrder = 7
       Text = 'Menu caption'
     end
     object btnLoadCommandoImage: TButton
-      Left = 144
-      Top = 320
-      Width = 75
-      Height = 25
+      Left = 177
+      Top = 394
+      Width = 93
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Load'
       TabOrder = 10
       OnClick = btnLoadActionImageClick
     end
     object btnLoadActionImage: TButton
-      Left = 144
-      Top = 216
-      Width = 75
-      Height = 25
+      Left = 177
+      Top = 266
+      Width = 93
+      Height = 31
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Caption = 'Load'
       TabOrder = 8
       OnClick = btnLoadActionImageClick

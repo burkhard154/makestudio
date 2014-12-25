@@ -152,7 +152,7 @@ begin
   F := TFormDoCopy.Create(nil);
   try
     F.Source.Assign(SourceDirs);
-    F.Target := jvcsmak.Variables.ReplaceVarsInString( TargetDir);
+    F.Target := MakeStudio.Variables.ReplaceVarsInString( TargetDir);
     F.DoSynchronize := CopyOption = 1;
     F.ShowSelectDlg := BackupShowSelection;
     F.LogbookShowAll := LogbookOption = 1;

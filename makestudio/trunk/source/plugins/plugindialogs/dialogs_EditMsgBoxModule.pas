@@ -122,10 +122,10 @@ procedure TFormMsgBoxModuleEdit.ReadVars;
 var
   I: Integer;
 begin
-  for I := 0 to jvcsmak.Variables.Count - 1 do
+  for I := 0 to MakeStudio.Variables.Count - 1 do
   begin
-    cmbReturnValue.Items.Add(jvcsmak.Variables.Names[I]);
-    cmbVarList.Items.Add(jvcsmak.Variables.Names[I]);
+    cmbReturnValue.Items.Add(MakeStudio.Variables.Names[I]);
+    cmbVarList.Items.Add(MakeStudio.Variables.Names[I]);
   end;
 
   lbReturnValues.Hint := stdReturnValuesString + #10#13;

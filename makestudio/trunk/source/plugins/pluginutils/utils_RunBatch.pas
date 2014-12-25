@@ -167,13 +167,13 @@ begin
   Canceled := False;
   Result := True;
 
-  jvcsmak.LogMessage(stdStartingBatch);
+  MakeStudio.LogMessage(stdStartingBatch);
 
   case BatchType of
     batExternal:
       begin
-        s := jvcsmak.Variables.ReplaceVarsInString( BatchFile);
-        jvcsmak.LogMessage(s);
+        s := MakeStudio.Variables.ReplaceVarsInString( BatchFile);
+        MakeStudio.LogMessage(s);
       end;
     batInternal:
       begin
@@ -182,8 +182,8 @@ begin
           st.Assign( BatchStrings);
           if ReplaceVars then
             for i:=0 to st.Count-1 do
-              st[i] := jvcsmak.Variables.ReplaceVarsInString( st[i]);
-          s := PathAddSeparator( jvcsmak.ApplicationDataFolder) + stdcInternalBatchFilename;
+              st[i] := MakeStudio.Variables.ReplaceVarsInString( st[i]);
+          s := PathAddSeparator( MakeStudio.ApplicationDataFolder) + stdcInternalBatchFilename;
           st.SaveToFile( s);
         finally
           st.Free;
@@ -191,9 +191,9 @@ begin
       end;
   end;
 
-  if jvcsmak.ExecCmdLine(s, '', ExtractFilePath(s), IExecCallback(Self)) < 0 then
+  if MakeStudio.ExecCmdLine(s, '', ExtractFilePath(s), IExecCallback(Self)) < 0 then
   begin
-    jvcsmak.LogMessage(stderrRunningBatch);
+    MakeStudio.LogMessage(stderrRunningBatch);
     Result := False;
   end;
 
@@ -317,7 +317,7 @@ end;
 procedure TBatchModule.CaptureOutput(const Line: WideString; var Aborted: WordBool);
 begin
   Aborted := Canceled;
-  jvcsmak.LogMessage(  Line);
+  MakeStudio.LogMessage(  Line);
 end;
 
 function TBatchModule.Get_Properties: IDispatch;

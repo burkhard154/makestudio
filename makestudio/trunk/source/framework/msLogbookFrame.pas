@@ -26,15 +26,15 @@ Known Issues:
 
 Unit history:
 
-2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to JVCSMAK
+2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to MakeStudio
 2003/11/28  USchuster - 2nd Migrationstep (fixed header and removed Variants)
 2003/12/05  USchuster - re-formatted
-2005/01/02  BSchranz  - Migration to JVCSMak with external plugins
+2005/01/02  BSchranz  - Migration to MakeStudio with external plugins
 2005/02/04  USchuster - preparations for check in
 
 -----------------------------------------------------------------------------*)
 
-unit jvcsmak_LogbookFrame;
+unit MakeStudio_LogbookFrame;
 
 {$I jedi.inc}
 
@@ -88,7 +88,7 @@ implementation
 {$R *.dfm}
 
 uses
-  jvcsmak_EditKeywordsForm;
+  MakeStudio_EditKeywordsForm;
 
 constructor TFrameLogbook.Create(AOwner: TComponent);
 begin

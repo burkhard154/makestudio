@@ -8,7 +8,7 @@ Software distributed under the License is distributed on an "AS IS" basis,
 WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
 the specific language governing rights and limitations under the License.
 
-The Original Code is: jvcsmakVarListInspect.pas
+The Original Code is: MakeStudioVarListInspect.pas
 
 The Initial Developer of the original code (JEDI VCS) is:
   Burkhard Schranz (burkhard.schranz@optimeas.de)
@@ -23,7 +23,7 @@ Known Issues:
 
 Unit history:
 
-2005/01/02  BSchranz  - Migration to JVCSMak with external plugins
+2005/01/02  BSchranz  - Migration to MakeStudio with external plugins
 2005/02/04  USchuster - preparations for check in
 2005/04/09  BSchranz  - Translated to englisch
 

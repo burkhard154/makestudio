@@ -8,7 +8,7 @@ Software distributed under the License is distributed on an "AS IS" basis,
 WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
 the specific language governing rights and limitations under the License.
 
-The Original Code is: helpandmanual_JVCSMakPlugin.dpr
+The Original Code is: helpandmanual_MakeStudioPlugin.dpr
 
 The Initial Developer of the original code (JEDI VCS) is:
   Jeremy Dünow (jeremy.duenow@optimeas.de)
@@ -51,7 +51,7 @@ begin
 end;
 
 //:Indentifies this DLL-Version
-procedure JVCSMAKPlugin; stdcall;
+procedure MakeStudioPlugin; stdcall;
 begin
 end;
 
@@ -80,13 +80,13 @@ begin
 end;
 
 //:Register an initialize Plugin
-function RegisterPlugin(AJVCSMAKApp: IJApplication): Integer; stdcall;
+function RegisterPlugin(AMakeStudioApp: IJApplication): Integer; stdcall;
 var
   P: Picture;
 begin
   Result := 0;
-  jvcsmak := AJVCSMAKApp;
-  with jvcsmak do
+  MakeStudio := AMakeStudioApp;
+  with MakeStudio do
   begin
     try
       //Create form with actions and ModuleCallback
@@ -95,7 +95,7 @@ begin
 
       //add actions
       {GetPictureFromImageList(Form3.ImageList1, Form3.acTestaction1.ImageIndex, P);
-      jvcsmak.AddMenuAction(Form3.acTestaction1.Name,
+      MakeStudio.AddMenuAction(Form3.acTestaction1.Name,
                              Form3.acTestaction1.Caption,
                              Form3.acTestaction1.Hint,
                              P,
@@ -112,21 +112,21 @@ dmmtJVCSSync=3, dmmtPassolo=4, dmmtWise=5, dmmtMkdir=6);
       //compatibility - 4
       //Callback for the Moduletype
       HelpandmanualCommandCallback := THelpandmanualCommandCallback.Create(nil);
-      jvcsmak.AddCommandType(stdHelpandmanualMenuCaption, '', stdCategory, P, '.hm3',
+      MakeStudio.AddCommandType(stdHelpandmanualMenuCaption, '', stdCategory, P, '.hm3',
                              0, ICommandCallback(HelpandmanualCommandCallback));
 
 
       //Credits
-      jvcsmak.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
+      MakeStudio.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
 
       //Additional Info
-      //jvcsmak.AddAdditionalInfo(struPluginHint);
+      //MakeStudio.AddAdditionalInfo(struPluginHint);
 
       //Variables
-      jvcsmak.Variables.AddVar('helpandmanual_fVersion');
-      jvcsmak.Variables.Values['helpandmanual_fVersion'] := stdcFVersion;
-      jvcsmak.Variables.AddVar('helpandmanual_lVersion');
-      jvcsmak.Variables.Values['helpandmanual_lVersion'] := stdcLVersion;
+      MakeStudio.Variables.AddVar('helpandmanual_fVersion');
+      MakeStudio.Variables.Values['helpandmanual_fVersion'] := stdcFVersion;
+      MakeStudio.Variables.AddVar('helpandmanual_lVersion');
+      MakeStudio.Variables.Values['helpandmanual_lVersion'] := stdcLVersion;
 
     except
     end;
@@ -173,7 +173,7 @@ exports
   GetMajorVersion,
   AfterAllPluginsLoaded,
   GetOptionsPageGUID,
-  JVCSMAKPlugin;
+  MakeStudioPlugin;
 
 begin
 

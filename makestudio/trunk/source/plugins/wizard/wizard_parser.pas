@@ -3,13 +3,18 @@ unit wizard_parser;
 interface
 
 uses
-  SysUtils, Classes, JclStrings, JclFileUtils;
+  Classes, SysUtils, Types, JclStrings, JclFileUtils;
 
-function GetTemplateSource(AFileName: string; AParameterList: TStrings): string; overload;
-procedure GetTemplateSource(AFileName: string; AParameterList: TStrings; AResult: TStrings); overload;
-function GetTemplateSource(ATemplateFileName, AResultFilename: string; AParameterList: TStrings)
-  : string; overload;
-//Validate Identifier
+// function GetTemplateSource(AFileName: string; AParameterList: TStrings): string; overload;
+// procedure GetTemplateSource(AFileName: string; AParameterList: TStrings; AResult: TStrings); overload;
+// function GetTemplateSource(ATemplateFileName, AResultFilename: string; AParameterList: TStrings): string; overload;
+
+procedure CreateTemplateSource(ASource, AResult, AParameterList: TStrings);
+procedure CreateTemplateSourceFromRessource(AIdentifier, AResultFile:String; AParameterList: TStrings);
+procedure GetTemplateSourceFromRessource(AIdentifier: String; ASource: TStrings);
+procedure GetTemplateSourceFromFile(AFileName: String; ASource: TStrings);
+
+// Validate Identifier
 function MakeValidIdent(const s: string): string;
 
 implementation
@@ -53,9 +58,9 @@ begin
   Result := FEnabled and (not FDefineLine);
 end;
 
-function IsDirectiveStr(ASubStr: string; S: string): Boolean;
+function IsDirectiveStr(ASubStr: string; s: string): Boolean;
 begin
-  Result := SameText(Copy(S, 3, Length(ASubStr)), ASubStr);
+  Result := SameText(Copy(s, 3, Length(ASubStr)), ASubStr);
 end;
 
 procedure CheckAddDef(ADirective: string; ACurrentDefines: TStrings);
@@ -120,14 +125,12 @@ end;
 function ProcessDefsStack(ADirective: string; ADefineStack: TStrings): Boolean;
 begin
   Result := False;
-  if (IsDirectiveStr('ENDIF}', ADirective) or IsDirectiveStr('ENDIF ', ADirective)) and
-    (ADefineStack.Count > 0) then
+  if (IsDirectiveStr('ENDIF}', ADirective) or IsDirectiveStr('ENDIF ', ADirective)) and (ADefineStack.Count > 0) then
   begin
     Result := not IsIgnoreItem(ADefineStack[ADefineStack.Count - 1]);
     ADefineStack.Delete(ADefineStack.Count - 1);
   end
-  else if (IsDirectiveStr('ELSE}', ADirective) or IsDirectiveStr('ELSE ', ADirective)) and
-    (ADefineStack.Count > 0) then
+  else if (IsDirectiveStr('ELSE}', ADirective) or IsDirectiveStr('ELSE ', ADirective)) and (ADefineStack.Count > 0) then
   begin
     Result := not IsIgnoreItem(ADefineStack[ADefineStack.Count - 1]);
     ADefineStack[ADefineStack.Count - 1] := ReverseIfXDef(ADefineStack[ADefineStack.Count - 1]);
@@ -139,8 +142,7 @@ begin
   end;
 end;
 
-function ProcessDef(ADirective: string; ACurrentDefines, ADefineStack: TStrings;
-  var IsDefLine: Boolean): Boolean;
+function ProcessDef(ADirective: string; ACurrentDefines, ADefineStack: TStrings; var IsDefLine: Boolean): Boolean;
 var
   I: Integer;
 begin
@@ -166,65 +168,68 @@ begin
     FEnabled := ProcessDef(Trim(AStr), FDefines, FCurrentStack, FDefineLine);
 end;
 
-procedure GetTemplateSource(AFileName: string; AParameterList: TStrings; AResult: TStrings);
+procedure CreateTemplateSource(ASource, AResult, AParameterList: TStrings);
 var
-  TemplateStrings: TStringList;
   I, J: Integer;
-  S: string;
+  s: string;
   DefineHandler: TDefineHandler;
 begin
-  TemplateStrings := TStringList.Create;
+  AResult.Clear;
+  DefineHandler := TDefineHandler.Create;
   try
-    TemplateStrings.LoadFromFile(AFileName);
-    DefineHandler := TDefineHandler.Create;
-    try
-      for I := 0 to Pred(AParameterList.Count) do
-        if (Pos('BLOCK', AParameterList.Names[I]) = 1) and
-          (AParameterList.Values[AParameterList.Names[I]] <> '0') then
-          DefineHandler.Defines.Add(AParameterList.Names[I]);
-      for I := 0 to Pred(TemplateStrings.Count) do
+    for I := 0 to Pred(AParameterList.Count) do
+      if (Pos('BLOCK', AParameterList.Names[I]) = 1) and (AParameterList.Values[AParameterList.Names[I]] <> '0') then
+        DefineHandler.Defines.Add(AParameterList.Names[I]);
+    for I := 0 to Pred(ASource.Count) do
+    begin
+      s := ASource[I];
+      DefineHandler.HandleLine(s);
+      if DefineHandler.CanWrite then
       begin
-        S := TemplateStrings[I];
-        DefineHandler.HandleLine(S);
-        if DefineHandler.CanWrite then
-        begin
-          for J := 0 to Pred(AParameterList.Count) do
-            StrReplace(S, '%' + AParameterList.Names[J] + '%',
-              AParameterList.Values[AParameterList.Names[J]], [rfReplaceAll, rfIgnoreCase]);
-          AResult.Add(S);
-        end;
+        for J := 0 to Pred(AParameterList.Count) do
+          StrReplace(s, '%' + AParameterList.Names[J] + '%', AParameterList.Values[AParameterList.Names[J]],
+            [rfReplaceAll, rfIgnoreCase]);
+        AResult.Add(s);
       end;
-    finally
-      DefineHandler.Free;
     end;
   finally
-    TemplateStrings.Free;
+    DefineHandler.Free;
   end;
 end;
 
-function GetTemplateSource(AFileName: string; AParameterList: TStrings): string;
-var sl:TStringList;
+procedure GetTemplateSourceFromRessource(AIdentifier: String; ASource: TStrings);
+var
+  ResStream: TResourceStream;
+  sl: TStringList;
 begin
-  sl := TStringList.Create;
+  // Load Template Source
+  ResStream := TResourceStream.Create(hInstance, AIdentifier, RT_RCDATA);
   try
-    GetTemplateSource( AFilename, AParameterList, sl);
-    Result := sl.Text;
+    ASource.Clear;
+    ASource.LoadFromStream(ResStream);
   finally
-    sl.Free;
+    ResStream.Free;
   end;
 end;
 
-function GetTemplateSource(ATemplateFileName, AResultFilename: string; AParameterList: TStrings)
-  : string; overload;
-var sl:TStringList;
+procedure CreateTemplateSourceFromRessource(AIdentifier, AResultFile:String; AParameterList: TStrings);
+var sl1, sl2:TStringList;
 begin
-  sl := TStringList.Create;
+  sl1 := TStringList.Create;
+  sl2 := TStringList.Create;
   try
-    GetTemplateSource( ATemplateFilename, AParameterList, sl);
-    sl.SaveToFile( AResultFilename);
+    GetTemplateSourceFromRessource( AIdentifier, sl1);
+    CreateTemplateSource(sl1, sl2, AParameterList);
+    sl2.SaveToFile(AResultFile);
   finally
-    sl.Free;
+    sl1.Free;
+    sl2.Free;
   end;
+end;
+
+procedure GetTemplateSourceFromFile(AFileName: String; ASource: TStrings);
+begin
+  ASource.LoadFromFile(AFilename);
 end;
 
 function MakeValidIdent(const s: string): string;
@@ -236,14 +241,15 @@ begin
   SetLength(Result, Length(s));
   x := 0;
   for c in s do
-    if c in ['A'..'Z', 'a'..'z', '0'..'9', '_'] then begin
+    if c in ['A' .. 'Z', 'a' .. 'z', '0' .. '9', '_'] then
+    begin
       Inc(x);
       Result[x] := c;
     end;
   SetLength(Result, x);
   if x = 0 then
     Result := '_'
-  else if Result[1] in ['0'..'9'] then
+  else if Result[1] in ['0' .. '9'] then
     Result := '_' + Result;
 end;
 

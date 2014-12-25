@@ -165,10 +165,10 @@ end;
 
 function TDelphi32Module.ExecuteItem: WordBool;
 begin
-  jvcsmak.LogMessage(stdBreak);
-  jvcsmak.LogMessage(DelphiFilename);
-  jvcsmak.LogMessage(stdDMakAction + stActions[DMakAction]);
-  jvcsmak.LogMessage('');
+  MakeStudio.LogMessage(stdBreak);
+  MakeStudio.LogMessage(DelphiFilename);
+  MakeStudio.LogMessage(stdDMakAction + stActions[DMakAction]);
+  MakeStudio.LogMessage('');
 
   Result := True;
 
@@ -215,8 +215,8 @@ begin
         ResetSearchPath;
     end;
   end;
-  jvcsmak.LogMessage(stdBreak);
-  jvcsmak.LogMessage('');
+  MakeStudio.LogMessage(stdBreak);
+  MakeStudio.LogMessage('');
 end;
 
 function TDelphi32Module.MeasureItem(Handle: Integer; BriefView: WordBool): Integer;
@@ -509,9 +509,9 @@ var
     sl1.Add('-O' + QuoteSeparetedList( GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
 
     // Namespace
-    if jvcsmak.Variables.VarExists(stvarNamespaces) then
-      if jvcsmak.Variables.Values[stvarNamespaces]<>'' then
-        sl1.Add('-NS'+jvcsmak.Variables.Values[stvarNamespaces]);
+    if MakeStudio.Variables.VarExists(stvarNamespaces) then
+      if MakeStudio.Variables.Values[stvarNamespaces]<>'' then
+        sl1.Add('-NS'+MakeStudio.Variables.Values[stvarNamespaces]);
 
     // UnitOutputDir
     if NOPath <> '' then
@@ -576,9 +576,9 @@ var
     end;
 
     // Namespace
-    if jvcsmak.Variables.VarExists(stvarNamespaces) then
-      if jvcsmak.Variables.Values[stvarNamespaces]<>'' then
-        sl1.Add('-NS'+jvcsmak.Variables.Values[stvarNamespaces]);
+    if MakeStudio.Variables.VarExists(stvarNamespaces) then
+      if MakeStudio.Variables.Values[stvarNamespaces]<>'' then
+        sl1.Add('-NS'+MakeStudio.Variables.Values[stvarNamespaces]);
 
     // UnitOutputDir
     if NOPath <> '' then
@@ -648,10 +648,10 @@ begin
     Exit;
 
   // Get source directories
-  Path := PathAddSeparator(jvcsmak.ApplicationDataFolder);
+  Path := PathAddSeparator(MakeStudio.ApplicationDataFolder);
   SrcPath := ExtractFilePath(_DelphiFilename);
 
-  jvcsmak.LogMessage(stdStartingCompiler);
+  MakeStudio.LogMessage(stdStartingCompiler);
 
   // create directory for the compiler results
   ForceDirectories(Path + 'Compile');
@@ -688,15 +688,15 @@ begin
       RenameFile(ChangeFileExt(_DelphiFilename, '.cfg'), ChangeFileExt(_DelphiFilename, '.cf1'));
 
     // Executing Compiler
-    jvcsmak.LogMessage(GetDelphiCompiler + ' ' + '"' + _DelphiFilename + '"');
+    MakeStudio.LogMessage(GetDelphiCompiler + ' ' + '"' + _DelphiFilename + '"');
 
-    Result := jvcsmak.ExecCmdLine(GetDelphiCompiler, '"' + _DelphiFilename + '"',
+    Result := MakeStudio.ExecCmdLine(GetDelphiCompiler, '"' + _DelphiFilename + '"',
       ExtractFilePath(_DelphiFilename), IExecCallback(Self)) = 0;
 
     Wait_a_While(1000);
 
     if not Result then
-      jvcsmak.LogMessage(stderrCompile);
+      MakeStudio.LogMessage(stderrCompile);
 
   finally
     sl1.Free;
@@ -756,10 +756,10 @@ begin
 
             if SameText(ExtractFilename(aFilename), ExtractFilename(S)) then
             begin
-              jvcsmak.LogMessage('Filename = ' + aFilename);
-              jvcsmak.LogMessage('RegisteredPackage = ' + S);
+              MakeStudio.LogMessage('Filename = ' + aFilename);
+              MakeStudio.LogMessage('RegisteredPackage = ' + S);
               reg.DeleteValue(sl[I]); // delete if exists
-              jvcsmak.LogMessage(Format(stdRegisteredPackageDeleted, [sl[I]]));
+              MakeStudio.LogMessage(Format(stdRegisteredPackageDeleted, [sl[I]]));
               Break;
             end;
           end;
@@ -768,10 +768,10 @@ begin
         if not Found then
         begin
           reg.WriteString(aFilename, GetPackageDescription(_DelphiFilename));
-          jvcsmak.LogMessage(Format(stdPackageRegistered, [aFilename]));
+          MakeStudio.LogMessage(Format(stdPackageRegistered, [aFilename]));
         end
         else
-          jvcsmak.LogMessage(Format(stdPackageAlreadyRegistered, [aFilename]));
+          MakeStudio.LogMessage(Format(stdPackageAlreadyRegistered, [aFilename]));
 
       except
       end;
@@ -807,7 +807,7 @@ begin
         if CompareText(S, aFilename) = 0 then
         begin
           reg.DeleteValue(sl[I]);
-          jvcsmak.LogMessage(Format(stdPackageUnRegistered, [aFilename]));
+          MakeStudio.LogMessage(Format(stdPackageUnRegistered, [aFilename]));
           Break;
         end;
       end;
@@ -833,33 +833,33 @@ begin
   else
     aFilename := _DelphiFilename;
 
-  jvcsmak.LogMessage('-----------------------------------------');
-  jvcsmak.LogMessage('Loading DLL: ' + aFilename);
+  MakeStudio.LogMessage('-----------------------------------------');
+  MakeStudio.LogMessage('Loading DLL: ' + aFilename);
   H := LoadLibrary(PChar(aFilename));
   if H > 0 then
   begin
-    jvcsmak.LogMessage('DLL "' + aFilename + '" loaded"');
-    jvcsmak.LogMessage('Getting DLLUnregisterServer Proc');
+    MakeStudio.LogMessage('DLL "' + aFilename + '" loaded"');
+    MakeStudio.LogMessage('Getting DLLUnregisterServer Proc');
     @P := GetProcAddress(H, 'DllUnregisterServer');
     if @P <> nil then
     begin
-      jvcsmak.LogMessage('Calling DLLUnregisterServer Proc');
+      MakeStudio.LogMessage('Calling DLLUnregisterServer Proc');
       h1 := P;
-      jvcsmak.LogMessage('Result=' + IntToStr(h1));
+      MakeStudio.LogMessage('Result=' + IntToStr(h1));
     end
     else
-      jvcsmak.LogMessage('DLLRegisterServer not Exported');
-    jvcsmak.LogMessage('FreeLibrary: "' + aFilename + '"');
+      MakeStudio.LogMessage('DLLRegisterServer not Exported');
+    MakeStudio.LogMessage('FreeLibrary: "' + aFilename + '"');
     FreeLibrary(H);
   end
   else
   begin
     err := GetLastError;
     FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, nil, err, 0, errm, 255, nil);
-    jvcsmak.LogMessage(StrPas(errm));
-    jvcsmak.LogMessage('ERROR Loading DLL: ' + aFilename);
+    MakeStudio.LogMessage(StrPas(errm));
+    MakeStudio.LogMessage('ERROR Loading DLL: ' + aFilename);
   end;
-  jvcsmak.LogMessage('Ready...');
+  MakeStudio.LogMessage('Ready...');
 end;
 
 // todo - merge with UnRegister ?
@@ -878,33 +878,33 @@ begin
   else
     aFilename := _DelphiFilename;
 
-  jvcsmak.LogMessage('-----------------------------------------');
-  jvcsmak.LogMessage('Loading DLL: ' + aFilename);
+  MakeStudio.LogMessage('-----------------------------------------');
+  MakeStudio.LogMessage('Loading DLL: ' + aFilename);
   H := LoadLibrary(PChar(aFilename));
   if H > 0 then
   begin
-    jvcsmak.LogMessage('DLL "' + aFilename + '" loaded"');
-    jvcsmak.LogMessage('Getting DLLRegisterServer Proc');
+    MakeStudio.LogMessage('DLL "' + aFilename + '" loaded"');
+    MakeStudio.LogMessage('Getting DLLRegisterServer Proc');
     @P := GetProcAddress(H, 'DllRegisterServer');
     if @P <> nil then
     begin
-      jvcsmak.LogMessage('Calling DLLRegisterServer Proc');
+      MakeStudio.LogMessage('Calling DLLRegisterServer Proc');
       h1 := P;
-      jvcsmak.LogMessage('Result=' + IntToStr(h1));
+      MakeStudio.LogMessage('Result=' + IntToStr(h1));
     end
     else
-      jvcsmak.LogMessage('DLLRegisterServer not Exported');
-    jvcsmak.LogMessage('FreeLibrary: "' + aFilename + '"');
+      MakeStudio.LogMessage('DLLRegisterServer not Exported');
+    MakeStudio.LogMessage('FreeLibrary: "' + aFilename + '"');
     FreeLibrary(H);
   end
   else
   begin
     err := GetLastError;
     FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, nil, err, 0, errm, 255, nil);
-    jvcsmak.LogMessage(StrPas(errm));
-    jvcsmak.LogMessage('ERROR Loading DLL: ' + aFilename);
+    MakeStudio.LogMessage(StrPas(errm));
+    MakeStudio.LogMessage('ERROR Loading DLL: ' + aFilename);
   end;
-  jvcsmak.LogMessage('Ready...');
+  MakeStudio.LogMessage('Ready...');
 end;
 
 procedure TDelphi32Module.RegisterCOMExe;
@@ -919,15 +919,15 @@ begin
     S := ChangeFileExt(_DelphiFilename, '.exe');
 
   S := S; // ???
-  jvcsmak.LogMessage(Format(stdRegisteringServer, [S]));
+  MakeStudio.LogMessage(Format(stdRegisteringServer, [S]));
 
   // Executing EXE
-  R := jvcsmak.ExecCmdLine(S, '/REGSERVER', ExtractFilePath(S), IExecCallback(Self)) = 0;
+  R := MakeStudio.ExecCmdLine(S, '/REGSERVER', ExtractFilePath(S), IExecCallback(Self)) = 0;
 
   if not R then
-    jvcsmak.LogMessage(stderrRegister)
+    MakeStudio.LogMessage(stderrRegister)
   else
-    jvcsmak.LogMessage(Format(stdServerRegistered, [S]));
+    MakeStudio.LogMessage(Format(stdServerRegistered, [S]));
 end;
 
 // todo - merge with RegisterCOMExe ?
@@ -942,19 +942,19 @@ begin
     S := ChangeFileExt(_DelphiFilename, '.exe');
 
   S := S; // ???
-  jvcsmak.LogMessage(Format(stdUNRegisteringServer, [S]));
+  MakeStudio.LogMessage(Format(stdUNRegisteringServer, [S]));
 
   // Executing EXE
-  if jvcsmak.ExecCmdLine(S, '/UNREGSERVER', ExtractFilePath(S), IExecCallback(Self)) < 0 then
-    jvcsmak.LogMessage(stderrRegister)
+  if MakeStudio.ExecCmdLine(S, '/UNREGSERVER', ExtractFilePath(S), IExecCallback(Self)) < 0 then
+    MakeStudio.LogMessage(stderrRegister)
   else
-    jvcsmak.LogMessage(Format(stdServerRegistered, [S]));
+    MakeStudio.LogMessage(Format(stdServerRegistered, [S]));
 end;
 
 procedure TDelphi32Module.SetSearchPath;
 begin
-  jvcsmak.LogMessage('');
-  jvcsmak.LogMessage(stdBreak);
+  MakeStudio.LogMessage('');
+  MakeStudio.LogMessage(stdBreak);
 
   if SearchDirs.Count > 0 then
   begin
@@ -964,13 +964,13 @@ end;
 
 procedure TDelphi32Module.RunBatchfile;
 begin
-  jvcsmak.LogMessage(stdStartingBatch);
-  jvcsmak.LogMessage(_DelphiFilename + ' ' + CompilerSwitch);
+  MakeStudio.LogMessage(stdStartingBatch);
+  MakeStudio.LogMessage(_DelphiFilename + ' ' + CompilerSwitch);
 
   // Executing Batch
-  if jvcsmak.ExecCmdLine(_DelphiFilename, CompilerSwitch, ExtractFilePath(_DelphiFilename),
+  if MakeStudio.ExecCmdLine(_DelphiFilename, CompilerSwitch, ExtractFilePath(_DelphiFilename),
     IExecCallback(Self)) < 0 then
-    jvcsmak.LogMessage(stderrRunningBatch);
+    MakeStudio.LogMessage(stderrRunningBatch);
 end;
 
 procedure TDelphi32Module.CaptureOutput(const Line: WideString; var Aborted: WordBool);
@@ -1035,12 +1035,12 @@ procedure TDelphi32Module.CaptureOutput(const Line: WideString; var Aborted: Wor
     if _s <> '' then
       if _s <> FLastProcessOutput then
       begin
-        jvcsmak.LogMessage(_s);
+        MakeStudio.LogMessage(_s);
         FLastProcessOutput := _s;
       end
       else
     else
-      jvcsmak.SetStatus( AText);
+      MakeStudio.SetStatus( AText);
   end;
 
 begin
@@ -1178,10 +1178,10 @@ begin
 
             if SameText(ExtractFilename(aFilename), ExtractFilename(S)) then
             begin
-              jvcsmak.LogMessage('Filename = ' + aFilename);
-              jvcsmak.LogMessage('RegisteredExpert = ' + S);
+              MakeStudio.LogMessage('Filename = ' + aFilename);
+              MakeStudio.LogMessage('RegisteredExpert = ' + S);
               reg.DeleteValue(sl[I]); // delete if exists
-              jvcsmak.LogMessage(Format(stdRegisteredExpertDeleted, [sl[I]]));
+              MakeStudio.LogMessage(Format(stdRegisteredExpertDeleted, [sl[I]]));
               Break;
             end;
           end;
@@ -1190,10 +1190,10 @@ begin
         if not Found then
         begin
           reg.WriteString(ChangeFileExt(ExtractFilename(aFilename), ''), aFilename);
-          jvcsmak.LogMessage(Format(stdExpertRegistered, [aFilename]));
+          MakeStudio.LogMessage(Format(stdExpertRegistered, [aFilename]));
         end
         else
-          jvcsmak.LogMessage(Format(stdExpertAlreadyRegistered, [aFilename]));
+          MakeStudio.LogMessage(Format(stdExpertAlreadyRegistered, [aFilename]));
 
       except
       end;
@@ -1206,21 +1206,21 @@ procedure TDelphi32Module.UnRegisterAndDeleteBPL;
 begin
   if DeleteFile(_DelphiFilename) then
   begin
-    jvcsmak.LogMessage(Format(stdRegisteredPackageFileDeleted, [_DelphiFilename]));
+    MakeStudio.LogMessage(Format(stdRegisteredPackageFileDeleted, [_DelphiFilename]));
     UnRegisterPackage;
   end
   else
-    jvcsmak.LogMessage(Format(stdRegisteredPackageFileNotDeleted, [_DelphiFilename]));
+    MakeStudio.LogMessage(Format(stdRegisteredPackageFileNotDeleted, [_DelphiFilename]));
 end;
 
 procedure TDelphi32Module.DeleteDCP;
 begin
   if DeleteFile(_DelphiFilename) then
   begin
-    jvcsmak.LogMessage(Format(stdRegisteredPackageFileDeleted, [_DelphiFilename]));
+    MakeStudio.LogMessage(Format(stdRegisteredPackageFileDeleted, [_DelphiFilename]));
   end
   else
-    jvcsmak.LogMessage(Format(stdRegisteredPackageFileNotDeleted, [_DelphiFilename]));
+    MakeStudio.LogMessage(Format(stdRegisteredPackageFileNotDeleted, [_DelphiFilename]));
 end;
 
 procedure TDelphi32Module.RemoveAllUserPackages;
@@ -1309,25 +1309,25 @@ procedure TDelphi32Module.RemoveAllUserPackages;
 
             // remove from registry
             if reg.DeleteValue(sl[I]) then
-              jvcsmak.LogMessage(Format(stdPackageUnRegistered, [aFilename]))
+              MakeStudio.LogMessage(Format(stdPackageUnRegistered, [aFilename]))
             else
-              jvcsmak.LogMessage(Format(stdPackageNotUnRegistered, [aFilename]));
+              MakeStudio.LogMessage(Format(stdPackageNotUnRegistered, [aFilename]));
 
             // delete bpl
             if DeleteFile(S) then
-              jvcsmak.LogMessage(Format(stdPackageBPLDeleted, [aFilename]))
+              MakeStudio.LogMessage(Format(stdPackageBPLDeleted, [aFilename]))
             else
-              jvcsmak.LogMessage(Format(stdPackageBPLNotDeleted, [aFilename]));
+              MakeStudio.LogMessage(Format(stdPackageBPLNotDeleted, [aFilename]));
 
             // delete dcp if exists
             s1 := GetDCPFile(S);
             if s1 <> '' then
               if DeleteFile(GetDCPFile(S)) then
-                jvcsmak.LogMessage(Format(stdPackageDCPDeleted, [GetDCPFile(S)]))
+                MakeStudio.LogMessage(Format(stdPackageDCPDeleted, [GetDCPFile(S)]))
               else
-                jvcsmak.LogMessage(Format(stdPackageDCPNotDeleted, [GetDCPFile(S)]))
+                MakeStudio.LogMessage(Format(stdPackageDCPNotDeleted, [GetDCPFile(S)]))
             else
-              jvcsmak.LogMessage(Format(stdDependingDCPNotDeleted, [S]));
+              MakeStudio.LogMessage(Format(stdDependingDCPNotDeleted, [S]));
 
             Break;
           end;
@@ -1367,25 +1367,25 @@ procedure TDelphi32Module.ResetSearchPath;
 var
   S: String;
 begin
-  jvcsmak.LogMessage( 'ResetSearchPath:');
+  MakeStudio.LogMessage( 'ResetSearchPath:');
   XUTILSROOTKEY := HKEY_LOCAL_MACHINE;
-  jvcsmak.LogMessage( 'Key=HKEY_LOCAL_MACHINE');
+  MakeStudio.LogMessage( 'Key=HKEY_LOCAL_MACHINE');
 
   // read search path from HKLM
   S := ReadRegStringLM(GetDelphiRootKey + GetLibraryKey, stdcSearchPath, '');
-  jvcsmak.LogMessage( 'Lese Path='+GetDelphiRootKey + GetLibraryKey+'; Value='+stdcSearchPath);
-  jvcsmak.LogMessage( 'Result='+S);
+  MakeStudio.LogMessage( 'Lese Path='+GetDelphiRootKey + GetLibraryKey+'; Value='+stdcSearchPath);
+  MakeStudio.LogMessage( 'Result='+S);
 
   XUTILSROOTKEY := HKEY_CURRENT_USER;
 
-  jvcsmak.LogMessage( 'Key=HKEY_CURRENT_USER');
-  jvcsmak.LogMessage( 'Schreibe Path='+GetDelphiRootKey + GetLibraryKey+'; Value='+stdcSearchPath);
-  jvcsmak.LogMessage( 'Result='+S);
+  MakeStudio.LogMessage( 'Key=HKEY_CURRENT_USER');
+  MakeStudio.LogMessage( 'Schreibe Path='+GetDelphiRootKey + GetLibraryKey+'; Value='+stdcSearchPath);
+  MakeStudio.LogMessage( 'Result='+S);
 
   // write search path to HKCU
   WriteRegStringLM(GetDelphiRootKey + GetLibraryKey, stdcSearchPath, S);
 
-  jvcsmak.LogMessage(Format(stdResetSearchPath, [S]));
+  MakeStudio.LogMessage(Format(stdResetSearchPath, [S]));
 end;
 
 function TDelphi32Module.GetFilename: string;
@@ -1406,12 +1406,12 @@ end;
 
 function TDelphi32Module.GetRealDelphiFilename: String;
 begin
-  Result := jvcsmak.Variables.ReplaceVarsInString(DelphiFilename);
+  Result := MakeStudio.Variables.ReplaceVarsInString(DelphiFilename);
 end;
 
 function TDelphi32Module.GetRealOutputDir: String;
 begin
-  Result := ExcludeTrailingPathDelimiter(jvcsmak.Variables.ReplaceVarsInString(OutputDir));
+  Result := ExcludeTrailingPathDelimiter(MakeStudio.Variables.ReplaceVarsInString(OutputDir));
 end;
 
 end.

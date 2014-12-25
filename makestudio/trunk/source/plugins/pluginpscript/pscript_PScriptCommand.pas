@@ -55,7 +55,7 @@ var
 
       //Create and register Callback for the command type
       PluginPScriptCallback := TPluginPScriptCallback.Create(nil);
-      jvcsmak.AddCommandType('PScript', '', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('PScript', '', stCategory, P, 'txt', -1,
         ICommandCallback(PluginPScriptCallback));
 **** End Sample Code  *******}
 
@@ -166,8 +166,8 @@ function TPluginPScript.ExecuteItem: WordBool;
 begin
   FCanceled := False;
 
-  jvcsmak.LogMessage( strBreak);
-  jvcsmak.LogMessage( StrStartingPascalScri);
+  MakeStudio.LogMessage( strBreak);
+  MakeStudio.LogMessage( StrStartingPascalScri);
   PSHandler.ScriptText.Assign( FScript);
   Result := PSHandler.Execute;
 
@@ -175,9 +175,9 @@ begin
     Result := false;
 
   if Result then
-    jvcsmak.LogMessage( StrPascalScriptSucces)
+    MakeStudio.LogMessage( StrPascalScriptSucces)
   else
-    jvcsmak.LogMessage( StrErrorExecutingPasc);
+    MakeStudio.LogMessage( StrErrorExecutingPasc);
 end;
 
 function TPluginPScript.MeasureItem(Handle: Integer; BriefView: WordBool): Integer;

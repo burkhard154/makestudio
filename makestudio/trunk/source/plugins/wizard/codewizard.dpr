@@ -32,19 +32,23 @@ library CodeWizard;
 
 {$I jedi.inc}
 
+{$R 'plugintemplate.res' 'resources\plugintemplate.rc'}
+{$R 'plugintemplate_csharp.res' 'resources\plugintemplate_csharp.rc'}
+{$R 'plugintemplate_delphi.res' 'resources\plugintemplate_delphi.rc'}
+
 uses
   SysUtils,
   Classes,
-  msTLB in '..\..\msTLB.pas',
+  msTLB in '..\..\framework\msTLB.pas',
   ComServ,
   ActiveX,
   Forms,
   wizard_actions in 'wizard_actions.pas' {Form3},
   wizard_vars in 'wizard_vars.pas',
   wizard_parser in 'wizard_parser.pas',
-  JVCSMakPluginWizardOptions in 'JVCSMakPluginWizardOptions.pas' {JVCSMakePluginWizardOptionsForm},
-  JVCSMakPluginWizardNewCommandOptions in 'JVCSMakPluginWizardNewCommandOptions.pas' {JVCSMakePluginWizardNewCommandForm},
-  JVCSMakPluginWizardCommon in 'JVCSMakPluginWizardCommon.pas';
+  msPluginWizardCommon in 'msPluginWizardCommon.pas',
+  msPluginWizardNewCommandOptions in 'msPluginWizardNewCommandOptions.pas' {msPluginWizardNewCommandForm},
+  msPluginWizardOptions in 'msPluginWizardOptions.pas' {msPluginWizardOptionsForm};
 
 {$E jpl}
 
@@ -55,7 +59,7 @@ begin
 end;
 
 //:Indentifies this DLL-Version
-procedure JVCSMAKPlugin; stdcall;
+procedure MakeStudioPlugin; stdcall;
 begin
 end;
 
@@ -84,13 +88,13 @@ begin
 end;
 
 //:Register an initialize Plugin
-function RegisterPlugin(aJVCSMAKApp: IJApplication): Integer; stdcall;
+function RegisterPlugin(aMakeStudioApp: IJApplication): Integer; stdcall;
 var
   P: Picture;
 begin
   Result := 0;
-  jvcsmak := aJVCSMAKApp;
-  with jvcsmak do
+  MakeStudio := aMakeStudioApp;
+  with MakeStudio do
   begin
     try
       //Create form with actions and ModuleCallback
@@ -99,8 +103,8 @@ begin
     except
       on E:Exception do
       begin
-        jvcsmak.LogMessage('Plugin: ' + Application.ExeName);
-        jvcsmak.LogMessage('Exception: ' + E.Message);
+        MakeStudio.LogMessage('Plugin: ' + Application.ExeName);
+        MakeStudio.LogMessage('Exception: ' + E.Message);
       end;
     end;
   end;
@@ -145,7 +149,7 @@ exports
   GetMajorVersion,
   AfterAllPluginsLoaded,
   GetOptionsPageGUID,
-  JVCSMAKPlugin;
+  MakeStudioPlugin;
 
 begin
 end.

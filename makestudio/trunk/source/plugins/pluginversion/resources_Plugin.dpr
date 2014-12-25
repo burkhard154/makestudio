@@ -8,7 +8,7 @@ Software distributed under the License is distributed on an "AS IS" basis,
 WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
 the specific language governing rights and limitations under the License.
 
-The Original Code is: resources_JVCSMakPlugin.dpr
+The Original Code is: resources_MakeStudioPlugin.dpr
 
 The Initial Developer of the original code (JEDI VCS) is:
   Burkhard Schranz (burkhard.schranz@optimeas.de)
@@ -65,7 +65,7 @@ begin
 end;
 
 //:Indentifies this DLL-Version
-procedure JVCSMAKPlugin; stdcall;
+procedure MakeStudioPlugin; stdcall;
 begin
 end;
 
@@ -94,19 +94,19 @@ begin
 end;
 
 //:Register an initialize Plugin
-function RegisterPlugin(AJVCSMAKApp: IJApplication): Integer; stdcall;
+function RegisterPlugin(AMakeStudioApp: IJApplication): Integer; stdcall;
 var
  P: Picture;
 begin
   Result := 0;
-  jvcsmak := AJVCSMAKApp;
-  with jvcsmak do
+  MakeStudio := AMakeStudioApp;
+  with MakeStudio do
   begin
     try
       //Create form with actions and ModuleCallback
       FormActions := TFormActions.Create(nil);
       GetPictureFromImageList(FormActions.ImageList1, 1, P);
-      jvcsmak.AddMenuAction( FormActions.acCreateRCVersionResource.Name,
+      MakeStudio.AddMenuAction( FormActions.acCreateRCVersionResource.Name,
        stMenuPath+FormActions.acCreateRCVersionResource.Caption,
        FormActions.acCreateRCVersionResource.Hint,
        P, IActionCallback( FormActions)  );
@@ -117,20 +117,20 @@ begin
       //Extension=txt (could be more than one extension - separated by ;)
       //no compatibility - module did not exist before
       //Callback for the Moduletype
-      jvcsmak.LogMessage(Application.Exename);
+      MakeStudio.LogMessage(Application.Exename);
       PluginVersionsresourcenndernCallback := TPluginVersionsresourcenndernCallback.Create(nil);
-      jvcsmak.AddCommandType(strVersionCommandCaption, '', stCategory, P, '.res;.dcr;.rc', -1,
+      MakeStudio.AddCommandType(strVersionCommandCaption, '', stCategory, P, '.res;.dcr;.rc', -1,
         ICommandCallback(PluginVersionsresourcenndernCallback));
 
 {      PluginEditMultipleVersionResourceCallback := TPluginEditMultipleVersionResourceCallback.Create(nil);
-      jvcsmak.AddCommandType(strMultipleVersionCommandCaption, '', stCategory, P, '.res;.dcr', -1,
+      MakeStudio.AddCommandType(strMultipleVersionCommandCaption, '', stCategory, P, '.res;.dcr', -1,
         ICommandCallback(PluginEditMultipleVersionResourceCallback));}
 
       //Credits
-      jvcsmak.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
+      MakeStudio.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
 
       //Additional Info
-      jvcsmak.AddAdditionalInfo(struPluginHint);
+      MakeStudio.AddAdditionalInfo(struPluginHint);
     except
     end;
   end;
@@ -179,7 +179,7 @@ exports
   GetMajorVersion,
   AfterAllPluginsLoaded,
   GetOptionsPageGUID,
-  JVCSMAKPlugin;
+  MakeStudioPlugin;
 
 begin
 end.

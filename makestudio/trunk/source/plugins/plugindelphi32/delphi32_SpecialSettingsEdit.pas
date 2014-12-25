@@ -62,8 +62,8 @@ var i:Integer;
 begin
   cbVars.Clear;
 
-  for i:=0 to jvcsmak.Variables.Count-1 do
-    cbVars.Items.Add( jvcsmak.Variables.Names[ i]);
+  for i:=0 to MakeStudio.Variables.Count-1 do
+    cbVars.Items.Add( MakeStudio.Variables.Names[ i]);
 
   cbOperation.Clear;
   for k:=otBPLDir to High( stGetVarActions) do

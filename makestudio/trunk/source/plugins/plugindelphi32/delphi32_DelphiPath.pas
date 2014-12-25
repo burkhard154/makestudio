@@ -26,7 +26,7 @@ Known Issues:
 
 Unit history:
 
-2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to JVCSMAK
+2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to MakeStudio
 2003/11/28  USchuster - 2nd Migrationstep (fixed header)
 2003/12/05  USchuster - re-formatted
 2005/01/04  BSchranz  - Plugin created

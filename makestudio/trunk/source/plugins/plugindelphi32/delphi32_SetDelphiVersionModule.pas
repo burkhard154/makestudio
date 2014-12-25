@@ -117,12 +117,12 @@ begin
   if DelphiVersionInstalled then
   begin
     SetDelphiVersion(FVersion);
-    jvcsmak.LogMessage(stdverSet + GetVersionText);
+    MakeStudio.LogMessage(stdverSet + GetVersionText);
   end
   else
   begin
-    jvcsmak.LogMessage(Format(stdverSetErr, [GetVersionText]));
-    jvcsmak.LogMessage(stdverSet + GetVersionText);
+    MakeStudio.LogMessage(Format(stdverSetErr, [GetVersionText]));
+    MakeStudio.LogMessage(stdverSet + GetVersionText);
   end;
 end;
 

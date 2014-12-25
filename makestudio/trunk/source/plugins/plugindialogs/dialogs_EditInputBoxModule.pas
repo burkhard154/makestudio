@@ -131,10 +131,10 @@ procedure TFormInputBoxModuleEdit.ReadVars;
 var
   I: Integer;
 begin
-  for I := 0 to jvcsmak.Variables.Count - 1 do
+  for I := 0 to MakeStudio.Variables.Count - 1 do
   begin
-    cmbReturnInput.Items.Add(jvcsmak.Variables.Names[I]);
-    cmbVarList.Items.Add(jvcsmak.Variables.Names[I]);
+    cmbReturnInput.Items.Add(MakeStudio.Variables.Names[I]);
+    cmbVarList.Items.Add(MakeStudio.Variables.Names[I]);
   end;
 end;
 

@@ -8,7 +8,7 @@ Software distributed under the License is distributed on an "AS IS" basis,
 WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
 the specific language governing rights and limitations under the License.
 
-The Original Code is: JVCSMakPluginWizardMain.pas
+The Original Code is: MakeStudioPluginWizardMain.pas
 
 The Initial Developer of the original code (JEDI VCS) is:
   Uwe Schuster (jedivcs@bitcommander.de)
@@ -27,11 +27,11 @@ Unit history:
 
 2005/02/15  USchuster - new unit
 2005/03/09  USchuster - changes for C# Builder wizard
-2005/03/12  USchuster - now use JVCSMakPluginWizardCommon.pas for common stuff
+2005/03/12  USchuster - now use MakeStudioPluginWizardCommon.pas for common stuff
 
 -----------------------------------------------------------------------------*)
 
-unit JVCSMakPluginWizardMain;
+unit MakeStudioPluginWizardMain;
 
 {$I jedi.inc}
 {$I compopt.inc}
@@ -39,11 +39,11 @@ unit JVCSMakPluginWizardMain;
 interface
 
 uses
-  SysUtils, Classes, Windows, Controls, Forms, ToolsAPI, ComObj, JVCSMakPluginWizardOptions,
-  ActnList, Graphics, JVCSMakPluginWizardCommon;
+  SysUtils, Classes, Windows, Controls, Forms, ToolsAPI, ComObj, msPluginWizardOptions,
+  ActnList, Graphics, msPluginWizardCommon;
 
 type
-  TJVCSMakCustomPluginWizard = class(TNotifierObject, IOTAWizard, IOTARepositoryWizard,
+  TMakeStudioCustomPluginWizard = class(TNotifierObject, IOTAWizard, IOTARepositoryWizard,
     IOTAProjectWizard)
   private
     FParameterList: TStringList;
@@ -51,7 +51,7 @@ type
     FActionBitmap: TBitmap;
     procedure HandleActionFormCreated(const FormEditor: IOTAFormEditor);
   protected
-    FWizardKind: TJVCSMakPluginWizardKind;
+    FWizardKind: TMakeStudioPluginWizardKind;
     FIDPostFix: string;
     constructor Create;
   public
@@ -69,14 +69,14 @@ type
   end;
 
   {$IFDEF IDE_SUPPORTS_DELPHI}
-  TJVCSMakDxWin32VCLPluginWizard = class(TJVCSMakCustomPluginWizard)
+  TMakeStudioDxWin32VCLPluginWizard = class(TMakeStudioCustomPluginWizard)
   public
     constructor Create;
   end;
   {$ENDIF IDE_SUPPORTS_DELPHI}
 
   {$IFDEF IDE_SUPPORTS_CSHARP}
-  TJVCSMakCSharpPluginWizard = class(TJVCSMakCustomPluginWizard, IOTARepositoryWizard60,
+  TMakeStudioCSharpPluginWizard = class(TMakeStudioCustomPluginWizard, IOTARepositoryWizard60,
     IOTARepositoryWizard80)
   public
     constructor Create;
@@ -306,7 +306,7 @@ begin
 end;
 
 type
-  TJVCSMakPluginProjectCreator = class(TInterfacedObject,
+  TMakeStudioPluginProjectCreator = class(TInterfacedObject,
     IOTACreator, IOTAProjectCreator)
   private
     FFileName: string;
@@ -330,7 +330,7 @@ type
     function NewProjectSource(const ProjectName: string): IOTAFile;
   end;
 
-  TJVCSMakPluginProjectSource = class(TInterfacedObject, IOTAFile)
+  TMakeStudioPluginProjectSource = class(TInterfacedObject, IOTAFile)
   private
     FProjectName: string;
     FResourceName: string;
@@ -345,7 +345,7 @@ type
 
   TOnFormCreatedEvent = procedure(const FormEditor: IOTAFormEditor) of object;
 
-  TJVCSMakCustomPluginModuleCreator = class(TInterfacedObject,
+  TMakeStudioCustomPluginModuleCreator = class(TInterfacedObject,
     IOTACreator, IOTAModuleCreator)
   private
     FUnitResourceName: string;
@@ -376,7 +376,7 @@ type
     procedure FormCreated(const FormEditor: IOTAFormEditor);
   end;
 
-  TJVCSMakPluginModuleSource = class(TInterfacedObject, IOTAFile)
+  TMakeStudioPluginModuleSource = class(TInterfacedObject, IOTAFile)
   private
     FResourceName: string;
     FParameterList: TStrings;
@@ -394,7 +394,7 @@ type
 var
   ProjectModule: IOTAModule;
 
-constructor TJVCSMakPluginProjectCreator.Create(const AResourceName, AFileName: string;
+constructor TMakeStudioPluginProjectCreator.Create(const AResourceName, AFileName: string;
   AParameterList: TStrings);
 begin
   inherited Create;
@@ -403,68 +403,68 @@ begin
   FParameterList := AParameterList;
 end;  
 
-function TJVCSMakPluginProjectCreator.GetCreatorType: string;
+function TMakeStudioPluginProjectCreator.GetCreatorType: string;
 begin
   Result := '';
 end;
 
-function TJVCSMakPluginProjectCreator.GetExisting: Boolean;
+function TMakeStudioPluginProjectCreator.GetExisting: Boolean;
 begin
   Result := False;
 end;
 
-function TJVCSMakPluginProjectCreator.GetFileName: string;
+function TMakeStudioPluginProjectCreator.GetFileName: string;
 begin
   //does *NOT* work without path
   Result := PathAddSeparator(GetCurrentDir) + FFileName;
 end;
 
-function TJVCSMakPluginProjectCreator.GetFileSystem: string;
+function TMakeStudioPluginProjectCreator.GetFileSystem: string;
 begin
   Result := '';
 end;
 
-function TJVCSMakPluginProjectCreator.GetOptionFileName: string;
+function TMakeStudioPluginProjectCreator.GetOptionFileName: string;
 begin
   Result := '';
 end;
 
-function TJVCSMakPluginProjectCreator.GetOwner: IOTAModule;
+function TMakeStudioPluginProjectCreator.GetOwner: IOTAModule;
 begin
   Result := nil;
 end;
 
-function TJVCSMakPluginProjectCreator.GetShowSource: Boolean;
+function TMakeStudioPluginProjectCreator.GetShowSource: Boolean;
 begin
   Result := True;
 end;
 
-function TJVCSMakPluginProjectCreator.GetUnnamed: Boolean;
+function TMakeStudioPluginProjectCreator.GetUnnamed: Boolean;
 begin
   Result := True;
 end;
 
-procedure TJVCSMakPluginProjectCreator.NewDefaultModule;
+procedure TMakeStudioPluginProjectCreator.NewDefaultModule;
 begin
 end;
 
-function TJVCSMakPluginProjectCreator.NewOptionSource(const ProjectName: string): IOTAFile;
+function TMakeStudioPluginProjectCreator.NewOptionSource(const ProjectName: string): IOTAFile;
 begin
   Result := nil;
 end;
 
-procedure TJVCSMakPluginProjectCreator.NewProjectResource(const Project: IOTAProject);
+procedure TMakeStudioPluginProjectCreator.NewProjectResource(const Project: IOTAProject);
 begin
 end;
 
-function TJVCSMakPluginProjectCreator.NewProjectSource(const ProjectName: string): IOTAFile;
+function TMakeStudioPluginProjectCreator.NewProjectSource(const ProjectName: string): IOTAFile;
 begin
   Result := nil;
   if FResourceName <> '' then
-    Result := TJVCSMakPluginProjectSource.Create(ProjectName, FResourceName, FParameterList);
+    Result := TMakeStudioPluginProjectSource.Create(ProjectName, FResourceName, FParameterList);
 end;
 
-constructor TJVCSMakPluginProjectSource.Create(const ProjectName, AResourceName: string;
+constructor TMakeStudioPluginProjectSource.Create(const ProjectName, AResourceName: string;
   AParameterList: TStrings);
 begin
   inherited Create;
@@ -473,12 +473,12 @@ begin
   FParameterList := AParameterList;
 end;
 
-function TJVCSMakPluginProjectSource.GetAge: TDateTime;
+function TMakeStudioPluginProjectSource.GetAge: TDateTime;
 begin
   Result := -1;
 end;
 
-function TJVCSMakPluginProjectSource.GetSource: string;
+function TMakeStudioPluginProjectSource.GetSource: string;
 var
   TempParameterList: TStringList;
 begin
@@ -492,7 +492,7 @@ begin
   end;
 end;
 
-constructor TJVCSMakCustomPluginModuleCreator.Create(const AUnitResourceName, ADFMResourceName,
+constructor TMakeStudioCustomPluginModuleCreator.Create(const AUnitResourceName, ADFMResourceName,
   AFileName: string; AParameterList: TStrings; AOnFormCreatedEvent: TOnFormCreatedEvent = nil);
 begin
   inherited Create;
@@ -503,18 +503,18 @@ begin
   FOnFormCreatedEvent := AOnFormCreatedEvent;
 end;
 
-procedure TJVCSMakCustomPluginModuleCreator.FormCreated(const FormEditor: IOTAFormEditor);
+procedure TMakeStudioCustomPluginModuleCreator.FormCreated(const FormEditor: IOTAFormEditor);
 begin
   if Assigned(FOnFormCreatedEvent) then
     FOnFormCreatedEvent(FormEditor);
 end;
 
-function TJVCSMakCustomPluginModuleCreator.GetAncestorName: string;
+function TMakeStudioCustomPluginModuleCreator.GetAncestorName: string;
 begin
   Result := '';
 end;
 
-function TJVCSMakCustomPluginModuleCreator.GetCreatorType: string;
+function TMakeStudioCustomPluginModuleCreator.GetCreatorType: string;
 begin
   if FDFMResourceName = '' then
     Result := sUnit
@@ -522,80 +522,80 @@ begin
     Result := sForm;
 end;
 
-function TJVCSMakCustomPluginModuleCreator.GetExisting: Boolean;
+function TMakeStudioCustomPluginModuleCreator.GetExisting: Boolean;
 begin
   Result := False;
 end;
 
-function TJVCSMakCustomPluginModuleCreator.GetFileSystem: string;
+function TMakeStudioCustomPluginModuleCreator.GetFileSystem: string;
 begin
   Result := '';
 end;
 
-function TJVCSMakCustomPluginModuleCreator.GetFormName: string;
+function TMakeStudioCustomPluginModuleCreator.GetFormName: string;
 begin
   Result := '';
 end;
 
-function TJVCSMakCustomPluginModuleCreator.GetImplFileName: string;
+function TMakeStudioCustomPluginModuleCreator.GetImplFileName: string;
 begin
   //does work without path as well
   Result := PathAddSeparator(GetCurrentDir) + FFileName;
 end;
 
-function TJVCSMakCustomPluginModuleCreator.GetIntfFileName: string;
+function TMakeStudioCustomPluginModuleCreator.GetIntfFileName: string;
 begin
   Result := '';
 end;
 
-function TJVCSMakCustomPluginModuleCreator.GetMainForm: Boolean;
+function TMakeStudioCustomPluginModuleCreator.GetMainForm: Boolean;
 begin
   Result := False;
 end;
 
-function TJVCSMakCustomPluginModuleCreator.GetOwner: IOTAModule;
+function TMakeStudioCustomPluginModuleCreator.GetOwner: IOTAModule;
 begin
   Result := ProjectModule;
 end;
 
-function TJVCSMakCustomPluginModuleCreator.GetShowForm: Boolean;
+function TMakeStudioCustomPluginModuleCreator.GetShowForm: Boolean;
 begin
   Result := True;
 end;
 
-function TJVCSMakCustomPluginModuleCreator.GetShowSource: Boolean;
+function TMakeStudioCustomPluginModuleCreator.GetShowSource: Boolean;
 begin
   Result := True;
 end;
 
-function TJVCSMakCustomPluginModuleCreator.GetUnnamed: Boolean;
+function TMakeStudioCustomPluginModuleCreator.GetUnnamed: Boolean;
 begin
   Result := True;
 end;
 
-function TJVCSMakCustomPluginModuleCreator.NewFormFile(const FormIdent, AncestorIdent: string): IOTAFile;
+function TMakeStudioCustomPluginModuleCreator.NewFormFile(const FormIdent, AncestorIdent: string): IOTAFile;
 begin
   Result := nil;
   if FDFMResourceName <> '' then
-    Result := TJVCSMakPluginModuleSource.Create(FDFMResourceName, FParameterList,
+    Result := TMakeStudioPluginModuleSource.Create(FDFMResourceName, FParameterList,
       '', FormIdent, AncestorIdent);
 end;
 
-function TJVCSMakCustomPluginModuleCreator.NewImplSource(const ModuleIdent, FormIdent, AncestorIdent: string): IOTAFile;
+function TMakeStudioCustomPluginModuleCreator.NewImplSource(const ModuleIdent, FormIdent, AncestorIdent: string): IOTAFile;
 begin
-  Result := TJVCSMakPluginModuleSource.Create(FUnitResourceName, FParameterList,
+  Result := TMakeStudioPluginModuleSource.Create(FUnitResourceName, FParameterList,
     ModuleIdent, FormIdent, AncestorIdent);
 end;
 
-function TJVCSMakCustomPluginModuleCreator.NewIntfSource(const ModuleIdent,
+function TMakeStudioCustomPluginModuleCreator.NewIntfSource(const ModuleIdent,
   FormIdent, AncestorIdent: string): IOTAFile;
 begin
   Result := nil;
 end;
 
-{ TJVCSMakPluginModuleSource }
+{ TMakeStudioPluginModuleSource }
 
-constructor TJVCSMakPluginModuleSource.Create(const AResourceName: string; AParameterList: TStrings;
+constructor TMakeStudioPluginModuleSource.Create(const AResourceName: string; AParameterList: TStrings;
   const ModuleIdent, FormIdent, AncestorIdent: string);
 begin
   inherited Create;
@@ -606,12 +606,12 @@ begin
   FAncestorIdent := AncestorIdent;
 end;
 
-function TJVCSMakPluginModuleSource.GetAge: TDateTime;
+function TMakeStudioPluginModuleSource.GetAge: TDateTime;
 begin
   Result := -1;
 end;
 
-function TJVCSMakPluginModuleSource.GetSource: string;
+function TMakeStudioPluginModuleSource.GetSource: string;
 var
   TempParameterList: TStringList;
 begin
@@ -630,12 +630,12 @@ end;
 
 {$IFDEF IDE_SUPPORTS_DELPHI}
 type
-  TJVCSMakDxWin32VCLPluginModuleCreator = class(TJVCSMakCustomPluginModuleCreator);
+  TMakeStudioDxWin32VCLPluginModuleCreator = class(TMakeStudioCustomPluginModuleCreator);
 {$ENDIF IDE_SUPPORTS_DELPHI}  
 
 {$IFDEF IDE_SUPPORTS_CSHARP}
 type
-  TJVCSMakCSharpPluginProjectCreator = class(TJVCSMakPluginProjectCreator,
+  TMakeStudioCSharpPluginProjectCreator = class(TMakeStudioPluginProjectCreator,
     IOTAProjectCreator50, IOTAProjectCreator80)
   public
     function GetCreatorType: string; override;
@@ -645,26 +645,26 @@ type
     function GetProjectPersonality: string;
   end;
 
-  TJVCSMakCSharpPluginModuleCreator = class(TJVCSMakCustomPluginModuleCreator)
+  TMakeStudioCSharpPluginModuleCreator = class(TMakeStudioCustomPluginModuleCreator)
   public
     function GetCreatorType: string; override;
   end;
 
-function TJVCSMakCSharpPluginProjectCreator.GetCreatorType: string;
+function TMakeStudioCSharpPluginProjectCreator.GetCreatorType: string;
 begin
   Result := sAssembly;
 end;
 
-procedure TJVCSMakCSharpPluginProjectCreator.NewDefaultProjectModule(const Project: IOTAProject);
+procedure TMakeStudioCSharpPluginProjectCreator.NewDefaultProjectModule(const Project: IOTAProject);
 begin
 end;
 
-function TJVCSMakCSharpPluginProjectCreator.GetProjectPersonality: string;
+function TMakeStudioCSharpPluginProjectCreator.GetProjectPersonality: string;
 begin
   Result := sCSharpPersonality;
 end;
 
-function TJVCSMakCSharpPluginModuleCreator.GetCreatorType: string;
+function TMakeStudioCSharpPluginModuleCreator.GetCreatorType: string;
 begin
   if FDFMResourceName = '' then
     Result := sClass
@@ -673,9 +673,9 @@ begin
 end;
 {$ENDIF IDE_SUPPORTS_CSHARP}
 
-{ TJVCSMakCustomPluginWizard }
+{ TMakeStudioCustomPluginWizard }
 
-constructor TJVCSMakCustomPluginWizard.Create;
+constructor TMakeStudioCustomPluginWizard.Create;
 begin
   inherited Create;
   FParameterList := TStringList.Create;
@@ -685,7 +685,7 @@ begin
   FIDPostFix := '';
 end;
 
-destructor TJVCSMakCustomPluginWizard.Destroy;
+destructor TMakeStudioCustomPluginWizard.Destroy;
 begin
   FParameterList.Free;
   FCommandoBitmap.Free;
@@ -693,7 +693,7 @@ begin
   inherited Destroy;
 end;
 
-procedure TJVCSMakCustomPluginWizard.Execute;
+procedure TMakeStudioCustomPluginWizard.Execute;
 var
   FilesPrefix: string;
 begin
@@ -706,20 +706,20 @@ begin
       if FWizardKind = wkDelphiWin32VCL then
       begin
         {$IFDEF IDE_SUPPORTS_DELPHI}
-        ProjectModule := CreateModule(TJVCSMakPluginProjectCreator.Create('JVCSMAKPLUGINSRC_DPR',
+        ProjectModule := CreateModule(TMakeStudioPluginProjectCreator.Create('MakeStudioPLUGINSRC_DPR',
           FilesPrefix + 'Plugin.dpr', FParameterList));
-        CreateModule(TJVCSMakDxWin32VCLPluginModuleCreator.Create('JVCSMAKPLUGINUNITSRC_ACTIONS',
-          'JVCSMAKPLUGINFORMSRC_ACTIONS', FilesPrefix + 'Actions.pas', FParameterList, HandleActionFormCreated));
+        CreateModule(TMakeStudioDxWin32VCLPluginModuleCreator.Create('MakeStudioPLUGINUNITSRC_ACTIONS',
+          'MakeStudioPLUGINFORMSRC_ACTIONS', FilesPrefix + 'Actions.pas', FParameterList, HandleActionFormCreated));
         if FParameterList.Values['BLOCKMENUACTION'] <> '0' then
         begin
-          CreateModule(TJVCSMakDxWin32VCLPluginModuleCreator.Create('JVCSMAKPLUGINUNITSRC_ACTIONTEST',
-            'JVCSMAKPLUGINFORMSRC_ACTIONTEST', FilesPrefix + 'Actiontest.pas', FParameterList));
+          CreateModule(TMakeStudioDxWin32VCLPluginModuleCreator.Create('MakeStudioPLUGINUNITSRC_ACTIONTEST',
+            'MakeStudioPLUGINFORMSRC_ACTIONTEST', FilesPrefix + 'Actiontest.pas', FParameterList));
         end;
-        CreateModule(TJVCSMakDxWin32VCLPluginModuleCreator.Create('JVCSMAKPLUGINUNITSRC_EDIT',
-          'JVCSMAKPLUGINFORMSRC_EDIT', FilesPrefix + 'Edit.pas', FParameterList));
-        CreateModule(TJVCSMakDxWin32VCLPluginModuleCreator.Create('JVCSMAKPLUGINSRC_MODULE', '',
+        CreateModule(TMakeStudioDxWin32VCLPluginModuleCreator.Create('MakeStudioPLUGINUNITSRC_EDIT',
+          'MakeStudioPLUGINFORMSRC_EDIT', FilesPrefix + 'Edit.pas', FParameterList));
+        CreateModule(TMakeStudioDxWin32VCLPluginModuleCreator.Create('MakeStudioPLUGINSRC_MODULE', '',
           FilesPrefix + 'Module.pas', FParameterList));
-        CreateModule(TJVCSMakDxWin32VCLPluginModuleCreator.Create('JVCSMAKPLUGINSRC_VARS', '',
+        CreateModule(TMakeStudioDxWin32VCLPluginModuleCreator.Create('MakeStudioPLUGINSRC_VARS', '',
           FilesPrefix + 'Vars.pas', FParameterList));
         {$ENDIF IDE_SUPPORTS_DELPHI}
       end
@@ -727,65 +727,65 @@ begin
       if FWizardKind = wkCSharp then
       begin
         {$IFDEF IDE_SUPPORTS_CSHARP}
-        ProjectModule := CreateModule(TJVCSMakCSharpPluginProjectCreator.Create('',
+        ProjectModule := CreateModule(TMakeStudioCSharpPluginProjectCreator.Create('',
           FilesPrefix + 'Plugin.bdsproj', FParameterList));
-        (ProjectModule as IOTAProject).AddFile('jvcsmak.dll', False);
+        (ProjectModule as IOTAProject).AddFile('MakeStudio.dll', False);
         (ProjectModule as IOTAProject).AddFile('stdole.dll', False);
         (ProjectModule as IOTAProject).AddFile('System.Data.dll', False);
         (ProjectModule as IOTAProject).AddFile('System.dll', False);
         (ProjectModule as IOTAProject).AddFile('System.Drawing.dll', False);
         (ProjectModule as IOTAProject).AddFile('System.Windows.Forms.dll', False);
         (ProjectModule as IOTAProject).AddFile('System.XML.dll', False);
-        CreateModule(TJVCSMakCSharpPluginModuleCreator.Create('JVCSMAKPLUGIN_CS_SRC_ASSEMBLYINFO',
+        CreateModule(TMakeStudioCSharpPluginModuleCreator.Create('MakeStudioPLUGIN_CS_SRC_ASSEMBLYINFO',
           '', FilesPrefix + 'AssemblyInfo.cs', FParameterList));
-        CreateModule(TJVCSMakCSharpPluginModuleCreator.Create('JVCSMAKPLUGIN_CS_SRC',
+        CreateModule(TMakeStudioCSharpPluginModuleCreator.Create('MakeStudioPLUGIN_CS_SRC',
           '', FilesPrefix + 'Plugin.cs', FParameterList));
-        CreateModule(TJVCSMakCSharpPluginModuleCreator.Create('JVCSMAKPLUGIN_CS_UNITSRC_EDIT',
-          'JVCSMAKPLUGIN_CS_FORMSRC_EDIT', FilesPrefix + 'Edit.cs', FParameterList));
-        CreateModule(TJVCSMakCSharpPluginModuleCreator.Create('JVCSMAKPLUGIN_CS_UNITSRC_ACTIONTEST',
-          'JVCSMAKPLUGIN_CS_FORMSRC_ACTIONTEST', FilesPrefix + 'ActionTest.cs', FParameterList));
+        CreateModule(TMakeStudioCSharpPluginModuleCreator.Create('MakeStudioPLUGIN_CS_UNITSRC_EDIT',
+          'MakeStudioPLUGIN_CS_FORMSRC_EDIT', FilesPrefix + 'Edit.cs', FParameterList));
+        CreateModule(TMakeStudioCSharpPluginModuleCreator.Create('MakeStudioPLUGIN_CS_UNITSRC_ACTIONTEST',
+          'MakeStudioPLUGIN_CS_FORMSRC_ACTIONTEST', FilesPrefix + 'ActionTest.cs', FParameterList));
         {$ENDIF IDE_SUPPORTS_CSHARP}
       end;
     end;
   end;
 end;
 
-function TJVCSMakCustomPluginWizard.GetAuthor: string;
+function TMakeStudioCustomPluginWizard.GetAuthor: string;
 begin
   Result := 'Uwe Schuster(jedivcs@bitcommander.de)';
 end;
 
-function TJVCSMakCustomPluginWizard.GetComment: string;
+function TMakeStudioCustomPluginWizard.GetComment: string;
 begin
   Result := 'Creates a JEDI VCS Make Plugin Project.';
 end;
 
-function TJVCSMakCustomPluginWizard.GetGlyph: {$IFDEF DELPHI6_UP}Cardinal {$ELSE}HICON {$ENDIF};
+function TMakeStudioCustomPluginWizard.GetGlyph: {$IFDEF DELPHI6_UP}Cardinal {$ELSE}HICON {$ENDIF};
 begin
   Result := LoadIcon(HInstance, 'WIZARDICON');
 end;
 
-function TJVCSMakCustomPluginWizard.GetIDString: string;
+function TMakeStudioCustomPluginWizard.GetIDString: string;
 begin
   Result := 'PROJECT JEDI.JEDI VCS Make Plugin Wizard' + FIDPostFix;
 end;
 
-function TJVCSMakCustomPluginWizard.GetName: string;
+function TMakeStudioCustomPluginWizard.GetName: string;
 begin
   Result := 'JEDI VCS Make Plugin Wizard';
 end;
 
-function TJVCSMakCustomPluginWizard.GetPage: string;
+function TMakeStudioCustomPluginWizard.GetPage: string;
 begin
   Result := 'JEDI VCS';
 end;
 
-function TJVCSMakCustomPluginWizard.GetState: TWizardState;
+function TMakeStudioCustomPluginWizard.GetState: TWizardState;
 begin
   Result := [];
 end;
 
-procedure TJVCSMakCustomPluginWizard.HandleActionFormCreated(const FormEditor: IOTAFormEditor);
+procedure TMakeStudioCustomPluginWizard.HandleActionFormCreated(const FormEditor: IOTAFormEditor);
 var
   NFormEditor: INTAFormEditor;
   ActionForm: TComponent;
@@ -813,7 +813,7 @@ begin
 end;
 
 {$IFDEF IDE_SUPPORTS_DELPHI}
-constructor TJVCSMakDxWin32VCLPluginWizard.Create;
+constructor TMakeStudioDxWin32VCLPluginWizard.Create;
 begin
   inherited Create;
   FWizardKind := wkDelphiWin32VCL;
@@ -822,19 +822,19 @@ end;
 {$ENDIF IDE_SUPPORTS_DELPHI}
 
 {$IFDEF IDE_SUPPORTS_CSHARP}
-constructor TJVCSMakCSharpPluginWizard.Create;
+constructor TMakeStudioCSharpPluginWizard.Create;
 begin
   inherited Create;
   FWizardKind := wkCSharp;
   FIDPostFix := ' (C#)';
 end;
 
-function TJVCSMakCSharpPluginWizard.GetDesigner: string;
+function TMakeStudioCSharpPluginWizard.GetDesigner: string;
 begin
   Result := dDotNet;
 end;
 
-function TJVCSMakCSharpPluginWizard.GetGalleryCategory: IOTAGalleryCategory;
+function TMakeStudioCSharpPluginWizard.GetGalleryCategory: IOTAGalleryCategory;
 var
   GalleryCategoryManager: IOTAGalleryCategoryManager;
   CSharpGalleryItem: IOTAGalleryCategory;
@@ -850,7 +850,7 @@ begin
   end;
 end;
 
-function TJVCSMakCSharpPluginWizard.GetPersonality: string;
+function TMakeStudioCSharpPluginWizard.GetPersonality: string;
 begin
   Result := sCSharpPersonality;
 end;

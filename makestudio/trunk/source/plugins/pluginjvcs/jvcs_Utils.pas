@@ -140,7 +140,7 @@ end;
 procedure GetLastUsedIdentityEx( var User, Hostname, Password:String; var Port:Integer);
 begin
   if GetLastUsedIdentity = -1 then begin
-    //read from jvcsmak key
+    //read from MakeStudio key
     Hostname := RegReadStringDef( HKCU, stdcRegKey + stdcJVCSIdentity, 'HostName', '');
     Port := RegReadIntegerDef( HKCU, stdcRegKey + stdcJVCSIdentity, 'Port', 2106);
     User := RegReadStringDef( HKCU, stdcRegKey + stdcJVCSIdentity, 'User', '');
@@ -432,7 +432,7 @@ end;
 function TJVCSHelper.ExecCmdLineInternal(const App, Args: WideString;
   Callback: TTextHandler; chr0: Char): Integer;
 begin
-  jvcsmak.LogMessage( App + ' ' + Args);
+  MakeStudio.LogMessage( App + ' ' + Args);
   Result := jvcsExecute(App + ' ' + Args, Callback, true, @Canceled, chr0);
 end;
 
@@ -626,13 +626,13 @@ begin
     try
       sl.Text := S;
       for I := 0 to sl.Count - 1 do
-        jvcsmak.LogMessage (sl[i]);
+        MakeStudio.LogMessage (sl[i]);
     finally
       sl.Free;
     end;
   end
   else
-    jvcsmak.LogMessage(Text);
+    MakeStudio.LogMessage(Text);
 end;
 
 function TJVCSHelper.ProceedInputFile( User, Host, Password:String; Port: Integer; aFilename:String):Boolean;

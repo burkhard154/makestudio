@@ -22,8 +22,8 @@ Known Issues:
 
 Unit history:
 
-2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to JVCSMAK
-2005/01/02  BSchranz  - Migration to JVCSMak with external plugins
+2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to MakeStudio
+2005/01/02  BSchranz  - Migration to MakeStudio with external plugins
 2005/02/04  USchuster - preparations for check in
 2005/02/09  BSchranz  - Added Copy, Past, Docking, Debugging
 2005/04/09  BSchranz  - Translated to englisch
@@ -77,7 +77,7 @@ resourcestring
 
   stdCmdLoadedPlugins = 'Loaded Plugins:'#10#13+
                         '-----------------' ;
-  stdCmdLineHelp = 'Syntax: jmak <Dateiname>';
+  stdCmdLineHelp = 'Syntax: ms <Dateiname>';
   stdCmdLineCopyright =
     'The contents of this file are subject to the Mozilla Public License'#10#13+
     'Version 1.1 (the "License"); you may not use this file except in compliance'#10#13+
@@ -87,15 +87,15 @@ resourcestring
   strhHelpWelcomePage = 'Welcome to optiMEAS Make Studio Help';
 
 const
-  stcJvcsMak = 'MakeStudio';
+  stcMakeStudio = 'MakeStudio';
 
   stcDefaultDesktopFile = 'ddefault.ini';
   stcRunDesktopFile = 'drun.ini';
   stcDebugDesktopFile = 'ddebug.ini';
   tvar_HelpPath = 'HelpPath';
   stHelpPath = 'Help';
-  sHHPFilename = 'jvcsmak.hhp';
-  sCHMFilename = 'jvcsmak.chm';
+  sHHPFilename = 'makestudio.hhp';
+  sCHMFilename = 'makestudio.chm';
 
 implementation
 

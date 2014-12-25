@@ -53,7 +53,7 @@ var
 
       //Create and register Callback for the command type
       PluginSynchronizeCallback := TPluginSynchronizeCallback.Create(nil);
-      jvcsmak.AddCommandType('Synchronize', '', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('Synchronize', '', stCategory, P, 'txt', -1,
         ICommandCallback(PluginSynchronizeCallback));
 **** End Sample Code  *******}
 
@@ -154,8 +154,8 @@ end;
 function TPluginSynchronize.ExecuteItem: WordBool;
 begin
   FCanceled := False;
-  jvcsmak.LogMessage(FCaption + ' ' + FTestValue);
-  jvcsmak.LogMessage('Executing Synchronize...');
+  MakeStudio.LogMessage(FCaption + ' ' + FTestValue);
+  MakeStudio.LogMessage('Executing Synchronize...');
   Result := True;
 end;
 

@@ -20,11 +20,6 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
-        <Base_Win64>true</Base_Win64>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
         <Cfg_1>true</Cfg_1>
         <CfgParent>Base</CfgParent>
@@ -49,7 +44,7 @@
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Winapi;Vcl;System.Win;$(DCC_Namespace)</DCC_Namespace>
         <DCC_UsePackage>rtl;vcl;dbrtl;vcldb;vclx;adortl;dbxcds;dbexpress;vclib;ibxpress;IntrawebDB_72_90;Intraweb_72_90;xmlrtl;vclie;inet;inetdbbde;inetdbxpress;IndySystem;IndyCore;dclOfficeXP;VclSmp;dsnap;soaprtl;IndyProtocols;inetdb;bdertl;vcldbx;webdsnap;websnap;vclactnband;vclshlctrls;dsnapcon;teeui;teedb;tee;JVCSd9;PatchPackd9;AbkStdD9;IcsDel90;AbkDBStdD9;AdditiveD9rtl;DJcl;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
-        <DCC_DcuOutput>..\..\..\dcu</DCC_DcuOutput>
+        <DCC_DcuOutput>..\..\..\lib</DCC_DcuOutput>
         <DCC_ExeOutput>..\..\..\bin</DCC_ExeOutput>
         <DCC_ImageBase>00400000</DCC_ImageBase>
         <DCC_N>true</DCC_N>
@@ -65,8 +60,6 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Debugger_HostApplication>V:\projects\jedivcs\bin\jvcsmak.exe</Debugger_HostApplication>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_Win64)'!=''">
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>

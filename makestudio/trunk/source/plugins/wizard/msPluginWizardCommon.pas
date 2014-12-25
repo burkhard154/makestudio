@@ -8,7 +8,7 @@ Software distributed under the License is distributed on an "AS IS" basis,
 WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
 the specific language governing rights and limitations under the License.
 
-The Original Code is: JVCSMakPluginWizardCommon.pas
+The Original Code is: MakeStudioPluginWizardCommon.pas
 
 The Initial Developer of the original code (JEDI VCS) is:
   Uwe Schuster (jedivcs@bitcommander.de)
@@ -27,7 +27,7 @@ Unit history:
 
 -----------------------------------------------------------------------------*)
 
-unit JVCSMakPluginWizardCommon;
+unit msPluginWizardCommon;
 
 {$I jedi.inc}
 {$I compopt.inc}
@@ -35,7 +35,7 @@ unit JVCSMakPluginWizardCommon;
 interface
 
 type
-  TJVCSMakPluginWizardKind = (wkDelphiWin32VCL, wkCSharp);
+  TMakeStudioPluginWizardKind = (wkDelphiWin32VCL, wkCSharp);
 
 const
   FilesPrefixParameterName = 'FILESPREFIX';

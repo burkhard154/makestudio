@@ -75,7 +75,6 @@
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Keys>FileVersion=1.19.5.10;ProductVersion=19.0;CompanyName=;FileDescription=;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=</VerInfo_Keys>
         <Debugger_HostApplication>V:\projekte\burkhard\jmake\bin\jvcsmak.exe</Debugger_HostApplication>
-        <Manifest_File>None</Manifest_File>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">

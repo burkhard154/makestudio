@@ -53,7 +53,7 @@ var
 
       //Create and register Callback for the command type
       PluginCreateMirrorDirectoryCallback := TPluginCreateMirrorDirectoryCallback.Create(nil);
-      jvcsmak.AddCommandType('Create Mirror Directory', '', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('Create Mirror Directory', '', stCategory, P, 'txt', -1,
         ICommandCallback(PluginCreateMirrorDirectoryCallback));
 **** End Sample Code  *******}
 
@@ -154,8 +154,8 @@ end;
 function TPluginCreateMirrorDirectory.ExecuteItem: WordBool;
 begin
   FCanceled := False;
-  jvcsmak.LogMessage(FCaption + ' ' + FTestValue);
-  jvcsmak.LogMessage('Executing Create Mirror Directory...');
+  MakeStudio.LogMessage(FCaption + ' ' + FTestValue);
+  MakeStudio.LogMessage('Executing Create Mirror Directory...');
   Result := True;
 end;
 

@@ -43,7 +43,7 @@ uses
   msTLB, PSUtils;
 
 var
-  jvcsmak: IJApplication;
+  MakeStudio: IJApplication;
   FCanceled: Boolean = False;
   PSHandler: TPSHandler = nil;
 

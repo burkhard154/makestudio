@@ -106,7 +106,7 @@ var
   regKey, sVal : string;
   reg : TRegistry;
 begin
-  regKey := jvcsmak.ApplicationRegKey+'\plugins\help_manual';
+  regKey := MakeStudio.ApplicationRegKey+'\plugins\help_manual';
   reg    := TRegistry.Create;
   try
     reg.RootKey := HKEY_CURRENT_USER;

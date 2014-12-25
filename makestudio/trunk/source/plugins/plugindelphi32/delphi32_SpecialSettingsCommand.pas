@@ -55,7 +55,7 @@ var
 
       //Create and register Callback for the command type
       PluginSpecialSettingsCallback := TPluginSpecialSettingsCallback.Create(nil);
-      jvcsmak.AddCommandType('SpecialSettings', '', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('SpecialSettings', '', stCategory, P, 'txt', -1,
         ICommandCallback(PluginSpecialSettingsCallback));
 **** End Sample Code  *******}
 
@@ -165,16 +165,16 @@ function TPluginSpecialSettings.ExecuteItem: WordBool;
 
   procedure SetVar( Varname:String; Value:String);
   begin
-    if not jvcsmak.Variables.VarExists( Varname) then
-      jvcsmak.Variables.AddVar( Varname);
-    jvcsmak.Variables.Values[ Varname] := Value;
-    jvcsmak.LogMessage( Varname + ' = "' + Value + '"');
+    if not MakeStudio.Variables.VarExists( Varname) then
+      MakeStudio.Variables.AddVar( Varname);
+    MakeStudio.Variables.Values[ Varname] := Value;
+    MakeStudio.LogMessage( Varname + ' = "' + Value + '"');
   end;
 
 begin
   Canceled := False;
-  jvcsmak.LogMessage( stdBreak);
-  jvcsmak.LogMessage( Get_Caption);
+  MakeStudio.LogMessage( stdBreak);
+  MakeStudio.LogMessage( Get_Caption);
 
   if Variable<>'' then begin
 
@@ -190,9 +190,9 @@ begin
     end;
   end
   else
-    jvcsmak.LogMessage( Format( stdSetSpecialSettingsVarError, [Get_Caption]));
+    MakeStudio.LogMessage( Format( stdSetSpecialSettingsVarError, [Get_Caption]));
 
-  jvcsmak.LogMessage( '');
+  MakeStudio.LogMessage( '');
   Result := True;
 end;
 

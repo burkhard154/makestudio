@@ -53,7 +53,7 @@ var
 
       //Create and register Callback for the command type
       PluginDelphi32CheckVersionCallback := TPluginDelphi32CheckVersionCallback.Create(nil);
-      jvcsmak.AddCommandType('Delphi32.CheckVersion', '', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('Delphi32.CheckVersion', '', stCategory, P, 'txt', -1,
         ICommandCallback(PluginDelphi32CheckVersionCallback));
 **** End Sample Code  *******}
 
@@ -169,15 +169,15 @@ end;
 function TPluginDelphi32CheckVersion.ExecuteItem: WordBool;
 begin
   Canceled := False;
-  jvcsmak.LogMessage(stdBreak);
-  jvcsmak.LogMessage(Format(stdCheckingVersion, [GetVersionTextEx(Version)]));
-  if not jvcsmak.Variables.VarExists(Variable) then
-    jvcsmak.Variables.AddVar(Variable);
-  jvcsmak.Variables.Values[Variable] := CheckDelphiVersion(Version);
+  MakeStudio.LogMessage(stdBreak);
+  MakeStudio.LogMessage(Format(stdCheckingVersion, [GetVersionTextEx(Version)]));
+  if not MakeStudio.Variables.VarExists(Variable) then
+    MakeStudio.Variables.AddVar(Variable);
+  MakeStudio.Variables.Values[Variable] := CheckDelphiVersion(Version);
 
-  jvcsmak.LogMessage(Format(stdVersionInstalled, [GetVersionTextEx(Version), BoolToStr(CheckDelphiVersion(Version), True)]));
+  MakeStudio.LogMessage(Format(stdVersionInstalled, [GetVersionTextEx(Version), BoolToStr(CheckDelphiVersion(Version), True)]));
 
-  jvcsmak.LogMessage(stdBreak);
+  MakeStudio.LogMessage(stdBreak);
   Result := True;
 end;
 

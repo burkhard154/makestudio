@@ -55,7 +55,7 @@ begin
 end;
 
 //:Indentifies this DLL-Version
-procedure JVCSMAKPlugin; stdcall;
+procedure MakeStudioPlugin; stdcall;
 begin
 end;
 
@@ -84,13 +84,13 @@ begin
 end;
 
 //:Register an initialize Plugin
-function RegisterPlugin(AJVCSMAKApp: IJApplication): Integer; stdcall;
+function RegisterPlugin(AMakeStudioApp: IJApplication): Integer; stdcall;
 var
   P: Picture;
 begin
   Result := 0;
-  jvcsmak := AJVCSMAKApp;
-  with jvcsmak do
+  MakeStudio := AMakeStudioApp;
+  with MakeStudio do
   begin
     try
       //Create form with actions and ModuleCallback
@@ -99,7 +99,7 @@ begin
 
       //add actions
       {GetPictureFromImageList(Form3.ImageList1, Form3.acTestaction1.ImageIndex, p);
-      jvcsmak.AddMenuAction(Form3.acTestaction1.Name,
+      MakeStudio.AddMenuAction(Form3.acTestaction1.Name,
                              Form3.acTestaction1.Caption,
                              Form3.acTestaction1.Hint,
                              p,
@@ -112,15 +112,15 @@ begin
       //no compatibility - module did not exist before
       //Callback for the Moduletype
       EasyBackupCommandCallback := TEasyBackupCommandCallback.Create(nil);
-      jvcsmak.AddCommandType(stdEasyBackupCaption, '', stdCategory, P, '.wse',
+      MakeStudio.AddCommandType(stdEasyBackupCaption, '', stdCategory, P, '.wse',
                              -1, ICommandCallback(EasyBackupCommandCallback));
 
 
       //Credits
-      jvcsmak.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
+      MakeStudio.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
 
       //Additional Info
-      //jvcsmak.AddAdditionalInfo(struPluginHint);
+      //MakeStudio.AddAdditionalInfo(struPluginHint);
 
     except
     end;
@@ -167,7 +167,7 @@ exports
   GetMajorVersion,
   AfterAllPluginsLoaded,
   GetOptionsPageGUID,
-  JVCSMAKPlugin;
+  MakeStudioPlugin;
 
 begin
 end.

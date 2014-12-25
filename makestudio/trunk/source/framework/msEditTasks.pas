@@ -23,7 +23,7 @@ Known Issues:
 
 Unit history:
 
-2005/01/23  BSchranz  - Migration to JVCSMak with external plugins
+2005/01/23  BSchranz  - Migration to MakeStudio with external plugins
 2005/02/04  USchuster - preparations for check in
 2005/04/09  BSchranz  - Translated to englisch
 

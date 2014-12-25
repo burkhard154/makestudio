@@ -8,7 +8,7 @@ Software distributed under the License is distributed on an "AS IS" basis,
 WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
 the specific language governing rights and limitations under the License.
 
-The Original Code is: jvcsmakplugintemplate.dpr
+The Original Code is: MakeStudioplugintemplate.dpr
 
 The Initial Developer of the original code (JEDI VCS) is:
   Burkhard Schranz (burkhard.schranz@optimeas.de)
@@ -32,7 +32,7 @@ library jedimakeplugin_Example_D7;
 uses
   SysUtils,
   Classes,
-  jvcsmak_TLB,
+  MakeStudio_TLB,
   ComServ,
   Forms,
   ActiveX,
@@ -52,7 +52,7 @@ begin
 end;
 
 //:Indentifies this DLL-Version
-procedure JVCSMAKPlugin; stdcall;
+procedure MakeStudioPlugin; stdcall;
 begin
 end;
 
@@ -81,13 +81,13 @@ begin
 end;
 
 //:Register an initialize Plugin
-function RegisterPlugin(AJVCSMAKApp: IJApplication): Integer; stdcall;
+function RegisterPlugin(AMakeStudioApp: IJApplication): Integer; stdcall;
 var
  P: Picture;
 begin
   Result := 0;
-  jvcsmak := AJVCSMAKApp;
-  with jvcsmak do
+  MakeStudio := AMakeStudioApp;
+  with MakeStudio do
   begin
     try
       //Create form with actions and ModuleCallback
@@ -98,7 +98,7 @@ begin
       //if the Caption has "\" - the action is assigned to this main menu path!
       //e.g. 'Testmenu\test\'+FormActions.acTestaction1.Caption...
       //if not, the action is assigned to the "extras" menu item
-      jvcsmak.AddMenuAction(FormActions.acTestactionD7.Name,
+      MakeStudio.AddMenuAction(FormActions.acTestactionD7.Name,
                              'Examples\' + FormActions.acTestactionD7.Caption,
                              FormActions.acTestactionD7.Hint,
                              P,
@@ -110,16 +110,16 @@ begin
       //Extension=txt (could be more than one extension - separated by ;)
       //no compatibility - module did not exist before
       //Callback for the Moduletype
-      jvcsmak.LogMessage(Application.Exename);
+      MakeStudio.LogMessage(Application.Exename);
       PluginExample_commandCallback := TPluginExample_commandCallback.Create(nil);
-      jvcsmak.AddCommandType(stSampleCommandCaption, '', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType(stSampleCommandCaption, '', stCategory, P, 'txt', -1,
         ICommandCallback(PluginExample_commandCallback));
 
       //Credits
-      jvcsmak.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
+      MakeStudio.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
 
       //Additional Info
-      jvcsmak.AddAdditionalInfo(struPluginHint);
+      MakeStudio.AddAdditionalInfo(struPluginHint);
     except
     end;
   end;
@@ -167,7 +167,7 @@ exports
   GetMajorVersion,
   AfterAllPluginsLoaded,
   GetOptionsPageGUID,
-  JVCSMAKPlugin;
+  MakeStudioPlugin;
 
 begin
 end.

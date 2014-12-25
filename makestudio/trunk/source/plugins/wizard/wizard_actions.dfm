@@ -2,8 +2,8 @@ object Form3: TForm3
   Left = 700
   Top = 181
   Caption = 'Form3'
-  ClientHeight = 163
-  ClientWidth = 230
+  ClientHeight = 201
+  ClientWidth = 283
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -12,7 +12,7 @@ object Form3: TForm3
   Font.Style = []
   OldCreateOrder = False
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 16
   object ActionList1: TActionList
     Images = ImageList1
     Left = 48
@@ -62,10 +62,10 @@ object Form3: TForm3
     end
   end
   object ImageList1: TImageList
-    Left = 88
+    Left = 120
     Top = 24
     Bitmap = {
-      494C0101030009003C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000900440010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       000000000000000000000000000000000000FF00FF00FF00FF00002060000080
       800040608000FF00FF00FF00FF00406060000020600000204000002060004020

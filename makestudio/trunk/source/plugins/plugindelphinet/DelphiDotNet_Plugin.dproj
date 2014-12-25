@@ -44,13 +44,13 @@
         <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;System.Win;Winapi;$(DCC_Namespace)</DCC_Namespace>
         <DCC_ImageBase>00400000</DCC_ImageBase>
         <DCC_S>false</DCC_S>
-        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <Manifest_File>None</Manifest_File>
         <DCC_UsePackage>rtl;vcl;dbrtl;vcldb;vclx;adortl;dbxcds;dbexpress;vclib;ibxpress;IntrawebDB_72_90;Intraweb_72_90;xmlrtl;vclie;inet;inetdbbde;inetdbxpress;IndySystem;IndyCore;dclOfficeXP;VclSmp;dsnap;soaprtl;IndyProtocols;inetdb;bdertl;vcldbx;webdsnap;websnap;vclactnband;vclshlctrls;dsnapcon;teeui;teedb;tee;JVCSd9;PatchPackd9;AbkStdD9;IcsDel90;AbkDBStdD9;AdditiveD9rtl;DJcl;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_DebugInformation>true</DCC_DebugInformation>
         <DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
         <DCC_N>true</DCC_N>
         <DCC_F>false</DCC_F>
-        <DCC_DcuOutput>..\..\..\dcu</DCC_DcuOutput>
+        <DCC_DcuOutput>..\..\..\lib</DCC_DcuOutput>
         <DCC_K>false</DCC_K>
         <VerInfo_Locale>1031</VerInfo_Locale>
         <DCC_ExeOutput>..\..\..\bin</DCC_ExeOutput>

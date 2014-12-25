@@ -29,7 +29,7 @@ Unit history:
 
 -----------------------------------------------------------------------------*)
 
-library wise_JVCSMakPlugin;
+library wise_MakeStudioPlugin;
 
 {$I jedi.inc}
 
@@ -53,7 +53,7 @@ begin
 end;               
 
 //:Indentifies this DLL-Version
-procedure JVCSMAKPlugin; stdcall;
+procedure MakeStudioPlugin; stdcall;
 begin
 end;
 
@@ -82,13 +82,13 @@ begin
 end;
 
 //:Register an initialize Plugin
-function RegisterPlugin(AJVCSMAKApp: IJApplication): Integer; stdcall;
+function RegisterPlugin(AMakeStudioApp: IJApplication): Integer; stdcall;
 var
   P: Picture;
 begin
   Result := 0;
-  jvcsmak := AJVCSMAKApp;
-  with jvcsmak do
+  MakeStudio := AMakeStudioApp;
+  with MakeStudio do
   begin
     try
       //Create form with actions and ModuleCallback
@@ -97,7 +97,7 @@ begin
 
       //add actions
       {GetPictureFromImageList(Form3.ImageList1, Form3.acTestaction1.ImageIndex, P);
-      jvcsmak.AddMenuAction(Form3.acTestaction1.Name,
+      MakeStudio.AddMenuAction(Form3.acTestaction1.Name,
                              Form3.acTestaction1.Caption,
                              Form3.acTestaction1.Hint,
                              P,
@@ -114,20 +114,20 @@ dmmtJVCSSync=3, dmmtPassolo=4, dmmtWise=5, dmmtMkdir=6);
       //compatibility - 5
       //Callback for the Moduletype
       WiseCommandCallback := TWiseCommandCallback.Create(nil);
-      jvcsmak.AddCommandType(stdWiseCaption, '', stdCategory, P, '.wse',
+      MakeStudio.AddCommandType(stdWiseCaption, '', stdCategory, P, '.wse',
                              5, ICommandCallback(WiseCommandCallback));
 
       //Variables
-      jvcsmak.Variables.AddVar('wise_fVersion');
-      jvcsmak.Variables.Values['wise_fVersion'] := stdcFVersion;
-      jvcsmak.Variables.AddVar('wise_lVersion');
-      jvcsmak.Variables.Values['wise_lVersion'] := stdcLVersion;
+      MakeStudio.Variables.AddVar('wise_fVersion');
+      MakeStudio.Variables.Values['wise_fVersion'] := stdcFVersion;
+      MakeStudio.Variables.AddVar('wise_lVersion');
+      MakeStudio.Variables.Values['wise_lVersion'] := stdcLVersion;
 
       //Credits
-      jvcsmak.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
+      MakeStudio.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
 
       //Additional Info
-      //jvcsmak.AddAdditionalInfo(struPluginHint);
+      //MakeStudio.AddAdditionalInfo(struPluginHint);
     except
     end;
   end;
@@ -173,7 +173,7 @@ exports
   GetMajorVersion,
   AfterAllPluginsLoaded,
   GetOptionsPageGUID,
-  JVCSMAKPlugin;
+  MakeStudioPlugin;
 
 begin
 end.

@@ -23,7 +23,7 @@ Known Issues:
 
 Unit history:                                                                                    }
 
-2005/01/02  BSchranz  - Migration to JVCSMak with external plugins
+2005/01/02  BSchranz  - Migration to MakeStudio with external plugins
 2005/02/04  USchuster - preparations for check in
 2005/02/19  USchuster - changes for commandline version
 2005/06/26  USchuster - changes to support EMakeKind <> mkGUI
@@ -46,7 +46,7 @@ uses
 
 //Global vars
 var
-  PluginHandler: TJVCSMAKPluginHandler; //Pluginhandler
+  PluginHandler: TMakeStudioPluginHandler; //Pluginhandler
   Actionhandler: TJVCSActionhandler;
   Programhandler: TProgram;
   Varhandler: TxVarHandler; //handles variables
@@ -68,7 +68,7 @@ uses
 
 procedure InitGlobals(AMakeKind: EMakeKind = mkGUI);
 begin
-  PluginHandler := TJVCSMAKPluginHandler.Create(AMakeKind);
+  PluginHandler := TMakeStudioPluginHandler.Create(AMakeKind);
   Programhandler := TProgram.Create;
   Programhandler.RootProgram := Programhandler;
   Varhandler := TxVarHandler.Create(nil);

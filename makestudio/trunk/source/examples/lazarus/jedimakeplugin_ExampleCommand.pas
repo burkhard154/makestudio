@@ -38,7 +38,7 @@ unit jedimakeplugin_ExampleCommand;
 interface
 
 uses
-  ComObj, ActiveX, StdVCL, Graphics, jvcsmak_TLB_Lazarus,
+  ComObj, ActiveX, StdVCL, Graphics, MakeStudio_TLB_Lazarus,
   Classes, Windows, Dialogs, Controls, SysUtils;
 
 {**** Sample Code to register this command *******
@@ -53,7 +53,7 @@ var
 
       //Create and register Callback for the command type
       PluginExample_commandCallback := TPluginExample_commandCallback.Create(nil);
-      jvcsmak.AddCommandType('Example_command', '', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('Example_command', '', stCategory, P, 'txt', -1,
         ICommandCallback(PluginExample_commandCallback));
 **** End Sample Code  *******}
 
@@ -154,8 +154,8 @@ end;
 function TPluginExample_command.ExecuteItem: WordBool;
 begin
   FCanceled := False;
-  jvcsmak.LogMessage(FCaption + ' ' + FTestValue);
-  jvcsmak.LogMessage('Executing Example_command...');
+  MakeStudio.LogMessage(FCaption + ' ' + FTestValue);
+  MakeStudio.LogMessage('Executing Example_command...');
   Result := True;
 end;
 

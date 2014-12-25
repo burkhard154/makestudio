@@ -8,7 +8,7 @@ Software distributed under the License is distributed on an "AS IS" basis,
 WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
 the specific language governing rights and limitations under the License.
 
-The Original Code is: dialogs_JVCSMakPlugin.dpr
+The Original Code is: dialogs_MakeStudioPlugin.dpr
 
 The Initial Developer of the original code (JEDI VCS) is:
   Jeremy Dünow (jeremy.duenow@optimeas.de)
@@ -55,7 +55,7 @@ begin
 end;
 
 //:Indentifies this DLL-Version
-procedure JVCSMAKPlugin; stdcall;
+procedure MakeStudioPlugin; stdcall;
 begin
 end;
 
@@ -84,32 +84,32 @@ begin
 end;
 
 //:Register an initialize Plugin
-function RegisterPlugin(AJVCSMAKApp: IJApplication): Integer; stdcall;
+function RegisterPlugin(AMakeStudioApp: IJApplication): Integer; stdcall;
 var
   P: Picture;
 begin
   Result := 0;
-  jvcsmak := AJVCSMAKApp;
-  with jvcsmak do begin
+  MakeStudio := AMakeStudioApp;
+  with MakeStudio do begin
     try
       //Create form with actions and ModuleCallback
       Form3 := TForm3.Create(nil);
 
       GetPictureFromImageList(Form3.ImageList1, 2, P);
       MsgBoxCommandCallback := TMsgBoxCommandCallback.Create(nil);
-      jvcsmak.AddCommandType(stdMsgBoxCaption, '', stdCategory, P, '',
+      MakeStudio.AddCommandType(stdMsgBoxCaption, '', stdCategory, P, '',
                              0, ICommandCallback(MsgBoxCommandCallback));
 
       GetPictureFromImageList(Form3.ImageList1, 3, P);
       InputBoxCommandCallback := TInputBoxCommandCallback.Create(nil);
-      jvcsmak.AddCommandType(stdInputBoxCaption, '', stdCategory, P, '',
+      MakeStudio.AddCommandType(stdInputBoxCaption, '', stdCategory, P, '',
                              0, ICommandCallback(InputBoxCommandCallback));
 
       //Credits
-      jvcsmak.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
+      MakeStudio.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
 
       //Additional Info
-      //jvcsmak.AddAdditionalInfo(struPluginHint);
+      //MakeStudio.AddAdditionalInfo(struPluginHint);
     except
     end;
   end;
@@ -156,7 +156,7 @@ exports
   GetMajorVersion,
   AfterAllPluginsLoaded,
   GetOptionsPageGUID,
-  JVCSMAKPlugin;
+  MakeStudioPlugin;
 
 begin
 

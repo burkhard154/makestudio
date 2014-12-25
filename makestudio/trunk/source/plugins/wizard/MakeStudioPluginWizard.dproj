@@ -42,7 +42,7 @@
         <Manifest_File>None</Manifest_File>
         <VerInfo_DLL>true</VerInfo_DLL>
         <VerInfo_Locale>1031</VerInfo_Locale>
-        <DCC_DcuOutput>..\..\..\dcu</DCC_DcuOutput>
+        <DCC_DcuOutput>..\..\..\lib</DCC_DcuOutput>
         <DCC_DependencyCheckOutputName>..\..\bin\JVCSMakPluginWizard.dll</DCC_DependencyCheckOutputName>
         <DCC_ImageBase>00400000</DCC_ImageBase>
         <DCC_MapFile>3</DCC_MapFile>
@@ -61,7 +61,7 @@
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <Debugger_HostApplication>C:\Program Files (x86)\Embarcadero\RAD Studio\8.0\bin\bds.exe</Debugger_HostApplication>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_Namespace>Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
     </PropertyGroup>
@@ -75,7 +75,7 @@
         <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
-        <Manifest_File>None</Manifest_File>
+        <DCC_DcuOutput>..\..\..\lib</DCC_DcuOutput>
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
@@ -84,13 +84,13 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="JVCSMakPluginWizardOptions.pas">
-            <Form>JVCSMakePluginWizardOptionsForm</Form>
+        <DCCReference Include="msPluginWizardOptions.pas">
+            <Form>msPluginWizardOptionsForm</Form>
         </DCCReference>
-        <DCCReference Include="JVCSMakPluginWizardCommon.pas"/>
-        <DCCReference Include="JVCSMakPluginWizardMain.pas"/>
-        <DCCReference Include="JVCSMakPluginWizardNewCommandOptions.pas">
-            <Form>JVCSMakePluginWizardNewCommandForm</Form>
+        <DCCReference Include="msPluginWizardCommon.pas"/>
+        <DCCReference Include="MakeStudioPluginWizardMain.pas"/>
+        <DCCReference Include="msPluginWizardNewCommandOptions.pas">
+            <Form>msPluginWizardNewCommandForm</Form>
         </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>

@@ -78,8 +78,8 @@ end;
 procedure TFormEditDelphi32CheckVersionParams.FormCreate(Sender: TObject);
 var i:Integer;
 begin
-  for i:=0 to jvcsmak.Variables.Count-1 do begin
-    cbVar.Items.Add( jvcsmak.Variables.Names[i]);
+  for i:=0 to MakeStudio.Variables.Count-1 do begin
+    cbVar.Items.Add( MakeStudio.Variables.Names[i]);
   end;
 end;
 
