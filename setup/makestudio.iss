@@ -60,38 +60,54 @@ Name: desktopicon; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:Ad
 Name: quicklaunchicon; Description: {cm:CreateQuickLaunchIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
 
 [Files]
-Source: ..\bin\Jvcsmak.exe; DestDir: {app}; Components: GUI; Flags: ignoreversion overwritereadonly
-Source: ..\bin\Jvcsmak.dll; DestDir: {app}; Components: GUI; Flags: ignoreversion overwritereadonly
+Source: "..\bin\Jvcsmak.exe"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\bin\Jvcsmak.dll"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: GUI
 ;Source: ..\bin\Jmak.exe; DestDir: {app}; Components: GUI; Flags: ignoreversion overwritereadonly
-Source: ..\bin\Jvcsmak.kwd; DestDir: {app}; Components: GUI; Flags: ignoreversion overwritereadonly
-Source: ..\bin\jvcs_JVCSMakPlugin.jpl; DestDir: {app}; Components: PLGJVCS; Flags: ignoreversion overwritereadonly
-Source: ..\bin\delphi32_JVCSMakPlugin.jpl; DestDir: {app}; Components: PLGDELPHI32; Flags: ignoreversion overwritereadonly
-Source: ..\bin\EasyBackup_JVCSMakPlugin.jpl; DestDir: {app}; Components: PLGEASYBACKUP; Flags: ignoreversion overwritereadonly
-Source: ..\bin\utils_JVCSMakPlugin.jpl; DestDir: {app}; Components: PLGUTILS; Flags: ignoreversion overwritereadonly
-Source: ..\bin\passolo_JVCSMakPlugin.jpl; DestDir: {app}; Components: PLGPASSOLO; Flags: ignoreversion overwritereadonly
-Source: ..\bin\wise_JVCSMakPlugin.jpl; DestDir: {app}; Components: PLGWISE; Flags: ignoreversion overwritereadonly
-Source: ..\bin\dialogs_JVCSMakPlugin.jpl; DestDir: {app}; Components: PLGDIALOGS; Flags: ignoreversion overwritereadonly
-Source: ..\bin\helpandmanual_JVCSMakPlugin.jpl; DestDir: {app}; Components: PLGHELPMAN; Flags: ignoreversion overwritereadonly
-Source: ..\bin\resources_JVCSMakPlugin.jpl; DestDir: {app}; Components: PLGRESOURCE; Flags: ignoreversion overwritereadonly
-Source: ..\bin\innosetup_JMakPlugin.jpl; DestDir: {app}; Components: PLGINNOSETUP; Flags: ignoreversion overwritereadonly
-Source: ..\bin\zip_JMakPlugin.jpl; DestDir: {app}; Components: PLGZIP; Flags: ignoreversion overwritereadonly
-Source: ..\plugins\pluginzip\Dll\DelZip179.dll; DestDir: {app}; Components: PLGZIP; Flags: ignoreversion overwritereadonly
-Source: ..\bin\nsis_JMakPlugin.jpl; DestDir: {app}; Components: PLGNSIS; Flags: ignoreversion overwritereadonly
-Source: ..\bin\pscript_JMakPlugin.jpl; DestDir: {app}; Components: PLGPSCRIPT; Flags: ignoreversion overwritereadonly
-Source: ..\bin\codewizard.jpl; DestDir: {app}; Components: PLGWIZARD; Flags: ignoreversion overwritereadonly
-Source: ..\Doc\How to Create a JVCSMAK Plugin.rtf; DestDir: {app}; Components: PLGTEMPLATE; Flags: ignoreversion overwritereadonly
-Source: ..\Jvcsmak_TLB.pas; DestDir: {app}\Source\Lib; Components: PLGTEMPLATE; Flags: ignoreversion overwritereadonly
-Source: ..\bin\CodeTemplate\*.*; DestDir: {app}\CodeTemplate; Components: PLGPSCRIPT; Flags: ignoreversion overwritereadonly
+Source: "..\bin\Jvcsmak.kwd"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\bin\jvcs_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGJVCS
+Source: "..\bin\delphi32_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGDELPHI32
+Source: "..\bin\EasyBackup_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGEASYBACKUP
+Source: "..\bin\utils_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGUTILS
+Source: "..\bin\passolo_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGPASSOLO
+Source: "..\bin\wise_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGWISE
+Source: "..\bin\dialogs_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGDIALOGS
+Source: "..\bin\helpandmanual_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGHELPMAN
+Source: "..\bin\resources_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGRESOURCE
+Source: "..\bin\innosetup_JMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGINNOSETUP
+Source: "..\bin\zip_JMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGZIP
+Source: "..\plugins\pluginzip\Dll\DelZip179.dll"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGZIP
+Source: "..\bin\nsis_JMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGNSIS
+Source: "..\bin\pscript_JMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGPSCRIPT
+Source: "..\bin\codewizard.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGWIZARD
+Source: "..\Doc\How to Create a JVCSMAK Plugin.rtf"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGTEMPLATE
+Source: "..\Jvcsmak_TLB.pas"; DestDir: "{app}\Source\Lib"; Flags: ignoreversion overwritereadonly; Components: PLGTEMPLATE
+Source: "..\bin\CodeTemplate\*.*"; DestDir: "{app}\CodeTemplate"; Flags: ignoreversion overwritereadonly; Components: PLGPSCRIPT
 ;Basic Help Files
-Source: ..\doc\help\jvcsmak\startup\jvcsmak.hhp; DestDir: {app}\help; Components: GUI; Flags: ignoreversion overwritereadonly
-Source: ..\doc\help\jvcsmak\startup\jvcsmak.hhc; DestDir: {app}\help; Components: GUI; Flags: ignoreversion overwritereadonly
-Source: ..\doc\help\jvcsmak\startup\jvcsmak.hhk; DestDir: {app}\help; Components: GUI; Flags: ignoreversion overwritereadonly
-Source: ..\doc\help\jvcsmak\startup\jvcsmak.htm; DestDir: {app}\help; Components: GUI; Flags: ignoreversion overwritereadonly
-Source: ..\doc\help\jvcsmak\startup\mainform.jpg; DestDir: {app}\help; Components: GUI; Flags: ignoreversion overwritereadonly
+Source: "..\doc\help\jvcsmak\startup\jvcsmak.hhp"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\doc\help\jvcsmak\startup\jvcsmak.hhc"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\doc\help\jvcsmak\startup\jvcsmak.hhk"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\doc\help\jvcsmak\startup\jvcsmak.htm"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\doc\help\jvcsmak\startup\mainform.jpg"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
 ;Source: ..\doc\history\History.chm; DestDir: {commonprograms}\MakeStudio\Help; Components: GUI; AfterInstall: CreateMergedHelpFileChapter( ExpandConstant('{app}\Help\History.chm'), 'Jedi Make History', 'History.hhk'); Flags: ignoreversion overwritereadonly
-Source: ..\doc\help\jvcsmak\Jedimakemain.chm; DestDir: {app}\Help; Components: GUI; Flags: ignoreversion overwritereadonly
-
-
+Source: "..\doc\help\jvcsmak\Jedimakemain.chm"; DestDir: "{app}\Help"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "V:\public\makestudio\trunk\bin\pscript_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\resources_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\utils_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\zip_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\makestudio.kwd"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\makestudio.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\ms.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\MakeStudioPluginWizard.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\delphi32_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\DelphiDotNet_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\dialogs_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\EasyBackup_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\helpandmanual_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\helpandmanual_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\innosetup_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\jvcs_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\nsis_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
+Source: "V:\public\makestudio\trunk\bin\passolo_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: {group}\Jedi Make; Filename: {app}\Jvcsmak.exe
