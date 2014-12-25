@@ -1,0 +1,23 @@
+[OPTIONS]
+Auto Index=Yes
+Compatibility=1.1 or later
+Compiled file=makestudio.chm
+Contents file=makestudio.hhc
+Default Window=TP
+Default topic=makestudio.htm
+Display compile progress=Yes
+Error log file=_errorlog.txt
+Full-text search=Yes
+Index file=makestudio.hhk
+Language=0x409 Englisch (USA)
+Title=Jedi Make Help
+
+[WINDOWS]
+TP=,"makestudio.HHC","makestudio.HHK","makestudio.htm","makestudio.htm",,,,,0x63520,222,0x304e,[0,0,879,615],0xb0000,,,,,,0
+
+
+[FILES]
+makestudio.htm
+
+[INFOTYPES]
+

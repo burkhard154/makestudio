@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Introduction</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Introduction</text></para>
+    </header>
+    <para styleclass="Body Text" style="text-align:left; margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Body Text" style="font-size:10pt; font-weight:bold;" translate="true">What is MakeStudio?</text></para>
+    <para styleclass="Body Text" style="text-align:left; margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Body Text" style="font-size:10pt; font-weight:normal;" translate="true">MakeStudio is a is a tool that enables developers and build masters to create an automated build, deploying software, compiling and installing developer components. Its essential power is the speed of creating build processes.</text></para>
+    <para styleclass="Body Text" style="text-align:left; margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+    <para styleclass="Body Text" style="text-align:left; margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Body Text" style="font-size:10pt; font-weight:normal;" translate="true">All Build commands are placed in external plugins which could be written either in any Win32 or .NET language. The interface to create your own plugins is fully documented and opensource.</text></para>
+    <para styleclass="Body Text" style="text-align:left; margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+    <para styleclass="Body Text" style="text-align:left; margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Body Text" style="font-size:10pt; font-weight:bold;" translate="true">What are the differences to other Build tools?</text></para>
+    <para styleclass="Body Text" style="text-align:left; margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Body Text" style="font-size:10pt; font-weight:normal;" translate="true">MakeStudio is especially designed to increase the speed in creating build processes and installing whole development environments on new PC&apos;s including programming components.</text></para>
+    <para styleclass="Body Text" style="text-align:left; margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Body Text" style="font-size:10pt; font-weight:normal;" translate="true">You simply drop files from the explorer window into the MakeStudio editor and MakeStudio selects the best action by itself.</text></para>
+    <para styleclass="Body Text" style="text-align:left; margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Body Text" style="font-size:10pt; font-weight:normal;" translate="true">Another outstanding feature are the process control structures like if, while or loop. With these control commands it is possible to create more flexible build, compile and installation sequences.</text></para>
+    <para styleclass="Body Text" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt; font-weight:bold;" translate="true">Current members of the development team are:</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">Uwe Schuster</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">Burkhard Schranz</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">Burkhard Schranz, 2006/04/05</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><link displaytype="text" defaultstyle="true" type="weblink" href="<%LINK_CAPTION%>" target="_blank" styleclass="Normal" style="font-size:10pt;" translate="true">mailto:info@burkhardschranz.de</link></para>
+    <para styleclass="Normal"></para>
+  </body>
+</topic>
