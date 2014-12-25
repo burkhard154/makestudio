@@ -54,7 +54,7 @@ var
 
       //Create and register Callback for the command type
       PluginNSISProjectCallback := TPluginNSISProjectCallback.Create(nil);
-      jvcsmak.AddCommandType('Inno Setup Project', '', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('Inno Setup Project', '', stCategory, P, 'txt', -1,
         ICommandCallback(PluginNSISProjectCallback));
 **** End Sample Code  *******}
 
@@ -188,34 +188,34 @@ var
 begin
   FCanceled := False;
   Result := False;
-  jvcsmak.LogMessage('*********************************************************');
-  jvcsmak.LogMessage(strExecutingProject);
-  jvcsmak.LogMessage(FProjectFile);
-  jvcsmak.LogMessage('');
+  MakeStudio.LogMessage('*********************************************************');
+  MakeStudio.LogMessage(strExecutingProject);
+  MakeStudio.LogMessage(FProjectFile);
+  MakeStudio.LogMessage('');
 
   //build command line
-  S := '"'+ jvcsmak.Variables.ReplaceVarsInString(FProjectFile) +'"';
+  S := '"'+ MakeStudio.Variables.ReplaceVarsInString(FProjectFile) +'"';
 {  if FOutputFile <> '' then
   begin
-    s1 := jvcsmak.Variables.ReplaceVarsInString(FOutputFile);
+    s1 := MakeStudio.Variables.ReplaceVarsInString(FOutputFile);
     S := S + ' "/f' + ExtractFileName(s1) + '"' + ' "/o' +
          ExtractFilePath(s1) + '"';
     ForceDirectories(ExtractFilePath(s1));
   end;
   if FOptions <> '' then
-    S := S + ' ' + jvcsmak.Variables.ReplaceVarsInString(FOptions);}
+    S := S + ' ' + MakeStudio.Variables.ReplaceVarsInString(FOptions);}
 
   if FileExists(GetNSISCompiler) then
   begin
     Self.GetInterface(IExecCallback, CallbackIntf);
-    Result := jvcsmak.ExecCmdLine(GetNSISCompiler, S,
+    Result := MakeStudio.ExecCmdLine(GetNSISCompiler, S,
               ExtractFilePath(GetNSISCompiler), CallbackIntf) = 0;
 
 
     if Result then begin
       if FOutputFile <> '' then begin
-        s1 := ChangeFileExt( jvcsmak.Variables.ReplaceVarsInString(FOutputFile), '.exe');
-        s2 := ChangeFileExt( jvcsmak.Variables.ReplaceVarsInString(FProjectFile), '.exe');
+        s1 := ChangeFileExt( MakeStudio.Variables.ReplaceVarsInString(FOutputFile), '.exe');
+        s2 := ChangeFileExt( MakeStudio.Variables.ReplaceVarsInString(FProjectFile), '.exe');
         if not SameText( s1, s2) then begin
           if FileExists( s1) then begin
             FileSetAttr( s1, faArchive);
@@ -229,7 +229,7 @@ begin
     end;
   end
   else
-    jvcsmak.LogMessage(strErrorCompilerNotFound);
+    MakeStudio.LogMessage(strErrorCompilerNotFound);
 end;
 
 function TPluginNSISProject.MeasureItem(Handle: Integer; BriefView: WordBool): Integer;
@@ -322,7 +322,7 @@ procedure TPluginNSISProject.CaptureOutput(const Line: WideString;
   var Aborted: WordBool);
 begin
   Aborted := FCanceled;
-  jvcsmak.LogMessage(Line);
+  MakeStudio.LogMessage(Line);
 end;
 
 end.

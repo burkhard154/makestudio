@@ -1,6 +1,10 @@
-JVCSMAKPLUGIN_CS_SRC_ASSEMBLYINFO RCDATA template_cs_AssemblyInfo.cs
-JVCSMAKPLUGIN_CS_SRC RCDATA template_cs_Plugin.cs
-JVCSMAKPLUGIN_CS_UNITSRC_EDIT RCDATA template_cs_Edit.cs
-JVCSMAKPLUGIN_CS_FORMSRC_EDIT RCDATA template_cs_Edit.resx
-JVCSMAKPLUGIN_CS_UNITSRC_ACTIONTEST RCDATA template_cs_ActionTest.cs
-JVCSMAKPLUGIN_CS_FORMSRC_ACTIONTEST RCDATA template_cs_ActionTest.resx
+CS_ASSEMBLYINFO RCDATA template_cs_AssemblyInfo.cs
+CS_PUGIN RCDATA template_cs_Plugin.cs
+CSPROJ_PUGIN RCDATA template_cs_Plugin.csproj
+CS_COMMAND RCDATA template_cs_command.cs
+CS_EDIT RCDATA template_cs_Edit.cs
+RESX_EDIT RCDATA template_cs_Edit.resx
+CS_ACTIONS RCDATA template_cs_Actions.cs
+RESX_ACTIONS RCDATA template_cs_Actions.resx
+CS_ACTIONTEST RCDATA template_cs_ActionTest.cs
+RESX_ACTIONTEST RCDATA template_cs_ActionTest.resx

@@ -37,7 +37,7 @@ uses
   msTLB, Windows, Dialogs;
 
 var
-  jvcsmak: IJApplication;
+  MakeStudio: IJApplication;
   Canceled: Boolean = False;
 
 resourcestring

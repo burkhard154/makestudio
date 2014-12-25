@@ -1,10 +1,10 @@
-object JVCSMakePluginWizardNewCommandForm: TJVCSMakePluginWizardNewCommandForm
+object msPluginWizardNewCommandForm: TmsPluginWizardNewCommandForm
   Left = 192
   Top = 107
   BorderStyle = bsDialog
-  Caption = 'JEDI Make New Command Wizard'
-  ClientHeight = 323
-  ClientWidth = 404
+  Caption = 'MakeStudio New Command Wizard'
+  ClientHeight = 398
+  ClientWidth = 497
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,12 +15,16 @@ object JVCSMakePluginWizardNewCommandForm: TJVCSMakePluginWizardNewCommandForm
   Position = poScreenCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 16
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 404
-    Height = 103
+    Width = 497
+    Height = 127
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     BevelOuter = bvNone
     BorderWidth = 4
@@ -28,32 +32,47 @@ object JVCSMakePluginWizardNewCommandForm: TJVCSMakePluginWizardNewCommandForm
     object GroupBox1: TGroupBox
       Left = 4
       Top = 4
-      Width = 396
-      Height = 95
+      Width = 489
+      Height = 119
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alClient
       Caption = 'Common'
       TabOrder = 0
-      ExplicitHeight = 59
       object Label1: TLabel
-        Left = 16
-        Top = 59
-        Width = 43
-        Height = 13
+        Left = 20
+        Top = 73
+        Width = 53
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Plugin ID'
       end
       object cbAddMPLHeader: TCheckBox
-        Left = 16
-        Top = 24
-        Width = 209
-        Height = 17
+        Left = 20
+        Top = 30
+        Width = 257
+        Height = 20
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Add MPL Header to source'
         TabOrder = 0
       end
       object edFilesPrefix: TEdit
-        Left = 112
-        Top = 56
-        Width = 249
-        Height = 21
+        Left = 138
+        Top = 69
+        Width = 306
+        Height = 24
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         TabOrder = 1
         Text = 'myPlugin'
       end
@@ -61,90 +80,131 @@ object JVCSMakePluginWizardNewCommandForm: TJVCSMakePluginWizardNewCommandForm
   end
   object Panel4: TPanel
     Left = 0
-    Top = 103
-    Width = 404
-    Height = 177
+    Top = 127
+    Width = 497
+    Height = 218
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Align = alTop
     BevelOuter = bvNone
     BorderWidth = 4
     TabOrder = 1
-    ExplicitLeft = 8
-    ExplicitTop = 67
     object GroupBox3: TGroupBox
       Left = 4
       Top = 4
-      Width = 396
-      Height = 169
+      Width = 489
+      Height = 210
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
       Align = alClient
       Caption = 'Command'
       TabOrder = 0
-      ExplicitTop = 36
       object Label6: TLabel
-        Left = 8
-        Top = 20
-        Width = 76
-        Height = 13
+        Left = 10
+        Top = 25
+        Width = 99
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Command name'
       end
       object Label7: TLabel
-        Left = 112
-        Top = 40
-        Width = 70
-        Height = 13
+        Left = 138
+        Top = 49
+        Width = 89
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Klassenpostfix:'
       end
       object lbCommandTypeName: TLabel
-        Left = 184
-        Top = 40
-        Width = 107
-        Height = 13
+        Left = 226
+        Top = 49
+        Width = 142
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'lbCommandTypeName'
       end
       object Label9: TLabel
-        Left = 128
-        Top = 56
-        Width = 83
-        Height = 13
+        Left = 158
+        Top = 69
+        Width = 109
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Kommandoklasse'
       end
       object Label8: TLabel
-        Left = 112
-        Top = 56
-        Width = 9
-        Height = 13
+        Left = 138
+        Top = 69
+        Width = 11
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = '->'
       end
       object Label11: TLabel
-        Left = 232
-        Top = 56
-        Width = 38
-        Height = 13
+        Left = 286
+        Top = 69
+        Width = 48
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Label11'
       end
       object Label12: TLabel
-        Left = 232
-        Top = 72
-        Width = 38
-        Height = 13
+        Left = 286
+        Top = 89
+        Width = 48
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Label12'
       end
       object Label10: TLabel
-        Left = 128
-        Top = 72
-        Width = 94
-        Height = 13
+        Left = 158
+        Top = 89
+        Width = 122
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'KommandoCallback'
       end
       object lbCSharpNY2: TLabel
-        Left = 216
-        Top = 92
-        Width = 62
-        Height = 13
+        Left = 266
+        Top = 113
+        Width = 77
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Sorry not yet!'
         Color = clInfoBk
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clInfoText
-        Font.Height = -11
+        Font.Height = -13
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         ParentColor = False
@@ -152,10 +212,14 @@ object JVCSMakePluginWizardNewCommandForm: TJVCSMakePluginWizardNewCommandForm
         Visible = False
       end
       object imgCommando: TImage
-        Left = 112
-        Top = 92
+        Left = 138
+        Top = 113
         Width = 16
         Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         AutoSize = True
         Picture.Data = {
           07544269746D617036040000424D360400000000000036000000280000001000
@@ -196,63 +260,91 @@ object JVCSMakePluginWizardNewCommandForm: TJVCSMakePluginWizardNewCommandForm
         Transparent = True
       end
       object Label13: TLabel
-        Left = 8
-        Top = 92
-        Width = 81
-        Height = 13
+        Left = 10
+        Top = 113
+        Width = 106
+        Height = 16
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Command bitmap'
       end
       object edCommandName: TEdit
-        Left = 112
-        Top = 16
-        Width = 249
-        Height = 21
+        Left = 138
+        Top = 20
+        Width = 306
+        Height = 24
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         TabOrder = 0
         Text = 'Testmodule'
         OnChange = edCommandNameChange
       end
       object btnLoadCommandoImage: TButton
-        Left = 136
-        Top = 88
-        Width = 75
-        Height = 25
+        Left = 167
+        Top = 108
+        Width = 93
+        Height = 31
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Load'
         TabOrder = 1
         OnClick = btnLoadActionImageClick
       end
       object cbSampleVar: TCheckBox
-        Left = 8
-        Top = 120
-        Width = 153
-        Height = 17
+        Left = 10
+        Top = 148
+        Width = 188
+        Height = 21
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Add sample property'
         TabOrder = 2
       end
       object cbSamplePaintCode: TCheckBox
-        Left = 8
-        Top = 144
-        Width = 305
-        Height = 17
+        Left = 10
+        Top = 177
+        Width = 375
+        Height = 21
+        Margins.Left = 4
+        Margins.Top = 4
+        Margins.Right = 4
+        Margins.Bottom = 4
         Caption = 'Add sample source code for owner draw behavior'
         TabOrder = 3
       end
     end
   end
   object Cancel: TButton
-    Left = 92
-    Top = 290
-    Width = 73
-    Height = 25
+    Left = 113
+    Top = 357
+    Width = 90
+    Height = 31
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Cancel = True
     Caption = 'Cancel'
     ModalResult = 2
     TabOrder = 2
   end
   object OK: TButton
-    Left = 12
-    Top = 290
-    Width = 73
-    Height = 25
+    Left = 15
+    Top = 357
+    Width = 90
+    Height = 31
+    Margins.Left = 4
+    Margins.Top = 4
+    Margins.Right = 4
+    Margins.Bottom = 4
     Caption = 'OK'
     Default = True
     ModalResult = 1

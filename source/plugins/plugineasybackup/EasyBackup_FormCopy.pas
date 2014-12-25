@@ -162,7 +162,7 @@ begin
   try
     ForceDirectories(ExtractFilePath(s4));
   except
-    jvcsmak.LogMessage(Format(strErrorCreatingDirectory, [ExtractFilePath(s4)]));
+    MakeStudio.LogMessage(Format(strErrorCreatingDirectory, [ExtractFilePath(s4)]));
   end;
 
   cpy := False;
@@ -191,12 +191,12 @@ begin
     if CopyFile(PChar(s2), PChar(s4), False) then
     begin
       if LogbookShowAll then
-        jvcsmak.LogMessage(Format(strFileCopied, [s2]));
+        MakeStudio.LogMessage(Format(strFileCopied, [s2]));
       FilesCopied := FilesCopied + 1;
     end
     else
     begin
-      jvcsmak.LogMessage(Format(strErrorCopyingFile, [s2]));
+      MakeStudio.LogMessage(Format(strErrorCopyingFile, [s2]));
       CountErrors := CountErrors + 1;
     end;
 
@@ -248,8 +248,8 @@ begin
   FilesFound := 0;
   FilesCopied := 0;
   lbAction.Caption := strBackup;
-  jvcsmak.LogMessage(strCR);
-  jvcsmak.LogMessage(strBackupStartet);
+  MakeStudio.LogMessage(strCR);
+  MakeStudio.LogMessage(strBackupStartet);
   for I:=0 to Source.Count-1 do
   begin
     RootDir := Source[I];
@@ -267,8 +267,8 @@ begin
   FilesFound := 0;
   FilesCopied := 0;
   lbAction.Caption := strSync;
-  jvcsmak.LogMessage(strCR);
-  jvcsmak.LogMessage(strSyncStarted);
+  MakeStudio.LogMessage(strCR);
+  MakeStudio.LogMessage(strSyncStarted);
   if DoSynchronize then
   begin
     for I:=0 to Source.Count-1 do
@@ -291,8 +291,8 @@ begin
   FilesFound := 0;
   FilesCopied := 0;
   lbAction.Caption := strDeleteSync;
-  jvcsmak.LogMessage(strCR);
-  jvcsmak.LogMessage(strDeleteSyncStart);
+  MakeStudio.LogMessage(strCR);
+  MakeStudio.LogMessage(strDeleteSyncStart);
   DoFindMissing;
   if Cancel then Exit;
   DoShowMissingDlg;
@@ -310,7 +310,7 @@ begin
               statMissingFilesDeleted, statMissingFilesIgnored,
               CountErrors]);
     for I:=0 to sl.Count-1 do
-      jvcsmak.LogMessage(sl[I]);
+      MakeStudio.LogMessage(sl[I]);
   finally
     sl.Free;
   end;
@@ -477,12 +477,12 @@ begin
           try
             if DeleteFile(ob.SourceFile) then
             begin
-              jvcsmak.LogMessage(Format(strFileDeleted, [ob.SourceFile]));
+              MakeStudio.LogMessage(Format(strFileDeleted, [ob.SourceFile]));
               Inc(statMissingFilesDeleted);
             end
             else
             begin
-              jvcsmak.LogMessage(Format(strErrorDeletingFile, [ob.SourceFile]));
+              MakeStudio.LogMessage(Format(strErrorDeletingFile, [ob.SourceFile]));
               CountErrors := CountErrors + 1;
             end;
           except
@@ -496,12 +496,12 @@ begin
             if CopyFile(PChar(ob.SourceFile), PChar(ob.TargetFile), True) then
             begin
               if LogbookShowAll then
-                jvcsmak.LogMessage(Format(strFileCopied, [ob.SourceFile]));
+                MakeStudio.LogMessage(Format(strFileCopied, [ob.SourceFile]));
               FilesCopied := FilesCopied + 1;
             end
             else
             begin
-              jvcsmak.LogMessage(Format(strErrorCopyingFile, [ob.SourceFile]));
+              MakeStudio.LogMessage(Format(strErrorCopyingFile, [ob.SourceFile]));
               CountErrors := CountErrors + 1;
             end;
           except
@@ -509,7 +509,7 @@ begin
         end;
       soIgnore:
         begin
-          jvcsmak.LogMessage(Format(strFileIgnored, [ob.SourceFile]));
+          MakeStudio.LogMessage(Format(strFileIgnored, [ob.SourceFile]));
           Inc(statMissingFilesIgnored);
         end;
     end;

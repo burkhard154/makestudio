@@ -86,8 +86,8 @@ begin
           if Pos('%', slVars.Strings[I]) = 1 then
           begin
             variable := StringReplace(slVars.Strings[I], '%', '', [rfReplaceAll]);
-            if jvcsmak.Variables.VarExists(variable) then
-              Text := StringReplace(Text, '%' + variable, jvcsmak.Variables.Values[variable], [rfReplaceAll]);
+            if MakeStudio.Variables.VarExists(variable) then
+              Text := StringReplace(Text, '%' + variable, MakeStudio.Variables.Values[variable], [rfReplaceAll]);
           end;
         end;
       end;
@@ -117,8 +117,8 @@ begin
       if Pos('%', slVars.Strings[I]) = 1 then
       begin
         variable := StringReplace(slVars.Strings[I], '%', '', [rfReplaceAll]);
-        if jvcsmak.Variables.VarExists(variable) then
-          Text := StringReplace(Text, '%' + variable, jvcsmak.Variables.Values[variable], [rfReplaceAll]);
+        if MakeStudio.Variables.VarExists(variable) then
+          Text := StringReplace(Text, '%' + variable, MakeStudio.Variables.Values[variable], [rfReplaceAll]);
       end;
     end;
   finally

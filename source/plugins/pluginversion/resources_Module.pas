@@ -8,7 +8,7 @@
   WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
   the specific language governing rights and limitations under the License.
 
-  The Original Code is: resources_JVCSMakPlugin.dpr
+  The Original Code is: resources_MakeStudioPlugin.dpr
 
   The Initial Developer of the original code (JEDI VCS) is:
   Burkhard Schranz (burkhard.schranz@optimeas.de)
@@ -171,7 +171,7 @@ end;
 function TPluginVersionsresourcenndern.ExecuteItem: WordBool;
 begin
   FCanceled := False;
-  // jvcsmak.LogMessage('Executing Versionsresourcen ändern...');
+  // MakeStudio.LogMessage('Executing Versionsresourcen ändern...');
   Result := ProceedWin32Res;
 end;
 
@@ -405,14 +405,14 @@ var
     f:String;
   begin
     Result := False;
-    f := jvcsmak.Variables.ReplaceVarsInString(Filename);
+    f := MakeStudio.Variables.ReplaceVarsInString(Filename);
     ext := UpperCase(ExtractFileExt(f));
     if (ext = '.RC') then
       RCVersion := TRCVersionInfo.Create
     else if (ext = '.RES') or (ext = '.DCR') then
       ResourceModule := TResModule.Create
     else
-      jvcsmak.LogMessage(stWrongFiletype);
+      MakeStudio.LogMessage(stWrongFiletype);
 
     try
       if Assigned(ResourceModule) then
@@ -427,8 +427,8 @@ var
           FreeAndNil(ResourceModule);
         if Assigned(RCVersion) then
           FreeAndNil(RCVersion);
-        jvcsmak.LogMessage(E.Message);
-        jvcsmak.LogMessage(Format(stErrorLoadingFile, [f]));
+        MakeStudio.LogMessage(E.Message);
+        MakeStudio.LogMessage(Format(stErrorLoadingFile, [f]));
       end;
     end;
 
@@ -487,8 +487,8 @@ var
 
       RCVersion.SetIntFileVersion( v1, v2, v3, v4);
       RCVersion.SetIntProductVersion( v1, v2, v3, v4);
-      jvcsmak.LogMessage( RCVersion.InnerText.Text);
-      jvcsmak.LogMessage(Format(stVersionModified, [_v1, _v2, _v3, _v4, v1, v2, v3, v4]));
+      MakeStudio.LogMessage( RCVersion.InnerText.Text);
+      MakeStudio.LogMessage(Format(stVersionModified, [_v1, _v2, _v3, _v4, v1, v2, v3, v4]));
       Result := True;
     end
 
@@ -524,18 +524,18 @@ var
 
           k := TVersionInfoResourceDetails(details).IndexOf(FFileVersionKey);
           if k < 0 then
-            jvcsmak.LogMessage(Format(stVersionKeyNotFound, [FFileVersionKey]))
+            MakeStudio.LogMessage(Format(stVersionKeyNotFound, [FFileVersionKey]))
           else
           begin
             TVersionInfoResourceDetails(details).SetKeyValue(FFileVersionKey,
               Format('%d.%d.%d.%d', [_v1, _v2, _v3, _v4]));
           end;
 
-          jvcsmak.LogMessage(Format(stLanguage, [lang]));
-          jvcsmak.LogMessage(Format(stVersionModified, [v1, v2, v3, v4, _v1, _v2, _v3, _v4]));
+          MakeStudio.LogMessage(Format(stLanguage, [lang]));
+          MakeStudio.LogMessage(Format(stVersionModified, [v1, v2, v3, v4, _v1, _v2, _v3, _v4]));
 
           for k := 0 to TVersionInfoResourceDetails(details).KeyCount - 1 do
-            jvcsmak.LogMessage(Format('Key %s = %s',
+            MakeStudio.LogMessage(Format('Key %s = %s',
               [TVersionInfoResourceDetails(details).Key[k].KeyName,
               TVersionInfoResourceDetails(details).Key[k].Value]));
 
@@ -543,7 +543,7 @@ var
       end;
     end;
     if not Result then
-      jvcsmak.LogMessage(Format(stVersionResourceNotFound, [jvcsmak.Variables.ReplaceVarsInString(Filename)]));
+      MakeStudio.LogMessage(Format(stVersionResourceNotFound, [MakeStudio.Variables.ReplaceVarsInString(Filename)]));
   end;
 
 var f:String;
@@ -551,10 +551,10 @@ begin
   Result := False;
   ResourceModule := nil;
   RCVersion := nil;
-  f := jvcsmak.Variables.ReplaceVarsInString(Filename);
-  jvcsmak.LogMessage('');
-  jvcsmak.LogMessage(stProceedingWin32VersionResource);
-  jvcsmak.LogMessage(Format(stProceedingFile, [f]));
+  f := MakeStudio.Variables.ReplaceVarsInString(Filename);
+  MakeStudio.LogMessage('');
+  MakeStudio.LogMessage(stProceedingWin32VersionResource);
+  MakeStudio.LogMessage(Format(stProceedingFile, [f]));
 
   try
     if OpenFile then
@@ -566,7 +566,7 @@ begin
             RCVersion.SaveToFile(f);
           Result := True;
         except
-          jvcsmak.LogMessage(Format(stErrorSavingFile, [f]));
+          MakeStudio.LogMessage(Format(stErrorSavingFile, [f]));
         end;
   finally
     if Assigned(ResourceModule) then
@@ -574,7 +574,7 @@ begin
     if Assigned(RCVersion) then
       RCVersion.Free;
   end;
-  jvcsmak.LogMessage('');
+  MakeStudio.LogMessage('');
 end;
 
 procedure TPluginVersionsresourcenndern._SetFilename(Value: String);

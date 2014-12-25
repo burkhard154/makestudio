@@ -72,8 +72,8 @@ implementation
 
 {$R *.dfm}
 
-uses JVCSMakPluginWizardOptions, JVCSMakPluginWizardNewCommandOptions, wizard_parser,
-  JVCSMakPluginWizardCommon;
+uses msPluginWizardOptions, msPluginWizardNewCommandOptions, wizard_parser,
+  msPluginWizardCommon;
 
 resourcestring
   StrProjectFileAlready = 'Project file already exists. Overwrite?';
@@ -98,10 +98,10 @@ var
   BmpCommand, BmpAction: TBitmap;
   FilesPrefix, TargetFolder: String;
 
-  procedure CreateTarget(aFilename: String);
+  procedure CreateTarget(aIdent, aFilename: String);
   begin
     ParameterList.Values['MODULEIDENT'] := ChangeFileExt(FilesPrefix + aFilename, '');
-    GetTemplateSource(TemplateFolder + sTemplatePrefixCs + aFilename, TargetFolder + FilesPrefix +
+    CreateTemplateSourceFromRessource(AIdent, TargetFolder + FilesPrefix +
       aFilename, ParameterList);
   end;
 
@@ -135,25 +135,25 @@ begin
           ParameterList.Values['EDITUNIT'] := ParameterList.Values['PLUGINIDENTIFIER']+'Edit';
           if ParameterList.Values['BLOCKMENUACTION'] <> '0' then
           begin
-            CreateTarget(sActionsCs);
-            CreateTarget(sActionsResx);
-            CreateTarget(sActionTestCs);
-            CreateTarget(sActionTestResx);
+            CreateTarget(sRESID_CS_ACTIONS, sActionsCs);
+            CreateTarget(sRESID_RESX_ACTIONS, sActionsResx);
+            CreateTarget(sRESID_CS_ACTIONTEST, sActionTestCs);
+            CreateTarget(sRESID_RESX_ACTIONTEST, sActionTestResx);
             ParameterList.Values['USEACTIONS'] := GetUsesStr(sActionsPas, 'FormActions');
             ParameterList.Values['USEACTIONTEST'] := GetUsesStr(sActionTestPas, 'FormActionTest');
             ParameterList.Values['BLOCKEXTERNALMENUACTION'] := '1';
           end;
-          CreateTarget(sEditCs);
-          CreateTarget(sEditResx);
-          CreateTarget(sModuleCs);
+          CreateTarget(sRESID_CS_EDIT, sEditCs);
+          CreateTarget(sRESID_RESX_EDIT, sEditResx);
+          CreateTarget(sRESID_CS_COMMAND, sModuleCs);
 //          CreateTarget(sVarsPas);
 
           ParameterList.Values['USEVARS'] := GetUsesStr(sVarsPas, '');
           ParameterList.Values['USEEDIT'] := GetUsesStr(sEditPas, 'FormEditParams');
           ParameterList.Values['USEMODULE'] := GetUsesStr(sModulePas, '');
 
-          CreateTarget(sPluginCsproj);
-          CreateTarget(sPluginCs);
+          CreateTarget(sRESID_CSPRPOJ_PUGIN, sPluginCsproj);
+          CreateTarget(sRESID_CS_PUGIN, sPluginCs);
 
           BmpAction.SaveToFile(TargetFolder + StringReplace(ParameterList.Values['MENUACTIONPATH'],
             '\', '', [rfReplaceAll]) + '.bmp');
@@ -181,10 +181,10 @@ var
   BmpCommand, BmpAction: TBitmap;
   TargetModuleFilename, TargetEditFilename: String;
 
-  procedure CreateTarget(aSource, aTarget: String);
+  procedure CreateTarget(aIdent, aTarget: String);
   begin
     ParameterList.Values['MODULEIDENT'] := ChangeFileExt(ExtractFileName(aTarget), '');
-    GetTemplateSource(TemplateFolder + sTemplatePrefix + aSource, aTarget, ParameterList);
+    CreateTemplateSourceFromRessource(AIdent, aTarget, ParameterList);
   end;
 
   function GetUsesStr(aFilename: String; FormName: String): String;
@@ -222,9 +222,9 @@ begin
           exit;
 
         ParameterList.Values['EDITUNIT'] := ChangeFileExt( ExtractFileName(TargetEditFilename), '');
-        CreateTarget(sEditPas, TargetEditFilename);
-        CreateTarget(sEditDfm, ChangeFileExt(TargetEditFilename, '.dfm'));
-        CreateTarget(sModulePas, TargetModuleFilename);
+        CreateTarget(sRESID_PAS_EDIT, TargetEditFilename);
+        CreateTarget(sRESID_DFM_EDIT, ChangeFileExt(TargetEditFilename, '.dfm'));
+        CreateTarget(sRESID_PAS_MODULE, TargetModuleFilename);
 
         BmpCommand.SaveToFile(IncludeTrailingPathDelimiter(ExtractFilePath(TargetModuleFilename)) +
           StringReplace(ParameterList.Values['COMMANDNAME'], '\', '', [rfReplaceAll]) + '.bmp');
@@ -249,10 +249,10 @@ var
   BmpCommand, BmpAction: TBitmap;
   FilesPrefix, TargetFolder: String;
 
-  procedure CreateTarget(aFilename: String);
+  procedure CreateTarget(aIdent, aFilename: String);
   begin
     ParameterList.Values['MODULEIDENT'] := ChangeFileExt(FilesPrefix + aFilename, '');
-    GetTemplateSource(TemplateFolder + sTemplatePrefix + aFilename, TargetFolder + FilesPrefix +
+    CreateTemplateSourceFromRessource(AIdent, TargetFolder + FilesPrefix +
       aFilename, ParameterList);
   end;
 
@@ -286,24 +286,24 @@ begin
           ParameterList.Values['EDITUNIT'] := ParameterList.Values['PLUGINIDENTIFIER']+'Edit';
           if ParameterList.Values['BLOCKMENUACTION'] <> '0' then
           begin
-            CreateTarget(sActionsPas);
-            CreateTarget(sActionsDfm);
-            CreateTarget(sActionTestPas);
-            CreateTarget(sActionTestDfm);
+            CreateTarget(sRESID_PAS_ACTIONS, sActionsPas);
+            CreateTarget(sRESID_DFM_ACTIONS, sActionsDfm);
+            CreateTarget(sRESID_PAS_ACTIONTEST, sActionTestPas);
+            CreateTarget(sRESID_DFM_ACTIONTEST, sActionTestDfm);
             ParameterList.Values['USEACTIONS'] := GetUsesStr(sActionsPas, 'FormActions');
             ParameterList.Values['USEACTIONTEST'] := GetUsesStr(sActionTestPas, 'FormActionTest');
             ParameterList.Values['BLOCKEXTERNALMENUACTION'] := '1';
           end;
-          CreateTarget(sEditPas);
-          CreateTarget(sEditDfm);
-          CreateTarget(sModulePas);
-          CreateTarget(sVarsPas);
+          CreateTarget(sRESID_PAS_EDIT,sEditPas);
+          CreateTarget(sRESID_DFM_EDIT,sEditDfm);
+          CreateTarget(sRESID_PAS_MODULE,sModulePas);
+          CreateTarget(sRESID_PAS_VARS,sVarsPas);
 
           ParameterList.Values['USEVARS'] := GetUsesStr(sVarsPas, '');
           ParameterList.Values['USEEDIT'] := GetUsesStr(sEditPas, 'FormEditParams');
           ParameterList.Values['USEMODULE'] := GetUsesStr(sModulePas, '');
 
-          CreateTarget(sPluginDpr);
+          CreateTarget(sRESID_DPR_PLUGIN,sPluginDpr);
 
           BmpAction.SaveToFile(TargetFolder + StringReplace(ParameterList.Values['MENUACTIONPATH'],
             '\', '', [rfReplaceAll]) + '.bmp');
@@ -350,13 +350,13 @@ begin
       if TAction(ActionList1.Actions[I]).ImageIndex >= 0 then
         GetPictureFromImageList(ImageList1, TAction(ActionList1.Actions[I]).ImageIndex, P);
 
-      jvcsmak.AddMenuAction(ActionList1.Actions[I].Name,
+      MakeStudio.AddMenuAction(ActionList1.Actions[I].Name,
         strMenuPath + '\' + TAction(ActionList1.Actions[I]).Category + '\' +
         TAction(ActionList1.Actions[I]).Caption, TAction(ActionList1.Actions[I]).Hint, P,
         IActionCallback(self));
     end;
   end;
-//  jvcsmak.AddMenuAction('wizard_actions_break', '-', '', nil, IActionCallback(self));
+//  MakeStudio.AddMenuAction('wizard_actions_break', '-', '', nil, IActionCallback(self));
 end;
 
 function TForm3.TemplateFolder: String;

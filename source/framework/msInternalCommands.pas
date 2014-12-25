@@ -23,7 +23,7 @@ Known Issues:
 
 Unit history:
 
-2005/01/02  BSchranz  - Migration to JVCSMak with external plugins
+2005/01/02  BSchranz  - Migration to MakeStudio with external plugins
 2005/02/04  USchuster - preparations for check in
 2005/08/12  BSchranz  - Command "SaveLog" added
 2005/09/02  BSchranz  - Moved if, else etc to msprgram

@@ -32,16 +32,16 @@ unit jedimakeplugin_Vars;
 interface
 
 uses
-  jvcsmak_TLB;
+  MakeStudio_TLB;
 
 var
-  jvcsmak: IJApplication;
+  MakeStudio: IJApplication;
   FCanceled: Boolean = False;
 
 resourcestring
   struPluginName = 'Plugin Example D7';
   struPluginAuthor = 'Burkhard Schranz (burkhard.schranz@optimeas.de)';
-  struPluginHint = 'Example Plugin for JVCSMAK';
+  struPluginHint = 'Example Plugin for MakeStudio';
   stCategory = 'Examples';
   stSampleCommandCaption = 'Delphi 7 Sample Command'; 
 

@@ -41,14 +41,14 @@ uses
   msTLB;
 
 var
-  jvcsmak: IJApplication;
+  MakeStudio: IJApplication;
   Canceled: Boolean = False;
 
 
 resourcestring
   struPluginName = 'Utility Functions';
   struPluginAuthor = 'Jeremy Dünow (jeremy.duenow@optimeas.de)';
-  struPluginHint = 'Utility Plugin for JVCSMAK';
+  struPluginHint = 'Utility Plugin for MakeStudio';
 
 resourcestring
   stdMkdirCaption     = 'Create directories';

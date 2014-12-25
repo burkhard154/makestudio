@@ -238,27 +238,27 @@ var
 begin
   Result := True;
 
-  jvcsmak.LogMessage(stdBreak);
-  jvcsmak.LogMessage(stdStartingInputBox);
-  jvcsmak.LogMessage('');
-  jvcsmak.LogMessage(stdCaption + ' ' + FDCaption);
-  jvcsmak.LogMessage(stdText + ' ' + FText);
-  jvcsmak.LogMessage(stdDefault + ' ' + FDefault);
+  MakeStudio.LogMessage(stdBreak);
+  MakeStudio.LogMessage(stdStartingInputBox);
+  MakeStudio.LogMessage('');
+  MakeStudio.LogMessage(stdCaption + ' ' + FDCaption);
+  MakeStudio.LogMessage(stdText + ' ' + FText);
+  MakeStudio.LogMessage(stdDefault + ' ' + FDefault);
   if Length(FReturnValue) > 0 then
-    jvcsmak.LogMessage(stdInputBoxReturnValue + ' ' + FReturnValue);
+    MakeStudio.LogMessage(stdInputBoxReturnValue + ' ' + FReturnValue);
 
 
-  return := DlgInputBox(FDCaption, jvcsmak.Variables.ReplaceVarsInString( FText),
-              jvcsmak.Variables.ReplaceVarsInString( FDefault));
-//  return := InputBox(FDCaption, jvcsmak.Variables.ReplaceVarsInString( FText),
-//              jvcsmak.Variables.ReplaceVarsInString( FDefault));
+  return := DlgInputBox(FDCaption, MakeStudio.Variables.ReplaceVarsInString( FText),
+              MakeStudio.Variables.ReplaceVarsInString( FDefault));
+//  return := InputBox(FDCaption, MakeStudio.Variables.ReplaceVarsInString( FText),
+//              MakeStudio.Variables.ReplaceVarsInString( FDefault));
 
   if Length(FReturnValue) > 0 then begin
-    jvcsmak.LogMessage('');
-    jvcsmak.LogMessage(Format(stdSettingVar, [FReturnValue, return]));
-    if not jvcsmak.Variables.VarExists(FReturnValue) then
-      jvcsmak.Variables.AddVar(FReturnValue);
-    jvcsmak.Variables.Values[FReturnValue] := return;
+    MakeStudio.LogMessage('');
+    MakeStudio.LogMessage(Format(stdSettingVar, [FReturnValue, return]));
+    if not MakeStudio.Variables.VarExists(FReturnValue) then
+      MakeStudio.Variables.AddVar(FReturnValue);
+    MakeStudio.Variables.Values[FReturnValue] := return;
   end;
 end;
 

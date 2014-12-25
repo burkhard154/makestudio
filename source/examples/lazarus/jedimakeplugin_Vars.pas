@@ -32,16 +32,16 @@ unit jedimakeplugin_Vars;
 interface
 
 uses
-  jvcsmak_TLB_Lazarus;
+  MakeStudio_TLB_Lazarus;
 
 var
-  jvcsmak: IJApplication;
+  MakeStudio: IJApplication;
   FCanceled: Boolean = False;
 
 resourcestring
   struPluginName = 'Plugin Example';
   struPluginAuthor = 'Burkhard Schranz (burkhard.schranz@optimeas.de)';
-  struPluginHint = 'Example Plugin for JVCSMAK';
+  struPluginHint = 'Example Plugin for MakeStudio';
   stCategory = 'Examples';
 
 implementation

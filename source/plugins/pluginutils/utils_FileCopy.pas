@@ -129,13 +129,13 @@ var
   sf, tf : String;
 begin
   Result := True;
-  jvcsmak.LogMessage(stdCopyFilesCaption);
+  MakeStudio.LogMessage(stdCopyFilesCaption);
   for I := 0 to SourceFiles.Count - 1 do
   begin
-    sf := jvcsmak.Variables.ReplaceVarsInString(SourceFiles[I]);
-    tf := jvcsmak.Variables.ReplaceVarsInString(TargetFiles[I]);
+    sf := MakeStudio.Variables.ReplaceVarsInString(SourceFiles[I]);
+    tf := MakeStudio.Variables.ReplaceVarsInString(TargetFiles[I]);
 
-    jvcsmak.LogMessage( sf + ' -> ' + tf);
+    MakeStudio.LogMessage( sf + ' -> ' + tf);
 
     if FileExists( sf) and FileExists( tf) then
       SetFileAttributes( PChar(tf), FILE_ATTRIBUTE_ARCHIVE);
@@ -144,7 +144,7 @@ begin
 
     if not Result then
     begin
-      jvcsmak.LogMessage(stdErrorCopying);
+      MakeStudio.LogMessage(stdErrorCopying);
       Break;
     end;
   end;

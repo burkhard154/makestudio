@@ -70,7 +70,7 @@ begin
 end;
 
 // :Indentifies this DLL-Version
-procedure JVCSMAKPlugin; stdcall;
+procedure MakeStudioPlugin; stdcall;
 begin
 end;
 
@@ -99,34 +99,34 @@ begin
 end;
 
 // :Register an initialize Plugin
-function RegisterPlugin(aJVCSMAKApp: IJApplication): Integer; stdcall;
+function RegisterPlugin(aMakeStudioApp: IJApplication): Integer; stdcall;
 var
   P: Picture;
 begin
   Result := 0;
-  jvcsmak := aJVCSMAKApp;
-  with jvcsmak do
+  MakeStudio := aMakeStudioApp;
+  with MakeStudio do
   begin
     try
       // Create form with actions and ModuleCallback
       Form3 := TForm3.Create(nil);
 
       // add actions
-      jvcsmak.AddMenuAction(Form3.acDelphiSearchPath.Name,
+      MakeStudio.AddMenuAction(Form3.acDelphiSearchPath.Name,
         stdmaMenuPath + Form3.acDelphiSearchPath.Caption, Form3.acDelphiSearchPath.Hint, nil,
         IActionCallback(Form3));
 
       GetPictureFromImageList(Form3.ImageList1, Form3.acSelectDelphiVersion.ImageIndex, P);
 
-      jvcsmak.AddMenuAction(Form3.acSelectDelphiVersion.Name,
+      MakeStudio.AddMenuAction(Form3.acSelectDelphiVersion.Name,
         stdmaMenuPath + Form3.acSelectDelphiVersion.Caption, Form3.acSelectDelphiVersion.Hint, P,
         IActionCallback(Form3));
 
       GetPictureFromImageList(Form3.ImageList1, Form3.acBDSProjectDir.ImageIndex, P);
-      jvcsmak.AddMenuAction(Form3.acBDSProjectDir.Name,
+      MakeStudio.AddMenuAction(Form3.acBDSProjectDir.Name,
         stdmaMenuPath + Form3.acBDSProjectDir.Caption, Form3.acBDSProjectDir.Hint, P,
         IActionCallback(Form3));
-      jvcsmak.AddMenuAction( Form3.acAddComponentFolder.Name,
+      MakeStudio.AddMenuAction( Form3.acAddComponentFolder.Name,
         stdmaMenuPath + Form3.acAddComponentFolder.Caption, Form3.acAddComponentFolder.Hint, nil,
         IActionCallback(Form3));
 
@@ -141,51 +141,51 @@ begin
       // compatibility 1
       // Callback for the Moduletype
       PluginDelphi32Callback := TDelphi32ModuleCallback.Create(nil);
-      jvcsmak.AddCommandType(stdStandardModuleCaption, '', stdCategoryCompiler, P,
+      MakeStudio.AddCommandType(stdStandardModuleCaption, '', stdCategoryCompiler, P,
         '.dpr;.dpk;.bpl;.dcp', 1, ICommandCallback(PluginDelphi32Callback));
 
       // SetVersion
       GetPictureFromImageList(Form3.ImageList1, 4, P);
       PluginSetDVersionCallback := TSetDVersionCommandCallback.Create(nil);
-      jvcsmak.AddCommandType(stdSetDVersionCaption, '', stdCategoryCompiler, P, '', -1,
+      MakeStudio.AddCommandType(stdSetDVersionCaption, '', stdCategoryCompiler, P, '', -1,
         ICommandCallback(PluginSetDVersionCallback));
 
       // Special Settings
       GetPictureFromImageList(Form3.ImageList1, 5, P);
       PluginSpecialSettingsCallback := TPluginSpecialSettingsCallback.Create(nil);
-      jvcsmak.AddCommandType('Delphi Special Settings', '', stdCategoryCompiler, P, '', -1,
+      MakeStudio.AddCommandType('Delphi Special Settings', '', stdCategoryCompiler, P, '', -1,
         ICommandCallback(PluginSpecialSettingsCallback));
 
       // CheckDelphiVersion
       GetPictureFromImageList(Form3.ImageList1, 7, P);
       PluginDelphi32CheckVersionCallback := TPluginDelphi32CheckVersionCallback.Create(nil);
-      jvcsmak.AddCommandType('Delphi CheckVersion', '', stdCategoryCompiler, P, '', -1,
+      MakeStudio.AddCommandType('Delphi CheckVersion', '', stdCategoryCompiler, P, '', -1,
         ICommandCallback(PluginDelphi32CheckVersionCallback));
 
       // BRCC32 Resource Compiler
       GetPictureFromImageList(Form3.ImageList1, 8, P);
       Brcc32CommandCallback := TBrcc32CommandCallback.Create(nil);
-      jvcsmak.AddCommandType('Mircosoft Resource Compiler (RC)', '', stdCategoryResource, P, '.rc',
+      MakeStudio.AddCommandType('Mircosoft Resource Compiler (RC)', '', stdCategoryResource, P, '.rc',
         -1, ICommandCallback(Brcc32CommandCallback));
 
       // Select Delphi Platform
       GetPictureFromImageList(Form3.ImageList1, 9, P);
       PluginSelectDelphiPlatformCallback := TPluginSelectDelphiPlatformCallback.Create(nil);
-      jvcsmak.AddCommandType('Select Delphi Platform', '', stdCategoryCompiler, P, '', -1,
+      MakeStudio.AddCommandType('Select Delphi Platform', '', stdCategoryCompiler, P, '', -1,
         ICommandCallback(PluginSelectDelphiPlatformCallback));
 
       //Edit Namespaces
       GetPictureFromImageList(Form3.ImageList1, 10, P);
       PluginEditNamespacesCallback := TPluginEditNamespacesCallback.Create(nil);
-      jvcsmak.AddCommandType('Edit Namespaces', '', stdCategoryCompiler, P, '', -1,
+      MakeStudio.AddCommandType('Edit Namespaces', '', stdCategoryCompiler, P, '', -1,
         ICommandCallback(PluginEditNamespacesCallback));
 
 
       // Credits
-      jvcsmak.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
+      MakeStudio.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
 
       // Additional Info
-      // jvcsmak.AddAdditionalInfo(struPluginHint);
+      // MakeStudio.AddAdditionalInfo(struPluginHint);
 
       ReadDelphiVersionReg;
 
@@ -195,8 +195,8 @@ begin
     except
       on E: Exception do
       begin
-        jvcsmak.LogMessage('Plugin: ' + Application.ExeName);
-        jvcsmak.LogMessage('Exception: ' + E.Message);
+        MakeStudio.LogMessage('Plugin: ' + Application.ExeName);
+        MakeStudio.LogMessage('Exception: ' + E.Message);
       end;
     end;
   end;
@@ -243,7 +243,7 @@ exports
   GetMajorVersion,
   AfterAllPluginsLoaded,
   GetOptionsPageGUID,
-  JVCSMAKPlugin;
+  MakeStudioPlugin;
 
 begin
 

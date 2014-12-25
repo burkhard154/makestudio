@@ -51,7 +51,7 @@
         <DCC_Namespace>Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;System;Xml;Data;Datasnap;Web;Soap;System.Win;Winapi;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_DLL>true</VerInfo_DLL>
-        <DCC_DcuOutput>..\..\..\dcu</DCC_DcuOutput>
+        <DCC_DcuOutput>..\..\..\lib</DCC_DcuOutput>
         <DCC_E>false</DCC_E>
         <DCC_ImageBase>00400000</DCC_ImageBase>
         <DCC_ExeOutput>..\..\..\bin</DCC_ExeOutput>
@@ -84,7 +84,6 @@
     <PropertyGroup Condition="'$(Cfg_2_Win32)'!=''">
         <DCC_MapFile>3</DCC_MapFile>
         <DCC_DebugInformation>true</DCC_DebugInformation>
-        <Manifest_File>None</Manifest_File>
         <Debugger_HostApplication>V:\projects\burkhard\jmake\bin\jvcsmak.exe</Debugger_HostApplication>
         <VerInfo_Release>0</VerInfo_Release>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>

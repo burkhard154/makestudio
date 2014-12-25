@@ -53,7 +53,7 @@ begin
 end;
 
 //:Indentifies this DLL-Version
-procedure JVCSMAKPlugin; stdcall;
+procedure MakeStudioPlugin; stdcall;
 begin
 end;
 
@@ -82,13 +82,13 @@ begin
 end;
 
 //:Register an initialize Plugin
-function RegisterPlugin(AJVCSMAKApp: IJApplication): Integer; stdcall;
+function RegisterPlugin(AMakeStudioApp: IJApplication): Integer; stdcall;
 var
  P: Picture;
 begin
   Result := 0;
-  jvcsmak := AJVCSMAKApp;
-  with jvcsmak do
+  MakeStudio := AMakeStudioApp;
+  with MakeStudio do
   begin
     try
       //Create form with actions and ModuleCallback
@@ -101,16 +101,16 @@ begin
       //Extension=txt (could be more than one extension - separated by ;)
       //no compatibility - module did not exist before
       //Callback for the Moduletype
-      jvcsmak.LogMessage(Application.Exename);
+      MakeStudio.LogMessage(Application.Exename);
       PluginInnoSetupProjectCallback := TPluginInnoSetupProjectCallback.Create(nil);
-      jvcsmak.AddCommandType('Inno Setup Project', '', stCategory, P, '.iss', -1,
+      MakeStudio.AddCommandType('Inno Setup Project', '', stCategory, P, '.iss', -1,
         ICommandCallback(PluginInnoSetupProjectCallback));
 
       //Credits
-      jvcsmak.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
+      MakeStudio.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
 
       //Additional Info
-      jvcsmak.AddAdditionalInfo(struPluginHint);
+      MakeStudio.AddAdditionalInfo(struPluginHint);
     except
     end;
   end;
@@ -158,7 +158,7 @@ exports
   GetMajorVersion,
   AfterAllPluginsLoaded,
   GetOptionsPageGUID,
-  JVCSMAKPlugin;
+  MakeStudioPlugin;
 
 begin
 end.

@@ -35,13 +35,13 @@ uses
   msTLB;
 
 var
-  jvcsmak: IJApplication;
+  MakeStudio: IJApplication;
   FCanceled: Boolean = False;
 
 resourcestring
   struPluginName = 'Testplugin01';
   struPluginAuthor = 'Burkhard Schranz (burkhard.schranz@optimeas.de)';
-  struPluginHint = 'Test Plugin for JVCSMAK';
+  struPluginHint = 'Test Plugin for MakeStudio';
   stCategory = 'Testplugins';
 
 implementation

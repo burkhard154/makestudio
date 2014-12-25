@@ -256,7 +256,7 @@ var F,O,P, appKey:String;
       end;
       if SameText( ExtractFileExt( ProjectPath), '.hmxz') then
       begin
-        appKey := jvcsmak.ApplicationRegKey+'\plugins\help_manual';
+        appKey := MakeStudio.ApplicationRegKey+'\plugins\help_manual';
         if reg.OpenKey(appKey, false) then
         begin
           Result := reg.ReadString('CompilerPath');
@@ -285,28 +285,28 @@ var F,O,P, appKey:String;
 begin
   Result := True;
 
-  jvcsmak.LogMessage(stdBreak);
-  jvcsmak.LogMessage(stdStartingBatch);
+  MakeStudio.LogMessage(stdBreak);
+  MakeStudio.LogMessage(stdStartingBatch);
 
   if not FileExists( GetExecName) then
   begin
-    jvcsmak.LogMessage('> Error: ' + stdErrNoHelpandmanualExec + ' :-(');
+    MakeStudio.LogMessage('> Error: ' + stdErrNoHelpandmanualExec + ' :-(');
     Result := False;
     Exit;
   end;
 
-  F := jvcsmak.Variables.ReplaceVarsInString( ProjectPath);
-  O := jvcsmak.Variables.ReplaceVarsInString( Outputfile);
+  F := MakeStudio.Variables.ReplaceVarsInString( ProjectPath);
+  O := MakeStudio.Variables.ReplaceVarsInString( Outputfile);
   if FileExists( F) then begin
     if Length(O) > 0 then
       P := '"' + F + '" ' + GetOpt + '="' + O + '"'
     else
       P := '"' + F + '" ' + GetOpt;
 
-    Result := jvcsmak.ExecCmdLine( GetExecName, P, ExtractFilePath( F), IExecCallback( self))=0;
+    Result := MakeStudio.ExecCmdLine( GetExecName, P, ExtractFilePath( F), IExecCallback( self))=0;
   end
   else
-    jvcsmak.LogMessage( Format( stdeFileNotFound, [F]));
+    MakeStudio.LogMessage( Format( stdeFileNotFound, [F]));
 end;
 
 function THelpandmanualCommand.Get_ParamValues(const ParamName: WideString): WideString;
@@ -354,7 +354,7 @@ procedure THelpandmanualCommand.CaptureOutput(const Line: WideString;
   var Aborted: WordBool);
 begin
   Aborted := Canceled;
-  jvcsmak.LogMessage(Line);
+  MakeStudio.LogMessage(Line);
 end;
 
 end.

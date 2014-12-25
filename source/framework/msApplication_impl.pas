@@ -26,8 +26,8 @@
 
   Unit history:
 
-  2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to JVCSMAK
-  2005/01/02  BSchranz  - Migration to JVCSMak with external plugins
+  2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to MakeStudio
+  2005/01/02  BSchranz  - Migration to MakeStudio with external plugins
   2005/02/04  USchuster - preparations for check in
   2005/02/08  BSchranz  - Error fixed in ExecCmdLine (SetCurrentDir)
   2005/02/19  USchuster - changes for commandline version
@@ -220,7 +220,7 @@ end;
 
 function TJApplication.Get_ApplicationRegKey: WideString;
 begin
-  Result := GetJVCSMakBaseRegistryKey;
+  Result := GetMakeStudioBaseRegistryKey;
 end;
 
 function TJApplication.Get_ApplicationDataFolder: WideString;

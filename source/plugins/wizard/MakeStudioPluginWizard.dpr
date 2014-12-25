@@ -8,7 +8,7 @@ Software distributed under the License is distributed on an "AS IS" basis,
 WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
 the specific language governing rights and limitations under the License.
 
-The Original Code is: JVCSMakPluginWizard.dpr
+The Original Code is: MakeStudioPluginWizard.dpr
 
 The Initial Developer of the original code (JEDI VCS) is:
   Uwe Schuster (jedivcs@bitcommander.de)
@@ -36,33 +36,33 @@ library MakeStudioPluginWizard;
 uses
   ShareMem,
   ToolsAPI,
-  JVCSMakPluginWizardOptions in 'JVCSMakPluginWizardOptions.pas' {JVCSMakePluginWizardOptionsForm},
-  JVCSMakPluginWizardCommon in 'JVCSMakPluginWizardCommon.pas',
-  JVCSMakPluginWizardMain in 'JVCSMakPluginWizardMain.pas',
-  JVCSMakPluginWizardNewCommandOptions in 'JVCSMakPluginWizardNewCommandOptions.pas' {JVCSMakePluginWizardNewCommandForm};
+  msPluginWizardOptions in 'msPluginWizardOptions.pas' {msPluginWizardOptionsForm},
+  msPluginWizardCommon in 'msPluginWizardCommon.pas',
+  MakeStudioPluginWizardMain in 'MakeStudioPluginWizardMain.pas',
+  msPluginWizardNewCommandOptions in 'msPluginWizardNewCommandOptions.pas' {msPluginWizardNewCommandForm};
 
 var
   {$IFDEF IDE_SUPPORTS_DELPHI}
-  JVCSMakDelphiWin32VCLWizardIndex: Integer = -1;
+  MakeStudioDelphiWin32VCLWizardIndex: Integer = -1;
   {$ENDIF IDE_SUPPORTS_DELPHI}
   {$IFDEF IDE_SUPPORTS_CSHARP}
-  JVCSMakCSharpWizardIndex: Integer = -1;
+  MakeStudioCSharpWizardIndex: Integer = -1;
   {$ENDIF IDE_SUPPORTS_CSHARP}
 
-procedure JVCSMakWizardTerminate;
+procedure MakeStudioWizardTerminate;
 var
   WizardServices: IOTAWizardServices;
 begin
   WizardServices := BorlandIDEServices as IOTAWizardServices;
   {$IFDEF IDE_SUPPORTS_DELPHI}
-  WizardServices.RemoveWizard(JVCSMakDelphiWin32VCLWizardIndex);
+  WizardServices.RemoveWizard(MakeStudioDelphiWin32VCLWizardIndex);
   {$ENDIF IDE_SUPPORTS_DELPHI}
   {$IFDEF IDE_SUPPORTS_CSHARP}
-  WizardServices.RemoveWizard(JVCSMakCSharpWizardIndex);
+  WizardServices.RemoveWizard(MakeStudioCSharpWizardIndex);
   {$ENDIF IDE_SUPPORTS_CSHARP}
 end;
 
-function JVCSMakWizardInit(const BorlandIDEServices: IBorlandIDEServices;
+function MakeStudioWizardInit(const BorlandIDEServices: IBorlandIDEServices;
   RegisterProc: TWizardRegisterProc;
   var Terminate: TWizardTerminateProc): Boolean; stdcall;
 var
@@ -70,16 +70,16 @@ var
 begin
   WizardServices := BorlandIDEServices as IOTAWizardServices;
   {$IFDEF IDE_SUPPORTS_DELPHI}
-  JVCSMakDelphiWin32VCLWizardIndex := WizardServices.AddWizard(TJVCSMakDxWin32VCLPluginWizard.Create);
-  {$ENDIF IDE_SUPPORTS_DELPHI}  
+  MakeStudioDelphiWin32VCLWizardIndex := WizardServices.AddWizard(TMakeStudioDxWin32VCLPluginWizard.Create);
+  {$ENDIF IDE_SUPPORTS_DELPHI}
   {$IFDEF IDE_SUPPORTS_CSHARP}
-  JVCSMakCSharpWizardIndex := WizardServices.AddWizard(TJVCSMakCSharpPluginWizard.Create);
+  MakeStudioCSharpWizardIndex := WizardServices.AddWizard(TMakeStudioCSharpPluginWizard.Create);
   {$ENDIF IDE_SUPPORTS_CSHARP}
-  Terminate := JVCSMakWizardTerminate;
+  Terminate := MakeStudioWizardTerminate;
   Result := True;
 end;
 
 exports
-  JVCSMakWizardInit name WizardEntryPoint;
+  MakeStudioWizardInit name WizardEntryPoint;
 
 end.

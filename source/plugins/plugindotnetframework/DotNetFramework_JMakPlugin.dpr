@@ -8,7 +8,7 @@ Software distributed under the License is distributed on an "AS IS" basis,
 WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
 the specific language governing rights and limitations under the License.
 
-The Original Code is: jvcsmakplugintemplate.dpr
+The Original Code is: MakeStudioplugintemplate.dpr
 
 The Initial Developer of the original code (JEDI VCS) is:
   Burkhard Schranz (burkhard.schranz@optimeas.de)
@@ -51,7 +51,7 @@ begin
 end;
 
 //:Indentifies this DLL-Version
-procedure JVCSMAKPlugin; stdcall;
+procedure MakeStudioPlugin; stdcall;
 begin
 end;
 
@@ -80,13 +80,13 @@ begin
 end;
 
 //:Register an initialize Plugin
-function RegisterPlugin(AJVCSMAKApp: IJApplication): Integer; stdcall;
+function RegisterPlugin(AMakeStudioApp: IJApplication): Integer; stdcall;
 var
  P: Picture;
 begin
   Result := 0;
-  jvcsmak := AJVCSMAKApp;
-  with jvcsmak do
+  MakeStudio := AMakeStudioApp;
+  with MakeStudio do
   begin
     try
       //Create form with actions and ModuleCallback
@@ -100,13 +100,13 @@ begin
       //no compatibility - module did not exist before
       //Callback for the Moduletype
       PluginTlbImpCallback := TPluginTlbImpCallback.Create(nil);
-      jvcsmak.AddCommandType( stCommandCaption, stCommandHint, stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType( stCommandCaption, stCommandHint, stCategory, P, 'txt', -1,
         ICommandCallback(PluginTlbImpCallback));
 
       //Credits
-      jvcsmak.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
+      MakeStudio.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
       //Additional Info
-      jvcsmak.AddAdditionalInfo(struPluginHint);
+      MakeStudio.AddAdditionalInfo(struPluginHint);
     except
     end;
   end;
@@ -154,7 +154,7 @@ exports
   GetMajorVersion,
   AfterAllPluginsLoaded,
   GetOptionsPageGUID,
-  JVCSMAKPlugin;
+  MakeStudioPlugin;
 
 begin
 end.

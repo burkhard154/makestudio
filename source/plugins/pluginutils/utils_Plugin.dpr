@@ -60,9 +60,9 @@ begin
 end;
 
 //:Indentifies this DLL-Version
-procedure JVCSMAKPlugin; stdcall;
+procedure MakeStudioPlugin; stdcall;
 begin
-end;                
+end;
 
 //:Get name of Plugin
 procedure GetName(AName: PChar); stdcall;
@@ -89,13 +89,13 @@ begin
 end;
 
 //:Register an initialize Plugin
-function RegisterPlugin(AJVCSMAKApp: IJApplication): Integer; stdcall;
+function RegisterPlugin(AMakeStudioApp: IJApplication): Integer; stdcall;
 var
   P: Picture;
 begin
   Result := 0;
-  jvcsmak := AJVCSMAKApp;
-  with jvcsmak do
+  MakeStudio := AMakeStudioApp;
+  with MakeStudio do
   begin
     try
       //Create form with actions and ModuleCallback
@@ -104,7 +104,7 @@ begin
 
       //add actions
       {GetPictureFromImageList(Form3.ImageList1, Form3.acTestaction1.ImageIndex, P);
-      jvcsmak.AddMenuAction(Form3.acTestaction1.Name,
+      MakeStudio.AddMenuAction(Form3.acTestaction1.Name,
                              Form3.acTestaction1.Caption,
                              Form3.acTestaction1.Hint,
                              P,
@@ -121,30 +121,30 @@ dmmtJVCSSync=3, dmmtPassolo=4, dmmtWise=5, dmmtMkdir=6);
       //compatibility - 6
       //Callback for the Moduletype
       PluginMkDirCallback := TMkDirModuleCallback.Create(nil);
-      jvcsmak.AddCommandType(stdMkdirCaption, '', stdCategoryFile, P, '',
+      MakeStudio.AddCommandType(stdMkdirCaption, '', stdCategoryFile, P, '',
                              6, ICommandCallback(PluginMkDirCallback));
 
       GetPictureFromImageList(Form3.ImageList1, 1, P);
       PluginCopyFilesCallback := TCopyFilesModuleCallback.Create(nil);
-      jvcsmak.AddCommandType(stdCopyFilesCaption, '', stdCategoryFile, P, '',
+      MakeStudio.AddCommandType(stdCopyFilesCaption, '', stdCategoryFile, P, '',
                              -1, ICommandCallback(PluginCopyFilesCallback));
 
 
       GetPictureFromImageList(Form3.ImageList1, 2, P);
       PluginBatchCallback := TBatchModuleCallback.Create(nil);
-      jvcsmak.AddCommandType(stdBatchFileCaption, '', stdCategorySystem, P, '.bat',
+      MakeStudio.AddCommandType(stdBatchFileCaption, '', stdCategorySystem, P, '.bat',
                              -1, ICommandCallback(PluginBatchCallback));
 
       GetPictureFromImageList(Form3.ImageList1, 3, P);
       PluginBatchInternalCallback := TBatchInternalModuleCallback.Create(nil);
-      jvcsmak.AddCommandType(stdBatchFileInternalCaption, '', stdCategorySystem, P, '.bat',
+      MakeStudio.AddCommandType(stdBatchFileInternalCaption, '', stdCategorySystem, P, '.bat',
                              -1, ICommandCallback(PluginBatchInternalCallback));
 
       //Credits
-      jvcsmak.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
+      MakeStudio.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
 
       //Additional Info
-      //jvcsmak.AddAdditionalInfo(struPluginHint);
+      //MakeStudio.AddAdditionalInfo(struPluginHint);
 
     except
     end;
@@ -194,7 +194,7 @@ exports
   GetMajorVersion,
   AfterAllPluginsLoaded,
   GetOptionsPageGUID,
-  JVCSMAKPlugin;
+  MakeStudioPlugin;
 
 begin
 end.

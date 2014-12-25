@@ -241,7 +241,7 @@ end;
 //Jedi Make Functions
 procedure Writeln( S:String);
 begin
-  jvcsmak.LogMessage( S);
+  MakeStudio.LogMessage( S);
 end;
 
 function Readln( Question:String):String;
@@ -252,49 +252,49 @@ end;
 function VarGet( VarName:String):Variant;
 begin
   if VarExists( VarName) then
-    Result := jvcsmak.Variables.Values[ Varname]
+    Result := MakeStudio.Variables.Values[ Varname]
   else
     Result := '';
 end;
 
 function VarCount:Integer;
 begin
-  Result := jvcsmak.Variables.Count;
+  Result := MakeStudio.Variables.Count;
 end;
 
 function VarByIdx( Idx:Integer):Variant;
 begin
-  Result := jvcsmak.Variables.ValuesByIdx[ Idx];
+  Result := MakeStudio.Variables.ValuesByIdx[ Idx];
 end;
 
 procedure VarAdd( VarName:String);
 begin
-  jvcsmak.Variables.AddVar( Varname);
+  MakeStudio.Variables.AddVar( Varname);
 end;
 
 function VarExists( VarName:String):Boolean;
 begin
-  Result := jvcsmak.Variables.VarExists( VarName);
+  Result := MakeStudio.Variables.VarExists( VarName);
 end;
 
 procedure VarSet( VarName:String; Content:Variant);
 begin
   if VarExists( VarName) then
-    jvcsmak.Variables.Values[ Varname] := Content
+    MakeStudio.Variables.Values[ Varname] := Content
   else begin
-    jvcsmak.Variables.AddVar( VarName);
-    jvcsmak.Variables.Values[ Varname] := Content;
+    MakeStudio.Variables.AddVar( VarName);
+    MakeStudio.Variables.Values[ Varname] := Content;
   end;
 end;
 
 function VarReplace( S:String):String;
 begin
-  Result := jvcsmak.Variables.ReplaceVarsInString( S);
+  Result := MakeStudio.Variables.ReplaceVarsInString( S);
 end;
 
 function Exec( App, Args, Dir:String):Integer;
 begin
-  Result := jvcsmak.ExecCmdLine( App, Args, Dir, nil);
+  Result := MakeStudio.ExecCmdLine( App, Args, Dir, nil);
 end;
 
 

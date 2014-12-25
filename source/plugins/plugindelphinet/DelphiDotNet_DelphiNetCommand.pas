@@ -53,7 +53,7 @@ var
 
       //Create and register Callback for the command type
       PluginDelphiNetCallback := TPluginDelphiNetCallback.Create(nil);
-      jvcsmak.AddCommandType('Delphi.Net', '', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('Delphi.Net', '', stCategory, P, 'txt', -1,
         ICommandCallback(PluginDelphiNetCallback));
 **** End Sample Code  *******}
 
@@ -154,8 +154,8 @@ end;
 function TPluginDelphiNet.ExecuteItem: WordBool;
 begin
   FCanceled := False;
-  jvcsmak.LogMessage(FCaption + ' ' + FTestValue);
-  jvcsmak.LogMessage('Executing Delphi.Net...');
+  MakeStudio.LogMessage(FCaption + ' ' + FTestValue);
+  MakeStudio.LogMessage('Executing Delphi.Net...');
   Result := True;
 end;
 

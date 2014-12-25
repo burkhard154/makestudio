@@ -133,16 +133,16 @@ begin
 
   if Projects.Count = 0 then
   begin
-    jvcsmak.LogMessage('> Error: ' + stdErrNoProjects + ' :-(');
+    MakeStudio.LogMessage('> Error: ' + stdErrNoProjects + ' :-(');
     Result := False;
     Exit;
   end;
 
-  jvcsmak.LogMessage(stdForceDirectories);
+  MakeStudio.LogMessage(stdForceDirectories);
   for I := 0 to Projects.Count - 1 do
   begin
-    jvcsmak.LogMessage('ForceDirectories("' + Projects[I] + '")');
-    ForceDirectories( jvcsmak.Variables.ReplaceVarsInString( Projects[I]));
+    MakeStudio.LogMessage('ForceDirectories("' + Projects[I] + '")');
+    ForceDirectories( MakeStudio.Variables.ReplaceVarsInString( Projects[I]));
   end;
 
   Application.ProcessMessages;

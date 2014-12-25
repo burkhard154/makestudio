@@ -129,8 +129,8 @@ end;
 function TPlugintestcommand01.ExecuteItem: WordBool;
 begin
   FCanceled := False;
-  jvcsmak.LogMessage(FCaption + ' ' + FTestValue);
-  jvcsmak.LogMessage('Executing testcommand01...');
+  MakeStudio.LogMessage(FCaption + ' ' + FTestValue);
+  MakeStudio.LogMessage('Executing testcommand01...');
   Result := True;
 end;
 

@@ -15,11 +15,11 @@ unit msTLB;
 // Datei am 28.12.2011 15:37:15 erzeugt aus der unten beschriebenen Typbibliothek.
 
 // ************************************************************************  //
-// Typbib.: V:\projekte\burkhard\jmake\jvcsmak (1)
+// Typbib.: V:\projekte\burkhard\jmake\MakeStudio (1)
 // LIBID: {09828B26-2D82-4B16-90D1-517D298B3612}
 // LCID: 0
 // Hilfedatei:
-// Hilfe-String: jvcsmak Bibliothek
+// Hilfe-String: MakeStudio Bibliothek
 // Liste der Abhäng.:
 //   (1) v2.0 stdole, (C:\Windows\SysWOW64\stdole2.tlb)
 // ************************************************************************ //
@@ -41,10 +41,10 @@ uses Windows, ActiveX, Classes, Graphics, OleServer, StdVCL, Variants;
 // *********************************************************************//
 const
   // Haupt- und Nebenversionen der Typbibliothek
-  jvcsmakMajorVersion = 1;
-  jvcsmakMinorVersion = 0;
+  MakeStudioMajorVersion = 1;
+  MakeStudioMinorVersion = 0;
 
-  LIBID_jvcsmak: TGUID = '{09828B26-2D82-4B16-90D1-517D298B3612}';
+  LIBID_MakeStudio: TGUID = '{09828B26-2D82-4B16-90D1-517D298B3612}';
 
   IID_IJApplication: TGUID = '{2B09765A-9813-4C0C-B5A2-B8D250F7D006}';
   CLASS_JApplication: TGUID = '{7F8F8634-63D3-460A-BA05-4CED8E2A4CAD}';
@@ -341,7 +341,7 @@ type
 // *********************************************************************//
   IPlugin = interface(IDispatch)
     ['{584C09E1-6443-4181-87E3-2ED1248A7217}']
-    function RegisterPlugin(const AJVCSMakApp: IJApplication): Integer; safecall;
+    function RegisterPlugin(const AMakeStudioApp: IJApplication): Integer; safecall;
     function Get_Name: WideString; safecall;
     function Get_Author: WideString; safecall;
     function Get_Description: WideString; safecall;
@@ -367,7 +367,7 @@ type
 // *********************************************************************//
   IPluginDisp = dispinterface
     ['{584C09E1-6443-4181-87E3-2ED1248A7217}']
-    function RegisterPlugin(const AJVCSMakApp: IJApplication): Integer; dispid 5;
+    function RegisterPlugin(const AMakeStudioApp: IJApplication): Integer; dispid 5;
     property Name: WideString readonly dispid 1;
     property Author: WideString readonly dispid 2;
     property Description: WideString readonly dispid 3;

@@ -24,7 +24,7 @@ var
 
       //Create and register Callback for the command type
       PluginEditMultipleVersionResourceCallback := TPluginEditMultipleVersionResourceCallback.Create(nil);
-      jvcsmak.AddCommandType('Edit Multiple Version Resource', '', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('Edit Multiple Version Resource', '', stCategory, P, 'txt', -1,
         ICommandCallback(PluginEditMultipleVersionResourceCallback));
 **** End Sample Code  *******}
 
@@ -168,7 +168,7 @@ var i:integer;
 begin
   FCanceled := False;
   Result := true;
-  //jvcsmak.LogMessage('Executing Edit Multiple Version Resource...');
+  //MakeStudio.LogMessage('Executing Edit Multiple Version Resource...');
   FSingleVersion.IncreaseType := IncreaseType;
   FSingleVersion.IncreaseSet := IncreaseSet;
   FSingleVersion.FileVersionKey := FileVersionKey;

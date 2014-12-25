@@ -40,7 +40,7 @@ uses
   msTLB, Windows;
 
 var
-  jvcsmak: IJApplication;
+  MakeStudio: IJApplication;
   Canceled: Boolean = False;
 
 
@@ -81,7 +81,7 @@ const
   stdcLabel              = 'Label';
   stdcProjects           = 'Project%d';
   stdcModules            = 'Modules%d';
-  stdcRegKey             = 'Software\JEDI\JVCSMAK';
+  stdcRegKey             = 'Software\JEDI\MakeStudio';
 
   stdcJVCSRegKey         = 'Software\JEDI\JEDIVCS';
   stdcJVCSIdentity       = '\Identities';

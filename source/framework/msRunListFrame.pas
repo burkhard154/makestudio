@@ -26,17 +26,17 @@ Known Issues:
 
 Unit history:
 
-2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to JVCSMAK
+2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to MakeStudio
 2003/11/28  USchuster - 2nd Migrationstep (fixed header and removed Variants)
 2003/12/05  USchuster - re-formatted
                       - minor cleanup
 2004/02/24  USchuster - Update to JVCL 3.0 / JCL 1.90 (mantis #1353)
-2005/01/02  BSchranz  - Migration to JVCSMak with external plugins
+2005/01/02  BSchranz  - Migration to MakeStudio with external plugins
 2005/02/04  USchuster - preparations for check in
 
 -----------------------------------------------------------------------------*)
 
-unit jvcsmak_RunListFrame;
+unit MakeStudio_RunListFrame;
 
 {$I jedi.inc}
 
@@ -45,7 +45,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   Menus, ImgList, StdCtrls, ExtCtrls, JvComponent, JvDragDrop,
-  jvcsmak_TLB;
+  MakeStudio_TLB;
 
 type
   TFrameModuleList = class(TFrame)
@@ -69,7 +69,7 @@ type
 implementation
 
 uses
-  jvcsmak_Main, jvcsmak_Globals, jvcsmak_Program;
+  MakeStudio_Main, MakeStudio_Globals, MakeStudio_Program;
 
 {$R *.dfm}
 

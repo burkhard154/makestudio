@@ -26,12 +26,12 @@ Known Issues:
 
 Unit history:
 
-2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to JVCSMAK
+2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to MakeStudio
 2003/11/28  USchuster - 2nd Migrationstep (fixed header)
 2003/12/05  USchuster - re-formatted
-2005/01/02  BSchranz  - Migration to JVCSMak with external plugins
+2005/01/02  BSchranz  - Migration to MakeStudio with external plugins
 2005/02/04  USchuster - preparations for check in
-2005/03/06  USchuster - changed to use TJVCSMAKPlugin.VersionInfo instead
+2005/03/06  USchuster - changed to use TMakeStudioPlugin.VersionInfo instead
                         of retrieving the plugin version info here
 2005/04/09  BSchranz  - Translated to englisch
 -----------------------------------------------------------------------------*)

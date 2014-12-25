@@ -164,27 +164,27 @@ var
 begin
   Canceled := False;
   Result := False;
-  jvcsmak.LogMessage('*********************************************************');
-//  jvcsmak.LogMessage( 'Searchpath for rc.exe is:');
-//  jvcsmak.LogMessage( GetEnvironmentVariable( 'PATH'));
-  jvcsmak.LogMessage(strExecutingProject);
-  jvcsmak.LogMessage(GetRC);
-  jvcsmak.LogMessage(FRCFile);
+  MakeStudio.LogMessage('*********************************************************');
+//  MakeStudio.LogMessage( 'Searchpath for rc.exe is:');
+//  MakeStudio.LogMessage( GetEnvironmentVariable( 'PATH'));
+  MakeStudio.LogMessage(strExecutingProject);
+  MakeStudio.LogMessage(GetRC);
+  MakeStudio.LogMessage(FRCFile);
 
   //build command line
-  F := jvcsmak.Variables.ReplaceVarsInString(FRCFile);
+  F := MakeStudio.Variables.ReplaceVarsInString(FRCFile);
   S := '"'+ F +'"';
   if FOptions <> '' then
-    S := S + ' ' + jvcsmak.Variables.ReplaceVarsInString(FOptions);
+    S := S + ' ' + MakeStudio.Variables.ReplaceVarsInString(FOptions);
 
   if FileExists( GetRC) then
   begin
     Self.GetInterface(IExecCallback, CallbackIntf);
-    Result := jvcsmak.ExecCmdLine(GetRC + ' /v', S,
+    Result := MakeStudio.ExecCmdLine(GetRC + ' /v', S,
               ExtractFilePath(F), CallbackIntf) = 0;
   end
   else
-    jvcsmak.LogMessage(strErrorCompilerNotFound);
+    MakeStudio.LogMessage(strErrorCompilerNotFound);
 end;
 
 function TBrcc32Command.MeasureItem(Handle: Integer; BriefView: WordBool): Integer;
@@ -272,7 +272,7 @@ procedure TBrcc32Command.CaptureOutput(const Line: WideString;
   var Aborted: WordBool);
 begin
   Aborted := Canceled;
-  jvcsmak.LogMessage(Line);
+  MakeStudio.LogMessage(Line);
 end;
 
 end.

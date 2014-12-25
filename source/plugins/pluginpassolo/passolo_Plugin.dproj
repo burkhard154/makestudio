@@ -20,11 +20,6 @@
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
-        <Base_Win64>true</Base_Win64>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_1)'!=''">
         <Cfg_1>true</Cfg_1>
         <CfgParent>Base</CfgParent>
@@ -60,7 +55,7 @@
         <DCC_S>false</DCC_S>
         <GenDll>true</GenDll>
         <DCC_K>false</DCC_K>
-        <DCC_DcuOutput>..\..\..\dcu</DCC_DcuOutput>
+        <DCC_DcuOutput>..\..\..\lib</DCC_DcuOutput>
         <DCC_E>false</DCC_E>
         <DCC_F>false</DCC_F>
     </PropertyGroup>
@@ -70,8 +65,6 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <Debugger_HostApplication>V:\projects\jedivcs\bin\jvcsmak.exe</Debugger_HostApplication>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_Win64)'!=''">
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>

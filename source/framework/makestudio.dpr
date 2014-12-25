@@ -31,12 +31,12 @@ ToDo:
 
 Unit history:
 
-2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to JVCSMAK
+2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to MakeStudio
 2003/11/28  USchuster - rebuild dpr from DMAK
 2003/12/05  USchuster - re-formatted
                       - fixed #bf012 (create forms on demand)
                       - changed Application Title
-2005/01/02  BSchranz  - Migration to JVCSMak with external plugins
+2005/01/02  BSchranz  - Migration to MakeStudio with external plugins
 2005/02/02  USchuster - minor style cleaning
 2006/02/05  BSchranz  - include support added
 

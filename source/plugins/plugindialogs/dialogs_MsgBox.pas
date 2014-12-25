@@ -246,26 +246,26 @@ begin
   Result := True;
 
   s := StringReplace( FText, '|', #13#10, [rfReplaceAll]);
-  jvcsmak.LogMessage(stdBreak);
-  jvcsmak.LogMessage(stdStartingMsgBox);
-  jvcsmak.LogMessage('');
-  jvcsmak.LogMessage(stdType + ' ' + DialogNames[FStyle]);
-  jvcsmak.LogMessage(stdText + ' ' + s);
-  jvcsmak.LogMessage(stdButtons + ' ' + GetSetProp( self, 'Buttons', true));
+  MakeStudio.LogMessage(stdBreak);
+  MakeStudio.LogMessage(stdStartingMsgBox);
+  MakeStudio.LogMessage('');
+  MakeStudio.LogMessage(stdType + ' ' + DialogNames[FStyle]);
+  MakeStudio.LogMessage(stdText + ' ' + s);
+  MakeStudio.LogMessage(stdButtons + ' ' + GetSetProp( self, 'Buttons', true));
   if Length(FReturnValue) > 0 then
-    jvcsmak.LogMessage(stdMsgBoxReturnValue + ' ' + FReturnValue);
+    MakeStudio.LogMessage(stdMsgBoxReturnValue + ' ' + FReturnValue);
 
   return := ButtonReturnValues[
        MessageDlg(
-       jvcsmak.Variables.ReplaceVarsInString( s),
+       MakeStudio.Variables.ReplaceVarsInString( s),
        DialogTypes[FStyle], Buttons, 0) - 1];
 
   if Length(FReturnValue) > 0 then begin
-    jvcsmak.LogMessage('');
-    jvcsmak.LogMessage(Format(stdSettingVar, [FReturnValue, return]));
-    if not jvcsmak.Variables.VarExists(FReturnValue) then
-      jvcsmak.Variables.AddVar(FReturnValue);
-    jvcsmak.Variables.Values[FReturnValue] := return;
+    MakeStudio.LogMessage('');
+    MakeStudio.LogMessage(Format(stdSettingVar, [FReturnValue, return]));
+    if not MakeStudio.Variables.VarExists(FReturnValue) then
+      MakeStudio.Variables.AddVar(FReturnValue);
+    MakeStudio.Variables.Values[FReturnValue] := return;
   end;
 end;
 

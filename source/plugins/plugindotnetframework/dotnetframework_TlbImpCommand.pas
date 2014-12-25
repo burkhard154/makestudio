@@ -53,7 +53,7 @@ var
 
       //Create and register Callback for the command type
       PluginTlbImpCallback := TPluginTlbImpCallback.Create(nil);
-      jvcsmak.AddCommandType('TlbImp', '', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('TlbImp', '', stCategory, P, 'txt', -1,
         ICommandCallback(PluginTlbImpCallback));
 **** End Sample Code  *******}
 
@@ -154,8 +154,8 @@ end;
 function TPluginTlbImp.ExecuteItem: WordBool;
 begin
   FCanceled := False;
-  jvcsmak.LogMessage(FCaption + ' ' + FTestValue);
-  jvcsmak.LogMessage('Executing TlbImp...');
+  MakeStudio.LogMessage(FCaption + ' ' + FTestValue);
+  MakeStudio.LogMessage('Executing TlbImp...');
   Result := True;
 end;
 

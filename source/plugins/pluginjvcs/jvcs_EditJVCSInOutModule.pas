@@ -26,7 +26,7 @@ Known Issues:
 
 Unit history:
 
-2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to JVCSMAK
+2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to MakeStudio
 2003/11/28  USchuster - 2nd Migrationstep (fixed header and removed Variants)
 2003/12/05  USchuster - re-formatted
 2004/05/02  USchuster - fixed #bf009 (added possibility to add and remove single projects)

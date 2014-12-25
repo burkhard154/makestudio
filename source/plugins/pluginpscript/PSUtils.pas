@@ -125,9 +125,9 @@ begin
 
   if not Result then
     for i := 0 to FPSScript.CompilerMessageCount -1 do
-      jvcsmak.LogMessage(FPSScript.CompilerMessages[i].MessageToString)
+      MakeStudio.LogMessage(FPSScript.CompilerMessages[i].MessageToString)
   else
-    jvcsmak.LogMessage(StrSuccesfullyCompiled);
+    MakeStudio.LogMessage(StrSuccesfullyCompiled);
 
 end;
 
@@ -195,7 +195,7 @@ begin
   if Compile then begin
     Result := FPSScript.Execute;
     if not Result then
-      jvcsmak.LogMessage( FPSScript.ExecErrorToString);
+      MakeStudio.LogMessage( FPSScript.ExecErrorToString);
   end;
 end;
 
@@ -206,7 +206,7 @@ end;
 
 procedure TPSHandler.Writeln(S: String);
 begin
-  jvcsmak.LogMessage( S);
+  MakeStudio.LogMessage( S);
 end;
 
 function TPSHandler.GetBrowserInfo: TPSTypInfoList;

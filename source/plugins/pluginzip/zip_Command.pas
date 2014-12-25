@@ -163,21 +163,21 @@ begin
   ZipMaster.FSpecArgsExcl.Clear;
   ZipMaster.FSpecArgs.Clear;
 
-  ZipMaster.ZipFilename := jvcsmak.Variables.ReplaceVarsInString( ZipFilename);
+  ZipMaster.ZipFilename := MakeStudio.Variables.ReplaceVarsInString( ZipFilename);
 
   if Params.Count>0 then begin
     ZipMaster.AddOptions := [ AddDirNames];
-    ZIPMaster.FSpecArgs.Text := jvcsmak.Variables.ReplaceVarsInString( Params.Text);
+    ZIPMaster.FSpecArgs.Text := MakeStudio.Variables.ReplaceVarsInString( Params.Text);
     ZipMaster.RootDir := CheckRootDir( ZipMaster.FSpecArgs, True);
 
     for i:=0 to ZipMaster.FSpecArgs.Count-1 do
-      jvcsmak.LogMessage( StrAddingFolder + ZipMaster.FSpecArgs[i]);
+      MakeStudio.LogMessage( StrAddingFolder + ZipMaster.FSpecArgs[i]);
 
     CheckDeleteZipFile;
     Result := ZipMaster.Add;
   end
   else begin
-    jvcsmak.LogMessage( StrNoFolderToZip);
+    MakeStudio.LogMessage( StrNoFolderToZip);
     Result := -1;
   end;
 end;
@@ -228,21 +228,21 @@ begin
   ZipMaster.FSpecArgsExcl.Clear;
   ZipMaster.FSpecArgs.Clear;
 
-  ZipMaster.ZipFilename := jvcsmak.Variables.ReplaceVarsInString( ZipFilename);
+  ZipMaster.ZipFilename := MakeStudio.Variables.ReplaceVarsInString( ZipFilename);
 
   if Params.Count>0 then begin
     ZipMaster.AddOptions := [ AddDirNames, AddRecurseDirs];
-    ZIPMaster.FSpecArgs.Text := jvcsmak.Variables.ReplaceVarsInString( Params.Text);
+    ZIPMaster.FSpecArgs.Text := MakeStudio.Variables.ReplaceVarsInString( Params.Text);
     ZipMaster.RootDir := CheckRootDir( ZipMaster.FSpecArgs, True);
 
     for i:=0 to ZipMaster.FSpecArgs.Count-1 do
-      jvcsmak.LogMessage( StrAddingFolderRecourse + ZipMaster.FSpecArgs[i]);
+      MakeStudio.LogMessage( StrAddingFolderRecourse + ZipMaster.FSpecArgs[i]);
 
     CheckDeleteZipFile;
     Result := ZipMaster.Add;
   end
   else begin
-    jvcsmak.LogMessage( StrNoFolderToZip);
+    MakeStudio.LogMessage( StrNoFolderToZip);
     Result := -1;
   end;
 end;
@@ -250,12 +250,12 @@ end;
 procedure TPluginZipCommand.CheckDeleteZipFile;
 begin
   if not UpdateZip then
-    if FileExists( jvcsmak.Variables.ReplaceVarsInString( ZipFilename)) then begin
-      FileSetAttr( jvcsmak.Variables.ReplaceVarsInString( ZipFilename), faArchive);
-      if not DeleteFile( jvcsmak.Variables.ReplaceVarsInString( ZipFilename)) then
-        jvcsmak.LogMessage( StrErrorDeletingZipFile + jvcsmak.Variables.ReplaceVarsInString( ZipFilename))
+    if FileExists( MakeStudio.Variables.ReplaceVarsInString( ZipFilename)) then begin
+      FileSetAttr( MakeStudio.Variables.ReplaceVarsInString( ZipFilename), faArchive);
+      if not DeleteFile( MakeStudio.Variables.ReplaceVarsInString( ZipFilename)) then
+        MakeStudio.LogMessage( StrErrorDeletingZipFile + MakeStudio.Variables.ReplaceVarsInString( ZipFilename))
       else
-        jvcsmak.LogMessage( StrZipFileDeleted + jvcsmak.Variables.ReplaceVarsInString( ZipFilename));
+        MakeStudio.LogMessage( StrZipFileDeleted + MakeStudio.Variables.ReplaceVarsInString( ZipFilename));
     end;
 end;
 
@@ -264,20 +264,20 @@ begin
   ZipMaster.FSpecArgsExcl.Clear;
   ZipMaster.FSpecArgs.Clear;
 
-  ZipMaster.ZipFilename := jvcsmak.Variables.ReplaceVarsInString( ZipFilename);
+  ZipMaster.ZipFilename := MakeStudio.Variables.ReplaceVarsInString( ZipFilename);
 
   if Params.Count>0 then begin
     ZipMaster.AddOptions := [ AddDirNames, AddRecurseDirs, AddEmptyDirs];
-    ZipMaster.RootDir := PathRemoveSeparator( jvcsmak.Variables.ReplaceVarsInString( Params[0]));
-    ZipMaster.FSpecArgs.Add( PathAddSeparator( jvcsmak.Variables.ReplaceVarsInString( Params[0])) + '*.*');
+    ZipMaster.RootDir := PathRemoveSeparator( MakeStudio.Variables.ReplaceVarsInString( Params[0]));
+    ZipMaster.FSpecArgs.Add( PathAddSeparator( MakeStudio.Variables.ReplaceVarsInString( Params[0])) + '*.*');
     ZipMaster.RootDir := CheckRootDir( ZipMaster.FSpecArgs, True);
-    jvcsmak.LogMessage( StrAddingFolderRecourse + ZipMaster.FSpecArgs[0]);
+    MakeStudio.LogMessage( StrAddingFolderRecourse + ZipMaster.FSpecArgs[0]);
 
     CheckDeleteZipFile;
     Result := ZipMaster.Add;
   end
   else begin
-    jvcsmak.LogMessage( StrNoFolderToZip);
+    MakeStudio.LogMessage( StrNoFolderToZip);
     Result := -1;
   end;
 end;
@@ -287,16 +287,16 @@ begin
   ZipMaster.FSpecArgsExcl.Clear;
   ZipMaster.FSpecArgs.Clear;
 
-  ZipMaster.ZipFilename := jvcsmak.Variables.ReplaceVarsInString( ZipFilename);
+  ZipMaster.ZipFilename := MakeStudio.Variables.ReplaceVarsInString( ZipFilename);
 
   if Params.Count>0 then begin
-    ZipMaster.ExtrBaseDir := jvcsmak.Variables.ReplaceVarsInString( PathAddSeparator( Params[ 0]));
+    ZipMaster.ExtrBaseDir := MakeStudio.Variables.ReplaceVarsInString( PathAddSeparator( Params[ 0]));
     ZipMaster.ExtrOptions := [ ExtrDirNames, ExtrOverWrite, ExtrForceDirs];
-    jvcsmak.LogMessage( StrExtractingTo + ZipMaster.ExtrBaseDir);
+    MakeStudio.LogMessage( StrExtractingTo + ZipMaster.ExtrBaseDir);
     Result := ZipMaster.Extract;
   end
   else begin
-    jvcsmak.LogMessage( StrNoFolderToExtract);
+    MakeStudio.LogMessage( StrNoFolderToExtract);
     Result := -1;
   end;
 end;
@@ -339,9 +339,9 @@ end;
 function TPluginZipCommand.ExecuteItem: WordBool;
 begin
   FCanceled := False;
-  jvcsmak.LogMessage( StrBreak);
-  jvcsmak.LogMessage( StrExecutingZipComman);
-  jvcsmak.LogMessage( jvcsmak.Variables.ReplaceVarsInString( Caption));
+  MakeStudio.LogMessage( StrBreak);
+  MakeStudio.LogMessage( StrExecutingZipComman);
+  MakeStudio.LogMessage( MakeStudio.Variables.ReplaceVarsInString( Caption));
 
   //Setup ZipMaster
   ZipMaster.OnMessage := OnZIPMessage;
@@ -514,9 +514,9 @@ procedure TPluginZipCommand.OnZIPMessage(Sender: TObject; ErrCode: Integer;
   const ErrMsg: TZMString);
 begin
   if ErrCode>0 then
-    jvcsmak.LogMessage( strError);
+    MakeStudio.LogMessage( strError);
 
-  jvcsmak.LogMessage( ErrMsg);
+  MakeStudio.LogMessage( ErrMsg);
 
   if FCanceled then
     ZipMaster.Cancel := true;

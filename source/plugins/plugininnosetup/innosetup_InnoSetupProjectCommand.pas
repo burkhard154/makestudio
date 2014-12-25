@@ -54,7 +54,7 @@ var
 
       //Create and register Callback for the command type
       PluginInnoSetupProjectCallback := TPluginInnoSetupProjectCallback.Create(nil);
-      jvcsmak.AddCommandType('Inno Setup Project', '', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('Inno Setup Project', '', stCategory, P, 'txt', -1,
         ICommandCallback(PluginInnoSetupProjectCallback));
 **** End Sample Code  *******}
 
@@ -190,31 +190,31 @@ var
 begin
   FCanceled := False;
   Result := False;
-  jvcsmak.LogMessage('*********************************************************');
-  jvcsmak.LogMessage(strExecutingProject);
-  jvcsmak.LogMessage(FProjectFile);
-  jvcsmak.LogMessage('');
+  MakeStudio.LogMessage('*********************************************************');
+  MakeStudio.LogMessage(strExecutingProject);
+  MakeStudio.LogMessage(FProjectFile);
+  MakeStudio.LogMessage('');
 
   //build command line
-  S := '"'+ jvcsmak.Variables.ReplaceVarsInString(FProjectFile) +'"';
+  S := '"'+ MakeStudio.Variables.ReplaceVarsInString(FProjectFile) +'"';
   if FOutputFile <> '' then
   begin
-    s1 := jvcsmak.Variables.ReplaceVarsInString(FOutputFile);
+    s1 := MakeStudio.Variables.ReplaceVarsInString(FOutputFile);
     S := S + ' "/f' + ExtractFileName(s1) + '"' + ' "/o' +
          ExtractFilePath(s1) + '"';
     ForceDirectories(ExtractFilePath(s1));
   end;
   if FOptions <> '' then
-    S := S + ' ' + jvcsmak.Variables.ReplaceVarsInString(FOptions);
+    S := S + ' ' + MakeStudio.Variables.ReplaceVarsInString(FOptions);
 
   if FileExists(GetInnoSetupCompiler) then
   begin
     Self.GetInterface(IExecCallback, CallbackIntf);
-    Result := jvcsmak.ExecCmdLine(GetInnoSetupCompiler, S,
+    Result := MakeStudio.ExecCmdLine(GetInnoSetupCompiler, S,
               ExtractFilePath(GetInnoSetupCompiler), CallbackIntf) = 0;
   end
   else
-    jvcsmak.LogMessage(strErrorCompilerNotFound);
+    MakeStudio.LogMessage(strErrorCompilerNotFound);
 end;
 
 function TPluginInnoSetupProject.MeasureItem(Handle: Integer; BriefView: WordBool): Integer;
@@ -307,7 +307,7 @@ procedure TPluginInnoSetupProject.CaptureOutput(const Line: WideString;
   var Aborted: WordBool);
 begin
   Aborted := FCanceled;
-  jvcsmak.LogMessage(Line);
+  MakeStudio.LogMessage(Line);
 end;
 
 end.

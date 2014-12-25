@@ -58,7 +58,7 @@ begin
 end;
 
 //:Indentifies this DLL-Version
-procedure JVCSMAKPlugin; stdcall;
+procedure MakeStudioPlugin; stdcall;
 begin
 end;
 
@@ -87,13 +87,13 @@ begin
 end;
 
 //:Register an initialize Plugin
-function RegisterPlugin(aJVCSMAKApp: IJApplication): Integer; stdcall;
+function RegisterPlugin(aMakeStudioApp: IJApplication): Integer; stdcall;
 var
   P: Picture;
 begin
   Result := 0;
-  jvcsmak := aJVCSMAKApp;
-  with jvcsmak do begin
+  MakeStudio := aMakeStudioApp;
+  with MakeStudio do begin
     try
       //Create form with actions and ModuleCallback
       Form3 := TForm3.Create(nil);
@@ -101,7 +101,7 @@ begin
 
       //add actions
       {GetPictureFromImageList(Form3.ImageList1, Form3.acTestaction1.ImageIndex, P);
-      jvcsmak.AddMenuAction(Form3.acTestaction1.Name,
+      MakeStudio.AddMenuAction(Form3.acTestaction1.Name,
                              Form3.acTestaction1.Caption,
                              Form3.acTestaction1.Hint,
                              P,
@@ -118,25 +118,25 @@ dmmtJVCSSync=3, dmmtPassolo=4, dmmtWise=5, dmmtMkdir=6);
       //compatibility - 3
       //Callback for the Moduletype
       JVCSSyncCommandCallback := TJVCSSyncCommandCallback.Create(nil);
-      jvcsmak.AddCommandType(stdJVCSProjectOpCaption, '', stdCategory, P, '', 3,
+      MakeStudio.AddCommandType(stdJVCSProjectOpCaption, '', stdCategory, P, '', 3,
         ICommandCallback(JVCSSyncCommandCallback));
 
       GetPictureFromImageList(Form3.ImageList1, 2, P);
       JVCSInOutCommandCallback := TJVCSInOutCommandCallback.Create(nil);
-      jvcsmak.AddCommandType(stdJVCSInOutCaption, '', stdCategory, P, '', 3,
+      MakeStudio.AddCommandType(stdJVCSInOutCaption, '', stdCategory, P, '', 3,
         ICommandCallback(JVCSInOutCommandCallback));
 
       //Credits
-      jvcsmak.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
-      jvcsmak.AddCreditInfo('Credits to:');
-      jvcsmak.AddCreditInfo('');
-      jvcsmak.AddCreditInfo('FreeVCS / JVCS');
-      jvcsmak.AddCreditInfo('http://www.freevcs.de/');
-      jvcsmak.AddCreditInfo('http://jedivcs.sourceforge.net/');
-      jvcsmak.AddCreditInfo('');
+      MakeStudio.AddCreditInfo(struPluginName + ' by ' + struPluginAuthor);
+      MakeStudio.AddCreditInfo('Credits to:');
+      MakeStudio.AddCreditInfo('');
+      MakeStudio.AddCreditInfo('FreeVCS / JVCS');
+      MakeStudio.AddCreditInfo('http://www.freevcs.de/');
+      MakeStudio.AddCreditInfo('http://jedivcs.sourceforge.net/');
+      MakeStudio.AddCreditInfo('');
 
       //Additional Info
-      jvcsmak.AddAdditionalInfo(JVCSDLLVersionStr);
+      MakeStudio.AddAdditionalInfo(JVCSDLLVersionStr);
 
       //initialize identity list
       ReadIdentities;
@@ -186,7 +186,7 @@ exports
   GetMajorVersion,
   AfterAllPluginsLoaded,
   GetOptionsPageGUID,
-  JVCSMAKPlugin;
+  MakeStudioPlugin;
 
 begin
 end.

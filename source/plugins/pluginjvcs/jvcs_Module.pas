@@ -26,7 +26,7 @@ Known Issues:
 
 Unit history:
 
-2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to JVCSMAK
+2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to MakeStudio
 2003/11/28  USchuster - 2nd Migrationstep (fixed header)
 2003/12/05  USchuster - re-formatted
 2005/01/05  BSchranz  - Migration to plugin code
@@ -159,7 +159,7 @@ begin
     if not Canceled then
     begin
 
-      Jvcsmak.LogMessage( Get_Caption);
+      MakeStudio.LogMessage( Get_Caption);
 
       for I := 0 to Projects.Count - 1 do
       begin
@@ -169,10 +169,10 @@ begin
                          Password, Projects[i], Port, '');
           jvcsSyncLabel:
              Result := Helper.SyncProject( Username, Server,
-                         Password, Projects[i], Port, jvcsmak.Variables.ReplaceVarsInString( JLabel));
+                         Password, Projects[i], Port, MakeStudio.Variables.ReplaceVarsInString( JLabel));
           jvcsSetLabel:
              Result := Helper.LabelProject( Username, Server,
-                         Password, Projects[i], Port, jvcsmak.Variables.ReplaceVarsInString( JLabel));
+                         Password, Projects[i], Port, MakeStudio.Variables.ReplaceVarsInString( JLabel));
         end;
 
         if Canceled or (not Result) then
@@ -430,7 +430,7 @@ procedure TJVCSSyncCommand.CaptureOutput(const Line: WideString;
   var Aborted: WordBool);
 begin
   Aborted := Canceled;
-  jvcsmak.LogMessage(Line);
+  MakeStudio.LogMessage(Line);
 end;
 
 end.

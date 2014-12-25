@@ -35,7 +35,7 @@ uses
   msTLB;
 
 var
-  jvcsmak: IJApplication;
+  MakeStudio: IJApplication;
   FCanceled: Boolean = False;
 
 resourcestring

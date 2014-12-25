@@ -105,7 +105,7 @@ const
       //Name=EditNamespaces; Hint, Category
       //Extension=txt (could be more than one extension - separated by ;)
       //no compatibility - module did not exist before
-      jvcsmak.AddCommandType('EditNamespaces', 'Your Hint here!', stCategory, P, 'txt', -1,
+      MakeStudio.AddCommandType('EditNamespaces', 'Your Hint here!', stCategory, P, 'txt', -1,
         ICommandCallback(PluginEditNamespacesCallback));
   
 }  
@@ -150,8 +150,8 @@ end;
 function TPluginEditNamespaces.ExecuteItem: WordBool;
 begin
   Canceled := False;
-  jvcsmak.Variables.Values[stvarNamespaces] := FNamespaces;
-  jvcsmak.LogMessage('Setting Namespaces to: '+jvcsmak.Variables.Values[stvarNamespaces]);
+  MakeStudio.Variables.Values[stvarNamespaces] := FNamespaces;
+  MakeStudio.LogMessage('Setting Namespaces to: '+MakeStudio.Variables.Values[stvarNamespaces]);
   Result := True;
 end;
 

@@ -54,7 +54,7 @@
         <VerInfo_Release>4</VerInfo_Release>
         <DCC_UsePackage>rtl;vcl;dbrtl;vcldb;vclx;adortl;dbxcds;dbexpress;vclib;ibxpress;IntrawebDB_72_90;Intraweb_72_90;xmlrtl;vclie;inet;inetdbbde;inetdbxpress;IndySystem;IndyCore;dclOfficeXP;VclSmp;soaprtl;dsnap;IndyProtocols;inetdb;bdertl;vcldbx;webdsnap;websnap;vclactnband;vclshlctrls;dsnapcon;teeui;teedb;tee;Rave60VCL;DJcl;JvStdCtrlsD9R;JvAppFrmD9R;JvCoreD9R;JvBandsD9R;JvBDED9R;JvDBD9R;JvDlgsD9R;JvCmpD9R;JvCryptD9R;JvCtrlsD9R;JvCustomD9R;JvDockingD9R;JvDotNetCtrlsD9R;JvEDID9R;JvGlobusD9R;JvHMID9R;JvInspectorD9R;JvInterpreterD9R;JvJansD9R;JvManagedThreadsD9R;JvMMD9R;JvNetD9R;JvPageCompsD9R;JvPluginD9R;JvPrintPreviewD9R;JvSystemD9R;JvTimeFrameworkD9R;JvUIBD9R;JvValidatorsD9R;JvWizardD9R;JvXPCtrlsD9R;BasicV1D9;ClassV1D9;SpecV1D9;AdditiveD9rtl;addex1d9rtl;GFDLIB90;RunFusD9;ssgreatis9;cxLibraryD9;dxmdsD9;dxThemeD9;cxEditorsD9;cxDataD9;cxExtEditorsD9;cxTreeListD9;cxGridD9;cxPageControlD9;dxorgcD9;dxdborD9;dxtrmdD9;dxdbtrD9;dxBarD9;dxComnD9;dxBarDBNavD9;dxBarExtDBItemsD9;dxBarExtItemsD9;dxDockingD9;dxsbD9;kprocs9;dbexp_sq9;sq9;bde_sq9;ado_sq9;elpackD9;addex2d9rtl;ManagedVCLD9;xsToolsD9;xsScriptD9;SynEdit_R2005;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_SymbolReferenceInfo>1</DCC_SymbolReferenceInfo>
-        <DCC_DcuOutput>..\..\..\dcu</DCC_DcuOutput>
+        <DCC_DcuOutput>..\..\..\lib</DCC_DcuOutput>
         <DCC_ExeOutput>..\..\..\bin</DCC_ExeOutput>
         <DCC_ImageBase>00400000</DCC_ImageBase>
         <DCC_N>true</DCC_N>

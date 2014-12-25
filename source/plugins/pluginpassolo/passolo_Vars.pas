@@ -39,7 +39,7 @@ uses
   msTLB, Windows;
 
 var
-  jvcsmak: IJApplication;
+  MakeStudio: IJApplication;
   Canceled: Boolean = False;
 
 

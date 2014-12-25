@@ -26,10 +26,10 @@ Known Issues:
 
 Unit history:
 
-2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to JVCSMAK
+2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to MakeStudio
 2003/11/28  USchuster - 2nd Migrationstep (fixed header)
 2003/12/05  USchuster - re-formatted
-2005/01/02  BSchranz  - Migration to JVCSMak with external plugins
+2005/01/02  BSchranz  - Migration to MakeStudio with external plugins
 2005/02/04  USchuster - preparations for check in
 2005/08/12  BSchranz  - command line version "jmak.exe" added
 2005/02/09  BSchranz  - TCommandTypeDragObject added to drop Command on an Sequence editor
@@ -91,10 +91,10 @@ function GetToken(Input: string; Token: Integer; Separator: string): string;
 function GetTokenList(Input: string; Tokens: TStrings; Separator: string): Integer;
 
 function xGetLastError: string;
-function GetJVCSMakBaseRegistryKey: string;
-//:Returns the application data folder <all users><application data><jvcsmak>
+function GetMakeStudioBaseRegistryKey: string;
+//:Returns the application data folder <all users><application data><MakeStudio>
 function GetJAppDataFolder: string;
-//:Returns the application data folder <current user><application data><jvcsmak>
+//:Returns the application data folder <current user><application data><MakeStudio>
 function GetJPersonalAppDataFolder: string;
 //:Returns the Help Filename
 function GetHelpFile:String;
@@ -144,7 +144,7 @@ begin
   end;
   Tokens.Add(S);
   Result := Tokens.Count;
-end;                         
+end;
 
 procedure AddLog(S: string);
 begin
@@ -178,7 +178,7 @@ end;
 
 function GetJAppDataFolder: string;
 begin
-  Result := PathAddSeparator(GetSpecialFolderLocation(CSIDL_COMMON_DOCUMENTS)) + stcJvcsMak;
+  Result := PathAddSeparator(GetSpecialFolderLocation(CSIDL_COMMON_DOCUMENTS)) + stcMakeStudio;
 
   ForceDirectories(Result);
   Result := PathAddSeparator(Result);
@@ -187,9 +187,9 @@ end;
 function GetJPersonalAppDataFolder: string;
 begin
   if GetAppdataFolder <> '' then
-    Result := PathAddSeparator(GetAppdataFolder) + stcJvcsMak
+    Result := PathAddSeparator(GetAppdataFolder) + stcMakeStudio
   else
-    Result := PathAddSeparator(GetPersonalFolder) + stcJvcsMak;
+    Result := PathAddSeparator(GetPersonalFolder) + stcMakeStudio;
 
   ForceDirectories(Result);
   Result := PathAddSeparator(Result);
@@ -293,7 +293,7 @@ begin
   Result := StrPas(ch);
 end;
 
-function GetJVCSMakBaseRegistryKey: string;
+function GetMakeStudioBaseRegistryKey: string;
 begin
   {$IFNDEF ADDITIVE}
   Result := 'Software\optimeas\makestudio';

@@ -1,23 +1,23 @@
-(*-----------------------------------------------------------------------------
-The contents of this file are subject to the Mozilla Public License
-Version 1.1 (the "License"); you may not use this file except in compliance
-with the License. You may obtain a copy of the License at
-http://www.mozilla.org/MPL/MPL-1.1.html
+(*
+ ***************************************************************************
+ optiMEAS GmbH
+ written by Burkhard Schranz, Jens-Achim Kessel
+ copyright © 2013 -
+ Email : info@optimeas.de
+ Web : http://www.optimeas.de
+ http://www.makestudio.de
+ http://www.mobiconn.de
+ The source code is given as is. The author is not responsible
+ for any possible damage done due to the use of this code.
+ The component can be freely used in any application.
+   source code remains property of the author and may not be distributed,
+ published, given or sold in any form as such. No parts of the source
+ code can be included in any other component or application without
+ written authorization of optiMEAS GmbH
 
-Software distributed under the License is distributed on an "AS IS" basis,
-WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
-the specific language governing rights and limitations under the License.
 
-The Original Code is: msPluginHandler.pas
+ ***************************************************************************
 
-The Initial Developer of the original DMAK-Code is:
-  Burkhard Schranz (burkhard.schranz@optimeas.de)
-Code move to JEDI VCS:
-  Burkhard Schranz (burkhard.schranz@optimeas.de)
-  Uwe Schuster (jedivcs@bitcommander.de)
-
-Componentes and used code which is used in this code are explictly stated to
-be copyright of the respective author(s).
 
 Last Modified: see History
 
@@ -26,11 +26,11 @@ Known Issues:
 
 Unit history:
 
-2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to JVCSMAK
-2005/01/02  BSchranz  - Migration to JVCSMak with external plugins
+2003/11/22  BSchranz  - 1st Migrationstep from DMAK code to MakeStudio
+2005/01/02  BSchranz  - Migration to MakeStudio with external plugins
 2005/02/04  USchuster - preparations for check in
 2005/03/06  USchuster - added support for .Net plugins
-                      - new property TJVCSMAKPlugin.VersionInfo (retrieve
+                      - new property TMakeStudioPlugin.VersionInfo (retrieve
                         version info here and not in msInfo.pas)
 2005/03/16  USchuster - workaround for EOleException "Overflow or underflow in
                         the arithmetic operation"
@@ -57,17 +57,17 @@ uses
   jclStrings, msDotNetUtils;
 
 const
-  stJVCSMAKDLLGetNameProc              = 'GetName';
-  stJVCSMAKDLLGetAuthorProc            = 'GetAuthor';
-  stJVCSMAKDLLAfterAllPluginsLoaded    = 'AfterAllPluginsLoaded';
-  stJVCSMAKDLLGetDescriptionProc       = 'GetDescription';
-  stJVCSMAKDLLGetRequiredPluginsProc   = 'GetRequiredPlugins';
-  stJVCSMAKDLLRegisterPluginProc       = 'RegisterPlugin';
-  stJVCSMAKDLLUnregisterPluginProc     = 'UnregisterPlugin';
-  stJVCSMAKDLLGetMinorVersionProc      = 'GetMinorVersion';
-  stJVCSMAKDLLGetMajorVersionProc      = 'GetMajorVersion';
-  stJVCSMAKDLLGetOptionsPageGUID       = 'GetOptionsPageGUID';
-  stJVCSMAKDLLIdentifyProc             = 'JVCSMAKPlugin'; //Identification of that DLL is a JVCSMAKPlugin
+  stMakeStudioDLLGetNameProc              = 'GetName';
+  stMakeStudioDLLGetAuthorProc            = 'GetAuthor';
+  stMakeStudioDLLAfterAllPluginsLoaded    = 'AfterAllPluginsLoaded';
+  stMakeStudioDLLGetDescriptionProc       = 'GetDescription';
+  stMakeStudioDLLGetRequiredPluginsProc   = 'GetRequiredPlugins';
+  stMakeStudioDLLRegisterPluginProc       = 'RegisterPlugin';
+  stMakeStudioDLLUnregisterPluginProc     = 'UnregisterPlugin';
+  stMakeStudioDLLGetMinorVersionProc      = 'GetMinorVersion';
+  stMakeStudioDLLGetMajorVersionProc      = 'GetMajorVersion';
+  stMakeStudioDLLGetOptionsPageGUID       = 'GetOptionsPageGUID';
+  stMakeStudioDLLIdentifyProc             = 'MakeStudioPlugin'; //Identification of that DLL is a MakeStudioPlugin
 
   stNetPluginClassName                 = 'JMPlugin';
   stNetPluginPrefix                    = 'JPL';
@@ -78,28 +78,28 @@ const
 type
 //Funktion prototypes for DLL calls
 
-  TJVCSMAKDLLGetNameProc              = procedure(AName: PChar); stdcall;
-  TJVCSMAKDLLGetAuthorProc            = procedure(AName: PChar); stdcall;
-  TJVCSMAKDLLGetDescriptionProc       = procedure(AName: PChar); stdcall;
-  TJVCSMAKDLLGetRequiredPluginsProc   = procedure(AName: PChar); stdcall;
-  TJVCSMAKDLLRegisterPluginProc       = function(AJVCSMAKApp: IJApplication): Integer; stdcall;
-  TJVCSMAKDLLUnregisterPluginProc     = function: Integer; stdcall;
-  TJVCSMAKDLLGetMinorVersionProc      = function: Integer; stdcall;
-  TJVCSMAKDLLGetMajorVersionProc      = function: Integer; stdcall;
-  TJVCSMAKDLLGetOptionsPageGUIDProc   = function: TGUID; stdcall;
-  TJVCSMAKDLLAfterAllPluginsLoaded    = procedure; stdcall;
+  TMakeStudioDLLGetNameProc              = procedure(AName: PChar); stdcall;
+  TMakeStudioDLLGetAuthorProc            = procedure(AName: PChar); stdcall;
+  TMakeStudioDLLGetDescriptionProc       = procedure(AName: PChar); stdcall;
+  TMakeStudioDLLGetRequiredPluginsProc   = procedure(AName: PChar); stdcall;
+  TMakeStudioDLLRegisterPluginProc       = function(AMakeStudioApp: IJApplication): Integer; stdcall;
+  TMakeStudioDLLUnregisterPluginProc     = function: Integer; stdcall;
+  TMakeStudioDLLGetMinorVersionProc      = function: Integer; stdcall;
+  TMakeStudioDLLGetMajorVersionProc      = function: Integer; stdcall;
+  TMakeStudioDLLGetOptionsPageGUIDProc   = function: TGUID; stdcall;
+  TMakeStudioDLLAfterAllPluginsLoaded    = procedure; stdcall;
 
-  TJVCSMakPluginKind = (pkWin32DLL, pkDotNetAssembly);
+  TMakeStudioPluginKind = (pkWin32DLL, pkDotNetAssembly);
 
 //Plugin wrapper class
 
-  TJVCSMAKPlugin = class(TObject)
+  TMakeStudioPlugin = class(TObject)
   private
     NetPlugin: Variant;
     DLLHandle: THandle;
     FFilename: string;
     FRegistered: Boolean;
-    FKind: TJVCSMakPluginKind;
+    FKind: TMakeStudioPluginKind;
     FAppInterface: IJApplication;
 
     function GetVersionInfo: string;
@@ -127,32 +127,32 @@ type
 
     property VersionInfo: string read GetVersionInfo;
     property PluginClassName: string read GetPluginClassName;
-    property Kind: TJVCSMakPluginKind read FKind write FKind;
+    property Kind: TMakeStudioPluginKind read FKind write FKind;
     property Registered: Boolean read FRegistered write FRegistered;
     property Filename: string read FFilename write FFilename;
   end;
 
 //Plugin List
-  TJVCSMAKPlugins = class(TObjectList)
+  TMakeStudioPlugins = class(TObjectList)
   private
-    function GetItems(Index: Integer): TJVCSMAKPlugin;
-    procedure SetItems(Index: Integer; AJVCSMAKPlugin: TJVCSMAKPlugin);
-    function GetItemsByName(ID: string): TJVCSMAKPlugin;
-    procedure SetItemsByName(ID: string; AJVCSMAKPlugin: TJVCSMAKPlugin);
+    function GetItems(Index: Integer): TMakeStudioPlugin;
+    procedure SetItems(Index: Integer; AMakeStudioPlugin: TMakeStudioPlugin);
+    function GetItemsByName(ID: string): TMakeStudioPlugin;
+    procedure SetItemsByName(ID: string; AMakeStudioPlugin: TMakeStudioPlugin);
   public
     function IsPluginLoaded(Filename: string): Boolean;
-    function Add(AJVCSMAKPlugin: TJVCSMAKPlugin): Integer;
-    function Remove(AJVCSMAKPlugin: TJVCSMAKPlugin): Integer;
-    function IndexOf(AJVCSMAKPlugin: TJVCSMAKPlugin): Integer;
-    procedure Insert(Index: Integer; AJVCSMAKPlugin: TJVCSMAKPlugin);
-    property Items[Index: Integer]: TJVCSMAKPlugin read GetItems write SetItems; default;
-    property ItemsByName[ItemID: string]: TJVCSMAKPlugin read GetItemsByName write SetItemsByName;
+    function Add(AMakeStudioPlugin: TMakeStudioPlugin): Integer;
+    function Remove(AMakeStudioPlugin: TMakeStudioPlugin): Integer;
+    function IndexOf(AMakeStudioPlugin: TMakeStudioPlugin): Integer;
+    procedure Insert(Index: Integer; AMakeStudioPlugin: TMakeStudioPlugin);
+    property Items[Index: Integer]: TMakeStudioPlugin read GetItems write SetItems; default;
+    property ItemsByName[ItemID: string]: TMakeStudioPlugin read GetItemsByName write SetItemsByName;
   end;
 
 //Plugin Handler
-  TJVCSMAKPluginHandler = class(TPersistent)
+  TMakeStudioPluginHandler = class(TPersistent)
   private
-    FPlugins: TJVCSMAKPlugins;
+    FPlugins: TMakeStudioPlugins;
     FAppInterface: IJApplication;
     FAdditionalInfo: TStringList; //Additional Infos from within the Plugins
     FCredits: TStringList;
@@ -173,7 +173,7 @@ type
     procedure FreeAllLibs;
     procedure AfterAllPluginsLoaded;
 
-    property Plugins: TJVCSMAKPlugins read FPlugins;
+    property Plugins: TMakeStudioPlugins read FPlugins;
     property DLLsLoaded: Boolean read GetLoaded;
     property DotNetDLLsLoaded: Boolean read GetDotNetLoaded;
     property AdditionalInfo: TStringList read FAdditionalInfo;
@@ -186,32 +186,32 @@ uses
   msApplication_impl, msResources, msUtils;
 
 type
-  Exception = SysUtils.Exception;  
+  Exception = SysUtils.Exception;
 
 {------------------------------------------------------------------------------}
-// TJVCSMAKPlugin
-constructor TJVCSMAKPlugin.Create(AApplication: IJApplication);
+// TMakeStudioPlugin
+constructor TMakeStudioPlugin.Create(AApplication: IJApplication);
 begin
   DLLHandle := 0;
   NetPlugin := varEmpty;
   Filename := '';
   Registered := False;
   Kind := pkWin32DLL;
-  FAppInterface := AApplication; 
+  FAppInterface := AApplication;
 end;
 
-procedure TJVCSMAKPlugin.AfterAllPluginsLoaded;
+procedure TMakeStudioPlugin.AfterAllPluginsLoaded;
 var
-  proc: TJVCSMAKDLLAfterAllPluginsLoaded;
+  proc: TMakeStudioDLLAfterAllPluginsLoaded;
 begin
   try
     if Kind = pkWin32DLL then
     begin
-      @proc := GetProcAddress(DLLHandle, stJVCSMAKDLLAfterAllPluginsLoaded);
+      @proc := GetProcAddress(DLLHandle, stMakeStudioDLLAfterAllPluginsLoaded);
       if @proc <> nil then
         proc
       else
-        AddLog(Format(tecs_MissingDLLFunction, [stJVCSMAKDLLAfterAllPluginsLoaded, Filename]));
+        AddLog(Format(tecs_MissingDLLFunction, [stMakeStudioDLLAfterAllPluginsLoaded, Filename]));
     end
     else
     if Kind = pkDotNetAssembly then
@@ -224,15 +224,15 @@ begin
   end;
 end;
 
-function TJVCSMAKPlugin.RegisterPlugin: Integer;
+function TMakeStudioPlugin.RegisterPlugin: Integer;
 var
-  proc: TJVCSMAKDLLRegisterPluginProc;
+  proc: TMakeStudioDLLRegisterPluginProc;
 begin
   Result := -1;
   try
     if Kind = pkWin32DLL then
     begin
-      @proc := GetProcAddress(DLLHandle, stJVCSMAKDLLRegisterPluginProc);
+      @proc := GetProcAddress(DLLHandle, stMakeStudioDLLRegisterPluginProc);
       if @proc <> nil then
       begin
         proc(FAppInterface);
@@ -240,7 +240,7 @@ begin
         Registered := True;
       end
       else
-        AddLog(Format(tecs_MissingDLLFunction, [stJVCSMAKDLLRegisterPluginProc, Filename]));
+        AddLog(Format(tecs_MissingDLLFunction, [stMakeStudioDLLRegisterPluginProc, Filename]));
     end
     else
     if Kind = pkDotNetAssembly then
@@ -260,9 +260,9 @@ begin
   end;
 end;
 
-function TJVCSMAKPlugin.UnregisterPlugin: Integer;
+function TMakeStudioPlugin.UnregisterPlugin: Integer;
 var
-  proc: TJVCSMAKDLLUnregisterPluginProc;
+  proc: TMakeStudioDLLUnregisterPluginProc;
 begin
   Result := -1;
 
@@ -271,7 +271,7 @@ begin
   try
     if Kind = pkWin32DLL then
     begin
-      @proc := GetProcAddress(DLLHandle, stJVCSMAKDLLUnregisterPluginProc);
+      @proc := GetProcAddress(DLLHandle, stMakeStudioDLLUnregisterPluginProc);
       if @proc <> nil then
       begin
         try
@@ -283,7 +283,7 @@ begin
         Registered := False;
       end
       else
-        AddLog(Format(tecs_MissingDLLFunction, [stJVCSMAKDLLUnregisterPluginProc, Filename]));
+        AddLog(Format(tecs_MissingDLLFunction, [stMakeStudioDLLUnregisterPluginProc, Filename]));
     end
     else
     if Kind = pkDotNetAssembly then
@@ -300,23 +300,23 @@ begin
   end;
 end;
 
-function TJVCSMAKPlugin.GetName: string;
+function TMakeStudioPlugin.GetName: string;
 var
-  proc: TJVCSMAKDLLGetNameProc;
+  proc: TMakeStudioDLLGetNameProc;
   ch: array [0..255] of Char;
 begin
   Result := sttwr_StrNoFunctionReturn;
   try
     if Kind = pkWin32DLL then
     begin
-      @proc := GetProcAddress(DLLHandle, stJVCSMAKDLLGetNameProc);
+      @proc := GetProcAddress(DLLHandle, stMakeStudioDLLGetNameProc);
       if @proc <> nil then
       begin
         proc(ch);
         Result := StrPas(ch);
       end
       else
-        AddLog(Format(tecs_MissingDLLFunction, [Filename, stJVCSMAKDLLGetNameProc]));
+        AddLog(Format(tecs_MissingDLLFunction, [Filename, stMakeStudioDLLGetNameProc]));
     end
     else
     if Kind = pkDotNetAssembly then
@@ -329,23 +329,23 @@ begin
   end;
 end;
 
-function TJVCSMAKPlugin.GetAuthor: string;
+function TMakeStudioPlugin.GetAuthor: string;
 var
-  proc: TJVCSMAKDLLGetAuthorProc;
+  proc: TMakeStudioDLLGetAuthorProc;
   ch: array [0..255] of Char;
 begin
   Result := sttwr_StrNoFunctionReturn;
   try
     if Kind = pkWin32DLL then
     begin
-      @proc := GetProcAddress(DLLHandle, stJVCSMAKDLLGetAuthorProc);
+      @proc := GetProcAddress(DLLHandle, stMakeStudioDLLGetAuthorProc);
       if @proc <> nil then
       begin
         proc(ch);
         Result := StrPas(ch);
       end
       else
-        AddLog(Format(tecs_MissingDLLFunction, [stJVCSMAKDLLGetAuthorProc, Filename]));
+        AddLog(Format(tecs_MissingDLLFunction, [stMakeStudioDLLGetAuthorProc, Filename]));
     end
     else
     if Kind = pkDotNetAssembly then
@@ -358,21 +358,21 @@ begin
   end;
 end;
 
-function TJVCSMAKPlugin.GetMinorVersion: Integer;
+function TMakeStudioPlugin.GetMinorVersion: Integer;
 var
-  proc: TJVCSMAKDLLGetMinorVersionProc;
+  proc: TMakeStudioDLLGetMinorVersionProc;
 begin
   Result := 0;
   try
     if Kind = pkWin32DLL then
     begin
-      @proc := GetProcAddress(DLLHandle, stJVCSMAKDLLGetMinorVersionProc);
+      @proc := GetProcAddress(DLLHandle, stMakeStudioDLLGetMinorVersionProc);
       if @proc <> nil then
       begin
         Result := proc;
       end
       else
-        AddLog(Format(tecs_MissingDLLFunction, [stJVCSMAKDLLGetMinorVersionProc, Filename]));
+        AddLog(Format(tecs_MissingDLLFunction, [stMakeStudioDLLGetMinorVersionProc, Filename]));
     end
     else
     if Kind = pkDotNetAssembly then
@@ -385,21 +385,21 @@ begin
   end;
 end;
 
-function TJVCSMAKPlugin.GetMajorVersion: Integer;
+function TMakeStudioPlugin.GetMajorVersion: Integer;
 var
-  proc: TJVCSMAKDLLGetMajorVersionProc;
+  proc: TMakeStudioDLLGetMajorVersionProc;
 begin
   Result := 0;
   try
     if Kind = pkWin32DLL then
     begin
-      @proc := GetProcAddress(DLLHandle, stJVCSMAKDLLGetMajorVersionProc);
+      @proc := GetProcAddress(DLLHandle, stMakeStudioDLLGetMajorVersionProc);
       if @proc <> nil then
       begin
         Result := proc;
       end
       else
-        AddLog(Format(tecs_MissingDLLFunction, [stJVCSMAKDLLGetMajorVersionProc, Filename]));
+        AddLog(Format(tecs_MissingDLLFunction, [stMakeStudioDLLGetMajorVersionProc, Filename]));
     end
     else
     if Kind = pkDotNetAssembly then
@@ -412,23 +412,23 @@ begin
   end;
 end;
 
-function TJVCSMAKPlugin.GetDescription: string;
+function TMakeStudioPlugin.GetDescription: string;
 var
-  proc: TJVCSMAKDLLGetDescriptionProc;
+  proc: TMakeStudioDLLGetDescriptionProc;
   ch: array [0..255] of Char;
 begin
   Result := sttwr_StrNoFunctionReturn;
   try
     if Kind = pkWin32DLL then
     begin
-      @proc := GetProcAddress(DLLHandle, stJVCSMAKDLLGetDescriptionProc);
+      @proc := GetProcAddress(DLLHandle, stMakeStudioDLLGetDescriptionProc);
       if @proc <> nil then
       begin
         proc(ch);
         Result := StrPas(ch);
       end
       else
-        AddLog(Format(tecs_MissingDLLFunction, [stJVCSMAKDLLGetDescriptionProc, Filename]));
+        AddLog(Format(tecs_MissingDLLFunction, [stMakeStudioDLLGetDescriptionProc, Filename]));
     end
     else
     if Kind = pkDotNetAssembly then
@@ -441,23 +441,23 @@ begin
   end;
 end;
 
-function TJVCSMAKPlugin.GetRequiredPlugins: string;
+function TMakeStudioPlugin.GetRequiredPlugins: string;
 var
-  proc: TJVCSMAKDLLGetRequiredPluginsProc;
+  proc: TMakeStudioDLLGetRequiredPluginsProc;
   ch: array [0..2047] of Char;
 begin
   Result := '';
   try
     if Kind = pkWin32DLL then
     begin
-      @proc := GetProcAddress(DLLHandle, stJVCSMAKDLLGetRequiredPluginsProc);
+      @proc := GetProcAddress(DLLHandle, stMakeStudioDLLGetRequiredPluginsProc);
       if @proc <> nil then
       begin
         proc(ch);
         Result := StrPas(ch);
       end
       else
-        AddLog(Format(tecs_MissingDLLFunction, [stJVCSMAKDLLGetRequiredPluginsProc, Filename]));
+        AddLog(Format(tecs_MissingDLLFunction, [stMakeStudioDLLGetRequiredPluginsProc, Filename]));
     end
     else
     if Kind = pkDotNetAssembly then
@@ -471,15 +471,15 @@ begin
   end;
 end;
 
-function TJVCSMAKPlugin.GetOptionsGUID: TGUID;
+function TMakeStudioPlugin.GetOptionsGUID: TGUID;
 var
-  proc: TJVCSMAKDLLGetOptionsPageGUIDProc;
+  proc: TMakeStudioDLLGetOptionsPageGUIDProc;
 begin
   Result := GUID_NULL;
   try
     if Kind = pkWin32DLL then
     begin
-      @proc := GetProcAddress(DLLHandle, stJVCSMAKDLLGetOptionsPageGUID);
+      @proc := GetProcAddress(DLLHandle, stMakeStudioDLLGetOptionsPageGUID);
       if @proc <> nil then
       begin
         Result := proc;
@@ -497,7 +497,7 @@ begin
   end;
 end;
 
-function TJVCSMAKPlugin.GetVersionInfo: string;
+function TMakeStudioPlugin.GetVersionInfo: string;
 var
   verinfo: TJclFileVersionInfo;
   AssemblyName: string;
@@ -531,17 +531,17 @@ begin
   end;
 end;
 
-function TJVCSMAKPlugin.HasOptionsDlg: Boolean;
+function TMakeStudioPlugin.HasOptionsDlg: Boolean;
 begin
   Result := IsEqualGUID(GetOptionsGUID, GUID_NULL);
 end;
 
-function TJVCSMAKPlugin.IsLoaded: Boolean;
+function TMakeStudioPlugin.IsLoaded: Boolean;
 begin
   Result := GetModuleHandle(PChar(ExtractFileName(Filename))) <> 0;
 end;
 
-procedure TJVCSMAKPlugin.RequiredPluginsList(AList: TStrings);
+procedure TMakeStudioPlugin.RequiredPluginsList(AList: TStrings);
 var
   S: string;
 begin
@@ -551,7 +551,7 @@ begin
     AList.Text := StringReplace(S, stcPluginSeparator, #10#13, [rfReplaceAll]);
 end;
 
-procedure TJVCSMAKPlugin.RequiredPluginsFilenameList(AList: TStrings);
+procedure TMakeStudioPlugin.RequiredPluginsFilenameList(AList: TStrings);
 var
   I: Integer;
 begin
@@ -562,9 +562,9 @@ begin
 end;
 
 {------------------------------------------------------------------------------}
-// TJVCSMAKPlugins
+// TMakeStudioPlugins
 
-function TJVCSMAKPlugins.IsPluginLoaded(Filename: string): Boolean;
+function TMakeStudioPlugins.IsPluginLoaded(Filename: string): Boolean;
 var
   I: Integer;
 begin
@@ -576,37 +576,37 @@ begin
   end;
 end;
 
-function TJVCSMAKPlugins.Add(AJVCSMAKPlugin: TJVCSMAKPlugin): Integer;
+function TMakeStudioPlugins.Add(AMakeStudioPlugin: TMakeStudioPlugin): Integer;
 begin
-  Result := inherited Add(AJVCSMAKPlugin);
+  Result := inherited Add(AMakeStudioPlugin);
 end;
 
-function TJVCSMAKPlugins.GetItems(Index: Integer): TJVCSMAKPlugin;
+function TMakeStudioPlugins.GetItems(Index: Integer): TMakeStudioPlugin;
 begin
-  Result := TJVCSMAKPlugin(inherited Items[Index]);
+  Result := TMakeStudioPlugin(inherited Items[Index]);
 end;
 
-function TJVCSMAKPlugins.IndexOf(AJVCSMAKPlugin: TJVCSMAKPlugin): Integer;
+function TMakeStudioPlugins.IndexOf(AMakeStudioPlugin: TMakeStudioPlugin): Integer;
 begin
-  Result := inherited IndexOf(AJVCSMAKPlugin);
+  Result := inherited IndexOf(AMakeStudioPlugin);
 end;
 
-procedure TJVCSMAKPlugins.Insert(Index: Integer; AJVCSMAKPlugin: TJVCSMAKPlugin);
+procedure TMakeStudioPlugins.Insert(Index: Integer; AMakeStudioPlugin: TMakeStudioPlugin);
 begin
-  inherited Insert(Index, AJVCSMAKPlugin);
+  inherited Insert(Index, AMakeStudioPlugin);
 end;
 
-function TJVCSMAKPlugins.Remove(AJVCSMAKPlugin: TJVCSMAKPlugin): Integer;
+function TMakeStudioPlugins.Remove(AMakeStudioPlugin: TMakeStudioPlugin): Integer;
 begin
-  Result := inherited Remove(AJVCSMAKPlugin);
+  Result := inherited Remove(AMakeStudioPlugin);
 end;
 
-procedure TJVCSMAKPlugins.SetItems(Index: Integer; AJVCSMAKPlugin: TJVCSMAKPlugin);
+procedure TMakeStudioPlugins.SetItems(Index: Integer; AMakeStudioPlugin: TMakeStudioPlugin);
 begin
-  inherited Items[Index] := AJVCSMAKPlugin;
+  inherited Items[Index] := AMakeStudioPlugin;
 end;
 
-function TJVCSMAKPlugins.GetItemsByName(ID: string): TJVCSMAKPlugin;
+function TMakeStudioPlugins.GetItemsByName(ID: string): TMakeStudioPlugin;
 var
   I: Integer;
 begin
@@ -619,14 +619,14 @@ begin
     end;
 end;
 
-procedure TJVCSMAKPlugins.SetItemsByName(ID: string; AJVCSMAKPlugin: TJVCSMAKPlugin);
+procedure TMakeStudioPlugins.SetItemsByName(ID: string; AMakeStudioPlugin: TMakeStudioPlugin);
 var
   I: Integer;
 begin
   for I := 0 to Count - 1 do
     if CompareText(Items[I].GetName, ID) = 0 then
     begin
-      Items[I] := AJVCSMAKPlugin;
+      Items[I] := AMakeStudioPlugin;
       Break;
     end;
 end;
@@ -634,16 +634,16 @@ end;
 {------------------------------------------------------------------------------}
 // TExDLLHandler
 
-constructor TJVCSMAKPluginHandler.Create(AMakeKind: EMakeKind = mkGUI);
+constructor TMakeStudioPluginHandler.Create(AMakeKind: EMakeKind = mkGUI);
 begin
   inherited Create;
   FAppInterface := TJApplication.Create(AMakeKind);
-  FPlugins := TJVCSMAKPlugins.Create;
+  FPlugins := TMakeStudioPlugins.Create;
   FAdditionalInfo := TStringList.Create;
   FCredits := TStringList.Create;
 end;
 
-destructor TJVCSMAKPluginHandler.Destroy;
+destructor TMakeStudioPluginHandler.Destroy;
 begin
   FreeAllLibs;
   FAdditionalInfo.Free;
@@ -653,9 +653,9 @@ begin
   inherited Destroy;
 end;
 
-function TJVCSMAKPluginHandler.LoadAssembly(AFilename: string): Boolean;
+function TMakeStudioPluginHandler.LoadAssembly(AFilename: string): Boolean;
 var
-  plgItem: TJVCSMAKPlugin;
+  plgItem: TMakeStudioPlugin;
 begin
   Result := True;
 
@@ -664,7 +664,7 @@ begin
   AddLog(Format(sttwr_LoadingPlugin, [AFileName]));
 
   //Create and fill plugin item
-  plgItem := TJVCSMAKPlugin.Create(AppInterface);
+  plgItem := TMakeStudioPlugin.Create(AppInterface);
   plgItem.Kind := pkDotNetAssembly;
   plgItem.Filename := AFileName;
 
@@ -715,12 +715,12 @@ begin
     plgItem.Free;
 end;
 
-function TJVCSMAKPluginHandler.LoadPlugin(AFilename: string): Boolean;
+function TMakeStudioPluginHandler.LoadPlugin(AFilename: string): Boolean;
 var
   proc: Pointer;
   lHandle: THandle;
   I: Integer;
-  plgItem: TJVCSMAKPlugin;
+  plgItem: TMakeStudioPlugin;
   sl: TStringList;
 begin
   Result := True;
@@ -734,14 +734,14 @@ begin
   if lHandle > 0 then
   begin
     //lookup identification proc
-    proc := GetProcAddress(lHandle, stJVCSMAKDLLIdentifyProc);
+    proc := GetProcAddress(lHandle, stMakeStudioDLLIdentifyProc);
 
     if proc <> nil then
     begin
       //AddLog('Proc war <> nil');
 
       //Create and fill plugin item
-      plgItem := TJVCSMAKPlugin.Create(AppInterface);
+      plgItem := TMakeStudioPlugin.Create(AppInterface);
       plgItem.DLLHandle := lHandle;
       plgItem.Filename := AFilename;
       FPlugins.Add(plgItem);
@@ -776,14 +776,14 @@ begin
     else
     begin
       FreeLibrary(lHandle);
-      AddLog(Format(tecs_MissingDLLFunction, [stJVCSMAKDLLIdentifyProc, AFilename]));
+      AddLog(Format(tecs_MissingDLLFunction, [stMakeStudioDLLIdentifyProc, AFilename]));
     end;
   end
   else
     AddLog(Format(tecs_ErrorLoadingPlugin, [AFilename]));
 end;
 
-procedure TJVCSMAKPluginHandler.LoadAllLibs;
+procedure TMakeStudioPluginHandler.LoadAllLibs;
 begin
   if FAppInterface = nil then
   begin
@@ -804,12 +804,12 @@ begin
   end;
 end;
 
-procedure TJVCSMAKPluginHandler.FreeAllLibs;
+procedure TMakeStudioPluginHandler.FreeAllLibs;
 begin
   FPlugins.Clear;
 end;
 
-procedure TJVCSMAKPluginHandler.UnregisterAllLibs;
+procedure TMakeStudioPluginHandler.UnregisterAllLibs;
 var
   I: Integer;
 begin
@@ -821,7 +821,7 @@ begin
   end;
 end;
 
-function TJVCSMAKPluginHandler.GetDotNetLoaded: Boolean;
+function TMakeStudioPluginHandler.GetDotNetLoaded: Boolean;
 var
   I: Integer;
 begin
@@ -833,11 +833,11 @@ begin
     end;
 end;
 
-function TJVCSMAKPluginHandler.GetLoaded: Boolean;
+function TMakeStudioPluginHandler.GetLoaded: Boolean;
 var
   I: Integer;
 begin
-  Result := False; 
+  Result := False;
   for I := 0 to Plugins.Count - 1 do
     if Plugins[I].FKind = pkWin32DLL then begin
       Result := True;
@@ -845,7 +845,7 @@ begin
     end;
 end;
 
-procedure TJVCSMAKPluginHandler.AfterAllPluginsLoaded;
+procedure TMakeStudioPluginHandler.AfterAllPluginsLoaded;
 var
   I: Integer;
 begin
@@ -854,12 +854,12 @@ begin
     Plugins[I].AfterAllPluginsLoaded;
 end;
 
-function TJVCSMAKPlugin.GetPluginClassName: string;
+function TMakeStudioPlugin.GetPluginClassName: string;
 begin
   Result := ExtractFileName(ChangeFileExt(Filename, '')) + '.' + stNetPluginClassName;
 end;
 
-function TJVCSMAKPluginHandler.IsNetPlugin(AFilename: string): Boolean;
+function TMakeStudioPluginHandler.IsNetPlugin(AFilename: string): Boolean;
 var
   sl: TStringList;
 begin
@@ -876,7 +876,7 @@ begin
   end;
 end;
 
-destructor TJVCSMAKPlugin.Destroy;
+destructor TMakeStudioPlugin.Destroy;
 begin
   if Registered then
     UnregisterPlugin;
@@ -898,7 +898,7 @@ begin
   inherited;
 end;
 
-procedure TJVCSMAKPluginHandler.LoadNETLibs;
+procedure TMakeStudioPluginHandler.LoadNETLibs;
 var
   SR: TSearchRec;
   Path: string;
@@ -933,7 +933,7 @@ begin
   end;
 end;
 
-procedure TJVCSMAKPluginHandler.LoadDLLLibs;
+procedure TMakeStudioPluginHandler.LoadDLLLibs;
 var
   SR: TSearchRec;
   Path: string;

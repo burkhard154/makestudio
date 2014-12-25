@@ -241,7 +241,7 @@ var
       ch,
       511,
       nil);
-    jvcsmak.LogMessage(StrPas(ch));
+    MakeStudio.LogMessage(StrPas(ch));
   end;
 
   function GetExecName(TLB: string): string;
@@ -263,24 +263,24 @@ var F:String;
 begin
   Result := False;
 
-  jvcsmak.LogMessage(stdBreak);
-  jvcsmak.LogMessage(stdStartingBatch);
+  MakeStudio.LogMessage(stdBreak);
+  MakeStudio.LogMessage(stdStartingBatch);
 
   if not FileExists( GetExecName(stPassolo5_PSLU_TLB)) then
   begin
-    jvcsmak.LogMessage('> Error: ' + stdErrNoPassoloExec + ' :-(');
+    MakeStudio.LogMessage('> Error: ' + stdErrNoPassoloExec + ' :-(');
     Result := False;
     Exit;
   end;
 
-  F := jvcsmak.Variables.ReplaceVarsInString( ProjectPath);
+  F := MakeStudio.Variables.ReplaceVarsInString( ProjectPath);
   if FileExists( F) then begin
-    Result := jvcsmak.ExecCmdLine( GetExecName(stPassolo5_PSLU_TLB),
+    Result := MakeStudio.ExecCmdLine( GetExecName(stPassolo5_PSLU_TLB),
                '"' + ProjectPath + '" /BATCH', ExtractFilePath( F),
                IExecCallback( self))=0;
   end
   else
-    jvcsmak.LogMessage( Format( stdeFileNotFound, [F]));
+    MakeStudio.LogMessage( Format( stdeFileNotFound, [F]));
 end;
 
 function TPassoloCommand.Get_ParamValues(const ParamName: WideString): WideString;
@@ -318,7 +318,7 @@ procedure TPassoloCommand.CaptureOutput(const Line: WideString;
   var Aborted: WordBool);
 begin
   Aborted := Canceled;
-  jvcsmak.LogMessage(Line);
+  MakeStudio.LogMessage(Line);
 end;
 
 end.

@@ -54,7 +54,7 @@ var
 begin
   // now add all files to the editor
   for i := 0 to lbFound.Items.Count - 1 do
-    jvcsmak.AddCommandByFile(lbFound.Items[i]);
+    MakeStudio.AddCommandByFile(lbFound.Items[i]);
 
   Close;
 end;

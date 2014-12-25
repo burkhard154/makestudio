@@ -41,7 +41,7 @@ uses
   msTLB;
 
 var
-  jvcsmak: IJApplication;
+  MakeStudio: IJApplication;
   Canceled: Boolean = False;
 
 

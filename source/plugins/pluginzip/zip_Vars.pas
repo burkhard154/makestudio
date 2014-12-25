@@ -34,7 +34,7 @@ uses
   msTLB, ZipMstr;
 
 var
-  jvcsmak: IJApplication;
+  MakeStudio: IJApplication;
   FCanceled: Boolean = False;
   ZipMaster : TZipMaster;
 
