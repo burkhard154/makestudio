@@ -40,7 +40,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Mask, JvToolEdit, utils_RunBatch, JvExMask, ExtCtrls,
-  SynEditHighlighter, SynHighlighterBat, SynEdit;
+  SynEditHighlighter, SynEdit, SynHighlighterBat;
 
 type
   TFormEditBatchInternal = class(TForm)
@@ -55,6 +55,7 @@ type
     Memo: TSynEdit;
     SynBatSyn1: TSynBatSyn;
     cbReplaceVars: TCheckBox;
+    SynBatSyn2: TSynBatSyn;
     procedure btExportClick(Sender: TObject);
     procedure btImportClick(Sender: TObject);
   private

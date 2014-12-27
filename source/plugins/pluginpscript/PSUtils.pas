@@ -92,8 +92,7 @@ uses
   uPSR_controls,
   uPSR_classes,
   uPSR_dateutils,
-  uPSC_dateutils,
-  uPSI_NativeXml;
+  uPSC_dateutils;
 
 
 { compile-time registration functions }
@@ -155,7 +154,6 @@ begin
   RIRegister_Forms(x);
   RIRegister_psscript_internals( se);
   Register_psscript_published( nil, se);
-  RIRegister_NativeXml(x);
   RegisterDateTimeLibrary_R(se);
 end;
 
@@ -169,7 +167,6 @@ begin
   SIRegister_Forms(x);
   SIRegister_psscript_internals( x);
   Register_psscript_published( x, nil);
-  SIRegister_NativeXml(x);
   RegisterDateTimeLibrary_C(x);
 end;
 

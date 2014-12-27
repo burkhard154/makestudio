@@ -7,7 +7,7 @@
         <AppType>Library</AppType>
         <FrameworkType>None</FrameworkType>
         <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
-        <ProjectVersion>15.3</ProjectVersion>
+        <ProjectVersion>16.0</ProjectVersion>
         <Base>True</Base>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
@@ -43,10 +43,10 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <SanitizedProjectName>wise_Plugin</SanitizedProjectName>
         <Manifest_File>None</Manifest_File>
         <VerInfo_Locale>1031</VerInfo_Locale>
         <VerInfo_Build>9</VerInfo_Build>
-        <OutputExt>jpl</OutputExt>
         <VerInfo_Keys>FileVersion=1.0.0.9;ProductVersion=1.0;CompanyName=Project JEDI;FileDescription=Wise Installer Plugin;InternalName=JVCSMak;LegalCopyright=www.mozilla.org/mpl/mpl-1.1.html;LegalTrademarks=;OriginalFilename=wise.jpl;ProductName=JEDI VCS Make;Comments=</VerInfo_Keys>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Winapi;Vcl;System.Win;$(DCC_Namespace)</DCC_Namespace>
@@ -66,6 +66,7 @@
         <DCC_F>false</DCC_F>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
+        <OutputExt>dll</OutputExt>
         <VerInfo_Build>0</VerInfo_Build>
         <DCC_Namespace>Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
         <VerInfo_Locale>1033</VerInfo_Locale>

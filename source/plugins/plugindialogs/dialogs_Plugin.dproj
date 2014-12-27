@@ -7,7 +7,7 @@
         <AppType>Library</AppType>
         <FrameworkType>VCL</FrameworkType>
         <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
-        <ProjectVersion>15.3</ProjectVersion>
+        <ProjectVersion>16.0</ProjectVersion>
         <Base>True</Base>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
@@ -43,6 +43,7 @@
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
+        <SanitizedProjectName>dialogs_Plugin</SanitizedProjectName>
         <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <VerInfo_Build>8</VerInfo_Build>
         <VerInfo_Keys>CompanyName=Project JEDI;FileDescription=Dialog Plugin;FileVersion=1.1.4.8;InternalName=;LegalCopyright=MPL 1.1;LegalTrademarks=;OriginalFilename=;ProductName=Jedi Make;ProductVersion=1.1;Comments=</VerInfo_Keys>
