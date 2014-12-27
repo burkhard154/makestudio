@@ -29,14 +29,14 @@ Unit history:
 
 -----------------------------------------------------------------------------*)
 
-library wise_MakeStudioPlugin;
+library wise_Plugin;
 
 {$I jedi.inc}
 
 uses
   SysUtils,
   Classes,
-  msTLB in '..\..\msTLB.pas',
+  msTLB in '..\..\framework\msTLB.pas',
   ComServ,
   ActiveX,
   wise_Actions in 'wise_Actions.pas' {Form3},

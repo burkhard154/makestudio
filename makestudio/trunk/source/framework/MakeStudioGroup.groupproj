@@ -45,6 +45,9 @@
         <Projects Include="..\plugins\pluginversion\resources_Plugin.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="..\plugins\pluginwise\wise_Plugin.dproj">
+            <Dependencies/>
+        </Projects>
         <Projects Include="..\plugins\pluginzip\zip_Plugin.dproj">
             <Dependencies/>
         </Projects>
@@ -188,6 +191,15 @@
     <Target Name="resources_Plugin:Make">
         <MSBuild Projects="..\plugins\pluginversion\resources_Plugin.dproj" Targets="Make"/>
     </Target>
+    <Target Name="wise_Plugin">
+        <MSBuild Projects="..\plugins\pluginwise\wise_Plugin.dproj"/>
+    </Target>
+    <Target Name="wise_Plugin:Clean">
+        <MSBuild Projects="..\plugins\pluginwise\wise_Plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="wise_Plugin:Make">
+        <MSBuild Projects="..\plugins\pluginwise\wise_Plugin.dproj" Targets="Make"/>
+    </Target>
     <Target Name="zip_Plugin">
         <MSBuild Projects="..\plugins\pluginzip\zip_Plugin.dproj"/>
     </Target>
@@ -216,13 +228,13 @@
         <MSBuild Projects="..\plugins\wizard\codewizard.dproj" Targets="Make"/>
     </Target>
     <Target Name="Build">
-        <CallTarget Targets="makestudio;ms;delphi32_Plugin;dialogs_Plugin;DelphiDotNet_Plugin;EasyBackup_Plugin;helpandmanual_Plugin;innosetup_Plugin;jvcs_Plugin;nsis_Plugin;passolo_Plugin;pscript_Plugin;utils_Plugin;resources_Plugin;zip_Plugin;MakeStudioPluginWizard;codewizard"/>
+        <CallTarget Targets="makestudio;ms;delphi32_Plugin;dialogs_Plugin;DelphiDotNet_Plugin;EasyBackup_Plugin;helpandmanual_Plugin;innosetup_Plugin;jvcs_Plugin;nsis_Plugin;passolo_Plugin;pscript_Plugin;utils_Plugin;resources_Plugin;wise_Plugin;zip_Plugin;MakeStudioPluginWizard;codewizard"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="makestudio:Clean;ms:Clean;delphi32_Plugin:Clean;dialogs_Plugin:Clean;DelphiDotNet_Plugin:Clean;EasyBackup_Plugin:Clean;helpandmanual_Plugin:Clean;innosetup_Plugin:Clean;jvcs_Plugin:Clean;nsis_Plugin:Clean;passolo_Plugin:Clean;pscript_Plugin:Clean;utils_Plugin:Clean;resources_Plugin:Clean;zip_Plugin:Clean;MakeStudioPluginWizard:Clean;codewizard:Clean"/>
+        <CallTarget Targets="makestudio:Clean;ms:Clean;delphi32_Plugin:Clean;dialogs_Plugin:Clean;DelphiDotNet_Plugin:Clean;EasyBackup_Plugin:Clean;helpandmanual_Plugin:Clean;innosetup_Plugin:Clean;jvcs_Plugin:Clean;nsis_Plugin:Clean;passolo_Plugin:Clean;pscript_Plugin:Clean;utils_Plugin:Clean;resources_Plugin:Clean;wise_Plugin:Clean;zip_Plugin:Clean;MakeStudioPluginWizard:Clean;codewizard:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="makestudio:Make;ms:Make;delphi32_Plugin:Make;dialogs_Plugin:Make;DelphiDotNet_Plugin:Make;EasyBackup_Plugin:Make;helpandmanual_Plugin:Make;innosetup_Plugin:Make;jvcs_Plugin:Make;nsis_Plugin:Make;passolo_Plugin:Make;pscript_Plugin:Make;utils_Plugin:Make;resources_Plugin:Make;zip_Plugin:Make;MakeStudioPluginWizard:Make;codewizard:Make"/>
+        <CallTarget Targets="makestudio:Make;ms:Make;delphi32_Plugin:Make;dialogs_Plugin:Make;DelphiDotNet_Plugin:Make;EasyBackup_Plugin:Make;helpandmanual_Plugin:Make;innosetup_Plugin:Make;jvcs_Plugin:Make;nsis_Plugin:Make;passolo_Plugin:Make;pscript_Plugin:Make;utils_Plugin:Make;resources_Plugin:Make;wise_Plugin:Make;zip_Plugin:Make;MakeStudioPluginWizard:Make;codewizard:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

@@ -497,7 +497,7 @@ var
 
     // Compiler switch
     if CompilerSwitch <> '' then
-      sl1.Add(StringReplace(CompilerSwitch, ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
+      sl1.Add(StringReplace( MakeStudio.Variables.ReplaceVarsInString( CompilerSwitch), ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
     sl1.SaveToFile(SrcPath + 'dcc32.cfg');
   end;
 
@@ -549,7 +549,7 @@ var
 
     // Compiler switch
     if CompilerSwitch <> '' then
-      sl1.Add(StringReplace(CompilerSwitch, ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
+      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString( CompilerSwitch), ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
 
     //FileDelete( SrcPath + 'dcc32.cfg');
     case GetCompilerPlatform of
@@ -616,7 +616,7 @@ var
 
     // Compiler switch
     if CompilerSwitch <> '' then
-      sl1.Add(StringReplace(CompilerSwitch, ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
+      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString( CompilerSwitch), ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
 
     //FileDelete( SrcPath + 'dcc32.cfg');
     case GetCompilerPlatform of
