@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">History</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">History</text></para>
+    </header>
+    <para styleclass="Normal"></para>
+    <para styleclass="Normal"><text styleclass="Normal" style="font-weight:bold;" translate="true">Dez. 2014</text></para>
+    <list id="0" level="1" type="ul" listtype="bullet" formatstring="&#111;" levelreset="true" legalstyle="false" startfrom="1" styleclass="Normal" style="font-family:&apos;Courier New&apos;; font-size:11pt; color:#000000;">
+      <li styleclass="Normal"><text styleclass="Normal" translate="true">Moved from &quot;Jedi Make&quot; to MakeStudio.</text></li>
+      <li styleclass="Normal"><text styleclass="Normal" translate="true">Modified DLL Interface</text></li>
+      <li styleclass="Normal"><text styleclass="Normal" translate="true">New installation directory</text></li>
+    </list>
+  </body>
+</topic>

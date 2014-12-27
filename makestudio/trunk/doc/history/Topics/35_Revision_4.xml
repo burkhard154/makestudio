@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Revision 4</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Revision 4</text></para>
+    </header>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt; font-weight:bold;" translate="true">2006/06/02</text></para>
+    <list id="1" type="ol" listtype="decimal" formatstring="&#37;&#48;&#58;&#115;&#46;" levelreset="false" legalstyle="false" startfrom="1" styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0; font-family:Arial; font-size:10pt; color:#000000;">
+      <li styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">Dynamic Help System in Jedi Make</text></li>
+      <li styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">Dynamic Loading of .NET Plugins (Registry not longer needed)</text></li>
+      <li styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">Initial Help Files for the Help System added</text></li>
+    </list>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">BSchranz</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt; font-weight:bold;" translate="true">2006/05/25</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">Pascal Script Plugin added</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">BSchranz</text></para>
+  </body>
+</topic>

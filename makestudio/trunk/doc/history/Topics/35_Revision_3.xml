@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Revision 3</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Revision 3</text></para>
+    </header>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt; font-weight:bold;" translate="true">2006/04/29</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">Jvcs synchronization command: Added Labeling functionality</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">BSchranz</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt; font-weight:bold;" translate="true">2006/04/29</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">ZIP/UnZIP command added as plugin</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">BSchranz</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt; font-weight:bold;" translate="true">2006/04/29</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">NSIS (Nullsoft installation) command added as plugin</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">BSchranz</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+  </body>
+</topic>

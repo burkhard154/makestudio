@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="../helpproject.xsl" ?>
+<topic template="Default" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../helpproject.xsd">
+  <title translate="true">Development History of MakeStudio</title>
+  <body>
+    <header>
+      <para styleclass="Heading1"><text styleclass="Heading1" translate="true">Development History of MakeStudio</text></para>
+    </header>
+    <para styleclass="Body Text" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Body Text" style="font-size:10pt; font-weight:bold;" translate="true">This document provides all development history information starting at April, 1st 2006.</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><image src="newspaper.png" scale="100.00%" styleclass="Image Caption"></image></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" translate="true">Relaunch of MakeStudio 4.0 as Community and Enterprise Edition</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" translate="true">SVN Download: https://optimeas.de/svn/public/makestudio</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">Previous Versions (Jedi Make)</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><link displaytype="text" defaultstyle="true" type="topiclink" href="35_Revision_3" styleclass="Normal" style="font-size:10pt;" translate="true">3.5 Revision 3</link></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt; font-weight:bold;" translate="true">Current members of the development team are:</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">Burkhard Schranz</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">Steffen Hornig</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><text styleclass="Normal" style="font-size:10pt;" translate="true">Burkhard Schranz, 2014/25/12</text></para>
+    <para styleclass="Normal" style="margin-top:0px; margin-bottom:0px; line-height:1.0;"><link displaytype="text" defaultstyle="true" type="weblink" href="mailto:mailto:burkhard.schranz@optimeas.de" styleclass="Normal" style="font-size:10pt;" translate="true">mailto:burkhard.schranz@optimeas.de</link></para>
+    <para styleclass="Normal"></para>
+  </body>
+</topic>

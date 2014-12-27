@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<map xmlns:xsi="http://www.w3.org/2001/XInclude">
+  <topicref type="topic" id="38835153082720" build="ALL" modified="2014-12-27T17:19:29.343Z" icon="0" href="Index">
+    <caption translate="true">Development History of MakeStudio</caption>
+  </topicref>
+  <topicref type="topic" id="420007495393389" build="ALL" modified="2014-12-27T17:15:26.913Z" icon="0">
+    <caption translate="true">Version 4</caption>
+    <topicref type="topic" id="420005541050059" build="ALL" modified="2014-12-27T17:17:03.375Z" icon="0" href="History">
+      <caption translate="true">History</caption>
+    </topicref>
+  </topicref>
+  <topicref type="topic" id="38834916318169" build="ALL" modified="2006-06-02T10:34:33.584Z" icon="0">
+    <caption translate="true">Version 3.5</caption>
+    <topicref type="topic" id="38837148088584" build="ALL" modified="2006-04-29T21:54:04.468Z" icon="0" href="35_Revision_3">
+      <caption translate="true">Revision 3</caption>
+    </topicref>
+    <topicref type="topic" id="388368655771776" build="ALL" modified="2006-04-29T21:54:04.484Z" icon="0" href="35_Revision_4">
+      <caption translate="true">Revision 4</caption>
+    </topicref>
+  </topicref>
+</map>
