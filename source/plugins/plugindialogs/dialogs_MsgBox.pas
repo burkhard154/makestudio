@@ -40,7 +40,7 @@ unit dialogs_MsgBox;
 interface
 
 uses
-  ComObj, ActiveX, StdVCL, Graphics, msTLB,
+  ComObj, ActiveX, StdVCL, Graphics, makestudio_TLB,
   Classes, Windows, Dialogs, Controls, TypInfo,
   dialogs_Vars, Registry, Forms, SysUtils, dialogs_tools;
 

@@ -1219,6 +1219,10 @@ object FormMain: TFormMain
       TabOrder = 0
       object tabCommands: TTabSheet
         Caption = 'Commands'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object FormPanelCommands: TJvEmbeddedFormPanel
           Left = 0
           Top = 0
@@ -1290,6 +1294,10 @@ object FormMain: TFormMain
           TabOrder = 0
           object TabSheet1: TTabSheet
             Caption = 'Output'
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object FormPanelLogbook: TJvEmbeddedFormPanel
               Left = 0
               Top = 0
@@ -1322,7 +1330,7 @@ object FormMain: TFormMain
     Left = 120
     Top = 96
     Bitmap = {
-      494C010142004800740010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101420048007C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001001000001002000000000000010
       0100000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000823A9B80000D9F5000000000000

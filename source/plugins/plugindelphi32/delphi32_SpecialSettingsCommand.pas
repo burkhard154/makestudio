@@ -39,7 +39,7 @@ unit delphi32_SpecialSettingsCommand;
 interface
 
 uses
-  ComObj, ActiveX, StdVCL, Graphics, msTLB,
+  ComObj, ActiveX, StdVCL, Graphics, makestudio_TLB,
   Classes, Windows, Dialogs, Controls, SysUtils, TypInfo,
   delphi32_Vars, delphi32_utils;
 

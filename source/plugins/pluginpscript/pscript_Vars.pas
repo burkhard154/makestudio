@@ -40,7 +40,7 @@ unit pscript_Vars;
 interface
 
 uses
-  msTLB, PSUtils;
+  makestudio_TLB, PSUtils;
 
 var
   MakeStudio: IJApplication;

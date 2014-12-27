@@ -49,7 +49,7 @@ unit msApplication_impl;
 interface
 
 uses
-  ActiveX, ActnList, AxCtrls, ComCtrls, ComObj, Controls, Graphics, msTLB,
+  ActiveX, ActnList, AxCtrls, ComCtrls, ComObj, Controls, Graphics, makestudio_TLB,
   Menus, StdVCL, SysUtils, Dialogs, JclSysUtils;
 
 type

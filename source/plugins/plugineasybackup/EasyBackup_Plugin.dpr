@@ -45,7 +45,7 @@ uses
   EasyBackup_FormCopy in 'EasyBackup_FormCopy.pas' {FormDoCopy},
   EasyBackup_SelectFilesForm in 'EasyBackup_SelectFilesForm.pas' {FormSelectFiles},
   EasyBackup_Utils in 'EasyBackup_Utils.pas',
-  msTLB in '..\..\framework\msTLB.pas';
+  makestudio_TLB in '..\..\framework\makestudio_TLB.pas';
 
 {$E jpl}
 {$R *.res}

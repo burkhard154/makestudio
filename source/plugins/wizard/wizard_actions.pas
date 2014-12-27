@@ -36,7 +36,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, ActnList, ImgList, msTLB, wizard_vars, ActiveX, AxCtrls,
+  Dialogs, ActnList, ImgList, makestudio_TLB, wizard_vars, ActiveX, AxCtrls,
   JvBaseDlg, JvBrowseFolder, JclShell, System.Actions;
 
 type

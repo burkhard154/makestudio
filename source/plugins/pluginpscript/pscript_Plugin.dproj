@@ -95,7 +95,7 @@
         <DCCReference Include="PSUtils.pas"/>
         <DCCReference Include="PSTypInfo.pas"/>
         <DCCReference Include="psscript_published.pas"/>
-        <DCCReference Include="..\..\Framework\msTLB.pas"/>
+        <DCCReference Include="..\..\framework\makestudio_TLB.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

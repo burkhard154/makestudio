@@ -38,7 +38,7 @@ uses
   Forms,
   ZipMstr,
   ActiveX,
-  msTLB in '..\..\framework\msTLB.pas',
+  makestudio_TLB in '..\..\framework\makestudio_TLB.pas',
   zip_Actions in 'zip_Actions.pas' {FormActions},
   zip_CommandEdit in 'zip_CommandEdit.pas' {FormEditZipCommand},
   zip_Command in 'zip_Command.pas',

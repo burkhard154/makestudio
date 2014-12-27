@@ -48,7 +48,7 @@ unit jvcs_Module;
 interface
 
 uses
-  ComObj, ActiveX, StdVCL, Graphics, msTLB,
+  ComObj, ActiveX, StdVCL, Graphics, makestudio_TLB,
   Classes, Windows, Dialogs, Controls, Contnrs,
   jvcs_Vars, Registry, Forms, SysUtils, JclSysInfo, JclFileUtils,
   JclSysUtils, jvcs_Utils, JclRegistry, TypInfo;

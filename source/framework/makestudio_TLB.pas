@@ -1,4 +1,4 @@
-unit msTLB;
+unit makestudio_TLB;
 
 // ************************************************************************ //
 // WARNUNG
@@ -11,26 +11,28 @@ unit msTLB;
 // alle manuell vorgenommenen Änderungen gehen verloren.
 // ************************************************************************ //
 
-// $Rev: 34747 $
-// Datei am 28.12.2011 15:37:15 erzeugt aus der unten beschriebenen Typbibliothek.
+// $Rev: 52393 $
+// Datei am 27.12.2014 18:48:10 erzeugt aus der unten beschriebenen Typbibliothek.
 
 // ************************************************************************  //
-// Typbib.: V:\projekte\burkhard\jmake\MakeStudio (1)
+// Typbib.: V:\public\makestudio\trunk\source\framework\makestudio (1)
 // LIBID: {09828B26-2D82-4B16-90D1-517D298B3612}
 // LCID: 0
 // Hilfedatei:
-// Hilfe-String: MakeStudio Bibliothek
+// Hilfe-String: Makestudio Library
 // Liste der Abhäng.:
 //   (1) v2.0 stdole, (C:\Windows\SysWOW64\stdole2.tlb)
+// SYS_KIND: SYS_WIN32
 // ************************************************************************ //
 {$TYPEDADDRESS OFF} // Unit muss ohne Typüberprüfung für Zeiger compiliert werden.
 {$WARN SYMBOL_PLATFORM OFF}
 {$WRITEABLECONST ON}
 {$VARPROPSETTER ON}
 {$ALIGN 4}
+
 interface
 
-uses Windows, ActiveX, Classes, Graphics, OleServer, StdVCL, Variants;
+uses Winapi.Windows, System.Classes, System.Variants, System.Win.StdVCL, Vcl.Graphics, Vcl.OleServer, Winapi.ActiveX;
 
 // *********************************************************************//
 // In der Typbibliothek deklarierte GUIDS. Die folgenden Präfixe werden verwendet:
@@ -41,10 +43,10 @@ uses Windows, ActiveX, Classes, Graphics, OleServer, StdVCL, Variants;
 // *********************************************************************//
 const
   // Haupt- und Nebenversionen der Typbibliothek
-  MakeStudioMajorVersion = 1;
-  MakeStudioMinorVersion = 0;
+  makestudioMajorVersion = 1;
+  makestudioMinorVersion = 0;
 
-  LIBID_MakeStudio: TGUID = '{09828B26-2D82-4B16-90D1-517D298B3612}';
+  LIBID_makestudio: TGUID = '{09828B26-2D82-4B16-90D1-517D298B3612}';
 
   IID_IJApplication: TGUID = '{2B09765A-9813-4C0C-B5A2-B8D250F7D006}';
   CLASS_JApplication: TGUID = '{7F8F8634-63D3-460A-BA05-4CED8E2A4CAD}';
@@ -341,7 +343,7 @@ type
 // *********************************************************************//
   IPlugin = interface(IDispatch)
     ['{584C09E1-6443-4181-87E3-2ED1248A7217}']
-    function RegisterPlugin(const AMakeStudioApp: IJApplication): Integer; safecall;
+    function RegisterPlugin(const AJVCSMakApp: IJApplication): Integer; safecall;
     function Get_Name: WideString; safecall;
     function Get_Author: WideString; safecall;
     function Get_Description: WideString; safecall;
@@ -367,7 +369,7 @@ type
 // *********************************************************************//
   IPluginDisp = dispinterface
     ['{584C09E1-6443-4181-87E3-2ED1248A7217}']
-    function RegisterPlugin(const AMakeStudioApp: IJApplication): Integer; dispid 5;
+    function RegisterPlugin(const AJVCSMakApp: IJApplication): Integer; dispid 5;
     property Name: WideString readonly dispid 1;
     property Author: WideString readonly dispid 2;
     property Description: WideString readonly dispid 3;
@@ -375,7 +377,7 @@ type
     function UnregisterPlugin: Integer; dispid 6;
     property MinorVersion: Integer readonly dispid 7;
     property MajorVersion: Integer readonly dispid 8;
-    property OptionsPageGUID: {??TGUID}OleVariant readonly dispid 9;
+    property OptionsPageGUID: {NOT_OLEAUTO(TGUID)}OleVariant readonly dispid 9;
     procedure AfterAllPluginsLoaded; dispid 10;
   end;
 
@@ -481,7 +483,7 @@ type
 
 implementation
 
-uses ComObj;
+uses System.Win.ComObj;
 
 class function CoJApplication.Create: IJApplication;
 begin

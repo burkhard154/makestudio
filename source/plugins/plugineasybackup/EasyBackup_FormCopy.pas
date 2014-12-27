@@ -36,7 +36,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ComCtrls, ExtCtrls, Contnrs, msTLB, EasyBackup_Vars,
+  Dialogs, StdCtrls, ComCtrls, ExtCtrls, Contnrs, makestudio_TLB, EasyBackup_Vars,
   EasyBackup_Utils, JclFileUtils;
 
 type

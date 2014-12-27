@@ -37,7 +37,7 @@ unit jvcs_Vars;
 interface
 
 uses
-  msTLB, Windows;
+  makestudio_TLB, Windows;
 
 var
   MakeStudio: IJApplication;

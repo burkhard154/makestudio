@@ -42,7 +42,7 @@ uses
   {$IFDEF DELPHIXE2_UP}
   System.UITypes,
   {$ENDIF}
-  Classes, Contnrs, ActiveX, msTLB, SysUtils, ComObj, Dialogs, Forms, Controls, ExtCtrls;
+  Classes, Contnrs, ActiveX, makestudio_TLB, SysUtils, ComObj, Dialogs, Forms, Controls, ExtCtrls;
 
 const
   stcVarTextDelimiter = '%';

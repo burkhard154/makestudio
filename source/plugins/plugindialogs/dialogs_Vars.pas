@@ -34,7 +34,7 @@ unit dialogs_Vars;
 interface
 
 uses
-  msTLB, Windows, Dialogs;
+  makestudio_TLB, Windows, Dialogs;
 
 var
   MakeStudio: IJApplication;

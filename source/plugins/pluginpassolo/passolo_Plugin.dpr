@@ -36,7 +36,7 @@ library passolo_Plugin;
 uses
   SysUtils,
   Classes,
-  msTLB in '..\..\Framework\msTLB.pas',
+  makestudio_TLB in '..\..\framework\makestudio_TLB.pas',
   ComServ,
   ActiveX,
   passolo_Vars in 'passolo_Vars.pas',

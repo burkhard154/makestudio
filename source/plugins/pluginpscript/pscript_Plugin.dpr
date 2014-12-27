@@ -43,7 +43,7 @@ uses
   PSUtils in 'PSUtils.pas',
   PSTypInfo in 'PSTypInfo.pas',
   psscript_published in 'psscript_published.pas',
-  msTLB in '..\..\Framework\msTLB.pas';
+  makestudio_TLB in '..\..\framework\makestudio_TLB.pas';
 
 {$E jpl}
 {$R *.res}

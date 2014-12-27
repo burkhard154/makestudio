@@ -37,7 +37,7 @@ unit zip_Command;
 interface
 
 uses
-  ComObj, ActiveX, StdVCL, Graphics, msTLB,
+  ComObj, ActiveX, StdVCL, Graphics, makestudio_TLB,
   Classes, Windows, Dialogs, Controls, SysUtils, zip_Vars, zip_utils,
   TypInfo, JclStrings, JclFileUtils, zipmstr;
 

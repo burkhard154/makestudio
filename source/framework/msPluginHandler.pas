@@ -53,7 +53,7 @@ uses
   JvVCL5Utils,
   {$ENDIF DELPHI6_UP}
   SysUtils, Windows, Classes, Forms, ComCtrls, ActiveX, Dialogs, Controls,
-  Contnrs, Psapi, Registry, msTLB, JclFileUtils, ComObj, mscorlib_TLB,
+  Contnrs, Psapi, Registry, makestudio_TLB, JclFileUtils, ComObj, mscorlib_TLB,
   jclStrings, msDotNetUtils;
 
 const

@@ -1,22 +1,20 @@
-(* -----------------------------------------------------------------------------
-  The contents of this file are subject to the Mozilla Public License
-  Version 1.1 (the "License"); you may not use this file except in compliance
-  with the License. You may obtain a copy of the License at
-  http://www.mozilla.org/MPL/MPL-1.1.html
+(*
+ ***************************************************************************
+ optiMEAS GmbH
+ written by Burkhard Schranz, Jens-Achim Kessel
+ copyright © 2013 -
+ Email : info@optimeas.de
+ Web : http://www.optimeas.de
+ http://www.makestudio.de
+ http://www.mobiconn.de
+ The source code is given as is. The author is not responsible
+ for any possible damage done due to the use of this code.
+ The component can be freely used in any application.
+   source code remains property of the author and may not be distributed,
+ published, given or sold in any form as such. No parts of the source
+ code can be included in any other component or application without
+ written authorization of optiMEAS GmbH
 
-  Software distributed under the License is distributed on an "AS IS" basis,
-  WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
-  the specific language governing rights and limitations under the License.
-
-  The Original Code is: delphi32_Compile.pas
-
-  The Initial Developer of the original code (JEDI VCS) is:
-  Burkhard Schranz (burkhard.schranz@optimeas.de)
-
-  Componentes and used code which is used in this code are explictly stated to
-  be copyright of the respective author(s).
-
-  Last Modified: see History
 
   Known Issues:
   -----------------------------------------------------------------------------
@@ -42,7 +40,7 @@ unit delphi32_Compile;
 interface
 
 uses
-  ComObj, ActiveX, StdVCL, Graphics, msTLB, delphi32_Vars,
+  ComObj, ActiveX, StdVCL, Graphics, makestudio_TLB, delphi32_Vars,
   Classes, Windows, Dialogs, Controls, SysUtils, Forms, Registry, JclFileUtils,
   IniFiles;
 
@@ -69,8 +67,8 @@ type
     function MeasureItem(Handle: Integer; BriefView: WordBool): Integer; safecall;
     function EditItem: WordBool; safecall;
     function ExecuteItem: WordBool; safecall;
-    function DrawItem(Handle: Integer; Left: Integer; Top: Integer; Right: Integer; Bottom: Integer;
-      Selected: WordBool; BriefView: WordBool; BkColor: OLE_COLOR): WordBool; safecall;
+    function DrawItem(Handle: Integer; Left: Integer; Top: Integer; Right: Integer; Bottom: Integer; Selected: WordBool;
+      BriefView: WordBool; BkColor: OLE_COLOR): WordBool; safecall;
     procedure SetFilename(const Filename: WideString); safecall;
     function Get_Caption: WideString; safecall;
     procedure Set_Caption(const Value: WideString); safecall;
@@ -250,8 +248,8 @@ begin
   end;
 end;
 
-function TDelphi32Module.DrawItem(Handle: Integer; Left: Integer; Top: Integer; Right: Integer;
-  Bottom: Integer; Selected: WordBool; BriefView: WordBool; BkColor: OLE_COLOR): WordBool;
+function TDelphi32Module.DrawItem(Handle: Integer; Left: Integer; Top: Integer; Right: Integer; Bottom: Integer;
+  Selected: WordBool; BriefView: WordBool; BkColor: OLE_COLOR): WordBool;
 var
   Offset: Integer;
   Canvas: TCanvas;
@@ -300,15 +298,13 @@ begin
       if CompilerSwitch <> '' then
       begin
         SetCanvasTextColor(clRed);
-        Canvas.TextOut(aRect.Left + iDefaultIndent + 10, aRect.Top + Offset,
-          stdCompilerSwitch + CompilerSwitch);
+        Canvas.TextOut(aRect.Left + iDefaultIndent + 10, aRect.Top + Offset, stdCompilerSwitch + CompilerSwitch);
         Offset := Offset + Canvas.TextHeight(CompilerSwitch) + 2;
       end;
       if OutputDir <> '' then
       begin
         SetCanvasTextColor(clBlue);
-        Canvas.TextOut(aRect.Left + iDefaultIndent + 10, aRect.Top + Offset,
-          stdOutputDir + OutputDir);
+        Canvas.TextOut(aRect.Left + iDefaultIndent + 10, aRect.Top + Offset, stdOutputDir + OutputDir);
         Offset := Offset + Canvas.TextHeight(OutputDir) + 2;
       end;
       if SearchDirs.Count > 0 then
@@ -319,8 +315,17 @@ begin
       end;
       for I := 0 to SearchDirs.Count - 1 do
       begin
-        Canvas.TextOut(aRect.Left + iDefaultIndent + 30, aRect.Top + Offset, SearchDirs[I]);
-        Offset := Offset + Canvas.TextHeight(SearchDirs[I]) + 2;
+        if I < 5 then
+        begin
+          Canvas.TextOut(aRect.Left + iDefaultIndent + 30, aRect.Top + Offset, SearchDirs[I]);
+          Offset := Offset + Canvas.TextHeight(SearchDirs[I]) + 2;
+        end
+        else if I = 5 then
+        begin
+          Canvas.TextOut(aRect.Left + iDefaultIndent + 30, aRect.Top + Offset, '...');
+          Offset := Offset + Canvas.TextHeight(SearchDirs[I]) + 2;
+        end
+        else;
       end;
     end;
   finally
@@ -497,25 +502,30 @@ var
 
     // Compiler switch
     if CompilerSwitch <> '' then
-      sl1.Add(StringReplace( MakeStudio.Variables.ReplaceVarsInString( CompilerSwitch), ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
+      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13,
+        [rfReplaceAll, rfIgnoreCase]));
     sl1.SaveToFile(SrcPath + 'dcc32.cfg');
   end;
 
   procedure BuildDCCCfg02;
   begin
-    sl1.Add('-I' + QuoteSeparetedList( GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-    sl1.Add('-R' + QuoteSeparetedList( GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-    sl1.Add('-U' + QuoteSeparetedList( GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-    sl1.Add('-O' + QuoteSeparetedList( GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+    sl1.Add('-I' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+      GetDelphiDCPPath));
+    sl1.Add('-R' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+      GetDelphiDCPPath));
+    sl1.Add('-U' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+      GetDelphiDCPPath));
+    sl1.Add('-O' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+      GetDelphiDCPPath));
 
     // Namespace
     if MakeStudio.Variables.VarExists(stvarNamespaces) then
-      if MakeStudio.Variables.Values[stvarNamespaces]<>'' then
-        sl1.Add('-NS'+MakeStudio.Variables.Values[stvarNamespaces]);
+      if MakeStudio.Variables.Values[stvarNamespaces] <> '' then
+        sl1.Add('-NS' + MakeStudio.Variables.Values[stvarNamespaces]);
 
     // UnitOutputDir
     if NOPath <> '' then
-      sl1.Add('-NO' + QuoteSeparetedList( NOPath));
+      sl1.Add('-NO' + QuoteSeparetedList(NOPath));
 
     if LULibs <> '' then
       sl1.Add('-LU"' + LULibs + '"');
@@ -549,40 +559,50 @@ var
 
     // Compiler switch
     if CompilerSwitch <> '' then
-      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString( CompilerSwitch), ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
+      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13,
+        [rfReplaceAll, rfIgnoreCase]));
 
-    //FileDelete( SrcPath + 'dcc32.cfg');
+    // FileDelete( SrcPath + 'dcc32.cfg');
     case GetCompilerPlatform of
-      dpOSX32: sl1.SaveToFile(SrcPath + 'dccosx.cfg');
-      dpWin32: sl1.SaveToFile(SrcPath + 'dcc32.cfg');
-      dpWin64: sl1.SaveToFile(SrcPath + 'dcc64.cfg');
+      dpOSX32:
+        sl1.SaveToFile(SrcPath + 'dccosx.cfg');
+      dpWin32:
+        sl1.SaveToFile(SrcPath + 'dcc32.cfg');
+      dpWin64:
+        sl1.SaveToFile(SrcPath + 'dcc64.cfg');
     end;
 
   end;
 
   procedure BuildDCCCfg03;
   begin
-    if GetLANGDIR<>'' then begin
-      sl1.Add('-I' + QuoteSeparetedList( GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-      sl1.Add('-R' + QuoteSeparetedList( GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-      sl1.Add('-U' + QuoteSeparetedList( GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-      sl1.Add('-O' + QuoteSeparetedList( GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+    if GetLANGDIR <> '' then
+    begin
+      sl1.Add('-I' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+        GetDelphiDCPPath));
+      sl1.Add('-R' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+        GetDelphiDCPPath));
+      sl1.Add('-U' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+        GetDelphiDCPPath));
+      sl1.Add('-O' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+        GetDelphiDCPPath));
     end
-    else begin
-      sl1.Add('-I' + QuoteSeparetedList( GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-      sl1.Add('-R' + QuoteSeparetedList( GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-      sl1.Add('-U' + QuoteSeparetedList( GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-      sl1.Add('-O' + QuoteSeparetedList( GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+    else
+    begin
+      sl1.Add('-I' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+      sl1.Add('-R' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+      sl1.Add('-U' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+      sl1.Add('-O' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
     end;
 
     // Namespace
     if MakeStudio.Variables.VarExists(stvarNamespaces) then
-      if MakeStudio.Variables.Values[stvarNamespaces]<>'' then
-        sl1.Add('-NS'+MakeStudio.Variables.Values[stvarNamespaces]);
+      if MakeStudio.Variables.Values[stvarNamespaces] <> '' then
+        sl1.Add('-NS' + MakeStudio.Variables.Values[stvarNamespaces]);
 
     // UnitOutputDir
     if NOPath <> '' then
-      sl1.Add('-NO' + QuoteSeparetedList( NOPath));
+      sl1.Add('-NO' + QuoteSeparetedList(NOPath));
 
     if LULibs <> '' then
       sl1.Add('-LU"' + LULibs + '"');
@@ -616,22 +636,25 @@ var
 
     // Compiler switch
     if CompilerSwitch <> '' then
-      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString( CompilerSwitch), ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
+      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13,
+        [rfReplaceAll, rfIgnoreCase]));
 
-    //FileDelete( SrcPath + 'dcc32.cfg');
+    // FileDelete( SrcPath + 'dcc32.cfg');
     case GetCompilerPlatform of
-      dpOSX32: sl1.SaveToFile(SrcPath + 'dccosx.cfg');
-      dpWin32: sl1.SaveToFile(SrcPath + 'dcc32.cfg');
-      dpWin64: sl1.SaveToFile(SrcPath + 'dcc64.cfg');
+      dpOSX32:
+        sl1.SaveToFile(SrcPath + 'dccosx.cfg');
+      dpWin32:
+        sl1.SaveToFile(SrcPath + 'dcc32.cfg');
+      dpWin64:
+        sl1.SaveToFile(SrcPath + 'dcc64.cfg');
     end;
 
   end;
 
-
-  function CommandLineFromStringList( _sl:TStringList):String;
+  function CommandLineFromStringList(_sl: TStringList): String;
   begin
-    Result := StringReplace( _sl.Text, #10, ' ', [rfReplaceAll]);
-    Result := StringReplace( Result, #13, '', [rfReplaceAll]);
+    Result := StringReplace(_sl.Text, #10, ' ', [rfReplaceAll]);
+    Result := StringReplace(Result, #13, '', [rfReplaceAll]);
   end;
 
 begin
@@ -675,9 +698,9 @@ begin
         CheckCfgFile(sl1);
       end;
 
-      if GetDelphiVersion<dverXE2 then
+      if GetDelphiVersion < dverXE2 then
         BuildDCCCfg01
-      else if GetDelphiVersion<dverXE4 then
+      else if GetDelphiVersion < dverXE4 then
         BuildDCCCfg02
       else
         BuildDCCCfg03;
@@ -690,8 +713,8 @@ begin
     // Executing Compiler
     MakeStudio.LogMessage(GetDelphiCompiler + ' ' + '"' + _DelphiFilename + '"');
 
-    Result := MakeStudio.ExecCmdLine(GetDelphiCompiler, '"' + _DelphiFilename + '"',
-      ExtractFilePath(_DelphiFilename), IExecCallback(Self)) = 0;
+    Result := MakeStudio.ExecCmdLine(GetDelphiCompiler, '"' + _DelphiFilename + '"', ExtractFilePath(_DelphiFilename),
+      IExecCallback(Self)) = 0;
 
     Wait_a_While(1000);
 
@@ -712,8 +735,8 @@ procedure TDelphi32Module.RegisterPackage;
 
   function BplName: String;
   begin
-    Result := GetPackagePrefix(_DelphiFilename) + ExtractFilename(ChangeFileExt(_DelphiFilename, '')
-      ) + GetPackageSuffix(_DelphiFilename) + '.bpl';
+    Result := GetPackagePrefix(_DelphiFilename) + ExtractFilename(ChangeFileExt(_DelphiFilename, '')) +
+      GetPackageSuffix(_DelphiFilename) + '.bpl';
   end;
 
 var
@@ -789,8 +812,7 @@ var
 begin
   aFilename := '';
   if _OutputDir <> '' then
-    aFilename := CheckBackslash(_OutputDir) +
-      ChangeFileExt(ExtractFilename(_DelphiFilename), '.bpl')
+    aFilename := CheckBackslash(_OutputDir) + ChangeFileExt(ExtractFilename(_DelphiFilename), '.bpl')
   else
     aFilename := ChangeFileExt(_DelphiFilename, '.bpl');
 
@@ -968,8 +990,8 @@ begin
   MakeStudio.LogMessage(_DelphiFilename + ' ' + CompilerSwitch);
 
   // Executing Batch
-  if MakeStudio.ExecCmdLine(_DelphiFilename, CompilerSwitch, ExtractFilePath(_DelphiFilename),
-    IExecCallback(Self)) < 0 then
+  if MakeStudio.ExecCmdLine(_DelphiFilename, CompilerSwitch, ExtractFilePath(_DelphiFilename), IExecCallback(Self)) < 0
+  then
     MakeStudio.LogMessage(stderrRunningBatch);
 end;
 
@@ -1040,7 +1062,7 @@ procedure TDelphi32Module.CaptureOutput(const Line: WideString; var Aborted: Wor
       end
       else
     else
-      MakeStudio.SetStatus( AText);
+      MakeStudio.SetStatus(AText);
   end;
 
 begin
@@ -1145,8 +1167,7 @@ begin
   aFilename := '';
 
   if _OutputDir <> '' then
-    aFilename := CheckBackslash(_OutputDir) +
-      ChangeFileExt(ExtractFilename(_DelphiFilename), '.dll');
+    aFilename := CheckBackslash(_OutputDir) + ChangeFileExt(ExtractFilename(_DelphiFilename), '.dll');
 
   if not FileExists(aFilename) then
     aFilename := ChangeFileExt(_DelphiFilename, '.dll');
@@ -1251,26 +1272,27 @@ procedure TDelphi32Module.RemoveAllUserPackages;
   function IsUserPackage(aFilename: String): Boolean;
   var
     s1, s2, s3: String;
-    i : Integer;
+    I: Integer;
   begin
-    //Delete only packages in the given search path
-    Result := false;
-    for i := 0 to SearchDirs.Count-1 do begin
-      s1 := UpperCase( IncludeTrailingPathDelimiter( SearchDirs[i]));
-      s2 := UpperCase( IncludeTrailingPathDelimiter( ExtractFilePath( aFilename)));
-      Result := SameText( s1, s2);
+    // Delete only packages in the given search path
+    Result := False;
+    for I := 0 to SearchDirs.Count - 1 do
+    begin
+      s1 := UpperCase(IncludeTrailingPathDelimiter(SearchDirs[I]));
+      s2 := UpperCase(IncludeTrailingPathDelimiter(ExtractFilePath(aFilename)));
+      Result := SameText(s1, s2);
       if Result then
         Break;
     end;
-//    // Check if D7 or less
-//    if GetDelphiVersion < dver2005 then
-//      s1 := UpperCase(GetDelphiRootPathLong + 'bin')
-//    else
-//      s1 := UpperCase( GetDelphiRootPathLong);
-//
-//    s2 := UpperCase( ExtractShortPathName(s1));
-//    s3 := UpperCase( aFilename);
-//    Result := not((Pos(s1, s3) <> 0) or (Pos(s2, s3) <> 0));
+    // // Check if D7 or less
+    // if GetDelphiVersion < dver2005 then
+    // s1 := UpperCase(GetDelphiRootPathLong + 'bin')
+    // else
+    // s1 := UpperCase( GetDelphiRootPathLong);
+    //
+    // s2 := UpperCase( ExtractShortPathName(s1));
+    // s3 := UpperCase( aFilename);
+    // Result := not((Pos(s1, s3) <> 0) or (Pos(s2, s3) <> 0));
   end;
 
   function GetDCPFile(aBPLFilename: String): String;
@@ -1367,20 +1389,20 @@ procedure TDelphi32Module.ResetSearchPath;
 var
   S: String;
 begin
-  MakeStudio.LogMessage( 'ResetSearchPath:');
+  MakeStudio.LogMessage('ResetSearchPath:');
   XUTILSROOTKEY := HKEY_LOCAL_MACHINE;
-  MakeStudio.LogMessage( 'Key=HKEY_LOCAL_MACHINE');
+  MakeStudio.LogMessage('Key=HKEY_LOCAL_MACHINE');
 
   // read search path from HKLM
   S := ReadRegStringLM(GetDelphiRootKey + GetLibraryKey, stdcSearchPath, '');
-  MakeStudio.LogMessage( 'Lese Path='+GetDelphiRootKey + GetLibraryKey+'; Value='+stdcSearchPath);
-  MakeStudio.LogMessage( 'Result='+S);
+  MakeStudio.LogMessage('Lese Path=' + GetDelphiRootKey + GetLibraryKey + '; Value=' + stdcSearchPath);
+  MakeStudio.LogMessage('Result=' + S);
 
   XUTILSROOTKEY := HKEY_CURRENT_USER;
 
-  MakeStudio.LogMessage( 'Key=HKEY_CURRENT_USER');
-  MakeStudio.LogMessage( 'Schreibe Path='+GetDelphiRootKey + GetLibraryKey+'; Value='+stdcSearchPath);
-  MakeStudio.LogMessage( 'Result='+S);
+  MakeStudio.LogMessage('Key=HKEY_CURRENT_USER');
+  MakeStudio.LogMessage('Schreibe Path=' + GetDelphiRootKey + GetLibraryKey + '; Value=' + stdcSearchPath);
+  MakeStudio.LogMessage('Result=' + S);
 
   // write search path to HKCU
   WriteRegStringLM(GetDelphiRootKey + GetLibraryKey, stdcSearchPath, S);

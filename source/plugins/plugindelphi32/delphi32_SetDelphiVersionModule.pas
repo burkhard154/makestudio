@@ -40,7 +40,7 @@ unit delphi32_SetDelphiVersionModule;
 interface
 
 uses
-  ComObj, ActiveX, StdVCL, Graphics, msTLB, delphi32_Vars,
+  ComObj, ActiveX, StdVCL, Graphics, makestudio_TLB, delphi32_Vars,
   Classes, Windows, Dialogs, Controls, SysUtils, Forms;
 
 type

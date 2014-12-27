@@ -32,7 +32,7 @@ unit DelphiDotNet_Vars;
 interface
 
 uses
-  msTLB;
+  makestudio_TLB;
 
 var
   MakeStudio: IJApplication;

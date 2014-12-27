@@ -40,7 +40,7 @@ unit msActionHandler;
 interface
 
 uses
-  Windows, Classes, SysUtils, Forms, ActnList, Menus, msTLB,
+  Windows, Classes, SysUtils, Forms, ActnList, Menus, makestudio_TLB,
   Graphics, Dialogs, JclFileUtils;
 
 const

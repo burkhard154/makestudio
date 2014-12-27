@@ -38,7 +38,7 @@ unit delphi32_CheckVersionCommand;
 interface
 
 uses
-  ComObj, ActiveX, StdVCL, Graphics, msTLB,
+  ComObj, ActiveX, StdVCL, Graphics, makestudio_TLB,
   Classes, Windows, Dialogs, Controls, SysUtils, delphi32_Vars, delphi32_Utils;
 
 {**** Sample Code to register this command *******

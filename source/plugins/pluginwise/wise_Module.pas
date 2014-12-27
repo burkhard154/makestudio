@@ -40,7 +40,7 @@ unit wise_Module;
 interface
 
 uses
-  ComObj, ActiveX, StdVCL, Graphics, msTLB, Classes, Windows, Dialogs,
+  ComObj, ActiveX, StdVCL, Graphics, makestudio_TLB, Classes, Windows, Dialogs,
   Controls, wise_Vars, Registry, Forms, SysUtils, JclFileUtils;
 
 type

@@ -34,7 +34,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls,msTLB;
+  Dialogs, StdCtrls,makestudio_TLB;
 
 type
   TForm2 = class(TForm, IActionCallback)

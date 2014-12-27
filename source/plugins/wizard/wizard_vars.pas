@@ -31,7 +31,7 @@ unit wizard_vars;
 interface
 
 uses
-  msTLB;
+  makestudio_TLB;
 
 var
   MakeStudio: IJApplication;
