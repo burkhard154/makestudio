@@ -1,0 +1,13 @@
+All Plugins have to create a Microsoft HTML Help file (.chm)
+This file has to be distributet to <makestudio install dir>\help
+
+Every new .chm File will autmatically be merged into the main 
+helpfile of MakeStudio
+If your help file should start a new chapter in the main help, 
+you have to add an additional .txt file with the following content:
+chapter=<mychapter>
+
+See .\doc\help\example
+
+Our current help-creation-software is "Help and Manual 6"
+http://www.helpandmanual.com/
