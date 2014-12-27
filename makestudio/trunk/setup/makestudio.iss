@@ -74,6 +74,8 @@ Source: "..\bin\resources_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion ov
 Source: "..\bin\innosetup_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGINNOSETUP
 Source: "..\bin\zip_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGZIP
 Source: "..\source\plugins\pluginzip\Dll\DelZip179.dll"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGZIP
+Source: "..\source\plugins\pluginzip\Dll\DelZip192.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\source\plugins\pluginzip\Dll\DelZip190.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\bin\nsis_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGNSIS
 Source: "..\bin\pscript_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGPSCRIPT
 Source: "..\bin\codewizard.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGWIZARD

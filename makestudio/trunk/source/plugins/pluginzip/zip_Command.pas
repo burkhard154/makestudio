@@ -88,8 +88,7 @@ type
     destructor Destroy; override;
 
     //ZipMaster Events
-    procedure OnZIPMessage( Sender: TObject; ErrCode: Integer; const ErrMsg: TZMString);
-
+    procedure OnZIPMessage( Sender: TObject; ErrCode: Integer; const ErrMsg: String);
   published
     property ZIPAction:TZIPAction read FZIPAction write FZIPAction;
     property ZIPFilename:String read FZIPFilename write FZIPFilename;
@@ -511,7 +510,7 @@ begin
 end;
 
 procedure TPluginZipCommand.OnZIPMessage(Sender: TObject; ErrCode: Integer;
-  const ErrMsg: TZMString);
+  const ErrMsg: String);
 begin
   if ErrCode>0 then
     MakeStudio.LogMessage( strError);
