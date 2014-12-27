@@ -23,4 +23,4 @@ B. Build with MakeStudio
   2. For XE5 Load <makestuditrunk>\setup\buildD19.jmk
   2. For XE7 Load <makestuditrunk>\setup\buildD21.jmk
   3. Run <makestuditrunk>\setup\build<xx>.jmk
-  4. You will find <makestuditrunk>\setup\output 
+  4. You will find your setup in <makestuditrunk>\setup\output 
