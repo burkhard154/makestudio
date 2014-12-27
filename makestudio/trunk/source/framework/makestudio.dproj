@@ -128,7 +128,7 @@
             <Form>FormKeywords</Form>
         </DCCReference>
         <DCCReference Include="msUtils.pas"/>
-        <DCCReference Include="msTLB.pas"/>
+        <DCCReference Include="makestudio_TLB.pas"/>
         <DCCReference Include="msPluginHandler.pas"/>
         <DCCReference Include="msGlobals.pas"/>
         <DCCReference Include="msActionHandler.pas"/>

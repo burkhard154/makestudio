@@ -37,7 +37,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, ActnList, ImgList, msTLB, ActiveX, AxCtrls, ExtCtrls,
+  Dialogs, ActnList, ImgList, makestudio_TLB, ActiveX, AxCtrls, ExtCtrls,
   passolo_Vars;
 
 type

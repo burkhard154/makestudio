@@ -52,7 +52,7 @@ type
 
 implementation
 
-uses msTLB;
+uses makestudio_TLB;
 
 {$R *.dfm}
 

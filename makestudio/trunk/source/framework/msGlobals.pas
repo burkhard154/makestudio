@@ -41,7 +41,7 @@ interface
 
 uses
   Classes, msActionHandler, msProgram, msVarHandler,
-  msTLB, msPluginHandler, msResources, SysUtils, Windows,
+  makestudio_TLB, msPluginHandler, msResources, SysUtils, Windows,
   Graphics, JclStrings, JclSysInfo;
 
 //Global vars

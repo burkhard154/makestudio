@@ -2,13 +2,11 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 [Setup]
-#define VERSION  'v3.70'
-#define BUILDNO  'R5'
-OutputBaseFilename=.\JVCSMake{#VERSION}Setup.{#BUILDNO}
-AppName=Jedi Make
-AppVerName=Jedi Make {#VERSION}
-DefaultDirName={pf}\Jedi\Jedi Make
-DefaultGroupName=Jedi\Jedi Make
+OutputBaseFilename=.\MakeStudioSetup_Actual
+AppName=Make Studio
+AppVerName=Make Studio
+DefaultDirName={pf}\optiMEAS\MakeStudio
+DefaultGroupName=optiMEAS\MakeStudio
 LicenseFile=License.rtf
 Compression=lzma
 SolidCompression=true
@@ -16,16 +14,16 @@ AllowRootDirectory=false
 AlwaysShowDirOnReadyPage=true
 ChangesAssociations=true
 EnableDirDoesntExistWarning=true
-AppSupportURL=http://jedivcs.sourceforge.net/
-AppUpdatesURL=http://sourceforge.net/projects/jedivcs
-AppCopyright=Released under MPL 1.1
+AppSupportURL=http://www.optimeas.de
+AppUpdatesURL=http://www.optimeas.de
+AppCopyright=optiMEAS 2015
 ShowLanguageDialog=yes
 
 [Registry]
-Root: HKCR; Subkey: .jmk; ValueType: string; ValueName: ; ValueData: jvcsmak; Flags: uninsdeletevalue
-Root: HKCR; Subkey: jvcsmak; ValueType: string; ValueName: ; ValueData: Jedi Make Configuration; Flags: uninsdeletekey
-Root: HKCR; Subkey: jvcsmak\DefaultIcon; ValueType: string; ValueName: ; ValueData: {app}\JVCSMAK.EXE,0
-Root: HKCR; Subkey: jvcsmak\shell\open\command; ValueType: string; ValueName: ; ValueData: """{app}\JVCSMAK.EXE"" ""%1"""
+Root: HKCR; Subkey: .jmk; ValueType: string; ValueName: ; ValueData: makestudio; Flags: uninsdeletevalue
+Root: HKCR; Subkey: makestudio; ValueType: string; ValueName: ; ValueData: Make Studio Utility; Flags: uninsdeletekey
+Root: HKCR; Subkey: makestudio\DefaultIcon; ValueType: string; ValueName: ; ValueData: {app}\MAKESTUDIO.EXE,0
+Root: HKCR; Subkey: makestudio\shell\open\command; ValueType: string; ValueName: ; ValueData: """{app}\MAKESTUDIO.EXE"" ""%1"""
 
 [Types]
 Name: FULL; Description: Full installation
@@ -60,72 +58,200 @@ Name: desktopicon; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:Ad
 Name: quicklaunchicon; Description: {cm:CreateQuickLaunchIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
 
 [Files]
-Source: "..\bin\Jvcsmak.exe"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: GUI
-Source: "..\bin\Jvcsmak.dll"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: GUI
-;Source: ..\bin\Jmak.exe; DestDir: {app}; Components: GUI; Flags: ignoreversion overwritereadonly
-Source: "..\bin\Jvcsmak.kwd"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: GUI
-Source: "..\bin\jvcs_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGJVCS
-Source: "..\bin\delphi32_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGDELPHI32
-Source: "..\bin\EasyBackup_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGEASYBACKUP
-Source: "..\bin\utils_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGUTILS
-Source: "..\bin\passolo_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGPASSOLO
-Source: "..\bin\wise_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGWISE
-Source: "..\bin\dialogs_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGDIALOGS
-Source: "..\bin\helpandmanual_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGHELPMAN
-Source: "..\bin\resources_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGRESOURCE
-Source: "..\bin\innosetup_JMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGINNOSETUP
-Source: "..\bin\zip_JMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGZIP
-Source: "..\plugins\pluginzip\Dll\DelZip179.dll"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGZIP
-Source: "..\bin\nsis_JMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGNSIS
-Source: "..\bin\pscript_JMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGPSCRIPT
+Source: "..\bin\makestudio.exe"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\bin\makestudio.dll"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\bin\ms.exe"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\bin\makestudio.kwd"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\bin\jvcs_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGJVCS
+Source: "..\bin\delphi32_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGDELPHI32
+Source: "..\bin\EasyBackup_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGEASYBACKUP
+Source: "..\bin\utils_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGUTILS
+Source: "..\bin\passolo_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGPASSOLO
+Source: "..\bin\wise_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGWISE
+Source: "..\bin\dialogs_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGDIALOGS
+Source: "..\bin\helpandmanual_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGHELPMAN
+Source: "..\bin\resources_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGRESOURCE
+Source: "..\bin\innosetup_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGINNOSETUP
+Source: "..\bin\zip_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGZIP
+Source: "..\source\plugins\pluginzip\Dll\DelZip179.dll"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGZIP
+Source: "..\bin\nsis_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGNSIS
+Source: "..\bin\pscript_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGPSCRIPT
 Source: "..\bin\codewizard.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGWIZARD
-Source: "..\Doc\How to Create a JVCSMAK Plugin.rtf"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGTEMPLATE
-Source: "..\Jvcsmak_TLB.pas"; DestDir: "{app}\Source\Lib"; Flags: ignoreversion overwritereadonly; Components: PLGTEMPLATE
-Source: "..\bin\CodeTemplate\*.*"; DestDir: "{app}\CodeTemplate"; Flags: ignoreversion overwritereadonly; Components: PLGPSCRIPT
+Source: "..\source\framework\makestudio_TLB.pas"; DestDir: "{app}\Source\Lib"; Flags: ignoreversion overwritereadonly; Components: PLGTEMPLATE
+
 ;Basic Help Files
-Source: "..\doc\help\jvcsmak\startup\jvcsmak.hhp"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
-Source: "..\doc\help\jvcsmak\startup\jvcsmak.hhc"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
-Source: "..\doc\help\jvcsmak\startup\jvcsmak.hhk"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
-Source: "..\doc\help\jvcsmak\startup\jvcsmak.htm"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
-Source: "..\doc\help\jvcsmak\startup\mainform.jpg"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
-;Source: ..\doc\history\History.chm; DestDir: {commonprograms}\MakeStudio\Help; Components: GUI; AfterInstall: CreateMergedHelpFileChapter( ExpandConstant('{app}\Help\History.chm'), 'Jedi Make History', 'History.hhk'); Flags: ignoreversion overwritereadonly
-Source: "..\doc\help\jvcsmak\Jedimakemain.chm"; DestDir: "{app}\Help"; Flags: ignoreversion overwritereadonly; Components: GUI
-Source: "V:\public\makestudio\trunk\bin\pscript_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\resources_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\utils_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\zip_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\makestudio.kwd"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\makestudio.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\ms.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\MakeStudioPluginWizard.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\delphi32_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\DelphiDotNet_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\dialogs_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\EasyBackup_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\helpandmanual_JVCSMakPlugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\helpandmanual_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\innosetup_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\jvcs_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\nsis_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
-Source: "V:\public\makestudio\trunk\bin\passolo_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\doc\help\startup\makestudio.hhp"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\doc\help\startup\makestudio.hhc"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\doc\help\startup\makestudio.hhk"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\doc\help\startup\makestudio.htm"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\doc\help\startup\mainform.jpg"; DestDir: "{app}\help"; Flags: ignoreversion overwritereadonly; Components: GUI
+Source: "..\doc\history\History.chm"; DestDir: "{app}\Help"; Flags: ignoreversion overwritereadonly
+Source: "..\doc\history\History.txt"; DestDir: "{app}\Help"; Flags: ignoreversion overwritereadonly
+Source: "..\doc\help\makestudio\makestudiomain.chm"; DestDir: "{app}\Help"; Flags: ignoreversion overwritereadonly
+Source: "..\doc\help\makestudio\makestudiomain.txt"; DestDir: "{app}\Help"; Flags: ignoreversion overwritereadonly
+
+;Source Examples
+Source: "..\source\examples\borland\delphi\d2005\jedimakeplugin_Actions.dfm"; DestDir: "{app}\examples\borland\delphi\d2005"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2005\jedimakeplugin_Actions.pas"; DestDir: "{app}\examples\borland\delphi\d2005"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2005\jedimakeplugin_Actiontest.dfm"; DestDir: "{app}\examples\borland\delphi\d2005"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2005\jedimakeplugin_Actiontest.pas"; DestDir: "{app}\examples\borland\delphi\d2005"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2005\jedimakeplugin_ExampleCommand.pas"; DestDir: "{app}\examples\borland\delphi\d2005"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2005\jedimakeplugin_ExampleCommand_Edit.dfm"; DestDir: "{app}\examples\borland\delphi\d2005"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2005\jedimakeplugin_ExampleCommand_Edit.pas"; DestDir: "{app}\examples\borland\delphi\d2005"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2005\jedimakeplugin_Example_D2005.bdsproj"; DestDir: "{app}\examples\borland\delphi\d2005"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2005\jedimakeplugin_Example_D2005.cfg"; DestDir: "{app}\examples\borland\delphi\d2005"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2005\jedimakeplugin_Example_D2005.dpr"; DestDir: "{app}\examples\borland\delphi\d2005"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2005\jedimakeplugin_Example_D2005.res"; DestDir: "{app}\examples\borland\delphi\d2005"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2005\jedimakeplugin_Vars.pas"; DestDir: "{app}\examples\borland\delphi\d2005"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_Actions.dfm"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_Actions.pas"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_Actiontest.dfm"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_Actiontest.pas"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_ExampleCommand.pas"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_ExampleCommand_Edit.dfm"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_ExampleCommand_Edit.pas"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_Example_D2005.bdsproj"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_Example_D2005.cfg"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_Example_D2005.dpr"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_Example_D2005.res"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_Example_D2006.bdsproj"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_Example_D2006.cfg"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_Example_D2006.dpr"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_Example_D2006.res"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d2006\jedimakeplugin_Vars.pas"; DestDir: "{app}\examples\borland\delphi\d2006"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d7\jedimakeplugin_Actions.dfm"; DestDir: "{app}\examples\borland\delphi\d7"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d7\jedimakeplugin_Actions.pas"; DestDir: "{app}\examples\borland\delphi\d7"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d7\jedimakeplugin_Actiontest.dfm"; DestDir: "{app}\examples\borland\delphi\d7"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d7\jedimakeplugin_Actiontest.pas"; DestDir: "{app}\examples\borland\delphi\d7"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d7\jedimakeplugin_ExampleCommand.pas"; DestDir: "{app}\examples\borland\delphi\d7"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d7\jedimakeplugin_ExampleCommand_Edit.dfm"; DestDir: "{app}\examples\borland\delphi\d7"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d7\jedimakeplugin_ExampleCommand_Edit.pas"; DestDir: "{app}\examples\borland\delphi\d7"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d7\jedimakeplugin_Example_D7.cfg"; DestDir: "{app}\examples\borland\delphi\d7"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d7\jedimakeplugin_Example_D7.dpr"; DestDir: "{app}\examples\borland\delphi\d7"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d7\jedimakeplugin_Example_D7.jpl"; DestDir: "{app}\examples\borland\delphi\d7"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d7\jedimakeplugin_Example_D7.res"; DestDir: "{app}\examples\borland\delphi\d7"; Flags: ignoreversion
+Source: "..\source\examples\borland\delphi\d7\jedimakeplugin_Vars.pas"; DestDir: "{app}\examples\borland\delphi\d7"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\jedimakeplugin_Actions.lfm"; DestDir: "{app}\examples\lazarus"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\jedimakeplugin_Actions.lrs"; DestDir: "{app}\examples\lazarus"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\jedimakeplugin_Actions.pas"; DestDir: "{app}\examples\lazarus"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\jedimakeplugin_Actiontest.lfm"; DestDir: "{app}\examples\lazarus"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\jedimakeplugin_Actiontest.pas"; DestDir: "{app}\examples\lazarus"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\jedimakeplugin_ExampleCommand.pas"; DestDir: "{app}\examples\lazarus"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\jedimakeplugin_ExampleCommand_Edit.lfm"; DestDir: "{app}\examples\lazarus"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\jedimakeplugin_ExampleCommand_Edit.lrs"; DestDir: "{app}\examples\lazarus"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\jedimakeplugin_ExampleCommand_Edit.pas"; DestDir: "{app}\examples\lazarus"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\jedimakeplugin_Example_D7.lpi"; DestDir: "{app}\examples\lazarus"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\jedimakeplugin_Example_D7.lpr"; DestDir: "{app}\examples\lazarus"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\jedimakeplugin_Vars.pas"; DestDir: "{app}\examples\lazarus"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\backup\jedimakeplugin_Actions.lfm.bak"; DestDir: "{app}\examples\lazarus\backup"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\backup\jedimakeplugin_Actions.lrs.bak"; DestDir: "{app}\examples\lazarus\backup"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\backup\jedimakeplugin_Actions.pas.bak"; DestDir: "{app}\examples\lazarus\backup"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\backup\jedimakeplugin_ExampleCommand_Edit.lfm.bak"; DestDir: "{app}\examples\lazarus\backup"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\backup\jedimakeplugin_ExampleCommand_Edit.pas.bak"; DestDir: "{app}\examples\lazarus\backup"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\backup\jedimakeplugin_Example_D7.lpi.bak"; DestDir: "{app}\examples\lazarus\backup"; Flags: ignoreversion
+Source: "..\source\examples\lazarus\backup\jedimakeplugin_Example_D7.lpr.bak"; DestDir: "{app}\examples\lazarus\backup"; Flags: ignoreversion
+Source: "..\source\examples\Qt\4.7\plugin_qt_test\plugin_qt_test.cpp"; DestDir: "{app}\examples\Qt\4.7\plugin_qt_test"; Flags: ignoreversion
+Source: "..\source\examples\Qt\4.7\plugin_qt_test\plugin_qt_test.h"; DestDir: "{app}\examples\Qt\4.7\plugin_qt_test"; Flags: ignoreversion
+Source: "..\source\examples\Qt\4.7\plugin_qt_test\plugin_qt_test.pro"; DestDir: "{app}\examples\Qt\4.7\plugin_qt_test"; Flags: ignoreversion
+Source: "..\source\examples\Qt\4.7\plugin_qt_test\plugin_qt_test_global.h"; DestDir: "{app}\examples\Qt\4.7\plugin_qt_test"; Flags: ignoreversion
+Source: "..\source\examples\Qt\4.7\qtdlltest_pas\Project14.dpr"; DestDir: "{app}\examples\Qt\4.7\qtdlltest_pas"; Flags: ignoreversion
+Source: "..\source\examples\Qt\4.7\qtdlltest_pas\Project14.dproj"; DestDir: "{app}\examples\Qt\4.7\qtdlltest_pas"; Flags: ignoreversion
+Source: "..\source\examples\Qt\4.7\qtdlltest_pas\Project14.res"; DestDir: "{app}\examples\Qt\4.7\qtdlltest_pas"; Flags: ignoreversion
+Source: "..\source\examples\Qt\4.7\qtdlltest_pas\Unit13.dfm"; DestDir: "{app}\examples\Qt\4.7\qtdlltest_pas"; Flags: ignoreversion
+Source: "..\source\examples\Qt\4.7\qtdlltest_pas\Unit13.pas"; DestDir: "{app}\examples\Qt\4.7\qtdlltest_pas"; Flags: ignoreversion
+Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\Actions.cs"; DestDir: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin"; Flags: ignoreversion
+Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\Actions.Designer.cs"; DestDir: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin"; Flags: ignoreversion
+Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\AssemblyInfo.cs"; DestDir: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin"; Flags: ignoreversion
+Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\Command.cs"; DestDir: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin"; Flags: ignoreversion
+Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\CommandEdit.cs"; DestDir: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin"; Flags: ignoreversion
+Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\CommandEdit.resx"; DestDir: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin"; Flags: ignoreversion
+Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\jpl.sharpdevelop.testplugin.csproj"; DestDir: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin"; Flags: ignoreversion
+Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\jpl.sharpdevelop.testplugin.sln"; DestDir: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin"; Flags: ignoreversion
+Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\PluginInterface.cs"; DestDir: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin"; Flags: ignoreversion
+Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\obj\jpl.sharpdevelop.testplugin.csproj.FileList.txt"; DestDir: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\obj"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\Actions.cs"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\Actions.Designer.cs"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\Actions.resx"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\AssemblyInfo.cs"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\Command.cs"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\EditCommand.cs"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\EditCommand.Designer.cs"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\EditCommand.resx"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\jpl.vscsharp2005.testplugin.csproj"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\jpl.vscsharp2005.testplugin.sln"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\jpl.vscsharp2005.testplugin.suo"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\PluginInterface.cs"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\obj\jpl.vscsharp2005.testplugin.csproj.FileList.txt"; DestDir: "{app}\examples\visual studio\vs2005express\csharp\obj"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\obj\release\jpl.vscsharp2005.testplugin.Actions.resources"; DestDir: "{app}\examples\visual studio\vs2005express\csharp\obj\release"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\obj\release\jpl.vscsharp2005.testplugin.csproj.GenerateResource.Cache"; DestDir: "{app}\examples\visual studio\vs2005express\csharp\obj\release"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2005express\csharp\obj\release\jpl.vscsharp2005.testplugin.EditCommand.resources"; DestDir: "{app}\examples\visual studio\vs2005express\csharp\obj\release"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\Actions.cs"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\AssemblyInfo.cs"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\Command includes ownerdraw.cs"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\Command.cs"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\EditCommand.cs"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\EditCommand.Designer.cs"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\EditCommand.resx"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\jpl.vscs2010.testplugin.csproj"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\jpl.vscs2010.testplugin.sln"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\jpl.vscs2010.testplugin.v11.suo"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\Plugin.cs"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.csproj.FileListAbsolute.txt"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.csproj.GenerateResource.Cache"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.dll"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.EditCommand.resources"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.pdb"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.Properties.Resources.resources"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\TempPE\Properties.Resources.Designer.cs.dll"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug\TempPE"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\Properties\Resources.Designer.cs"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\Properties"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\Properties\Resources.resx"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\Properties"; Flags: ignoreversion
+Source: "..\source\examples\visual studio\vs2010express\csharp\Resources\cs.bmp"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\Resources"; Flags: ignoreversion
 
 [Icons]
-Name: {group}\Jedi Make; Filename: {app}\Jvcsmak.exe
-Name: {group}\{cm:UninstallProgram,Jedi Make}; Filename: {uninstallexe}
-Name: {userdesktop}\Jedi Make; Filename: {app}\Jvcsmak.exe; Tasks: desktopicon
-Name: {userappdata}\Microsoft\Internet Explorer\Quick Launch\Jedi Make; Filename: {app}\Jvcsmak.exe; Tasks: quicklaunchicon
-Name: {group}\How to Create a JVCSMAK Plugin; Components: PLGTEMPLATE; Filename: {app}\How to Create a JVCSMAK Plugin.rtf
+Name: "{group}\Make Studio"; Filename: {app}\makestudio.exe
+Name: {group}\{cm:UninstallProgram,Make Studio}; Filename: {uninstallexe}
+Name: {userdesktop}\Make Studio; Filename: {app}\makestudio.exe; Tasks: desktopicon
+Name: {userappdata}\Microsoft\Internet Explorer\Quick Launch\Make Studio; Filename: {app}\makestudio.exe; Tasks: quicklaunchicon
 
 [Run]
-Filename: {app}\Jvcsmak.exe; Description: {cm:LaunchProgram,Jedi Make}; Flags: nowait postinstall skipifsilent
+Filename: {app}\makestudio.exe; Description: {cm:LaunchProgram,Make Studio}; Flags: nowait postinstall skipifsilent
 
 [Dirs]
 Name: {app}\Source
-Name: {app}\Source\Plugintemplate
 Name: {app}\Source\Lib
 Name: {app}\Help; Permissions: everyone-full
 Name: {cf}\Help; Permissions: everyone-full
-
+Name: "{app}\examples\borland"
+Name: "{app}\examples\borland\delphi"
+Name: "{app}\examples\borland\delphi\d2005"
+Name: "{app}\examples\borland\delphi\d2006"
+Name: "{app}\examples\borland\delphi\d7"
+Name: "{app}\examples\lazarus"
+Name: "{app}\examples\lazarus\backup"
+Name: "{app}\examples\Qt"
+Name: "{app}\examples\Qt\4.7"
+Name: "{app}\examples\Qt\4.7\plugin_qt_test"
+Name: "{app}\examples\Qt\4.7\qtdlltest_pas"
+Name: "{app}\examples\sharpdevelop"
+Name: "{app}\examples\sharpdevelop\2.0"
+Name: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin"
+Name: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\bin"
+Name: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\bin\debug"
+Name: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\obj"
+Name: "{app}\examples\visual studio"
+Name: "{app}\examples\visual studio\vs2005express"
+Name: "{app}\examples\visual studio\vs2005express\csharp"
+Name: "{app}\examples\visual studio\vs2005express\csharp\obj"
+Name: "{app}\examples\visual studio\vs2005express\csharp\obj\release"
+Name: "{app}\examples\visual studio\vs2010express"
+Name: "{app}\examples\visual studio\vs2010express\csharp"
+Name: "{app}\examples\visual studio\vs2010express\csharp\obj"
+Name: "{app}\examples\visual studio\vs2010express\csharp\obj\x86"
+Name: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"
+Name: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug\TempPE"
+Name: "{app}\examples\visual studio\vs2010express\csharp\Properties"
+Name: "{app}\examples\visual studio\vs2010express\csharp\Resources"
 
 [Code]
 // some often used consts
@@ -141,7 +267,7 @@ const
   C_RSK_6_0 = '6.0';
   C_RSK_7_0 = '7.0';
 
-  C_RVAL_JVCSIDEClient = 'JVCSMAKEWizard';
+  C_RVAL_JVCSIDEClient = 'MAKESTUDIOWizard';
 
 // some global variables
 var

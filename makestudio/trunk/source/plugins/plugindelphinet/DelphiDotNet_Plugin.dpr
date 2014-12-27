@@ -39,7 +39,7 @@ uses
   DelphiDotNet_DelphiNetEdit in 'DelphiDotNet_DelphiNetEdit.pas' {FormEditDelphiNetParams},
   DelphiDotNet_DelphiNetCommand in 'DelphiDotNet_DelphiNetCommand.pas',
   DelphiDotNet_Vars in 'DelphiDotNet_Vars.pas',
-  msTLB in '..\..\framework\msTLB.pas';
+  makestudio_TLB in '..\..\framework\makestudio_TLB.pas';
 
 {$E jpl}
 {$R *.res}

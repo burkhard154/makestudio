@@ -36,7 +36,7 @@ library jvcs_Plugin;
 uses
   SysUtils,
   Classes,
-  msTLB in '..\..\framework\msTLB.pas',
+  makestudio_TLB in '..\..\framework\makestudio_TLB.pas',
   ComServ,
   ActiveX,
   jvcs_Vars in 'jvcs_Vars.pas',

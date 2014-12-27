@@ -39,7 +39,7 @@ unit EasyBackup_Module;
 interface
 
 uses
-  ComObj, ActiveX, StdVCL, Graphics, msTLB,
+  ComObj, ActiveX, StdVCL, Graphics, makestudio_TLB,
   Classes, Windows, Dialogs, Controls,
   EasyBackup_Vars, Registry, Forms, SysUtils;
 

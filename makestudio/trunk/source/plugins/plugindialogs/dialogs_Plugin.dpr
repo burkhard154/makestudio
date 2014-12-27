@@ -45,7 +45,7 @@ uses
   dialogs_InputBox in 'dialogs_InputBox.pas',
   dialogs_tools in 'dialogs_tools.pas',
   dialogs_dlgInput in 'dialogs_dlgInput.pas' {FormDlgInput},
-  msTLB in '..\..\framework\msTLB.pas';
+  makestudio_TLB in '..\..\framework\makestudio_TLB.pas';
 
 {$E jpl}
 {$R *.res}

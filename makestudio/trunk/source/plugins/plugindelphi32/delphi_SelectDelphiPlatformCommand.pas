@@ -38,7 +38,7 @@ unit delphi_SelectDelphiPlatformCommand;
 interface
 
 uses
-  ComObj, ActiveX, StdVCL, Graphics, msTLB,
+  ComObj, ActiveX, StdVCL, Graphics, makestudio_TLB,
   Classes, Windows, Dialogs, Controls, SysUtils,
   delphi32_Vars, delphi_EditSelectDelphiPlatform, delphi32_utils;
 

@@ -96,7 +96,7 @@
         <RcCompile Include="zip_Resource.rc">
             <Form>zip_Resource.res</Form>
         </RcCompile>
-        <DCCReference Include="..\..\framework\msTLB.pas"/>
+        <DCCReference Include="..\..\framework\makestudio_TLB.pas"/>
         <DCCReference Include="zip_Actions.pas">
             <Form>FormActions</Form>
         </DCCReference>

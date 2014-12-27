@@ -44,7 +44,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   ComCtrls, ActnList, StdCtrls, ImgList, ExtCtrls, Menus, ToolWin, Contnrs,
-  ShellAPI, Registry, msTLB, ActiveX, delphi32_Vars, JclFileUtils,
+  ShellAPI, Registry, makestudio_TLB, ActiveX, delphi32_Vars, JclFileUtils,
   JclSysInfo, JclShell, JclWin32, JvJclUtils;
 
 { :like includetrailingpathdelimiter }

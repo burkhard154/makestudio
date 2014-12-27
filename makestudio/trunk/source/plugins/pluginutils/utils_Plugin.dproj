@@ -91,7 +91,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="..\..\framework\msTLB.pas"/>
+        <DCCReference Include="..\..\framework\makestudio_TLB.pas"/>
         <DCCReference Include="utils_Vars.pas"/>
         <DCCReference Include="utils_MkDir.pas"/>
         <DCCReference Include="utils_Actionedit.pas">

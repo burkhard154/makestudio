@@ -40,7 +40,7 @@ unit passolo_Module;
 interface
 
 uses
-  ComObj, ActiveX, StdVCL, Graphics, msTLB,
+  ComObj, ActiveX, StdVCL, Graphics, makestudio_TLB,
   Classes, Windows, Dialogs, Controls,
   passolo_Vars, Registry, Forms, SysUtils;
 

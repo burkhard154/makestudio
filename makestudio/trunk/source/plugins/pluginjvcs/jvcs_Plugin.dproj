@@ -85,7 +85,7 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="..\..\framework\msTLB.pas"/>
+        <DCCReference Include="..\..\framework\makestudio_TLB.pas"/>
         <DCCReference Include="jvcs_Vars.pas"/>
         <DCCReference Include="jvcs_Actions.pas">
             <Form>Form3</Form>

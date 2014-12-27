@@ -48,7 +48,6 @@ uses
   delphi32_SetDelphiVersionModule in 'delphi32_SetDelphiVersionModule.pas',
   delphi32_BDSEnvironment in 'delphi32_BDSEnvironment.pas' {FormSelectBDSEnvironment},
   delphi32_CompilerSwitch in 'delphi32_CompilerSwitch.pas' {FormCompilerSwitches},
-  delphi32_Properties in 'delphi32_Properties.pas' {FormEditDelphi32Globals},
   delphi32_CheckVersionEdit in 'delphi32_CheckVersionEdit.pas' {FormEditDelphi32CheckVersionParams},
   delphi32_CheckVersionCommand in 'delphi32_CheckVersionCommand.pas',
   delphi32_SpecialSettingsEdit in 'delphi32_SpecialSettingsEdit.pas' {FormEditSpecialSettingsParams},
@@ -60,7 +59,7 @@ uses
   delphi_EditEditNamespaces in 'delphi_EditEditNamespaces.pas' {FormEditEditNamespaces},
   delphi_EditNamespaces in 'delphi_EditNamespaces.pas',
   delphi_AddComponentFolder in 'delphi_AddComponentFolder.pas' {FormAddComponentFolder},
-  msTLB in '..\..\framework\msTLB.pas';
+  makestudio_TLB in '..\..\framework\makestudio_TLB.pas';
 
 {$E jpl}
 {$R *.res}

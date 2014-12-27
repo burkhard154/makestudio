@@ -54,7 +54,7 @@ uses
   msInfo in 'msInfo.pas' {AboutBox},
   msEditKeywordsForm in 'msEditKeywordsForm.pas' {FormKeywords},
   msUtils in 'msUtils.pas',
-  msTLB in 'msTLB.pas',
+  makestudio_TLB in 'makestudio_TLB.pas',
   msPluginHandler in 'msPluginHandler.pas',
   msGlobals in 'msGlobals.pas',
   msActionHandler in 'msActionHandler.pas',

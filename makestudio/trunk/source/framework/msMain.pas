@@ -63,7 +63,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   ComCtrls, ActnList, StdCtrls, ImgList, ExtCtrls, Menus, ToolWin, msProgram,
   AppEvnts, ShellAPI, JvComponent, JvDragDrop,
-  msTLB, JvExComCtrls, JvProgressBar, Buttons, JvMenus, msVarHandler,
+  makestudio_TLB, JvExComCtrls, JvProgressBar, Buttons, JvMenus, msVarHandler,
   JvComCtrls, JvDockControlForm, JvDockVIDStyle, JvDockVSNetStyle,
   JvExControls, JvWaitingGradient, JvStatusBar, JclTask, JvListView, JclFileUtils,
   JvEmbeddedForms, JvDockSupportProc, JvMRUManager, JvAppStorage,

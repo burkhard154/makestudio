@@ -6,7 +6,7 @@
 // Änderungen. Wenn Sie aber Änderungen mit dem Editor vornehmen, wird diese
 // Datei neu erzeugt und Kommentare oder Formatänderungen gehen verloren.
 // ************************************************************************ //
-// Datei erzeugt am 25.12.2014 15:39:26 (- $Rev: 12980 $, 94807345).
+// Datei erzeugt am 27.12.2014 18:48:50 (- $Rev: 12980 $, 114698206).
 
 [
   uuid(09828B26-2D82-4B16-90D1-517D298B3612),
@@ -14,7 +14,7 @@
   helpstring("Makestudio Library")
 
 ]
-library jvcsmak
+library makestudio
 {
 
   importlib("stdole2.tlb");

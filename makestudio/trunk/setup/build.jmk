@@ -22,7 +22,7 @@ end
 begin Script.PScript
   Caption=Pascal Script
   Ignore=0
-  LineCount=15
+  LineCount=18
   Line1=var s:String;
   Line2=begin
   Line3=  s := VarGet( 'ActiveScriptFile');
@@ -35,9 +35,12 @@ begin Script.PScript
   Line10=  ForceDirectories( s + '\bin\help');
   Line11=  ForceDirectories( s + '\lib');
   Line12=  
-  Line13=  //Store Variable
-  Line14=  VarSet( 'BASEPATH', s);
-  Line15=end.
+  Line13=  //Set drive variable
+  Line14=  VarSet( 'BASEDRIVE',ExtractFileDrive( s)); 
+  Line15=  
+  Line16=  //Store Variable
+  Line17=  VarSet( 'BASEPATH', s);
+  Line18=end.
 end
 begin jvcsmak.setvariable
   Caption=Set variable <DOTNETBINPATH> = C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin
@@ -237,10 +240,11 @@ begin jvcsutils.batchinternal
   Caption=Internal Batch command list
   Ignore=0
   ReplaceVars=1
-  BatchLineCount=3
+  BatchLineCount=4
   BatchLine1=REM generate makestudio.dll
-  BatchLine2="%DOTNETBINPATH%\tlbimp" %BASEPATH%\source\framework\makestudio.tlb /transform:dispret /verbose /namespace:makestudio
-  BatchLine3=copy %BASEPATH%\source\framework\makestudio.dll %BASEPATH%\bin
+  BatchLine2=%BASEDRIVE%
+  BatchLine3=cd %BASEPATH%\bin
+  BatchLine4="%DOTNETBINPATH%\tlbimp" %BASEPATH%\source\framework\makestudio.tlb /transform:dispret /verbose /namespace:makestudio
 end
 begin jvcsutils.batchinternal
   Caption=Internal Batch command list
@@ -283,7 +287,7 @@ begin jvcsmak.setvariable
 end
 begin innosetup.innosetup5.project
   Caption=Inno Setup <%BASEPATH%\setup\makestudio.iss>
-  Ignore=-1
+  Ignore=0
   ProjectFile=%BASEPATH%\setup\makestudio.iss
   OutputFile=%BASEPATH%\setup\Output\MakeStudioSetup_Version_%MAKESTUDIOVERSION%_Date_%DATE%
   Options=

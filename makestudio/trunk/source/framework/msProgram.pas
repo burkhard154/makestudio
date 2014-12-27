@@ -43,7 +43,7 @@ unit msProgram;
 interface
 
 uses
-  ActiveX, Classes, ComObj, Contnrs, msTLB,
+  ActiveX, Classes, ComObj, Contnrs, makestudio_TLB,
 {$IFDEF DELPHI6_UP}
   Variants, Types,
 {$ENDIF DELPHI6_UP}

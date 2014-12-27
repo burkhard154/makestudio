@@ -42,7 +42,7 @@ unit utils_RunBatch;
 interface
 
 uses
-  ComObj, ActiveX, StdVCL, Graphics, msTLB,
+  ComObj, ActiveX, StdVCL, Graphics, makestudio_TLB,
   Classes, Windows, Dialogs, Controls, SysUtils, Forms, JclFileUtils;
 
 type

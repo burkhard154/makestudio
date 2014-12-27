@@ -9,7 +9,7 @@ unit resourcesEditMultipleVersionResourceCommand;
 interface
 
 uses
-  ComObj, ActiveX, StdVCL, Graphics, msTLB,
+  ComObj, ActiveX, StdVCL, Graphics, makestudio_TLB,
   Classes, Windows, Dialogs, Controls, SysUtils, resources_Module;
 
 {**** Sample Code to register this command *******

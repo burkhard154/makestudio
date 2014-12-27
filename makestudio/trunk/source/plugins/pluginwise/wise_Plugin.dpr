@@ -36,7 +36,7 @@ library wise_Plugin;
 uses
   SysUtils,
   Classes,
-  msTLB in '..\..\framework\msTLB.pas',
+  makestudio_TLB in '..\..\framework\makestudio_TLB.pas',
   ComServ,
   ActiveX,
   wise_Actions in 'wise_Actions.pas' {Form3},

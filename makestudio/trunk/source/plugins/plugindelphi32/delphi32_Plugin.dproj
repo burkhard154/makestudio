@@ -102,9 +102,6 @@
         <DCCReference Include="delphi32_CompilerSwitch.pas">
             <Form>FormCompilerSwitches</Form>
         </DCCReference>
-        <DCCReference Include="delphi32_Properties.pas">
-            <Form>FormEditDelphi32Globals</Form>
-        </DCCReference>
         <DCCReference Include="delphi32_CheckVersionEdit.pas">
             <Form>FormEditDelphi32CheckVersionParams</Form>
         </DCCReference>
@@ -128,7 +125,7 @@
         <DCCReference Include="delphi_AddComponentFolder.pas">
             <Form>FormAddComponentFolder</Form>
         </DCCReference>
-        <DCCReference Include="..\..\framework\msTLB.pas"/>
+        <DCCReference Include="..\..\framework\makestudio_TLB.pas"/>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

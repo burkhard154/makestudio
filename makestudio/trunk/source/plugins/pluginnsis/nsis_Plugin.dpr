@@ -31,12 +31,12 @@ library nsis_Plugin;
 
 {$I jedi.inc}
 
-{%Bmp 'nsis.bmp'}
+{$R *.dres}
 
 uses
   SysUtils,
   Classes,
-  msTLB in '..\..\Framework\msTLB.pas',
+  makestudio_TLB in '..\..\framework\makestudio_TLB.pas',
   ComServ,
   Forms,
   ActiveX,

@@ -31,7 +31,7 @@ unit zip_Vars;
 interface
 
 uses
-  msTLB, ZipMstr;
+  makestudio_TLB, ZipMstr;
 
 var
   MakeStudio: IJApplication;

@@ -34,7 +34,7 @@ library helpandmanual_Plugin;
 uses
   SysUtils,
   Classes,
-  msTLB in '..\..\framework\msTLB.pas',
+  makestudio_TLB in '..\..\framework\makestudio_TLB.pas',
   ComServ,
   ActiveX,
   helpandmanual_Vars in 'helpandmanual_Vars.pas',
