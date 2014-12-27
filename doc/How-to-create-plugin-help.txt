@@ -1,4 +1,4 @@
-All Plugins have to create a Microsoft HTML Help file (.chm)
+All Plugins have to provide a Microsoft HTML Help file (.chm)
 This file has to be distributet to <makestudio install dir>\help
 
 Every new .chm File will autmatically be merged into the main 
