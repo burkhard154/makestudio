@@ -10,7 +10,7 @@
 using System;
 using System.Threading;
 using System.Runtime.InteropServices;
-using JediMake;
+using makestudio;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Resources;

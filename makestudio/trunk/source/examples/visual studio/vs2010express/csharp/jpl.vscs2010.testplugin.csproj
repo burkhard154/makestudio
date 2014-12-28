@@ -81,8 +81,8 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Jvcsmak">
-      <HintPath>C:\Program Files (x86)\Jedi\Jedi Make\Jvcsmak.dll</HintPath>
+    <Reference Include="makestudio">
+      <HintPath>..\..\..\..\..\bin\makestudio.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />

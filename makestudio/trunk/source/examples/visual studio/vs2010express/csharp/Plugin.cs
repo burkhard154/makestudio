@@ -7,7 +7,7 @@ using System.Threading;
 using System.Resources;
 using System.Reflection;
 using stdole;
-using JediMake;
+using makestudio;
 
 namespace jpl.vscs2010.testplugin
 {
