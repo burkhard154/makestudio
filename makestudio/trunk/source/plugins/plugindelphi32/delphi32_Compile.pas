@@ -1,19 +1,19 @@
 (*
- ***************************************************************************
- optiMEAS GmbH
- written by Burkhard Schranz, Jens-Achim Kessel
- copyright © 2013 -
- Email : info@optimeas.de
- Web : http://www.optimeas.de
- http://www.makestudio.de
- http://www.mobiconn.de
- The source code is given as is. The author is not responsible
- for any possible damage done due to the use of this code.
- The component can be freely used in any application.
-   source code remains property of the author and may not be distributed,
- published, given or sold in any form as such. No parts of the source
- code can be included in any other component or application without
- written authorization of optiMEAS GmbH
+  ***************************************************************************
+  optiMEAS GmbH
+  written by Burkhard Schranz, Jens-Achim Kessel
+  copyright © 2013 -
+  Email : info@optimeas.de
+  Web : http://www.optimeas.de
+  http://www.makestudio.de
+  http://www.mobiconn.de
+  The source code is given as is. The author is not responsible
+  for any possible damage done due to the use of this code.
+  The component can be freely used in any application.
+  source code remains property of the author and may not be distributed,
+  published, given or sold in any form as such. No parts of the source
+  code can be included in any other component or application without
+  written authorization of optiMEAS GmbH
 
 
   Known Issues:
@@ -242,7 +242,17 @@ begin
     if SearchDirs.Count > 0 then
       Result := Result + Canvas.TextHeight(stdSearchDirsTxt) + 2;
     for I := 0 to SearchDirs.Count - 1 do
-      Result := Result + Canvas.TextHeight(SearchDirs[I]) + 2;
+    begin
+      if I < 5 then
+      begin
+        Result := Result + Canvas.TextHeight(SearchDirs[I]) + 2;
+      end
+      else if I = 5 then
+      begin
+        Result := Result + Canvas.TextHeight(SearchDirs[I]) + 2;
+      end
+      else;
+    end;
   finally
     Canvas.Free;
   end;
