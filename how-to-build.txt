@@ -3,6 +3,8 @@ Building is tested with Delphi XE5 and XE7
 First synchronize SVN: https://optimeas.de/public/makestudio to your favorite local folder.
 <makestuditrunk>=<your folder>\trunk
 
+Take care, that all third party components and toos are installed for your favorite development environment!
+
 Settings for Namespaces (Tools-Options)
 System;Xml;Data;Datasnap;Web;Soap;Winapi;Vcl;System.Win;Vcl.Imaging
 
@@ -13,7 +15,7 @@ A. Build from Source
   3. Generate makestudio.dll assembly: 
       "<DOTNETBINPATH>\tlbimp" <makestuditrunk>\source\framework\makestudio.tlb /transform:dispret /verbose /namespace:makestudio
   4. Copy makestudio.dll to <makestuditrunk>\bin
-  5. Run <makestuditrunk>\setup\makestudio.iss with Inno Setup 
+  5. Run <makestuditrunk>\setup\makestudio.iss with Inno Setup to create the setup
 
 
 B. Build with MakeStudio
