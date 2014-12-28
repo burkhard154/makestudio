@@ -1,0 +1,299 @@
+{796D9287-1850-46A8-9C28-24E627FBC446} Version=3
+begin Delphi32.SetDelphiVersion
+  Caption=Delphi32 Version setzten
+  Ignore=0
+  Delphiversion=14
+end
+begin delphi.SelectDelphiPlatform
+  Caption=Select Delphi Platform
+  Ignore=0
+  Platform=1
+end
+begin delphi32.EditNamespaces
+  Caption=Preset Delphi Namespaces
+  Ignore=0
+  Namespaces=System;System.Win;WinApi;Vcl;Vcl.Imaging;Data;xml
+end
+begin command.comment
+  Caption=Finding the absolute path to source....
+  Ignore=0
+  Value=Finding the absolute path to source....
+end
+begin Script.PScript
+  Caption=Pascal Script
+  Ignore=0
+  LineCount=18
+  Line1=var s:String;
+  Line2=begin
+  Line3=  s := VarGet( 'ActiveScriptFile');
+  Line4=  s := ExtractFilePath( s);
+  Line5=  s := RemoveBackslash( s);
+  Line6=  s := ExtractFilePath( s); 
+  Line7=  s := RemoveBackslash( s);
+  Line8=
+  Line9=  //Create Lib and Bin Directory
+  Line10=  ForceDirectories( s + '\bin\help');
+  Line11=  ForceDirectories( s + '\lib');
+  Line12=  
+  Line13=  //Set drive variable
+  Line14=  VarSet( 'BASEDRIVE',ExtractFileDrive( s)); 
+  Line15=  
+  Line16=  //Store Variable
+  Line17=  VarSet( 'BASEPATH', s);
+  Line18=end.
+end
+begin jvcsmak.setvariable
+  Caption=Set variable <DOTNETBINPATH> = C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin
+  Ignore=0
+  Varname=DOTNETBINPATH
+  DataType=0
+  Value=C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin
+  Operation=0
+  Append=0
+  Versionfilename=
+  DateTimeFormat=YYYY-MM-DD HH:MM:SS
+  VersionFormat=%V1.%V2.%V3.%V4
+  ReplaceVars=0
+end
+begin jvcsutils.batchinternal
+  Caption=Internal Batch command list
+  Ignore=0
+  ReplaceVars=1
+  BatchLineCount=3
+  BatchLine1=del %BASEPATH%\bin\*.jpl
+  BatchLine2=del %BASEPATH%\bin\*.dll
+  BatchLine3=svn update %BASEPATH%
+end
+begin resources.EditVersion
+  Caption=Edit Version Resource
+  Ignore=0
+  Filename=%BASEPATH%\source\framework\msver.rc
+  IncreaseType=3
+  FileVersionKey=FileVersion
+  IncreaseSet=1
+  NewVersionValue=0.0.0.0
+end
+begin command.comment
+  Caption=Delete the following two lines if you just want to build a setup file
+  Ignore=0
+  Value=Delete the following two lines if you just want to build a setup file
+end
+begin delphi32.brcc32
+  Caption=Resource Compiler 32-bit <%BASEPATH%\source\framework\msver.rc>
+  Ignore=0
+  RCFile=%BASEPATH%\source\framework\msver.rc
+  Options=
+  =
+end
+begin jvcsutils.batchinternal
+  Caption=Internal Batch command list
+  Ignore=0
+  ReplaceVars=1
+  BatchLineCount=1
+  BatchLine1=svn commit -m "updated by build process" %BASEPATH%\source\framework\msver.rc
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (makestudio.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\framework\makestudio.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (ms.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\framework\ms.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (EasyBackup_Plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\plugineasybackup\EasyBackup_Plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (jvcs_Plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\pluginjvcs\jvcs_Plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (passolo_Plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\pluginpassolo\passolo_Plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (utils_Plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\pluginutils\utils_Plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (wise_Plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\pluginwise\wise_Plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (delphi32_Plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\plugindelphi32\delphi32_Plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (dialogs_Plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\plugindialogs\dialogs_Plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (helpandmanual_Plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\pluginhelpandmanual\helpandmanual_Plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (resources_Plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\pluginversion\resources_Plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (zip_Plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\pluginzip\zip_Plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (pscript_Plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\pluginpscript\pscript_Plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (innosetup_Plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\plugininnosetup\innosetup_Plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (nsis_Plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\pluginnsis\nsis_Plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (codewizard.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\wizard\codewizard.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin jvcsutils.batchinternal
+  Caption=Internal Batch command list
+  Ignore=0
+  ReplaceVars=1
+  BatchLineCount=4
+  BatchLine1=REM generate makestudio.dll
+  BatchLine2=%BASEDRIVE%
+  BatchLine3=cd %BASEPATH%\bin
+  BatchLine4="%DOTNETBINPATH%\tlbimp" %BASEPATH%\source\framework\makestudio.tlb /transform:dispret /verbose /namespace:makestudio
+end
+begin jvcsutils.batchinternal
+  Caption=Internal Batch command list
+  Ignore=0
+  ReplaceVars=1
+  BatchLineCount=7
+  BatchLine1=REM Copy Help Files
+  BatchLine2=copy %BASEPATH%\doc\help\startup\*.* %BASEPATH%\bin\help
+  BatchLine3=copy %BASEPATH%\doc\help\makestudio\*.chm %BASEPATH%\bin\help
+  BatchLine4=copy %BASEPATH%\doc\help\makestudio\*.txt %BASEPATH%\bin\help
+  BatchLine5=
+  BatchLine6=REM Now copy help files (*.chm) and description files (*.txt)
+  BatchLine7=REM...
+end
+begin jvcsmak.setvariable
+  Caption=Read version information into variable <MAKESTUDIOVERSION>
+  Ignore=0
+  Varname=MAKESTUDIOVERSION
+  DataType=0
+  Value=
+  Operation=6
+  Append=0
+  Versionfilename=%BASEPATH%\bin\makestudio.exe
+  DateTimeFormat=YYYY-MM-DD HH:MM:SS
+  VersionFormat=%V1.%V2.%V3.%V4
+  ReplaceVars=0
+end
+begin jvcsmak.setvariable
+  Caption=Read date/time into variable <DATE>
+  Ignore=0
+  Varname=DATE
+  DataType=0
+  Value=
+  Operation=5
+  Append=0
+  Versionfilename=%BASEPATH%\bin\makestudio.exe
+  DateTimeFormat=YYYYMMDD
+  VersionFormat=%V1.%V2.%V3.%V4
+  ReplaceVars=0
+end
+begin innosetup.innosetup5.project
+  Caption=Inno Setup <%BASEPATH%\setup\makestudio.iss>
+  Ignore=0
+  ProjectFile=%BASEPATH%\setup\makestudio.iss
+  OutputFile=%BASEPATH%\setup\Output\MakeStudioSetup_Version_%MAKESTUDIOVERSION%_Date_%DATE%
+  Options=
+end
+begin jvcsutils.batchmodule
+  Caption=External Batch file - Cleanup.bat
+  Ignore=0
+  BatchFile=%BASEPATH%\Cleanup.bat
+end
