@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using JediMake;
+using makestudio;
 
 namespace jpl.vscs2010.testplugin
 {
@@ -14,7 +14,7 @@ namespace jpl.vscs2010.testplugin
                 
         public void Execute( String Action)
         {
-            MessageBox.Show( "Action from VS C# 2010 Called");
+            MessageBox.Show( "Action from VS C# Called");
         }
     }
 }
