@@ -24,3 +24,7 @@ http://www.jrsoftware.org/isinfo.php
 http://www.remobjects.com/ps.aspx
 or
 https://github.com/remobjects/pascalscript
+
+6. Help Tool
+There are a couple of Help processors on the market
+Currently we are using Help&Manual 6
