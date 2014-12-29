@@ -74,8 +74,8 @@ Source: "..\bin\resources_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion ov
 Source: "..\bin\innosetup_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGINNOSETUP
 Source: "..\bin\zip_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGZIP
 Source: "..\source\plugins\pluginzip\Dll\DelZip179.dll"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGZIP
-Source: "..\source\plugins\pluginzip\Dll\DelZip192.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\source\plugins\pluginzip\Dll\DelZip190.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\source\plugins\pluginzip\Dll\DelZip192.dll"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGZIP
+Source: "..\source\plugins\pluginzip\Dll\DelZip190.dll"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGZIP
 Source: "..\bin\nsis_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGNSIS
 Source: "..\bin\pscript_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGPSCRIPT
 Source: "..\bin\codewizard.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGWIZARD
@@ -170,7 +170,6 @@ Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\Command
 Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\jpl.sharpdevelop.testplugin.csproj"; DestDir: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin"; Flags: ignoreversion
 Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\jpl.sharpdevelop.testplugin.sln"; DestDir: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin"; Flags: ignoreversion
 Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\PluginInterface.cs"; DestDir: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin"; Flags: ignoreversion
-Source: "..\source\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\obj\jpl.sharpdevelop.testplugin.csproj.FileList.txt"; DestDir: "{app}\examples\sharpdevelop\2.0\jpl.sharpdevelop.testplugin\obj"; Flags: ignoreversion
 Source: "..\source\examples\visual studio\vs2005express\csharp\Actions.cs"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
 Source: "..\source\examples\visual studio\vs2005express\csharp\Actions.Designer.cs"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
 Source: "..\source\examples\visual studio\vs2005express\csharp\Actions.resx"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
@@ -183,10 +182,6 @@ Source: "..\source\examples\visual studio\vs2005express\csharp\jpl.vscsharp2005.
 Source: "..\source\examples\visual studio\vs2005express\csharp\jpl.vscsharp2005.testplugin.sln"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
 Source: "..\source\examples\visual studio\vs2005express\csharp\jpl.vscsharp2005.testplugin.suo"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
 Source: "..\source\examples\visual studio\vs2005express\csharp\PluginInterface.cs"; DestDir: "{app}\examples\visual studio\vs2005express\csharp"; Flags: ignoreversion
-Source: "..\source\examples\visual studio\vs2005express\csharp\obj\jpl.vscsharp2005.testplugin.csproj.FileList.txt"; DestDir: "{app}\examples\visual studio\vs2005express\csharp\obj"; Flags: ignoreversion
-Source: "..\source\examples\visual studio\vs2005express\csharp\obj\release\jpl.vscsharp2005.testplugin.Actions.resources"; DestDir: "{app}\examples\visual studio\vs2005express\csharp\obj\release"; Flags: ignoreversion
-Source: "..\source\examples\visual studio\vs2005express\csharp\obj\release\jpl.vscsharp2005.testplugin.csproj.GenerateResource.Cache"; DestDir: "{app}\examples\visual studio\vs2005express\csharp\obj\release"; Flags: ignoreversion
-Source: "..\source\examples\visual studio\vs2005express\csharp\obj\release\jpl.vscsharp2005.testplugin.EditCommand.resources"; DestDir: "{app}\examples\visual studio\vs2005express\csharp\obj\release"; Flags: ignoreversion
 Source: "..\source\examples\visual studio\vs2010express\csharp\Actions.cs"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
 Source: "..\source\examples\visual studio\vs2010express\csharp\AssemblyInfo.cs"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
 Source: "..\source\examples\visual studio\vs2010express\csharp\Command includes ownerdraw.cs"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
@@ -196,16 +191,7 @@ Source: "..\source\examples\visual studio\vs2010express\csharp\EditCommand.Desig
 Source: "..\source\examples\visual studio\vs2010express\csharp\EditCommand.resx"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
 Source: "..\source\examples\visual studio\vs2010express\csharp\jpl.vscs2010.testplugin.csproj"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
 Source: "..\source\examples\visual studio\vs2010express\csharp\jpl.vscs2010.testplugin.sln"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
-Source: "..\source\examples\visual studio\vs2010express\csharp\jpl.vscs2010.testplugin.v11.suo"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
 Source: "..\source\examples\visual studio\vs2010express\csharp\Plugin.cs"; DestDir: "{app}\examples\visual studio\vs2010express\csharp"; Flags: ignoreversion
-Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"; Flags: ignoreversion
-Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.csproj.FileListAbsolute.txt"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"; Flags: ignoreversion
-Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.csproj.GenerateResource.Cache"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"; Flags: ignoreversion
-Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.dll"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"; Flags: ignoreversion
-Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.EditCommand.resources"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"; Flags: ignoreversion
-Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.pdb"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"; Flags: ignoreversion
-Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\jpl.vscs2010.testplugin.Properties.Resources.resources"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug"; Flags: ignoreversion
-Source: "..\source\examples\visual studio\vs2010express\csharp\obj\x86\Debug\TempPE\Properties.Resources.Designer.cs.dll"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\obj\x86\Debug\TempPE"; Flags: ignoreversion
 Source: "..\source\examples\visual studio\vs2010express\csharp\Properties\Resources.Designer.cs"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\Properties"; Flags: ignoreversion
 Source: "..\source\examples\visual studio\vs2010express\csharp\Properties\Resources.resx"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\Properties"; Flags: ignoreversion
 Source: "..\source\examples\visual studio\vs2010express\csharp\Resources\cs.bmp"; DestDir: "{app}\examples\visual studio\vs2010express\csharp\Resources"; Flags: ignoreversion
