@@ -82,7 +82,7 @@
         <VerInfo_AutoGenVersion>false</VerInfo_AutoGenVersion>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Keys>FileVersion=1.19.5.10;ProductVersion=19.0;CompanyName=;FileDescription=;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=</VerInfo_Keys>
-        <Debugger_HostApplication>V:\projekte\burkhard\jmake\bin\jvcsmak.exe</Debugger_HostApplication>
+        <Debugger_HostApplication>..\..\..\bin\makestudio.exe</Debugger_HostApplication>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">

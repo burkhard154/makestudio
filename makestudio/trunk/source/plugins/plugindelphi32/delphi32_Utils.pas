@@ -396,7 +396,9 @@ begin
     MessageDlg(stderrNoDelphi, mtInformation, [mbOk], 0);
     DlgSelectDelphiVersion(AVersion);
     if not CheckDelphiVersion(AVersion) then
-      Exit;
+      Exit
+    else
+      WriteDelphiVersionReg;
   end;
 
   V := _DelphiVersion;
