@@ -59,7 +59,7 @@ const
   sOutputfile='OutputFile';
   sOptions='Options';
 
-  stdcRegKey = 'Software\JEDI\MakeStudio';
+  // stdcRegKey = 'Software\JEDI\MakeStudio';
   stdcRegISCCExe = 'Iscc.exe';
   stdcPathIscc = 'Inno Setup 5'; 
 

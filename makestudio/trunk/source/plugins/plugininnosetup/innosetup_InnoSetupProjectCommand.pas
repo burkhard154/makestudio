@@ -118,7 +118,7 @@ uses
 
 function GetInnoSetupCompiler: string;
 begin
-  Result := RegReadStringDef(HKCU, stdcRegKey, stdcRegIsccExe, '');
+  Result := RegReadStringDef(HKCU, MakeStudio.ApplicationRegKey, stdcRegIsccExe, '');
   if Result = '' then  //not in Registry - use default
     Result := PathAddSeparator(PathAddSeparator(GetProgramFilesFolder)
               + stdcPathIscc) + stdcRegIsccExe;
@@ -126,7 +126,7 @@ end;
 
 procedure SetInnoSetupCompiler(Compiler: string);
 begin
-  RegWriteString(HKCR, stdcRegKey, stdcRegIsccExe, Compiler);
+  RegWriteString(HKCR, MakeStudio.ApplicationRegKey, stdcRegIsccExe, Compiler);
 end;
 
 
