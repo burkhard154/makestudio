@@ -43,7 +43,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, Menus, JvMenus, ImgList, ActnList, StdCtrls, ComCtrls, ExtCtrls,
   JvComponent, JvDockControlForm, msprogram, msglobals,
-  JvEmbeddedForms, JvComponentBase;
+  JvEmbeddedForms, JvComponentBase, System.Actions;
 
 type
   TFormLogbook = class(TForm)
@@ -66,11 +66,15 @@ type
     Logbuchspeichern1: TMenuItem;
     JvDockClient: TJvDockClient;
     Link: TJvEmbeddedFormLink;
+    N1: TMenuItem;
+    Copyselectedtext1: TMenuItem;
+    acCopyTxt: TAction;
     procedure FormCreate(Sender: TObject);
     procedure ToolButton4Click(Sender: TObject);
     procedure ToolButton1Click(Sender: TObject);
     procedure acKeywordsExecute(Sender: TObject);
     procedure ListFoundDblClick(Sender: TObject);
+    procedure acCopyTxtExecute(Sender: TObject);
   private
     Keywords: TStringList;
   public
@@ -274,6 +278,12 @@ begin
   begin
     Logbook.Lines.SaveToFile(SaveDialog1.FileName);
   end;
+end;
+
+procedure TFormLogbook.acCopyTxtExecute(Sender: TObject);
+begin
+  // Copy selected text
+  Logbook.CopyToClipboard;
 end;
 
 procedure TFormLogbook.acKeywordsExecute(Sender: TObject);
