@@ -190,8 +190,8 @@ end;
 function TPluginTestcommand.Get_Caption: WideString;
 begin
   Result := FCaption;
-  if Length(FSolutionPath) > 0 then
-    Result := FCaption + ' - Solution: ' + FSolutionPath;
+//  if Length(FSolutionPath) > 0 then
+//    Result := FCaption + ' - Solution: ' + FSolutionPath;
 end;
 
 procedure TPluginTestcommand.Set_Caption(const Value: WideString);
@@ -246,7 +246,7 @@ end;
 
 function TPluginTestcommand.Get_PreviewText: WideString;
 begin
-  Result := '';
+  Result := 'Solution: '+FSolutionPath + #10#13 + 'Build config: ' +FBuildConfig;
 end;
 
 function TPluginTestcommand.Notify(const Notification: WideString;
