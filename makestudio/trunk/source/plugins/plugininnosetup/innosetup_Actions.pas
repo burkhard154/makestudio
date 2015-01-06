@@ -33,7 +33,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, ActnList, ImgList, makestudio_TLB, ActiveX, AxCtrls;
+  Dialogs, ActnList, ImgList, makestudio_TLB, ActiveX, AxCtrls, System.Actions;
 
 type
   TFormActions = class(TForm, IActionCallback)

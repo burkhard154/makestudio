@@ -54,6 +54,12 @@
         <Projects Include="..\plugins\wizard\codewizard.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="..\plugins\pluginemail\email_plugin.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\plugins\pluginmsbuild\msbuild_plugin.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -215,14 +221,32 @@
     <Target Name="codewizard:Make">
         <MSBuild Projects="..\plugins\wizard\codewizard.dproj" Targets="Make"/>
     </Target>
+    <Target Name="email_plugin">
+        <MSBuild Projects="..\plugins\pluginemail\email_plugin.dproj"/>
+    </Target>
+    <Target Name="email_plugin:Clean">
+        <MSBuild Projects="..\plugins\pluginemail\email_plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="email_plugin:Make">
+        <MSBuild Projects="..\plugins\pluginemail\email_plugin.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="msbuild_plugin">
+        <MSBuild Projects="..\plugins\pluginmsbuild\msbuild_plugin.dproj"/>
+    </Target>
+    <Target Name="msbuild_plugin:Clean">
+        <MSBuild Projects="..\plugins\pluginmsbuild\msbuild_plugin.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="msbuild_plugin:Make">
+        <MSBuild Projects="..\plugins\pluginmsbuild\msbuild_plugin.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="makestudio;ms;delphi32_Plugin;dialogs_Plugin;DelphiDotNet_Plugin;EasyBackup_Plugin;helpandmanual_Plugin;innosetup_Plugin;jvcs_Plugin;nsis_Plugin;passolo_Plugin;pscript_Plugin;utils_Plugin;resources_Plugin;wise_Plugin;zip_Plugin;codewizard"/>
+        <CallTarget Targets="makestudio;ms;delphi32_Plugin;dialogs_Plugin;DelphiDotNet_Plugin;EasyBackup_Plugin;helpandmanual_Plugin;innosetup_Plugin;jvcs_Plugin;nsis_Plugin;passolo_Plugin;pscript_Plugin;utils_Plugin;resources_Plugin;wise_Plugin;zip_Plugin;codewizard;email_plugin;msbuild_plugin"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="makestudio:Clean;ms:Clean;delphi32_Plugin:Clean;dialogs_Plugin:Clean;DelphiDotNet_Plugin:Clean;EasyBackup_Plugin:Clean;helpandmanual_Plugin:Clean;innosetup_Plugin:Clean;jvcs_Plugin:Clean;nsis_Plugin:Clean;passolo_Plugin:Clean;pscript_Plugin:Clean;utils_Plugin:Clean;resources_Plugin:Clean;wise_Plugin:Clean;zip_Plugin:Clean;codewizard:Clean"/>
+        <CallTarget Targets="makestudio:Clean;ms:Clean;delphi32_Plugin:Clean;dialogs_Plugin:Clean;DelphiDotNet_Plugin:Clean;EasyBackup_Plugin:Clean;helpandmanual_Plugin:Clean;innosetup_Plugin:Clean;jvcs_Plugin:Clean;nsis_Plugin:Clean;passolo_Plugin:Clean;pscript_Plugin:Clean;utils_Plugin:Clean;resources_Plugin:Clean;wise_Plugin:Clean;zip_Plugin:Clean;codewizard:Clean;email_plugin:Clean;msbuild_plugin:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="makestudio:Make;ms:Make;delphi32_Plugin:Make;dialogs_Plugin:Make;DelphiDotNet_Plugin:Make;EasyBackup_Plugin:Make;helpandmanual_Plugin:Make;innosetup_Plugin:Make;jvcs_Plugin:Make;nsis_Plugin:Make;passolo_Plugin:Make;pscript_Plugin:Make;utils_Plugin:Make;resources_Plugin:Make;wise_Plugin:Make;zip_Plugin:Make;codewizard:Make"/>
+        <CallTarget Targets="makestudio:Make;ms:Make;delphi32_Plugin:Make;dialogs_Plugin:Make;DelphiDotNet_Plugin:Make;EasyBackup_Plugin:Make;helpandmanual_Plugin:Make;innosetup_Plugin:Make;jvcs_Plugin:Make;nsis_Plugin:Make;passolo_Plugin:Make;pscript_Plugin:Make;utils_Plugin:Make;resources_Plugin:Make;wise_Plugin:Make;zip_Plugin:Make;codewizard:Make;email_plugin:Make;msbuild_plugin:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

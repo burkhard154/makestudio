@@ -63,6 +63,7 @@ object FormEditInnoSetupProjectParams: TFormEditInnoSetupProjectParams
     Width = 529
     Height = 21
     TabOrder = 2
+    Text = ''
   end
   object edOutputfilename: TJvFilenameEdit
     Left = 16
@@ -70,14 +71,15 @@ object FormEditInnoSetupProjectParams: TFormEditInnoSetupProjectParams
     Width = 529
     Height = 21
     TabOrder = 3
+    Text = ''
   end
   object edOptions: TJvEdit
     Left = 16
     Top = 104
     Width = 529
     Height = 21
-    Modified = False
     TabOrder = 4
+    Text = ''
   end
   object JvEditor1: TJvEditor
     Left = 16
@@ -108,28 +110,18 @@ object FormEditInnoSetupProjectParams: TFormEditInnoSetupProjectParams
         '                 /v<number>           #pragma verboselevel <numb' +
         'er>')
     ScrollBars = ssNone
-    GutterWidth = 0
-    RightMarginColor = clSilver
     ReadOnly = True
     Completion.ItemHeight = 13
-    Completion.Interval = 800
-    Completion.ListBoxStyle = lbStandard
-    Completion.CaretChar = '|'
     Completion.CRLF = '/n'
     Completion.Separator = '='
     TabStops = '3 5'
-    SelForeColor = clHighlightText
-    SelBackColor = clHighlight
+    BracketHighlighting.StringEscape = #39#39
     Color = 15066597
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -11
     Font.Name = 'Courier New'
     Font.Style = []
-    ParentColor = False
-    ParentFont = False
-    TabStop = True
-    UseDockManager = False
   end
   object btCompiler: TButton
     Left = 176

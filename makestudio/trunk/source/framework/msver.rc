@@ -1,14 +1,14 @@
 LANGUAGE 0, 0
 1 VERSIONINFO
-FILEVERSION 4,0,1,27
-PRODUCTVERSION 4,0,1,27
+FILEVERSION 4,0,1,28
+PRODUCTVERSION 4,0,1,28
 BEGIN
   BLOCK "StringFileInfo"
   BEGIN
     BLOCK "040904E4"
     BEGIN
-      VALUE "FileVersion", "4.0.1.27\0"
-      VALUE "ProductVersion", "4.0.1.27\0"
+      VALUE "FileVersion", "4.0.1.28\0"
+      VALUE "ProductVersion", "4.0.1.28\0"
       VALUE "ProductName", "Make Studio\0"
       VALUE "CompanyName", "optiMEAS\0"
       VALUE "FileDescription", "Make Utiliy\0"
