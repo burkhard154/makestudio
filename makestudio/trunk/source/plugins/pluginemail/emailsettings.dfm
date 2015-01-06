@@ -97,7 +97,6 @@ object FormEmailSettings: TFormEmailSettings
     Height = 21
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 6
-    ExplicitWidth = 420
   end
   object edMailuser: TEdit
     Left = 120
@@ -106,7 +105,6 @@ object FormEmailSettings: TFormEmailSettings
     Height = 21
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 8
-    ExplicitWidth = 420
   end
   object edMailpassword: TEdit
     Left = 120
@@ -116,7 +114,6 @@ object FormEmailSettings: TFormEmailSettings
     Anchors = [akLeft, akTop, akRight]
     PasswordChar = '*'
     TabOrder = 0
-    ExplicitWidth = 420
   end
   object edMailSSLPort: TEdit
     Left = 120
@@ -126,7 +123,6 @@ object FormEmailSettings: TFormEmailSettings
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 1
     Text = '0'
-    ExplicitWidth = 420
   end
   object edMailSenderName: TEdit
     Left = 120
@@ -135,7 +131,6 @@ object FormEmailSettings: TFormEmailSettings
     Height = 21
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 2
-    ExplicitWidth = 420
   end
   object edMailsenderaddress: TEdit
     Left = 120
@@ -144,7 +139,6 @@ object FormEmailSettings: TFormEmailSettings
     Height = 21
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 3
-    ExplicitWidth = 420
   end
   object btOk: TButton
     Left = 12

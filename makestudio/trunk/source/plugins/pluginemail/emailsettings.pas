@@ -4,9 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, cxMaskEdit, cxDropDownEdit,
-  cxTextEdit, cxLabel;
+  Dialogs, StdCtrls;
 
 type
   TFormEmailSettings = class(TForm)
