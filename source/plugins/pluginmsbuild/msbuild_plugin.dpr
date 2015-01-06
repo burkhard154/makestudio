@@ -91,6 +91,7 @@ begin
 
       //Additional Info
       MakeStudio.AddAdditionalInfo(struPluginHint);
+      LoadFromRegistry;
     except
     end;
   end;
