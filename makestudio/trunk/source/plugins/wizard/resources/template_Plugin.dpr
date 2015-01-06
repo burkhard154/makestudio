@@ -27,6 +27,7 @@ Unit history:
 2005/01/08  BSchranz  - Plugin template created
 2005/02/15  USchuster - preparations for check in and modified for Wizard
 2011/09/25  BSchranz  - preparations for external code wizard
+2015/01/01  BSchranz  - makestudio reference fixed
 
 -----------------------------------------------------------------------------*)
 {$ENDIF BLOCKHEADER}
@@ -35,9 +36,9 @@ library %MODULEIDENT%;
 uses
   SysUtils,
   Classes,
-  msTLB,
   ComServ,
   Forms,
+  makestudio_TLB in '..\..\framework\makestudio_TLB',
   {$IFDEF BLOCKEXTERNALWIZARD}
   %USEVARS%,
   %USEMODULE%,

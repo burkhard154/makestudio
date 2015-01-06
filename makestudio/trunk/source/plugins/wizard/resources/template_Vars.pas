@@ -34,7 +34,7 @@ unit %MODULEIDENT%;
 interface
 
 uses
-  msTLB;
+  makestudio_TLB;
 
 var
   MakeStudio: IJApplication;
