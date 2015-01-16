@@ -33,8 +33,9 @@ object FormActionTest: TFormActionTest
     Top = 43
     Width = 433
     Height = 21
+    Filter = 'All files (*.exe)|*.exe'
     TabOrder = 0
-    Text = ''
+    Text = 'MSBuild.exe'
   end
   object Button1: TButton
     Left = 270
@@ -43,8 +44,8 @@ object FormActionTest: TFormActionTest
     Height = 25
     Caption = 'Ok'
     Default = True
-    ModalResult = 1
     TabOrder = 1
+    OnClick = Button1Click
   end
   object Button2: TButton
     Left = 374
