@@ -30,6 +30,8 @@ implementation
 uses
   PluginMsBuildActiontest, PluginMsBuildvars;
 
+
+
 procedure GetPictureFromImageList(AImages: TImageList; AIndex: Integer; out APic: Picture);
 var
   pic: TPicture;

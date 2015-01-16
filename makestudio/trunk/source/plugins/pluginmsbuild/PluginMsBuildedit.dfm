@@ -78,6 +78,7 @@ object FormEditTestcommand: TFormEditTestcommand
     Top = 27
     Width = 487
     Height = 21
+    Filter = 'Solution (*.sln)|*.sln|All files (*.*)|*.*'
     TabOrder = 2
     Text = ''
   end
