@@ -236,6 +236,24 @@ begin Delphi32.Module
   OutputDir=%BASEPATH%\bin
   SearchPathCount=0
 end
+begin Delphi32.Module
+  Caption=Compile Delphi File (msbuild_plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\pluginmsbuild\msbuild_plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
+begin Delphi32.Module
+  Caption=Compile Delphi File (email_plugin.dpr)
+  Ignore=0
+  Filename=%BASEPATH%\source\plugins\pluginemail\email_plugin.dpr
+  Action=8
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  OutputDir=%BASEPATH%\bin
+  SearchPathCount=0
+end
 begin jvcsutils.batchinternal
   Caption=Internal Batch command list
   Ignore=0
