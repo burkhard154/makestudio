@@ -52,6 +52,8 @@ Name: PLGZIP; Description: Zip Plugin; Types: FULL CUSTOM
 Name: PLGNSIS; Description: NSIS Setup Plugin; Types: FULL CUSTOM
 Name: PLGPSCRIPT; Description: Pascal Script Plugin; Types: FULL CUSTOM
 Name: PLGWIZARD; Description: Code Wizard for own Plugins; Types: FULL CUSTOM
+Name: PLGEMAIL; Description: Email Plugin; Types: FULL CUSTOM
+Name: PLGMSBUILD; Description: .Net MSBuild Plugin; Types: FULL CUSTOM
 
 [Tasks]
 Name: desktopicon; Description: {cm:CreateDesktopIcon}; GroupDescription: {cm:AdditionalIcons}; Flags: unchecked
@@ -79,6 +81,8 @@ Source: "..\source\plugins\pluginzip\Dll\DelZip190.dll"; DestDir: "{app}"; Flags
 Source: "..\bin\nsis_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGNSIS
 Source: "..\bin\pscript_Plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGPSCRIPT
 Source: "..\bin\codewizard.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGWIZARD
+Source: "..\bin\email_plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGEMAIL
+Source: "..\bin\msbuild_plugin.jpl"; DestDir: "{app}"; Flags: ignoreversion overwritereadonly; Components: PLGMSBUILD
 Source: "..\source\framework\makestudio_TLB.pas"; DestDir: "{app}\Source\Lib"; Flags: ignoreversion overwritereadonly; Components: PLGTEMPLATE
 
 ;Basic Help Files
