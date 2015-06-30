@@ -174,6 +174,18 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
         ImageIndex = 5
         Indent = 0
         Text = 'Delphi XE7'
+      end
+      item
+        Brush.Style = bsClear
+        ImageIndex = 5
+        Indent = 0
+        Text = 'Delphi XE8'
+      end
+      item
+        Brush.Style = bsClear
+        ImageIndex = 5
+        Indent = 0
+        Text = 'Delphi XE9'
       end>
   end
   object cbVar: TComboBox
@@ -192,7 +204,7 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
     Left = 288
     Top = 112
     Bitmap = {
-      494C010106000900280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010106000900040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000404020000000
       0000000000000000000000000000A4A0A000800000008000000080000000C040

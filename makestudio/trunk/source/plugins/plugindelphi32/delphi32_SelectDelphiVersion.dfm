@@ -2,7 +2,7 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
   Left = 661
   Top = 214
   Caption = 'Delphi Version'
-  ClientHeight = 482
+  ClientHeight = 558
   ClientWidth = 342
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -13,19 +13,24 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
   OldCreateOrder = False
   Position = poMainFormCenter
   OnCreate = FormCreate
+  DesignSize = (
+    342
+    558)
   PixelsPerInch = 96
   TextHeight = 16
   object GroupBox1: TGroupBox
     Left = 20
     Top = 14
     Width = 306
-    Height = 414
+    Height = 496
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
+    Anchors = [akLeft, akTop, akBottom]
     Caption = 'Aktuelle Delphi Version'
     TabOrder = 0
+    ExplicitHeight = 443
     object cbVer: TJvImageComboBox
       Left = 20
       Top = 30
@@ -134,6 +139,18 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
           ImageIndex = 3
           Indent = 0
           Text = 'Delphi XE7'
+        end
+        item
+          Brush.Style = bsClear
+          ImageIndex = 3
+          Indent = 0
+          Text = 'Delphi XE8'
+        end
+        item
+          Brush.Style = bsClear
+          ImageIndex = 3
+          Indent = 0
+          Text = 'Delphi XE9'
         end>
     end
     object d5: TCheckBox
@@ -331,40 +348,70 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
       Enabled = False
       TabOrder = 15
     end
+    object dxe8: TCheckBox
+      Left = 20
+      Top = 383
+      Width = 119
+      Height = 18
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
+      Caption = 'Delphi XE8'
+      Enabled = False
+      TabOrder = 16
+    end
+    object dxe9: TCheckBox
+      Left = 20
+      Top = 400
+      Width = 119
+      Height = 17
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
+      Caption = 'Delphi XE9'
+      Enabled = False
+      TabOrder = 17
+    end
   end
   object Button1: TButton
     Left = 20
-    Top = 442
+    Top = 518
     Width = 92
     Height = 31
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
+    Anchors = [akLeft, akBottom]
     Caption = 'Ok'
     Default = True
     ModalResult = 1
     TabOrder = 1
+    ExplicitTop = 465
   end
   object Button2: TButton
     Left = 119
-    Top = 442
+    Top = 518
     Width = 93
     Height = 31
     Margins.Left = 4
     Margins.Top = 4
     Margins.Right = 4
     Margins.Bottom = 4
+    Anchors = [akLeft, akBottom]
     Cancel = True
     Caption = 'Cancel'
     ModalResult = 2
     TabOrder = 2
+    ExplicitTop = 465
   end
   object ImageList1: TImageList
     Left = 216
     Top = 288
     Bitmap = {
-      494C010104002800300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000900040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
