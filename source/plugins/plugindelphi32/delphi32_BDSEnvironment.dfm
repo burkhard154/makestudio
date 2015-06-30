@@ -439,7 +439,7 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
     object dxe7: TCheckBox
       Left = 314
       Top = 159
-      Width = 119
+      Width = 123
       Height = 19
       Margins.Left = 4
       Margins.Top = 4
@@ -448,6 +448,32 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
       Caption = 'Delphi XE7'
       Enabled = False
       TabOrder = 15
+    end
+    object dxe8: TCheckBox
+      Left = 20
+      Top = 177
+      Width = 119
+      Height = 19
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
+      Caption = 'Delphi XE8'
+      Enabled = False
+      TabOrder = 16
+    end
+    object dxe9: TCheckBox
+      Left = 187
+      Top = 177
+      Width = 117
+      Height = 19
+      Margins.Left = 4
+      Margins.Top = 4
+      Margins.Right = 4
+      Margins.Bottom = 4
+      Caption = 'Delphi XE9'
+      Enabled = False
+      TabOrder = 17
     end
   end
   object edProjectDir: TJvDirectoryEdit
@@ -566,7 +592,7 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
     Left = 664
     Top = 8
     Bitmap = {
-      494C010104002800300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000900040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
