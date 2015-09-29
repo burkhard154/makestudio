@@ -2,8 +2,8 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
   Left = 654
   Top = 292
   Caption = 'Check Delphi Version'
-  ClientHeight = 178
-  ClientWidth = 406
+  ClientHeight = 145
+  ClientWidth = 330
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,66 +14,48 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
   Position = poMainFormCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 16
+  TextHeight = 13
   object Label1: TLabel
-    Left = 20
-    Top = 69
-    Width = 161
-    Height = 16
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 16
+    Top = 56
+    Width = 127
+    Height = 13
+    Margins.Bottom = 3
     Caption = 'Return Variable (true/false)'
   end
   object Label2: TLabel
-    Left = 20
-    Top = 10
-    Width = 102
-    Height = 16
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 16
+    Top = 8
+    Width = 80
+    Height = 13
+    Margins.Bottom = 3
     Caption = 'Delphi32 Version'
   end
   object Button1: TButton
-    Left = 20
-    Top = 138
-    Width = 92
-    Height = 31
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 16
+    Top = 112
+    Width = 75
+    Height = 25
     Caption = 'Ok'
     Default = True
     ModalResult = 1
     TabOrder = 0
   end
   object Button2: TButton
-    Left = 118
-    Top = 138
-    Width = 92
-    Height = 31
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 96
+    Top = 112
+    Width = 75
+    Height = 25
     Cancel = True
     Caption = 'Cancel'
     ModalResult = 2
     TabOrder = 1
   end
   object cbVersion: TJvImageComboBox
-    Left = 20
-    Top = 30
-    Width = 375
-    Height = 26
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 16
+    Top = 24
+    Width = 305
+    Height = 23
     Style = csOwnerDrawVariable
     ButtonStyle = fsLighter
     DroppedWidth = 375
@@ -81,7 +63,7 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
     ImageHeight = 0
     ImageWidth = 0
     Images = ImageList1
-    ItemHeight = 20
+    ItemHeight = 17
     ItemIndex = 0
     TabOrder = 2
     Items = <
@@ -185,18 +167,14 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
         Brush.Style = bsClear
         ImageIndex = 5
         Indent = 0
-        Text = 'Delphi XE9'
+        Text = 'Delphi 10 Seattle'
       end>
   end
   object cbVar: TComboBox
-    Left = 20
-    Top = 89
-    Width = 375
-    Height = 24
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 16
+    Top = 72
+    Width = 305
+    Height = 21
     TabOrder = 3
     Text = 'cbVar'
   end

@@ -2,8 +2,8 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
   Left = 661
   Top = 214
   Caption = 'Delphi Version'
-  ClientHeight = 558
-  ClientWidth = 342
+  ClientHeight = 453
+  ClientWidth = 274
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,39 +14,30 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
   Position = poMainFormCenter
   OnCreate = FormCreate
   DesignSize = (
-    342
-    558)
+    274
+    453)
   PixelsPerInch = 96
-  TextHeight = 16
+  TextHeight = 13
   object GroupBox1: TGroupBox
-    Left = 20
-    Top = 14
-    Width = 306
-    Height = 496
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 16
+    Top = 11
+    Width = 241
+    Height = 403
     Anchors = [akLeft, akTop, akBottom]
     Caption = 'Aktuelle Delphi Version'
     TabOrder = 0
-    ExplicitHeight = 443
     object cbVer: TJvImageComboBox
-      Left = 20
-      Top = 30
-      Width = 267
-      Height = 26
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 24
+      Width = 217
+      Height = 23
       Style = csOwnerDrawVariable
       ButtonStyle = fsLighter
       DroppedWidth = 267
       ImageHeight = 0
       ImageWidth = 0
       Images = ImageList1
-      ItemHeight = 20
+      ItemHeight = 17
       ItemIndex = 3
       TabOrder = 0
       Items = <
@@ -150,262 +141,184 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
           Brush.Style = bsClear
           ImageIndex = 3
           Indent = 0
-          Text = 'Delphi XE9'
+          Text = 'Delphi 10 Seattle'
         end>
     end
     object d5: TCheckBox
-      Left = 20
-      Top = 79
-      Width = 119
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 64
+      Width = 97
+      Height = 17
       Caption = 'Delphi 5'
       Enabled = False
       TabOrder = 1
     end
     object d6: TCheckBox
-      Left = 20
-      Top = 98
-      Width = 119
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 80
+      Width = 97
+      Height = 17
       Caption = 'Delphi 6'
       Enabled = False
       TabOrder = 2
     end
     object d7: TCheckBox
-      Left = 20
-      Top = 119
-      Width = 119
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 97
+      Width = 97
+      Height = 17
       Caption = 'Delphi 7'
       Enabled = False
       TabOrder = 3
     end
     object d2005: TCheckBox
-      Left = 20
-      Top = 140
-      Width = 119
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 114
+      Width = 97
+      Height = 17
       Caption = 'Delphi 2005'
       Enabled = False
       TabOrder = 4
     end
     object d2006: TCheckBox
-      Left = 20
-      Top = 161
-      Width = 119
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 131
+      Width = 97
+      Height = 17
       Caption = 'Delphi 2006'
       Enabled = False
       TabOrder = 5
     end
     object d2007: TCheckBox
-      Left = 20
-      Top = 182
-      Width = 119
-      Height = 21
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 148
+      Width = 97
+      Height = 17
       Caption = 'Delphi 2007'
       Enabled = False
       TabOrder = 6
     end
     object d2009: TCheckBox
-      Left = 20
-      Top = 203
-      Width = 119
-      Height = 19
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 165
+      Width = 97
+      Height = 15
       Caption = 'Delphi 2009'
       Enabled = False
       TabOrder = 7
     end
     object d2010: TCheckBox
-      Left = 20
-      Top = 224
-      Width = 119
-      Height = 18
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 182
+      Width = 97
+      Height = 15
       Caption = 'Delphi 2010'
       Enabled = False
       TabOrder = 8
     end
     object dXE: TCheckBox
-      Left = 20
-      Top = 244
-      Width = 119
-      Height = 18
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 198
+      Width = 97
+      Height = 15
       Caption = 'Delphi XE'
       Enabled = False
       TabOrder = 9
     end
     object dXE2: TCheckBox
-      Left = 20
-      Top = 265
-      Width = 119
-      Height = 18
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 215
+      Width = 97
+      Height = 15
       Caption = 'Delphi XE2'
       Enabled = False
       TabOrder = 10
     end
     object dxe3: TCheckBox
-      Left = 20
-      Top = 284
-      Width = 119
-      Height = 19
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 231
+      Width = 97
+      Height = 15
       Caption = 'Delphi XE3'
       Enabled = False
       TabOrder = 11
     end
     object dxe4: TCheckBox
-      Left = 20
-      Top = 304
-      Width = 119
-      Height = 18
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 247
+      Width = 97
+      Height = 15
       Caption = 'Delphi XE4'
       Enabled = False
       TabOrder = 12
     end
     object dxe5: TCheckBox
-      Left = 20
-      Top = 325
-      Width = 119
-      Height = 18
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 264
+      Width = 97
+      Height = 15
       Caption = 'Delphi XE5'
       Enabled = False
       TabOrder = 13
     end
     object dxe6: TCheckBox
-      Left = 20
-      Top = 345
-      Width = 119
-      Height = 18
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 280
+      Width = 97
+      Height = 15
       Caption = 'Delphi XE6'
       Enabled = False
       TabOrder = 14
     end
     object dxe7: TCheckBox
-      Left = 20
-      Top = 365
-      Width = 119
-      Height = 18
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 297
+      Width = 97
+      Height = 14
       Caption = 'Delphi XE7'
       Enabled = False
       TabOrder = 15
     end
     object dxe8: TCheckBox
-      Left = 20
-      Top = 383
-      Width = 119
-      Height = 18
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
+      Left = 16
+      Top = 311
+      Width = 97
+      Height = 15
       Caption = 'Delphi XE8'
       Enabled = False
       TabOrder = 16
     end
-    object dxe9: TCheckBox
-      Left = 20
-      Top = 400
-      Width = 119
-      Height = 17
-      Margins.Left = 4
-      Margins.Top = 4
-      Margins.Right = 4
-      Margins.Bottom = 4
-      Caption = 'Delphi XE9'
+    object dD10s: TCheckBox
+      Left = 16
+      Top = 325
+      Width = 140
+      Height = 18
+      Caption = 'Delphi 10 Seattle'
       Enabled = False
       TabOrder = 17
     end
   end
   object Button1: TButton
-    Left = 20
-    Top = 518
-    Width = 92
-    Height = 31
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 16
+    Top = 421
+    Width = 75
+    Height = 25
     Anchors = [akLeft, akBottom]
     Caption = 'Ok'
     Default = True
     ModalResult = 1
     TabOrder = 1
-    ExplicitTop = 465
   end
   object Button2: TButton
-    Left = 119
-    Top = 518
-    Width = 93
-    Height = 31
-    Margins.Left = 4
-    Margins.Top = 4
-    Margins.Right = 4
-    Margins.Bottom = 4
+    Left = 97
+    Top = 421
+    Width = 75
+    Height = 25
     Anchors = [akLeft, akBottom]
     Cancel = True
     Caption = 'Cancel'
     ModalResult = 2
     TabOrder = 2
-    ExplicitTop = 465
   end
   object ImageList1: TImageList
     Left = 216

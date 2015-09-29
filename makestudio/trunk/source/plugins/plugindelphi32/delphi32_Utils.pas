@@ -342,8 +342,8 @@ begin
       Result := stdverXE7;
     dverXE8:
       Result := stdverXE8;
-    dverXE9:
-      Result := stdverXE9;
+    dverD10S:
+      Result := stdverD10S;
   end;
 end;
 
@@ -376,7 +376,7 @@ begin
       Result := PathRemoveSeparator(stDelphi21Key);
     dverXE8:
       Result := PathRemoveSeparator(stDelphi22Key);
-    dverXE9:
+    dverD10S:
       Result := PathRemoveSeparator(stDelphi23Key);
   else
     Result := '';
@@ -422,7 +422,7 @@ begin
         Var_Delphi := GetDelphiRootPathLong;
       end;
     dver2005, dver2006, dver2007, dver2009, dver2010, dverXE, dverXE2, dverXE3, dverXE4, dverXE5, dverXE6, dverXE7,
-      dverXE8, dverXE9:
+      dverXE8, dverD10S:
       begin
         Var_BDS := GetDelphiRootPathLong;
 
@@ -516,7 +516,7 @@ begin
     dverXE8:
       S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi22Key, stDelphiInstallKey, '')) +
         'bin\' + stDelphiCompiler + '.exe';
-    dverXE9:
+    dverD10S:
       S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi23Key, stDelphiInstallKey, '')) +
         'bin\' + stDelphiCompiler + '.exe';
 
@@ -542,7 +542,7 @@ begin
         Result := StringReplace(APath, '$(BDSPROJECTSDIR)', Var_BDSProjectsDir, [rfReplaceAll, rfIgnoreCase]);
         Result := StringReplace(Result, '$(BDS)', Var_BDS, [rfReplaceAll, rfIgnoreCase]);
       end;
-    dver2007, dver2009, dver2010, dverXE, dverXE2 .. dverXE9:
+    dver2007, dver2009, dver2010, dverXE, dverXE2 .. dverD10S:
       begin
         Result := StringReplace(APath, '$(BDSPROJECTSDIR)', GetBDSProjectsPath, [rfReplaceAll, rfIgnoreCase]);
         Result := StringReplace(Result, '$(BDSCOMMONDIR)', GetBDSCommonPath, [rfReplaceAll, rfIgnoreCase]);
@@ -554,7 +554,7 @@ begin
               Result := StringReplace(Result, '$(BDSLIB)', GetBDSLIB, [rfReplaceAll, rfIgnoreCase]);
               // Platform, LANGDIR, BDSLIB, BDSBIN
             end;
-          dverXE2 .. dverXE9:
+          dverXE2 .. dverD10S:
             begin
               Result := StringReplace(Result, '$(PLATFORM)', GetPlatformString, [rfReplaceAll, rfIgnoreCase]);
               Result := StringReplace(Result, '$(LANGDIR)', GetLANGDIR, [rfReplaceAll, rfIgnoreCase]);
@@ -748,7 +748,7 @@ begin
       Result := stEmbarcaderoDelphiRootKeyBDS + stDelphi21Key;
     dverXE8:
       Result := stEmbarcaderoDelphiRootKeyBDS + stDelphi22Key;
-    dverXE9:
+    dverD10S:
       Result := stEmbarcaderoDelphiRootKeyBDS + stDelphi23Key;
   end;
 end;
@@ -869,7 +869,7 @@ begin
       Result := ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi21Key, stDelphiInstallKey, '');
     dverXE8:
       Result := ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi22Key, stDelphiInstallKey, '');
-    dverXE9:
+    dverD10S:
       Result := ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi23Key, stDelphiInstallKey, '');
   end;
 
@@ -923,7 +923,7 @@ begin
       Result := '210';
     dverXE8:
       Result := '220';
-    dverXE9:
+    dverD10S:
       Result := '230';
   end;
 end;
@@ -948,7 +948,7 @@ begin
       Result := 64367;
     dver2010:
       Result := 64511;
-    dverXE..dverXE9:
+    dverXE..dverD10S:
       Result := 0;
   end;
 end;
@@ -989,7 +989,7 @@ begin
       Result := 0; // N.A. fixed: ..\RAD Studio\15.0\
     dverXE8:
       Result := 0; // N.A. fixed: ..\RAD Studio\15.0\
-    dverXE9:
+    dverD10S:
       Result := 0; // N.A. fixed: ..\RAD Studio\15.0\
   end;
 end;
@@ -1053,7 +1053,7 @@ begin
       case GetDelphiVersion of
         dver2009, dver2010, dverXE, dverXE2 .. dverXE5:
           Result := PathAddSeparator(GetPersonalFolder) + 'RAD Studio\' + Result;
-        dverXE6 .. dverXE9:
+        dverXE6 .. dverD10S:
           Result := PathAddSeparator(GetPersonalFolder) + 'Embarcadero\Studio\' + Result;
       else
         Result := PathAddSeparator(GetPersonalFolder) + Result;
@@ -1080,7 +1080,7 @@ begin
     case GetDelphiVersion of
       dver2009, dver2010, dverXE, dverXE2 .. dverXE5:
         Result := PathAddSeparator(GetSpecialFolderLocation(CSIDL_COMMON_DOCUMENTS)) + 'RAD Studio\' + GetBDSVersion;
-      dverXE6 .. dverXE9:
+      dverXE6 .. dverD10S:
         Result := PathAddSeparator(GetSpecialFolderLocation(CSIDL_COMMON_DOCUMENTS)) + 'Embarcadero\Studio\' +
           GetBDSVersion;
     end;
@@ -1102,7 +1102,7 @@ begin
     case GetDelphiVersion of
       dver2009, dver2010, dverXE, dverXE2 .. dverXE5:
         Result := PathAddSeparator(GetPersonalFolder) + 'RAD Studio\' + GetBDSVersion;
-      dverXE6 .. dverXE9:
+      dverXE6 .. dverD10S:
         Result := PathAddSeparator(GetPersonalFolder) + 'Embarcadero\Studio\' + GetBDSVersion;
     end;
 end;
