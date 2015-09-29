@@ -47,7 +47,7 @@ var
 resourcestring
   struPluginName = 'Delphi Plugin';
   struPluginAuthor = 'Burkhard Schranz (burkhard.schranz@optimeas.de)';
-  struPluginHint = 'Delphi Plugin for D5,D7,D9,D10,XE,XE2,XE3,XE4,XE5';
+  struPluginHint = 'Delphi Plugin for D5,D7,D9,D10,XE..XE8,D10 Seattle';
 
 resourcestring
   stdmaNone = 'No Action';
@@ -113,7 +113,7 @@ resourcestring
   stdverXE6 = 'Delphi XE6';
   stdverXE7 = 'Delphi XE7';
   stdverXE8 = 'Delphi XE8';
-  stdverXE9 = 'Delphi XE9';
+  stdverD10S = 'Delphi 10 Seattle';
   stdverUnknown = 'Delphi Version not supported';
   stdverSet = 'Delphi Version selected: ';
   stdverSetErr = 'Delphi Version %s not selected';
@@ -226,7 +226,7 @@ const
   stDelphi20Key: string = '14.0\'; // XE6
   stDelphi21Key: string = '15.0\'; // XE7
   stDelphi22Key: string = '16.0\'; // XE8
-  stDelphi23Key: string = '17.0\'; // XE9
+  stDelphi23Key: string = '17.0\'; // D10
   stDelphiInstallKey: string = 'RootDir';
   stdPackagesKey: string = 'Known Packages';
   stdExpertsKey: string = 'Experts';
@@ -277,7 +277,7 @@ type
   TGetVarOperationType = (otBPLDir, otDCPDir, otRootPath, otSearchPath, otBDSPROJECTSDIR);
 
   TDelphiVersion = (dver5, dver6, dver7, dver2005, dver2006, dver2007, dver2009, dver2010, dverXE, dverXE2, dverXE3,
-    dverXE4, dverXE5, dverXE6, dverXE7, dverXE8, dverXE9);
+    dverXE4, dverXE5, dverXE6, dverXE7, dverXE8, dverD10S);
 
   // starting with XE2
   TCompilerPlatform = (dpOSX32, dpWin32, dpWin64, dpiOSDevice, dpiOSSimulator, dpAndroid32);

@@ -75,7 +75,7 @@ type
     dxe6: TCheckBox;
     dxe7: TCheckBox;
     dxe8: TCheckBox;
-    dxe9: TCheckBox;
+    dD10S: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure cbVerChange(Sender: TObject);
@@ -136,7 +136,7 @@ begin
       dverXE6: cbVer.ItemIndex := 13;
       dverXE7: cbVer.ItemIndex := 14;
       dverXE8: cbVer.ItemIndex := 14;
-      dverXE9: cbVer.ItemIndex := 14;
+      dverD10S: cbVer.ItemIndex := 14;
     end;
     if ShowModal = mrOk then begin
       Result := cbVer.ItemIndex > -1;
@@ -269,7 +269,7 @@ begin
   dXE6.Checked := CheckDelphiVersion(dverXE6);
   dXE7.Checked := CheckDelphiVersion(dverXE7);
   dXE8.Checked := CheckDelphiVersion(dverXE8);
-  dXE9.Checked := CheckDelphiVersion(dverXE9);
+  dD10S.Checked := CheckDelphiVersion(dverD10S);
 
   GetPathList;
 end;
