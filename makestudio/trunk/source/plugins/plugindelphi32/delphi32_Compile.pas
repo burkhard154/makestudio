@@ -126,7 +126,7 @@ const
 implementation
 
 uses
-  ComServ, delphi32_EditDelphi32Module, delphi32_Utils;
+  ComServ, delphi32_EditDelphi32Module, delphi32_Utils, system.IOUtils;
 
 function TDelphi32ModuleCallback.CreateCommand: IDispatch;
 begin
@@ -470,11 +470,27 @@ var
   end;
 
   procedure BuildDCCCfg01;
+  VAR
+    pList: TStringList;
   begin
-    sl1.Add('-U"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + UPath + '"');
-    sl1.Add('-R"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + RPath + '"');
-    sl1.Add('-I"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + IPath + '"');
-    sl1.Add('-O"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + OPath + '"');
+//    sl1.Add('-U"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + UPath + '"');
+//    sl1.Add('-R"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + RPath + '"');
+//    sl1.Add('-I"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + IPath + '"');
+//    sl1.Add('-O"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + OPath + '"');
+//
+    pList := TStringList.Create;
+    try
+      omParseString( GetDelphiDCPPath,    ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim, omPoUniqueOnly]);
+      omParseString( GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim, omPoUniqueOnly]);
+      omParseString( UPath,               ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim, omPoUniqueOnly]);
+
+      omPrefixStrings('-I', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
+      omPrefixStrings('-R', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
+      omPrefixStrings('-U', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
+      omPrefixStrings('-O', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
+    finally
+      FreeAndNil(pList);
+    end;
 
     // UnitOutputDir
     if NOPath <> '' then
@@ -518,15 +534,32 @@ var
   end;
 
   procedure BuildDCCCfg02;
+  VAR
+    pList: TStringList;
   begin
-    sl1.Add('-I' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-      GetDelphiDCPPath));
-    sl1.Add('-R' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-      GetDelphiDCPPath));
-    sl1.Add('-U' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-      GetDelphiDCPPath));
-    sl1.Add('-O' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-      GetDelphiDCPPath));
+//    sl1.Add('-I' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+//      GetDelphiDCPPath));
+//    sl1.Add('-R' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+//      GetDelphiDCPPath));
+//    sl1.Add('-U' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+//      GetDelphiDCPPath));
+//    sl1.Add('-O' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+//      GetDelphiDCPPath));
+
+    pList := TStringList.Create;
+    try
+      omParseString( GetDelphiLangPath,   ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+      omParseString( GetDelphiDCPPath,    ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+      omParseString( GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+      omParseString( UPath,               ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+
+      omPrefixStrings('-I', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
+      omPrefixStrings('-R', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
+      omPrefixStrings('-U', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
+      omPrefixStrings('-O', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
+    finally
+      FreeAndNil(pList);
+    end;
 
     // Namespace
     if MakeStudio.Variables.VarExists(stvarNamespaces) then
@@ -585,24 +618,43 @@ var
   end;
 
   procedure BuildDCCCfg03;
+  VAR
+    pList: TStringList;
   begin
-    if GetLANGDIR <> '' then
-    begin
-      sl1.Add('-I' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-        GetDelphiDCPPath));
-      sl1.Add('-R' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-        GetDelphiDCPPath));
-      sl1.Add('-U' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-        GetDelphiDCPPath));
-      sl1.Add('-O' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-        GetDelphiDCPPath));
-    end
-    else
-    begin
-      sl1.Add('-I' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-      sl1.Add('-R' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-      sl1.Add('-U' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-      sl1.Add('-O' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+//    if GetLANGDIR <> '' then
+//    begin
+//      sl1.Add('-I' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+//        GetDelphiDCPPath));
+//      sl1.Add('-R' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+//        GetDelphiDCPPath));
+//      sl1.Add('-U' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+//        GetDelphiDCPPath));
+//      sl1.Add('-O' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+//        GetDelphiDCPPath));
+//    end
+//    else
+//    begin
+//      sl1.Add('-I' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+//      sl1.Add('-R' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+//      sl1.Add('-U' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+//      sl1.Add('-O' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+//    end;
+//
+
+    pList := TStringList.Create;
+    try
+      if GetLANGDIR <> '' then
+        omParseString( GetDelphiLangPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+      omParseString( GetDelphiDCPPath,    ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+      omParseString( GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+      omParseString( UPath,               ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+
+      omPrefixStrings('-I', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
+      omPrefixStrings('-R', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
+      omPrefixStrings('-U', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
+      omPrefixStrings('-O', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
+    finally
+      FreeAndNil(pList);
     end;
 
     // Namespace

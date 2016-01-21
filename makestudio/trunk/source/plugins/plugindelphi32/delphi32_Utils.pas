@@ -47,6 +47,35 @@ uses
   ShellAPI, Registry, makestudio_TLB, ActiveX, delphi32_Vars, JclFileUtils,
   JclSysInfo, JclShell, JclWin32, JvJclUtils;
 
+Type
+  // :Options to control omParseString
+  TomParseOption = (
+      omPoRegExpr           // :Separator becomes a RegExp to locate the splitting characters
+    , omPoTrimFields        // :each field is cleaned from white space (leading, trailing)
+    , omPoNoEmptyFields     // :empty fields are not added
+    , omPoDequote           // :remove any pair of quotes "..." or '...' (extra trim before and omPoTrimFields applied after)
+    , omPoAddPathDelim      // :treating entries as path name: verify and fix that path ends on delimiter           <path>\<name>\
+    , omPoRemPathDelim      // :treating entries as path name: verify and fix that path does not end on delimiter   <path>\<name>
+    , omPoUniqueOnly        // :Add entry only, if not already contained
+    , omPoCaseSensitive     // :Handle Unique search case sensitive (default: SameText-compare)
+    , omPoClear             // :Clear list first (default: append elements)
+  );
+  TomParseOptions = set of TomParseOption;
+
+  // :Options to control omPrefixStrings
+  TomPrefixOption = (
+      omPrSingleQuotes      // :Force '...' - quotes for each entry (removing other quotes)
+    , omPrDoubleQuotes      // :Force "..." - quotes for each entry (removing other quotes)
+    , omPrDequoteTrimFields // :each field is cleaned from quotes and white space (leading, trailing)
+    , omPrNoEmptyFields     // :empty fields are not added
+    , omPrAddPathDelim      // :treating entries as path name: verify and fix that path ends on delimiter           <path>\<name>\
+    , omPrRemPathDelim      // :treating entries as path name: verify and fix that path does not end on delimiter   <path>\<name>
+    , omPrUniqueOnly        // :Add entry only, if not already contained
+    , omPrCaseSensitive     // :Handle Unique search case sensitive (default: SameText-compare)
+    , omPrClear             // :clear AStringsOut first (default: append elements)
+  );
+  TomPrefixOptions = set of TomPrefixOption;
+
 { :like includetrailingpathdelimiter }
 function CheckBackslash(const Value: string): string;
 { :like excludetrailingpathdelimiter }
@@ -146,6 +175,12 @@ function ReadRegFloatLM(const Key, Name: string; Default: Double): Double;
 // :Parse a ";" separated string and return every item in quotes "s1";"s2";...
 function QuoteSeparetedList(Separated: String): String;
 
+// functions copied from om/omUtils, an optiMEAS private framework (JAK, 2016)
+procedure omParseString(const S: string; Separator: char; AStrings: TStrings); overload;
+procedure omParseString(const S: string; Separator: string; AStrings: TStrings; parseOptions: TomParseOptions);
+  overload;
+procedure omPrefixStrings(prefix: string; AStringsIn: TStrings; prefixOptions: TomPrefixOptions; AStringsOut: TStrings = nil);
+
 var
   XUTILSROOTKEY: DWORD = HKEY_CURRENT_USER;
 
@@ -155,6 +190,7 @@ uses
 {$IFDEF DELPHI7_UP}
   StrUtils,
 {$ENDIF DELPHI7_UP}
+  System.RegularExpressions,
   delphi32_SelectDelphiVersion, delphi32_BDSEnvironment;
 
 var
@@ -1470,13 +1506,240 @@ begin
     if Separated[Length(Separated)] = ';' then
       Separated[Length(Separated)] := '"';
 
-    // handle first charakter
-    Separated := '"' + Separated;
+    // handle first and last character
+    Separated := '"' + Separated + '"';
 
     Result := StringReplace(Separated, ';;', ';', [rfReplaceAll]);
     Result := StringReplace(Result, ';', '";"', [rfReplaceAll]);
     Result := StringReplace(Result, '""', '"', [rfReplaceAll]);
   end;
 end;
+
+function _ChangeCharTo(FromChar, ToChar: char; const S: string): string;
+var
+  I: Integer;
+begin
+  Result := S;
+  for I := Length(Result) - 1 downto 0 do
+    if Result[I + 1] = FromChar then
+      Result[I + 1] := ToChar;
+end;
+
+procedure omParseString(const S: string; Separator: char; AStrings: TStrings); overload;
+var
+  slist: TStringList;
+begin
+  slist := TStringList.Create;
+  with slist do
+    try
+      Text := _ChangeCharTo(Separator, #10, S) + #10;
+      // missing empty String at the end
+      AStrings.AddStrings(slist);
+    finally
+      Free;
+    end;
+end;
+
+function _Dequote(s: string): string;
+VAR
+  l: integer;
+begin
+  result := s;    // default: unchanged
+
+  s := Trim(s);
+  l := Length(s);
+  if l < 2 then
+    exit;         // can't have a pair of quotes.
+
+  if (s[1] = '''') AND (s[l] = '''') then begin
+    result := copy(s, 2, l-2);
+  end else if (s[1] = '"') AND (s[l] = '"') then begin
+    result := copy(s, 2, l-2);
+  end
+end;
+
+function _HasQuotes(s: string): Boolean;
+VAR
+  i: integer;
+begin
+  i := Length(s);
+  if i > 1 then
+    result := (s[i] in ['''', '"'])
+          AND (s[1] = s[i])
+  else
+    result := false;
+end;
+
+function _AddPathDelimiter(s: string): string;
+Var
+  k, x: Integer;
+begin
+  result := s;    // default
+  x := length(s);
+  if x > 1 then begin
+    k := 1;
+    // look inside quoted string;
+    if  _HasQuotes(s) then begin
+      Inc(k);
+      Dec(x);
+    end;
+
+    if  (x > k) AND (s[x] <> PathDelim) then begin
+      Insert(PathDelim, s, x + 1);
+      result := s;
+    end;
+  end;
+end;
+
+function _RemPathDelimiter(s: string): string;
+Var
+  k, x: Integer;
+begin
+  result := s;    // default
+  x := length(s);
+  if x > 1 then begin
+    k := 1;
+    if  _HasQuotes(s) then begin
+      Inc(k);
+      Dec(x);
+    end;
+
+    if  (x > k) AND (s[x] = PathDelim) then begin
+      Delete(s, x, 1);
+      result := s;
+    end;
+  end;
+end;
+
+procedure _DelReplicates(AStrings: TStrings; caseSens: boolean);
+var
+  i, x: Integer;
+begin
+  if caseSens then begin
+    i := 0;   // c-Style for-loop with moving end condition
+    while i < AStrings.Count - 1 do begin
+      for x := AStrings.Count - 1 downto i + 1 do begin
+        if AStrings[i] = AStrings[x] then
+          AStrings.Delete(x);
+      end;
+      Inc(i);
+    end;
+  end else begin
+    i := 0;   // c-Style for-loop with moving end condition
+    while i < AStrings.Count - 1 do begin
+      for x := AStrings.Count - 1 downto i + 1 do begin
+        if SameText(AStrings[i], AStrings[x]) then
+          AStrings.Delete(x);
+      end;
+      Inc(i);
+    end;
+  end;
+end;
+
+procedure omParseString(const S: string; Separator: string; AStrings: TStrings; parseOptions: TomParseOptions);
+  overload;
+var
+  i, x: Integer;
+begin
+  if NOT (Assigned(AStrings) AND (Length(Separator) > 0)) then
+    exit;   // no output buffer, no separator
+
+  if omPoClear in parseOptions then
+    AStrings.Clear;
+
+  if omPoRegExpr in parseOptions then
+    // use regExp to split
+    AStrings.AddStrings(TRegEx.Split(S, Separator))
+  else
+    // the classical omParseString
+    omParseString(S, Separator[1], AStrings);
+
+  if omPoDequote in parseOptions then
+    for i := 0 to AStrings.Count - 1 do
+      AStrings[i] := _Dequote(AStrings[i]);
+
+  if omPoTrimFields in parseOptions then
+    for i := 0 to AStrings.Count - 1 do
+      AStrings[i] := Trim(AStrings[i]);
+
+  if omPoAddPathDelim in parseOptions then
+    for i := 0 to AStrings.Count - 1 do
+      AStrings[i] := _AddPathDelimiter(AStrings[i])
+  else if omPoRemPathDelim in parseOptions then
+    for i := 0 to AStrings.Count - 1 do
+      AStrings[i] := _RemPathDelimiter(AStrings[i]);
+
+  if omPoNoEmptyFields in parseOptions then
+  begin
+    while AStrings.IndexOf('') >= 0 do
+      AStrings.Delete(AStrings.IndexOf(''));
+  end;
+
+  if omPoUniqueOnly in parseOptions then
+    _DelReplicates(AStrings, omPoCaseSensitive in parseOptions);
+end;
+
+procedure omPrefixStrings(prefix: string; AStringsIn: TStrings; prefixOptions: TomPrefixOptions; AStringsOut: TStrings);
+VAR
+  i, x: integer;
+  s: string;
+  wr: boolean;
+begin
+  if NOT Assigned(AStringsIn) then
+    exit;
+
+  if Assigned(AStringsOut) AND (omPrClear in prefixOptions) then
+    AStringsOut.Clear;
+
+  i := 0;   // c-Style for-loop with moving end condition
+  while i < AStringsIn.Count do begin
+    s := AStringsIn[i];
+    if omPrDequoteTrimFields in prefixOptions then
+      s := Trim(_Dequote(s));
+    if omPrAddPathDelim in prefixOptions then
+      s := _AddPathDelimiter(s)
+    else if omPrRemPathDelim in prefixOptions then
+      s := _RemPathDelimiter(s);
+
+    if (omPrNoEmptyFields in prefixOptions) AND (Length(s) = 0) then begin
+      if Assigned(AStringsOut) then
+        Inc(i)  // next index, done.
+      else
+        AStringsIn.Delete(i);
+      continue; // same index, new choice
+    end;
+
+    if omPrDoubleQuotes in prefixOptions then
+      s := '"' + _Dequote(s) + '"'
+    else if omPrSingleQuotes in prefixOptions then
+      s := '''' + _Dequote(s) + '''';
+
+    s  := prefix + s;
+
+    if Assigned(AStringsOut) then begin
+      wr := true;
+      if omPrUniqueOnly in prefixOptions then begin
+        if omPrCaseSensitive in prefixOptions then
+          wr := (AStringsOut.IndexOf(s) = 0)
+        else for x := 0 to AStringsOut.Count - 1 do begin
+          wr := NOT SameText(s, AStringsOut[x]);  // wr := not equal
+          if NOT wr then
+            break;
+        end;
+      end;
+      if wr then
+        AStringsOut.Append(s);
+    end else
+      // omPrUniqueOnly handled later
+      AStringsIn[i] := s;
+
+    Inc(i);
+  end;
+
+  // last but not least:
+  if (omPrUniqueOnly in prefixOptions) AND NOT Assigned(AStringsOut) then
+    _DelReplicates(AStringsIn, omPrCaseSensitive in prefixOptions);
+end;
+
 
 end.
