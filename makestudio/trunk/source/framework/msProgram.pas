@@ -2056,6 +2056,8 @@ var
       if not Items[I].IsIgnored then
       begin
 
+        DoLogbookMessage('Line: '+IntToStr(I+1));
+
         if (Items[I].Breakpoint) or HaltOnNextCommand then
         begin
           IsPaused := True;
@@ -2120,6 +2122,7 @@ var
         else if not Items[I].Run then
         begin
           HadError := True;
+          DoLogbookMessage('ERROR in Line: '+IntToStr(I+1));
           Break;
         end
         else
