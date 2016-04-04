@@ -69,7 +69,7 @@ uses
   JvEmbeddedForms, JvDockSupportProc, JvMRUManager, JvAppStorage,
   JvAppRegistryStorage, JvFormPlacement, JvXPCore, JvExExtCtrls, JvControlBar,
   JvDockTree, mshelp, mshelpmerger, JvToolBar, JvComponentBase,
-  JclStrings, System.Actions;
+  JclStrings, System.Actions, System.ImageList;
 
 type
   TDefaultDockProc = procedure of object;
