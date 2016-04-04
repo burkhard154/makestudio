@@ -1,40 +1,39 @@
-(*-----------------------------------------------------------------------------
-The contents of this file are subject to the Mozilla Public License
-Version 1.1 (the "License"); you may not use this file except in compliance
-with the License. You may obtain a copy of the License at
-http://www.mozilla.org/MPL/MPL-1.1.html
+(* -----------------------------------------------------------------------------
+  The contents of this file are subject to the Mozilla Public License
+  Version 1.1 (the "License"); you may not use this file except in compliance
+  with the License. You may obtain a copy of the License at
+  http://www.mozilla.org/MPL/MPL-1.1.html
 
-Software distributed under the License is distributed on an "AS IS" basis,
-WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
-the specific language governing rights and limitations under the License.
+  Software distributed under the License is distributed on an "AS IS" basis,
+  WITHOUT WARRANTY OF ANY KIND, either expressed or implied. See the License for
+  the specific language governing rights and limitations under the License.
 
-The Original Code is: jmakutils_filecopy.pas
+  The Original Code is: jmakutils_filecopy.pas
 
-The Initial Developer of the original code (JEDI VCS) is:
+  The Initial Developer of the original code (JEDI VCS) is:
   Jeremy Dünow (jeremy.duenow@optimeas.de)
 
-Componentes and used code which is used in this code are explictly stated to
-be copyright of the respective author(s).
+  Componentes and used code which is used in this code are explictly stated to
+  be copyright of the respective author(s).
 
-Last Modified: see History
+  Last Modified: see History
 
-Known Issues:
------------------------------------------------------------------------------
+  Known Issues:
+  -----------------------------------------------------------------------------
 
-Unit history:
+  Unit history:
 
-2004/11/22  JDuenow   - launched EditMkdirModule
-2005/01/04  BSchranz  - Plugin created
-2005/02/04  USchuster - preparations for check in
+  2004/11/22  JDuenow   - launched EditMkdirModule
+  2005/01/04  BSchranz  - Plugin created
+  2005/02/04  USchuster - preparations for check in
 
------------------------------------------------------------------------------*)
+  ----------------------------------------------------------------------------- *)
 
 unit utils_FileCopy;
 
 {$I jedi.inc}
-
 {$IFDEF DELPHI6_UP}
-  {$WARN SYMBOL_PLATFORM OFF}
+{$WARN SYMBOL_PLATFORM OFF}
 {$ENDIF DELPHI6_UP}
 
 interface
@@ -53,8 +52,8 @@ type
     function MeasureItem(Handle: Integer; BriefView: WordBool): Integer; safecall;
     function EditItem: WordBool; safecall;
     function ExecuteItem: WordBool; safecall;
-    function DrawItem(Handle: Integer; Left: Integer; Top: Integer; Right: Integer;
-      Bottom: Integer; Selected: WordBool; BriefView: WordBool; BkColor: OLE_COLOR): WordBool; safecall;
+    function DrawItem(Handle: Integer; Left: Integer; Top: Integer; Right: Integer; Bottom: Integer; Selected: WordBool;
+      BriefView: WordBool; BkColor: OLE_COLOR): WordBool; safecall;
     procedure SetFilename(const Filename: WideString); safecall;
     function Get_Caption: WideString; safecall;
     procedure Set_Caption(const Value: WideString); safecall;
@@ -75,7 +74,7 @@ type
     property TargetFiles: TStringList read FTargetFiles write FTargetFiles;
   end;
 
-  //Callback to create an instance of the IJVCSModule
+  // Callback to create an instance of the IJVCSModule
   TCopyFilesModuleCallback = class(TComponent, ICommandCallback)
     function CreateCommand: IDispatch; safecall;
     procedure SetCanceled(aCanceled: WordBool); safecall;
@@ -126,7 +125,7 @@ end;
 function TCopyFilesModule.ExecuteItem: WordBool;
 var
   I: Integer;
-  sf, tf : String;
+  sf, tf: String;
 begin
   Result := True;
   MakeStudio.LogMessage(stdCopyFilesCaption);
@@ -135,12 +134,12 @@ begin
     sf := MakeStudio.Variables.ReplaceVarsInString(SourceFiles[I]);
     tf := MakeStudio.Variables.ReplaceVarsInString(TargetFiles[I]);
 
-    MakeStudio.LogMessage( sf + ' -> ' + tf);
+    MakeStudio.LogMessage(sf + ' -> ' + tf);
 
-    if FileExists( sf) and FileExists( tf) then
-      SetFileAttributes( PChar(tf), FILE_ATTRIBUTE_ARCHIVE);
+    if FileExists(sf) and FileExists(tf) then
+      SetFileAttributes(PChar(tf), FILE_ATTRIBUTE_ARCHIVE);
 
-    Result := Result and CopyFile( PChar( sf), PChar( tf), false);
+    Result := Result and CopyFile(PChar(sf), PChar(tf), false);
 
     if not Result then
     begin
@@ -168,7 +167,13 @@ begin
 
       for I := 0 to SourceFiles.Count - 1 do
       begin
-        Result := Result + Canvas.TextHeight('file') + 2;
+        if I > 5 then
+        begin
+          Result := Result + Canvas.TextHeight('...') + 2;
+          Break;
+        end
+        else
+          Result := Result + Canvas.TextHeight('file') + 2;
       end;
     end;
   finally
@@ -176,8 +181,8 @@ begin
   end;
 end;
 
-function TCopyFilesModule.DrawItem(Handle: Integer; Left: Integer; Top: Integer; Right: Integer;
-  Bottom: Integer; Selected: WordBool; BriefView: WordBool; BkColor: OLE_COLOR): WordBool;
+function TCopyFilesModule.DrawItem(Handle: Integer; Left: Integer; Top: Integer; Right: Integer; Bottom: Integer;
+  Selected: WordBool; BriefView: WordBool; BkColor: OLE_COLOR): WordBool;
 var
   Offset: Integer;
   Canvas: TCanvas;
@@ -193,7 +198,7 @@ var
   end;
 
 begin
-  Result := False;
+  Result := false;
   Canvas := TCanvas.Create;
   try
     Canvas.Handle := Handle;
@@ -228,8 +233,17 @@ begin
       SetCanvasTextColor(clMaroon);
       for I := 0 to SourceFiles.Count - 1 do
       begin
-        Canvas.TextOut(aRect.Left + 2 + 20, aRect.Top + Offset, SourceFiles[I] + ' -> ' + TargetFiles[I]);
-        Offset := Offset + Canvas.TextHeight('File') + 2;
+        if I > 5 then
+        begin
+          Canvas.TextOut(aRect.Left + 2 + 20, aRect.Top + Offset, '...');
+          Offset := Offset + Canvas.TextHeight('...') + 2;
+          Break;
+        end
+        else
+        begin
+          Canvas.TextOut(aRect.Left + 2 + 20, aRect.Top + Offset, SourceFiles[I] + ' -> ' + TargetFiles[I]);
+          Offset := Offset + Canvas.TextHeight('File') + 2;
+        end;
       end;
     end;
   finally
@@ -259,7 +273,7 @@ begin
   if SameText(ParamName, stdcFileCount) then
     Result := IntToStr(SourceFiles.Count)
   else
-    for I:=0 to SourceFiles.Count-1 do
+    for I := 0 to SourceFiles.Count - 1 do
     begin
       if SameText(ParamName, Format(stdcSource, [I + 1])) then
       begin
@@ -282,14 +296,14 @@ begin
   begin
     SourceFiles.Clear;
     TargetFiles.Clear;
-    for I:=0 to StrToInt(Value)-1 do
+    for I := 0 to StrToInt(Value) - 1 do
     begin
       SourceFiles.Add('');
       TargetFiles.Add('');
     end;
   end
   else
-    for I:=0 to SourceFiles.Count-1 do
+    for I := 0 to SourceFiles.Count - 1 do
     begin
       if SameText(ParamName, Format(stdcSource, [I + 1])) then
       begin
@@ -308,17 +322,15 @@ function TCopyFilesModule.Get_ParamNames(Index: Integer): WideString;
 begin
   if Index = 0 then
     Result := stdcFileCount
-  else
-  if Index in [1..SourceFiles.Count] then
+  else if Index in [1 .. SourceFiles.Count] then
     Result := Format(stdcSource, [Index])
-  else
-  if Index in [SourceFiles.Count+1..TargetFiles.Count*2] then
-    Result := Format(stdcTarget, [Index-SourceFiles.Count]);
+  else if Index in [SourceFiles.Count + 1 .. TargetFiles.Count * 2] then
+    Result := Format(stdcTarget, [Index - SourceFiles.Count]);
 end;
 
 function TCopyFilesModule.Get_ParamCount: Integer;
 begin
-  Result := SourceFiles.Count*2+1;
+  Result := SourceFiles.Count * 2 + 1;
 end;
 
 function TCopyFilesModuleCallback.GetIdentifier: WideString;

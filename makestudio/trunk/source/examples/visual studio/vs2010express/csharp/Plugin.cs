@@ -7,7 +7,7 @@ using System.Threading;
 using System.Resources;
 using System.Reflection;
 using stdole;
-using makestudio;
+using TestFrameWork;
 
 namespace jpl.vscs2010.testplugin
 {
@@ -28,7 +28,7 @@ namespace jpl.vscs2010.testplugin
 	// global Vars
 	public class Vars
 	{
-		static public JApplication _jedimake = null;
+		static public TestFrameWork.IApplication _tfw = null;
 		static public bool FCanceled = false;
 
 		public const string struPluginName = "Visual C# 2010 Plugin Example";
