@@ -37,7 +37,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Mask, JvToolEdit, JvExMask, JclFileUtils, ImgList,
-  JvExStdCtrls, JvCombobox, JvListComb, delphi32_vars, JvMaskEdit;
+  JvExStdCtrls, JvCombobox, JvListComb, delphi32_vars, JvMaskEdit, System.ImageList;
 
 type
   TFormSelectBDSEnvironment = class(TForm)
@@ -76,6 +76,7 @@ type
     dxe7: TCheckBox;
     dxe8: TCheckBox;
     dD10S: TCheckBox;
+    dD101B: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure cbVerChange(Sender: TObject);
@@ -135,8 +136,9 @@ begin
       dverXE5: cbVer.ItemIndex := 12;
       dverXE6: cbVer.ItemIndex := 13;
       dverXE7: cbVer.ItemIndex := 14;
-      dverXE8: cbVer.ItemIndex := 14;
-      dverD10S: cbVer.ItemIndex := 14;
+      dverXE8: cbVer.ItemIndex := 15;
+      dverD10S: cbVer.ItemIndex := 16;
+      dverD101B: cbVer.ItemIndex := 17;
     end;
     if ShowModal = mrOk then begin
       Result := cbVer.ItemIndex > -1;
@@ -270,6 +272,7 @@ begin
   dXE7.Checked := CheckDelphiVersion(dverXE7);
   dXE8.Checked := CheckDelphiVersion(dverXE8);
   dD10S.Checked := CheckDelphiVersion(dverD10S);
+  dD101B.Checked := CheckDelphiVersion(dverD101B);
 
   GetPathList;
 end;

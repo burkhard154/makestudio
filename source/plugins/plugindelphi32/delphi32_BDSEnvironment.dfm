@@ -214,6 +214,21 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
           ImageIndex = 3
           Indent = 0
           Text = 'Delphi XE7'
+        end
+        item
+          Brush.Style = bsClear
+          Indent = 0
+          Text = 'Delphi XE8'
+        end
+        item
+          Brush.Style = bsClear
+          Indent = 0
+          Text = 'Delphi 10 Seattle'
+        end
+        item
+          Brush.Style = bsClear
+          Indent = 0
+          Text = 'Delphi 10.1 Berlin'
         end>
     end
     object d5: TCheckBox
@@ -368,6 +383,15 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
       Caption = 'Delphi 10 Seattle'
       Enabled = False
       TabOrder = 17
+    end
+    object dD101B: TCheckBox
+      Left = 255
+      Top = 144
+      Width = 113
+      Height = 15
+      Caption = 'Delphi 10.1 Berlin'
+      Enabled = False
+      TabOrder = 18
     end
   end
   object edProjectDir: TJvDirectoryEdit

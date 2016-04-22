@@ -142,6 +142,12 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
           ImageIndex = 3
           Indent = 0
           Text = 'Delphi 10 Seattle'
+        end
+        item
+          Brush.Style = bsClear
+          ImageIndex = 3
+          Indent = 0
+          Text = 'Delphi 10.1 Berlin'
         end>
     end
     object d5: TCheckBox
@@ -296,6 +302,15 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
       Caption = 'Delphi 10 Seattle'
       Enabled = False
       TabOrder = 17
+    end
+    object dD101B: TCheckBox
+      Left = 16
+      Top = 341
+      Width = 140
+      Height = 18
+      Caption = 'Delphi 10.1 Berlin'
+      Enabled = False
+      TabOrder = 18
     end
   end
   object Button1: TButton
