@@ -34,7 +34,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, JvExStdCtrls, JvCombobox, JvListComb, ImgList,
-  delphi32_CheckVersionCommand, delphi32_Vars;
+  delphi32_CheckVersionCommand, delphi32_Vars, System.ImageList;
 
 type
   TFormEditDelphi32CheckVersionParams = class(TForm)

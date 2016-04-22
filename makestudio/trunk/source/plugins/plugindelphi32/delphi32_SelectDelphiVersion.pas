@@ -37,7 +37,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, ImgList, StdCtrls, JvListComb, delphi32_Vars, delphi32_Utils,
-  JvExStdCtrls, JvCombobox;
+  JvExStdCtrls, JvCombobox, System.ImageList;
 
 type
   TFormSelectDelphiVersion = class(TForm)
@@ -63,6 +63,7 @@ type
     dxe7: TCheckBox;
     dxe8: TCheckBox;
     dD10S: TCheckBox;
+    dD101B: TCheckBox;
     procedure FormCreate(Sender: TObject);
   private
     { Private-Deklarationen }
@@ -99,6 +100,7 @@ begin
       dverXE7: cbVer.ItemIndex := 14;
       dverXE8: cbVer.ItemIndex := 15;
       dverD10S: cbVer.ItemIndex := 16;
+      dverD101B: cbVer.ItemIndex := 17;
     end;
     if ShowModal = mrOk then
     begin
@@ -120,6 +122,7 @@ begin
         14: dVersion := dverXE7;
         15: dVersion := dverXE8;
         16: dVersion := dverD10S;
+        17: dVersion := dverD101B;
         else
           dVersion := dver5;
       end;
@@ -149,6 +152,7 @@ begin
   dXE7.Checked := CheckDelphiVersion(dverXE7);
   dXE8.Checked := CheckDelphiVersion(dverXE8);
   dD10S.Checked := CheckDelphiVersion(dverD10S);
+  dD101B.Checked := CheckDelphiVersion(dverD101B);
 end;
 
 end.
