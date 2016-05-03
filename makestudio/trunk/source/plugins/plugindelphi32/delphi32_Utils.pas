@@ -49,34 +49,32 @@ uses
 
 Type
   // :Options to control omParseString
-  TomParseOption = (
-      omPoRegExpr           // :Separator becomes a RegExp to locate the splitting characters
-    , omPoTrimFields        // :each field is cleaned from white space (leading, trailing)
-    , omPoNoEmptyFields     // :empty fields are not added
-    , omPoDequote           // :remove any pair of quotes "..." or '...' (extra trim before and omPoTrimFields applied after)
-    , omPoAddPathDelim      // :treating entries as path name: verify and fix that path ends on delimiter           <path>\<name>\
-    , omPoRemPathDelim      // :treating entries as path name: verify and fix that path does not end on delimiter   <path>\<name>
-    , omPoUniqueOnly        // :Add entry only, if not already contained
-    , omPoCaseSensitive     // :Handle Unique search case sensitive (default: SameText-compare)
-    , omPoClear             // :Clear list first (default: append elements)
-  );
+  TomParseOption = (omPoRegExpr // :Separator becomes a RegExp to locate the splitting characters
+    , omPoTrimFields // :each field is cleaned from white space (leading, trailing)
+    , omPoNoEmptyFields // :empty fields are not added
+    , omPoDequote // :remove any pair of quotes "..." or '...' (extra trim before and omPoTrimFields applied after)
+    , omPoAddPathDelim // :treating entries as path name: verify and fix that path ends on delimiter           <path>\<name>\
+    , omPoRemPathDelim // :treating entries as path name: verify and fix that path does not end on delimiter   <path>\<name>
+    , omPoUniqueOnly // :Add entry only, if not already contained
+    , omPoCaseSensitive // :Handle Unique search case sensitive (default: SameText-compare)
+    , omPoClear // :Clear list first (default: append elements)
+    );
   TomParseOptions = set of TomParseOption;
 
   // :Options to control omPrefixStrings
-  TomPrefixOption = (
-      omPrSingleQuotes      // :Force '...' - quotes for each entry (removing other quotes)
-    , omPrDoubleQuotes      // :Force "..." - quotes for each entry (removing other quotes)
+  TomPrefixOption = (omPrSingleQuotes // :Force '...' - quotes for each entry (removing other quotes)
+    , omPrDoubleQuotes // :Force "..." - quotes for each entry (removing other quotes)
     , omPrDequoteTrimFields // :each field is cleaned from quotes and white space (leading, trailing)
-    , omPrNoEmptyFields     // :empty fields are not added
-    , omPrAddPathDelim      // :treating entries as path name: verify and fix that path ends on delimiter           <path>\<name>\
-    , omPrRemPathDelim      // :treating entries as path name: verify and fix that path does not end on delimiter   <path>\<name>
-    , omPrUniqueOnly        // :Add entry only, if not already contained
-    , omPrCaseSensitive     // :Handle Unique search case sensitive (default: SameText-compare)
-    , omPrClear             // :clear AStringsOut first (default: append elements)
-  );
+    , omPrNoEmptyFields // :empty fields are not added
+    , omPrAddPathDelim // :treating entries as path name: verify and fix that path ends on delimiter           <path>\<name>\
+    , omPrRemPathDelim // :treating entries as path name: verify and fix that path does not end on delimiter   <path>\<name>
+    , omPrUniqueOnly // :Add entry only, if not already contained
+    , omPrCaseSensitive // :Handle Unique search case sensitive (default: SameText-compare)
+    , omPrClear // :clear AStringsOut first (default: append elements)
+    );
   TomPrefixOptions = set of TomPrefixOption;
 
-{ :like includetrailingpathdelimiter }
+  { :like includetrailingpathdelimiter }
 function CheckBackslash(const Value: string): string;
 { :like excludetrailingpathdelimiter }
 function CheckNoBackslash(const Value: string): string;
@@ -177,8 +175,7 @@ function QuoteSeparetedList(Separated: String): String;
 
 // functions copied from om/omUtils, an optiMEAS private framework (JAK, 2016)
 procedure omParseString(const S: string; Separator: char; AStrings: TStrings); overload;
-procedure omParseString(const S: string; Separator: string; AStrings: TStrings; parseOptions: TomParseOptions);
-  overload;
+procedure omParseString(const S: string; Separator: string; AStrings: TStrings; parseOptions: TomParseOptions); overload;
 procedure omPrefixStrings(prefix: string; AStringsIn: TStrings; prefixOptions: TomPrefixOptions; AStringsOut: TStrings = nil);
 
 var
@@ -446,7 +443,10 @@ begin
     if not CheckDelphiVersion(AVersion) then
       Exit
     else
+    begin
+      _DelphiVersion := AVersion;
       WriteDelphiVersionReg;
+    end;
   end;
 
   V := _DelphiVersion;
@@ -461,8 +461,8 @@ begin
       begin
         Var_Delphi := GetDelphiRootPathLong;
       end;
-    dver2005, dver2006, dver2007, dver2009, dver2010, dverXE, dverXE2, dverXE3, dverXE4, dverXE5, dverXE6, dverXE7,
-      dverXE8, dverD10S, dverD101B:
+    dver2005, dver2006, dver2007, dver2009, dver2010, dverXE, dverXE2, dverXE3, dverXE4, dverXE5, dverXE6, dverXE7, dverXE8,
+      dverD10S, dverD101B:
       begin
         Var_BDS := GetDelphiRootPathLong;
 
@@ -525,43 +525,43 @@ begin
         stDelphiCompiler + '.exe';
 
     dver2009:
-      S := PathAddSeparator(ReadRegStringLM(stCodeGearDelphiRootKeyLMBDS + stDelphi12Key, stDelphiInstallKey, '')) +
-        'bin\' + stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stCodeGearDelphiRootKeyLMBDS + stDelphi12Key, stDelphiInstallKey, '')) + 'bin\' +
+        stDelphiCompiler + '.exe';
 
     dver2010:
-      S := PathAddSeparator(ReadRegStringLM(stCodeGearDelphiRootKeyLMBDS + stDelphi14Key, stDelphiInstallKey, '')) +
-        'bin\' + stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stCodeGearDelphiRootKeyLMBDS + stDelphi14Key, stDelphiInstallKey, '')) + 'bin\' +
+        stDelphiCompiler + '.exe';
 
     dverXE:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi15Key, stDelphiInstallKey, '')) +
-        'bin\' + stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi15Key, stDelphiInstallKey, '')) + 'bin\' +
+        stDelphiCompiler + '.exe';
     dverXE2:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi16Key, stDelphiInstallKey, '')) +
-        'bin\' + stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi16Key, stDelphiInstallKey, '')) + 'bin\' +
+        stDelphiCompiler + '.exe';
     dverXE3:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi17Key, stDelphiInstallKey, '')) +
-        'bin\' + stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi17Key, stDelphiInstallKey, '')) + 'bin\' +
+        stDelphiCompiler + '.exe';
     dverXE4:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi18Key, stDelphiInstallKey, '')) +
-        'bin\' + stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi18Key, stDelphiInstallKey, '')) + 'bin\' +
+        stDelphiCompiler + '.exe';
     dverXE5:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi19Key, stDelphiInstallKey, '')) +
-        'bin\' + stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi19Key, stDelphiInstallKey, '')) + 'bin\' +
+        stDelphiCompiler + '.exe';
     dverXE6:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi20Key, stDelphiInstallKey, '')) +
-        'bin\' + stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi20Key, stDelphiInstallKey, '')) + 'bin\' +
+        stDelphiCompiler + '.exe';
     dverXE7:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi21Key, stDelphiInstallKey, '')) +
-        'bin\' + stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi21Key, stDelphiInstallKey, '')) + 'bin\' +
+        stDelphiCompiler + '.exe';
     dverXE8:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi22Key, stDelphiInstallKey, '')) +
-        'bin\' + stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi22Key, stDelphiInstallKey, '')) + 'bin\' +
+        stDelphiCompiler + '.exe';
     dverD10S:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi23Key, stDelphiInstallKey, '')) +
-        'bin\' + stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi23Key, stDelphiInstallKey, '')) + 'bin\' +
+        stDelphiCompiler + '.exe';
     dverD101B:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi24Key, stDelphiInstallKey, '')) +
-        'bin\' + stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi24Key, stDelphiInstallKey, '')) + 'bin\' +
+        stDelphiCompiler + '.exe';
 
   end;
   if S <> '' then
@@ -743,8 +743,7 @@ function GetDelphiLangPath: string;
 begin
   Result := '';
   if GetDelphiVersion > dverXE then
-    Result := ReplaceDelphiPathVars(ReadRegStringLM(GetDelphiRootKey + GetLibraryKey, stdcLanguageLibraryPath,
-      '')) + ';';
+    Result := ReplaceDelphiPathVars(ReadRegStringLM(GetDelphiRootKey + GetLibraryKey, stdcLanguageLibraryPath, '')) + ';';
   Result := StringReplace(Result, ';;', ';', [rfReplaceAll]);
 end;
 
@@ -826,7 +825,7 @@ end;
 
 procedure LastErrorMsg;
 var
-  ch: array [0 .. 511] of Char;
+  ch: array [0 .. 511] of char;
 begin
   FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM, nil, GetLastError, LANG_NEUTRAL,
     // Default language
@@ -997,7 +996,7 @@ begin
       Result := 64367;
     dver2010:
       Result := 64511;
-    dverXE..dverD101B:
+    dverXE .. dverD101B:
       Result := 0;
   end;
 end;
@@ -1048,7 +1047,7 @@ end;
 function GetBDSRessourceString(ResID: Integer): String;
 var
   H: HMODULE;
-  LocaleName: array [0 .. 4] of Char;
+  LocaleName: array [0 .. 4] of char;
   Filename: string;
 begin
   if (GetDelphiVersion >= dver2005) and (ResID > 0) then
@@ -1132,8 +1131,7 @@ begin
       dver2009, dver2010, dverXE, dverXE2 .. dverXE5:
         Result := PathAddSeparator(GetSpecialFolderLocation(CSIDL_COMMON_DOCUMENTS)) + 'RAD Studio\' + GetBDSVersion;
       dverXE6 .. dverD101B:
-        Result := PathAddSeparator(GetSpecialFolderLocation(CSIDL_COMMON_DOCUMENTS)) + 'Embarcadero\Studio\' +
-          GetBDSVersion;
+        Result := PathAddSeparator(GetSpecialFolderLocation(CSIDL_COMMON_DOCUMENTS)) + 'Embarcadero\Studio\' + GetBDSVersion;
     end;
 end;
 
@@ -1167,14 +1165,12 @@ end;
 
 function GetDelphiBPLPath: string;
 begin
-  Result := PathAddSeparator(ReplaceDelphiPathVars(ReadRegStringLM(GetDelphiRootKey + GetLibraryKey,
-    stdDPLOutValue, '')));
+  Result := PathAddSeparator(ReplaceDelphiPathVars(ReadRegStringLM(GetDelphiRootKey + GetLibraryKey, stdDPLOutValue, '')));
 end;
 
 function GetDelphiDCPPath: string;
 begin
-  Result := PathAddSeparator(ReplaceDelphiPathVars(ReadRegStringLM(GetDelphiRootKey + GetLibraryKey,
-    stdDCPOutValue, '')));
+  Result := PathAddSeparator(ReplaceDelphiPathVars(ReadRegStringLM(GetDelphiRootKey + GetLibraryKey, stdDCPOutValue, '')));
 end;
 
 // Platform, LANGDIR, BDSLIB, BDSBIN
@@ -1555,109 +1551,123 @@ begin
     end;
 end;
 
-function _Dequote(s: string): string;
+function _Dequote(S: string): string;
 VAR
-  l: integer;
+  l: Integer;
 begin
-  result := s;    // default: unchanged
+  Result := S; // default: unchanged
 
-  s := Trim(s);
-  l := Length(s);
+  S := Trim(S);
+  l := Length(S);
   if l < 2 then
-    exit;         // can't have a pair of quotes.
+    Exit; // can't have a pair of quotes.
 
-  if (s[1] = '''') AND (s[l] = '''') then begin
-    result := copy(s, 2, l-2);
-  end else if (s[1] = '"') AND (s[l] = '"') then begin
-    result := copy(s, 2, l-2);
+  if (S[1] = '''') AND (S[l] = '''') then
+  begin
+    Result := Copy(S, 2, l - 2);
+  end
+  else if (S[1] = '"') AND (S[l] = '"') then
+  begin
+    Result := Copy(S, 2, l - 2);
   end
 end;
 
-function _HasQuotes(s: string): Boolean;
+function _HasQuotes(S: string): Boolean;
 VAR
-  i: integer;
+  I: Integer;
 begin
-  i := Length(s);
-  if i > 1 then
-    result := (s[i] in ['''', '"'])
-          AND (s[1] = s[i])
+  I := Length(S);
+  if I > 1 then
+    Result := (S[I] in ['''', '"']) AND (S[1] = S[I])
   else
-    result := false;
+    Result := False;
 end;
 
-function _AddPathDelimiter(s: string): string;
+function _AddPathDelimiter(S: string): string;
 Var
-  k, x: Integer;
+  K, x: Integer;
 begin
-  result := s;    // default
-  x := length(s);
-  if x > 1 then begin
-    k := 1;
+  Result := S; // default
+  x := Length(S);
+  if x > 1 then
+  begin
+    K := 1;
     // look inside quoted string;
-    if  _HasQuotes(s) then begin
-      Inc(k);
+    if _HasQuotes(S) then
+    begin
+      Inc(K);
       Dec(x);
     end;
 
-    if  (x > k) AND (s[x] <> PathDelim) then begin
-      Insert(PathDelim, s, x + 1);
-      result := s;
+    if (x > K) AND (S[x] <> PathDelim) then
+    begin
+      Insert(PathDelim, S, x + 1);
+      Result := S;
     end;
   end;
 end;
 
-function _RemPathDelimiter(s: string): string;
+function _RemPathDelimiter(S: string): string;
 Var
-  k, x: Integer;
+  K, x: Integer;
 begin
-  result := s;    // default
-  x := length(s);
-  if x > 1 then begin
-    k := 1;
-    if  _HasQuotes(s) then begin
-      Inc(k);
+  Result := S; // default
+  x := Length(S);
+  if x > 1 then
+  begin
+    K := 1;
+    if _HasQuotes(S) then
+    begin
+      Inc(K);
       Dec(x);
     end;
 
-    if  (x > k) AND (s[x] = PathDelim) then begin
-      Delete(s, x, 1);
-      result := s;
+    if (x > K) AND (S[x] = PathDelim) then
+    begin
+      Delete(S, x, 1);
+      Result := S;
     end;
   end;
 end;
 
-procedure _DelReplicates(AStrings: TStrings; caseSens: boolean);
+procedure _DelReplicates(AStrings: TStrings; caseSens: Boolean);
 var
-  i, x: Integer;
+  I, x: Integer;
 begin
-  if caseSens then begin
-    i := 0;   // c-Style for-loop with moving end condition
-    while i < AStrings.Count - 1 do begin
-      for x := AStrings.Count - 1 downto i + 1 do begin
-        if AStrings[i] = AStrings[x] then
+  if caseSens then
+  begin
+    I := 0; // c-Style for-loop with moving end condition
+    while I < AStrings.Count - 1 do
+    begin
+      for x := AStrings.Count - 1 downto I + 1 do
+      begin
+        if AStrings[I] = AStrings[x] then
           AStrings.Delete(x);
       end;
-      Inc(i);
+      Inc(I);
     end;
-  end else begin
-    i := 0;   // c-Style for-loop with moving end condition
-    while i < AStrings.Count - 1 do begin
-      for x := AStrings.Count - 1 downto i + 1 do begin
-        if SameText(AStrings[i], AStrings[x]) then
+  end
+  else
+  begin
+    I := 0; // c-Style for-loop with moving end condition
+    while I < AStrings.Count - 1 do
+    begin
+      for x := AStrings.Count - 1 downto I + 1 do
+      begin
+        if SameText(AStrings[I], AStrings[x]) then
           AStrings.Delete(x);
       end;
-      Inc(i);
+      Inc(I);
     end;
   end;
 end;
 
-procedure omParseString(const S: string; Separator: string; AStrings: TStrings; parseOptions: TomParseOptions);
-  overload;
+procedure omParseString(const S: string; Separator: string; AStrings: TStrings; parseOptions: TomParseOptions); overload;
 var
-  i, x: Integer;
+  I, x: Integer;
 begin
-  if NOT (Assigned(AStrings) AND (Length(Separator) > 0)) then
-    exit;   // no output buffer, no separator
+  if NOT(Assigned(AStrings) AND (Length(Separator) > 0)) then
+    Exit; // no output buffer, no separator
 
   if omPoClear in parseOptions then
     AStrings.Clear;
@@ -1670,19 +1680,19 @@ begin
     omParseString(S, Separator[1], AStrings);
 
   if omPoDequote in parseOptions then
-    for i := 0 to AStrings.Count - 1 do
-      AStrings[i] := _Dequote(AStrings[i]);
+    for I := 0 to AStrings.Count - 1 do
+      AStrings[I] := _Dequote(AStrings[I]);
 
   if omPoTrimFields in parseOptions then
-    for i := 0 to AStrings.Count - 1 do
-      AStrings[i] := Trim(AStrings[i]);
+    for I := 0 to AStrings.Count - 1 do
+      AStrings[I] := Trim(AStrings[I]);
 
   if omPoAddPathDelim in parseOptions then
-    for i := 0 to AStrings.Count - 1 do
-      AStrings[i] := _AddPathDelimiter(AStrings[i])
+    for I := 0 to AStrings.Count - 1 do
+      AStrings[I] := _AddPathDelimiter(AStrings[I])
   else if omPoRemPathDelim in parseOptions then
-    for i := 0 to AStrings.Count - 1 do
-      AStrings[i] := _RemPathDelimiter(AStrings[i]);
+    for I := 0 to AStrings.Count - 1 do
+      AStrings[I] := _RemPathDelimiter(AStrings[I]);
 
   if omPoNoEmptyFields in parseOptions then
   begin
@@ -1696,65 +1706,71 @@ end;
 
 procedure omPrefixStrings(prefix: string; AStringsIn: TStrings; prefixOptions: TomPrefixOptions; AStringsOut: TStrings);
 VAR
-  i, x: integer;
-  s: string;
-  wr: boolean;
+  I, x: Integer;
+  S: string;
+  wr: Boolean;
 begin
   if NOT Assigned(AStringsIn) then
-    exit;
+    Exit;
 
   if Assigned(AStringsOut) AND (omPrClear in prefixOptions) then
     AStringsOut.Clear;
 
-  i := 0;   // c-Style for-loop with moving end condition
-  while i < AStringsIn.Count do begin
-    s := AStringsIn[i];
+  I := 0; // c-Style for-loop with moving end condition
+  while I < AStringsIn.Count do
+  begin
+    S := AStringsIn[I];
     if omPrDequoteTrimFields in prefixOptions then
-      s := Trim(_Dequote(s));
+      S := Trim(_Dequote(S));
     if omPrAddPathDelim in prefixOptions then
-      s := _AddPathDelimiter(s)
+      S := _AddPathDelimiter(S)
     else if omPrRemPathDelim in prefixOptions then
-      s := _RemPathDelimiter(s);
+      S := _RemPathDelimiter(S);
 
-    if (omPrNoEmptyFields in prefixOptions) AND (Length(s) = 0) then begin
+    if (omPrNoEmptyFields in prefixOptions) AND (Length(S) = 0) then
+    begin
       if Assigned(AStringsOut) then
-        Inc(i)  // next index, done.
+        Inc(I) // next index, done.
       else
-        AStringsIn.Delete(i);
+        AStringsIn.Delete(I);
       continue; // same index, new choice
     end;
 
     if omPrDoubleQuotes in prefixOptions then
-      s := '"' + _Dequote(s) + '"'
+      S := '"' + _Dequote(S) + '"'
     else if omPrSingleQuotes in prefixOptions then
-      s := '''' + _Dequote(s) + '''';
+      S := '''' + _Dequote(S) + '''';
 
-    s  := prefix + s;
+    S := prefix + S;
 
-    if Assigned(AStringsOut) then begin
-      wr := true;
-      if omPrUniqueOnly in prefixOptions then begin
+    if Assigned(AStringsOut) then
+    begin
+      wr := True;
+      if omPrUniqueOnly in prefixOptions then
+      begin
         if omPrCaseSensitive in prefixOptions then
-          wr := (AStringsOut.IndexOf(s) = 0)
-        else for x := 0 to AStringsOut.Count - 1 do begin
-          wr := NOT SameText(s, AStringsOut[x]);  // wr := not equal
-          if NOT wr then
-            break;
-        end;
+          wr := (AStringsOut.IndexOf(S) = 0)
+        else
+          for x := 0 to AStringsOut.Count - 1 do
+          begin
+            wr := NOT SameText(S, AStringsOut[x]); // wr := not equal
+            if NOT wr then
+              Break;
+          end;
       end;
       if wr then
-        AStringsOut.Append(s);
-    end else
+        AStringsOut.Append(S);
+    end
+    else
       // omPrUniqueOnly handled later
-      AStringsIn[i] := s;
+      AStringsIn[I] := S;
 
-    Inc(i);
+    Inc(I);
   end;
 
   // last but not least:
   if (omPrUniqueOnly in prefixOptions) AND NOT Assigned(AStringsOut) then
     _DelReplicates(AStringsIn, omPrCaseSensitive in prefixOptions);
 end;
-
 
 end.
