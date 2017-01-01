@@ -4,7 +4,7 @@
         <MainSource>delphi32_Plugin.dpr</MainSource>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
-        <ProjectVersion>18.1</ProjectVersion>
+        <ProjectVersion>18.2</ProjectVersion>
         <Basis>True</Basis>
         <AppType>Library</AppType>
         <FrameworkType>VCL</FrameworkType>
@@ -81,7 +81,7 @@
         <DCC_DebugInformation>true</DCC_DebugInformation>
         <VerInfo_AutoGenVersion>false</VerInfo_AutoGenVersion>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <VerInfo_Keys>FileVersion=1.19.5.10;ProductVersion=19.0;CompanyName=;FileDescription=;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=</VerInfo_Keys>
+        <VerInfo_Keys>FileVersion=1.19.5.10;ProductVersion=19.0;CompanyName=;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(ModuleName);FileDescription=$(ModuleName);ProductName=$(ModuleName)</VerInfo_Keys>
         <Debugger_HostApplication>..\..\..\bin\makestudio.exe</Debugger_HostApplication>
     </PropertyGroup>
     <ItemGroup>

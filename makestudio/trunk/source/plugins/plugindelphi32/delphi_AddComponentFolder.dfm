@@ -97,6 +97,7 @@ object FormAddComponentFolder: TFormAddComponentFolder
     DialogKind = dkWin32
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 1
+    Text = ''
     ExplicitWidth = 558
   end
   object edDirectoryMask: TEdit
@@ -125,8 +126,6 @@ object FormAddComponentFolder: TFormAddComponentFolder
     Anchors = [akLeft, akTop, akRight, akBottom]
     ItemHeight = 13
     TabOrder = 4
-    ExplicitWidth = 558
-    ExplicitHeight = 88
   end
   object lbMissing: TListBox
     Left = 8
@@ -136,8 +135,6 @@ object FormAddComponentFolder: TFormAddComponentFolder
     Anchors = [akLeft, akRight, akBottom]
     ItemHeight = 13
     TabOrder = 5
-    ExplicitTop = 322
-    ExplicitWidth = 558
   end
   object btOk: TButton
     Left = 8
@@ -175,7 +172,11 @@ object FormAddComponentFolder: TFormAddComponentFolder
     ExplicitWidth = 134
   end
   object FileSearcher: TJvSearchFiles
+    DirParams.MinSize = 0
+    DirParams.MaxSize = 0
     FileParams.SearchTypes = [stFileMask]
+    FileParams.MinSize = 0
+    FileParams.MaxSize = 0
     OnFindFile = FileSearcherFindFile
     Left = 384
     Top = 40
