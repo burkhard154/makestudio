@@ -95,9 +95,9 @@ begin
       while i < FileSearcher.Files.Count do
       begin
 
+        MovedIdx := -1; // first Index of a Required Package
         if SameText(ExtractFileExt(FileSearcher.Files[i]), '.dpk') then
         begin
-          MovedIdx := -1; // first Index of a Required Package
           GetPackageDepencies(FileSearcher.Files[i], RequiredList);
 
           for k := 0 to RequiredList.Count - 1 do
