@@ -5,19 +5,16 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using makestudio;
 
 namespace jpl.vscs2010.testplugin
 {
-    public partial class EditCommand : Form
+    public class Actions : IActionCallback
     {
-        public EditCommand()
+                
+        public void Execute( String Action)
         {
-            InitializeComponent();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Hallo BUS");
+            MessageBox.Show( "Action from VS C# Called");
         }
     }
 }
