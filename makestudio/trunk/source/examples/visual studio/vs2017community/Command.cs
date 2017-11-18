@@ -16,7 +16,7 @@ using System.Windows.Forms;
 using System.Resources;
 using stdole;
 
-namespace jpl.vscs2010.testplugin
+namespace jpl.vscs2017.testplugin
 {
 	/// <summary>
 	 /**** Sample Code to register this command *******

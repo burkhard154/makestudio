@@ -9,7 +9,7 @@ using System.Reflection;
 using stdole;
 using makestudio;
 
-namespace jpl.vscs2010.testplugin
+namespace jpl.vscs2017.testplugin
 {
 
 	// This class is a helper class and just to get the picture into jedi make

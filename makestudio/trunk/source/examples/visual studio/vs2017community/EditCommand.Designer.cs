@@ -1,4 +1,4 @@
-namespace jpl.vscs2010.testplugin
+namespace jpl.vscs2017.testplugin
 {
     partial class EditCommand
     {
