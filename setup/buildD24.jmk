@@ -43,11 +43,11 @@ begin Script.PScript
   Line18=end.
 end
 begin jvcsmak.setvariable
-  Caption=Set variable <DOTNETBINPATH> = C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin
+  Caption=Set variable <DOTNETBINPATH> = C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools
   Ignore=0
   Varname=DOTNETBINPATH
   DataType=0
-  Value=C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin
+  Value=C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6.1 Tools
   Operation=0
   Append=0
   Versionfilename=
@@ -262,7 +262,7 @@ begin jvcsutils.batchinternal
   BatchLine1=REM generate makestudio.dll
   BatchLine2=%BASEDRIVE%
   BatchLine3=cd %BASEPATH%\bin
-  BatchLine4="%DOTNETBINPATH%\tlbimp" %BASEPATH%\source\framework\makestudio.tlb /transform:dispret /verbose /namespace:makestudio
+  BatchLine4="%DOTNETBINPATH%\tlbimp" %BASEPATH%\source\framework\makestudio.tlb /transform:dispret /namespace:makestudio
 end
 begin jvcsutils.batchinternal
   Caption=Internal Batch command list
