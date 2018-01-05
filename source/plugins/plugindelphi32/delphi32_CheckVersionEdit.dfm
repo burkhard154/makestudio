@@ -20,7 +20,6 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
     Top = 56
     Width = 127
     Height = 13
-    Margins.Bottom = 3
     Caption = 'Return Variable (true/false)'
   end
   object Label2: TLabel
@@ -28,7 +27,6 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
     Top = 8
     Width = 80
     Height = 13
-    Margins.Bottom = 3
     Caption = 'Delphi32 Version'
   end
   object Button1: TButton
@@ -174,6 +172,12 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
         ImageIndex = 5
         Indent = 0
         Text = 'Delphi 10.1 Berlin'
+      end
+      item
+        Brush.Style = bsClear
+        ImageIndex = 5
+        Indent = 0
+        Text = 'Delphi 10.2 Tokyo'
       end>
   end
   object cbVar: TComboBox
