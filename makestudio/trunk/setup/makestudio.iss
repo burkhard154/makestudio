@@ -16,7 +16,7 @@ ChangesAssociations=true
 EnableDirDoesntExistWarning=true
 AppSupportURL=http://www.optimeas.de
 AppUpdatesURL=http://www.optimeas.de
-AppCopyright=optiMEAS 2015
+AppCopyright=optiMEAS 2018
 ShowLanguageDialog=yes
 
 [Registry]
