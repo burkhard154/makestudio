@@ -34,7 +34,7 @@ type
     FCaption: string;
 
     FIncreaseSet: integer;
-    FNewVersionValue: TULargeInteger;
+    FNewVersionValue: ULARGE_INTEGER;
     FIncreaseType : Integer;
     FFileVersionKey : String;
     FFilenames : TStringList;
@@ -75,7 +75,7 @@ type
     property Recursive:boolean read FRecursive write FRecursive;
     property FileVersionKey:String read FFileVersionKey write FFileVersionKey;
     property IncreaseSet: Integer read FIncreaseSet write FIncreaseSet;
-    property NewVersionValue: TULargeInteger read FNewVersionValue write FNewVersionValue;    
+    property NewVersionValue: ULARGE_INTEGER read FNewVersionValue write FNewVersionValue;
   end;
 
   //Callback to create an instance of the ICommand

@@ -1333,7 +1333,7 @@ procedure TDelphi32Module.RemoveAllUserPackages;
 
   function IsUserPackage(aFilename: String): Boolean;
   var
-    s1, s2, s3: String;
+    s1, s2: String;
     I: Integer;
   begin
     // Delete only packages in the given search path

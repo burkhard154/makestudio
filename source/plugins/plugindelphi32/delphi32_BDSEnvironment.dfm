@@ -21,7 +21,6 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
     Top = 283
     Width = 103
     Height = 13
-    Margins.Bottom = 3
     Caption = '$BSDPROJECTSDIR'
   end
   object lbCommonDir: TLabel
@@ -29,7 +28,6 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
     Top = 313
     Width = 96
     Height = 13
-    Margins.Bottom = 3
     Caption = '$BDSCOMMONDIR'
   end
   object lbUserDir: TLabel
@@ -37,7 +35,6 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
     Top = 337
     Width = 77
     Height = 13
-    Margins.Bottom = 3
     Caption = '$BDSUSERDIR'
   end
   object lbLibDir: TLabel
@@ -45,7 +42,6 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
     Top = 364
     Width = 63
     Height = 13
-    Margins.Bottom = 3
     Caption = '$BDSLIBDIR'
   end
   object lbLangDir: TLabel
@@ -53,7 +49,6 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
     Top = 391
     Width = 68
     Height = 13
-    Margins.Bottom = 3
     Caption = '$BDSLANDIR'
   end
   object Label1: TLabel
@@ -61,7 +56,6 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
     Top = 237
     Width = 81
     Height = 13
-    Margins.Bottom = 3
     Caption = 'Compiler Platform'
   end
   object Memo: TMemo
@@ -238,6 +232,12 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
           ImageIndex = 4
           Indent = 0
           Text = 'Delphi 10.2 Tokyo'
+        end
+        item
+          Brush.Style = bsClear
+          ImageIndex = 4
+          Indent = 0
+          Text = 'Delphi 10.3 Rio'
         end>
     end
     object d5: TCheckBox
@@ -404,12 +404,21 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
     end
     object dD102T: TCheckBox
       Left = 15
-      Top = 176
+      Top = 165
       Width = 113
       Height = 15
       Caption = 'Delphi 10.2 Tokyo'
       Enabled = False
       TabOrder = 19
+    end
+    object dD103R: TCheckBox
+      Left = 127
+      Top = 165
+      Width = 113
+      Height = 15
+      Caption = 'Delphi 10.3 Rio'
+      Enabled = False
+      TabOrder = 20
     end
   end
   object edProjectDir: TJvDirectoryEdit
@@ -417,7 +426,6 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
     Top = 280
     Width = 265
     Height = 21
-    DialogKind = dkWin32
     DialogOptions = [sdAllowCreate, sdPerformCreate, sdPrompt]
     ButtonWidth = 26
     ReadOnly = True
@@ -429,7 +437,6 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
     Top = 307
     Width = 265
     Height = 21
-    DialogKind = dkWin32
     DialogOptions = [sdAllowCreate, sdPerformCreate, sdPrompt]
     ButtonWidth = 26
     ReadOnly = True
@@ -441,7 +448,6 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
     Top = 334
     Width = 265
     Height = 21
-    DialogKind = dkWin32
     DialogOptions = [sdAllowCreate, sdPerformCreate, sdPrompt]
     ButtonWidth = 26
     ReadOnly = True
@@ -453,7 +459,6 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
     Top = 361
     Width = 265
     Height = 21
-    DialogKind = dkWin32
     DialogOptions = [sdAllowCreate, sdPerformCreate, sdPrompt]
     ButtonWidth = 26
     ReadOnly = True

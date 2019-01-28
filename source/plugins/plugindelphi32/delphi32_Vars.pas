@@ -116,6 +116,7 @@ resourcestring
   stdverD10S = 'Delphi 10 Seattle';
   stdverD101B = 'Delphi 10.1 Berlin';
   stdverD102T = 'Delphi 10.2 Tokyo';
+  stdverD103R = 'Delphi 10.3 Rio';
   stdverUnknown = 'Delphi Version not supported';
   stdverSet = 'Delphi Version selected: ';
   stdverSetErr = 'Delphi Version %s not selected';
@@ -231,6 +232,7 @@ const
   stDelphi23Key: string = '17.0\'; // D10 Seattle
   stDelphi24Key: string = '18.0\'; //D10.1 Berlin
   stDelphi25Key: string = '19.0\'; //D10.2 Tokyo
+  stDelphi26Key: string = '20.0\'; //D10.3 Rio
   stDelphiInstallKey: string = 'RootDir';
   stdPackagesKey: string = 'Known Packages';
   stdExpertsKey: string = 'Experts';
@@ -281,7 +283,7 @@ type
   TGetVarOperationType = (otBPLDir, otDCPDir, otRootPath, otSearchPath, otBDSPROJECTSDIR);
 
   TDelphiVersion = (dver5, dver6, dver7, dver2005, dver2006, dver2007, dver2009, dver2010, dverXE, dverXE2, dverXE3,
-    dverXE4, dverXE5, dverXE6, dverXE7, dverXE8, dverD10S, dverD101B, dverD102T);
+    dverXE4, dverXE5, dverXE6, dverXE7, dverXE8, dverD10S, dverD101B, dverD102T, dverD103R);
 
   // starting with XE2
   TCompilerPlatform = (dpOSX32, dpWin32, dpWin64, dpiOSDevice, dpiOSSimulator, dpAndroid32);

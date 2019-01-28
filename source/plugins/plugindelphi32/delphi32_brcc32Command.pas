@@ -152,7 +152,7 @@ end;
 
 function TBrcc32Command.ExecuteItem: WordBool;
 var
-  S, s1, F: string;
+  S, F: string;
   CallbackIntf: IExecCallback;
 
   function GetRC:String;

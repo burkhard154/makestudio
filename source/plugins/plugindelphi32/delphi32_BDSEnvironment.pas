@@ -78,6 +78,7 @@ type
     dD10S: TCheckBox;
     dD101B: TCheckBox;
     dD102T: TCheckBox;
+    dD103R: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure cbVerChange(Sender: TObject);
@@ -141,6 +142,7 @@ begin
       dverD10S: cbVer.ItemIndex := 16;
       dverD101B: cbVer.ItemIndex := 17;
       dverD102T: cbVer.ItemIndex := 18;
+      dverD103R: cbVer.ItemIndex := 19;
     end;
     if ShowModal = mrOk then begin
       Result := cbVer.ItemIndex > -1;
@@ -276,6 +278,7 @@ begin
   dD10S.Checked := CheckDelphiVersion(dverD10S);
   dD101B.Checked := CheckDelphiVersion(dverD101B);
   dD102T.Checked := CheckDelphiVersion(dverD102T);
+  dD103R.Checked := CheckDelphiVersion(dverD103R);
 
   GetPathList;
 end;
