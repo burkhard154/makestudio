@@ -29,8 +29,6 @@ type
     procedure btOkClick(Sender: TObject);
     procedure FileSearcherFindFile(Sender: TObject; const AName: string);
   private
-    FDirectories: TStringList;
-    FFiles: TStringList;
   public
     procedure Search;
     procedure Sort;

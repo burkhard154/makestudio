@@ -85,6 +85,7 @@ object FormAddComponentFolder: TFormAddComponentFolder
         'pecify the wildcard for searching the package <br>'#13#10'directories ' +
         '(e.g. *D15.* or just *.*) and the file mask (*D7, *D16, *). <br>' +
         #13#10'The file mask always adds ".dpk" automatically. '
+      SuperSubScriptRatio = 0.666666666666666600
       ExplicitTop = 11
       ExplicitWidth = 563
     end
@@ -94,7 +95,6 @@ object FormAddComponentFolder: TFormAddComponentFolder
     Top = 112
     Width = 522
     Height = 21
-    DialogKind = dkWin32
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 1
     Text = ''

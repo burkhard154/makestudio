@@ -178,6 +178,12 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
         ImageIndex = 5
         Indent = 0
         Text = 'Delphi 10.2 Tokyo'
+      end
+      item
+        Brush.Style = bsClear
+        ImageIndex = 5
+        Indent = 0
+        Text = 'Delphi 10.3 Rio'
       end>
   end
   object cbVar: TComboBox

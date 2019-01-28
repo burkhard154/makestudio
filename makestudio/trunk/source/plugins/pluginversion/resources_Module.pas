@@ -49,7 +49,7 @@ type
     FCaption: string;
     FFilename: String;
     FIncreaseSet: integer;
-    FNewVersionValue: TULargeInteger;
+    FNewVersionValue: ULARGE_INTEGER;
     FIncreaseType: integer;
     FFileVersionKey: String;
 
@@ -82,14 +82,14 @@ type
     constructor Create(AOwner: TComponent); override;
     // Function will be used by the MultpileVersionCommand
     function ProceedWin32Res: Boolean;
-    function EncodeVersion(v1, v2, v3, v4: Word): TULargeInteger;
-    procedure DecodeVersion(Version: TULargeInteger; var v1, v2, v3, v4: Word);
+    function EncodeVersion(v1, v2, v3, v4: Word): ULARGE_INTEGER;
+    procedure DecodeVersion(Version: ULARGE_INTEGER; var v1, v2, v3, v4: Word);
 
     property Filename: String read FFilename write _SetFilename;
     property IncreaseType: integer read FIncreaseType write FIncreaseType;
     property FileVersionKey: String read FFileVersionKey write FFileVersionKey;
     property IncreaseSet: integer read FIncreaseSet write FIncreaseSet;
-    property NewVersionValue: TULargeInteger read FNewVersionValue write FNewVersionValue;
+    property NewVersionValue: ULARGE_INTEGER read FNewVersionValue write FNewVersionValue;
   end;
 
   // Callback to create an instance of the ICommand
@@ -376,7 +376,7 @@ begin
   Result := IDPluginVersionsresourcenndern;
 end;
 
-procedure TPluginVersionsresourcenndern.DecodeVersion(Version: TULargeInteger;
+procedure TPluginVersionsresourcenndern.DecodeVersion(Version: ULARGE_INTEGER;
   var v1, v2, v3, v4: Word);
 begin
   with Version do
@@ -388,7 +388,7 @@ begin
   end;
 end;
 
-function TPluginVersionsresourcenndern.EncodeVersion(v1, v2, v3, v4: Word): TULargeInteger;
+function TPluginVersionsresourcenndern.EncodeVersion(v1, v2, v3, v4: Word): ULARGE_INTEGER;
 begin
   Result.HighPart := (v1 shl 16) + v2;
   Result.LowPart := (v3 shl 16) + v4;

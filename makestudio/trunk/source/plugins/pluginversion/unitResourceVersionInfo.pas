@@ -31,13 +31,13 @@ type
     procedure ExportToStream (strm : TStream; const ext : string);
 
     function GetFileFlags: TVersionFileFlags;
-    function GetFileVersion: TULargeInteger;
+    function GetFileVersion: ULARGE_INTEGER;
     function GetKey(idx: Integer): TVersionStringValue;
     function GetKeyCount: Integer;
-    function GetProductVersion: TULargeInteger;
+    function GetProductVersion: ULARGE_INTEGER;
     procedure SetFileFlags(const Value: TVersionFileFlags);
-    procedure SetFileVersion(const Value: TULargeInteger);
-    procedure SetProductVersion(const Value: TULargeInteger);
+    procedure SetFileVersion(const Value: ULARGE_INTEGER);
+    procedure SetProductVersion(const Value: ULARGE_INTEGER);
   protected
     constructor Create (AParent : TResourceModule; ALanguage : Integer; const AName, AType : string; ASize : Integer; AData : pointer); override;
     procedure InitNew; override;
@@ -50,8 +50,8 @@ type
     procedure ChangeKey (const AOldKey, ANewKey : string);
     procedure DeleteKey (idx : Integer);
     function IndexOf (const AKeyName : string) : Integer;
-    property ProductVersion : TULargeInteger read GetProductVersion write SetProductVersion;
-    property FileVersion    : TULargeInteger read GetFileVersion write SetFileVersion;
+    property ProductVersion : ULARGE_INTEGER read GetProductVersion write SetProductVersion;
+    property FileVersion    : ULARGE_INTEGER read GetFileVersion write SetFileVersion;
     property FileFlags : TVersionFileFlags read GetFileFlags write SetFileFlags;
     property KeyCount : Integer read GetKeyCount;
     property Key [idx : Integer] : TVersionStringValue read GetKey;
@@ -274,7 +274,7 @@ begin
   if (flags and VS_FF_SPECIALBUILD) <> 0 then result := result + [ffSpecialBuild];
 end;
 
-function TVersionInfoResourceDetails.GetFileVersion: TULargeInteger;
+function TVersionInfoResourceDetails.GetFileVersion: ULARGE_INTEGER;
 begin
   GetFixedFileInfo;
   result.LowPart := fFixedInfo^.dwFileVersionLS;
@@ -425,7 +425,7 @@ begin
   result := fChildStrings.Count
 end;
 
-function TVersionInfoResourceDetails.GetProductVersion: TULargeInteger;
+function TVersionInfoResourceDetails.GetProductVersion: ULARGE_INTEGER;
 begin
   GetFixedFileInfo;
   result.LowPart := fFixedInfo^.dwProductVersionLS;
@@ -521,7 +521,7 @@ begin
 end;
 
 procedure TVersionInfoResourceDetails.SetFileVersion(
-  const Value: TULargeInteger);
+  const Value: ULARGE_INTEGER);
 begin
   GetFixedFileInfo;
   if (value.LowPart <> fFixedInfo^.dwFileVersionLS) or (value.HighPart <> fFixedInfo^.dwFileVersionMS) then
@@ -559,7 +559,7 @@ begin
 end;
 
 procedure TVersionInfoResourceDetails.SetProductVersion(
-  const Value: TULargeInteger);
+  const Value: ULARGE_INTEGER);
 begin
   GetFixedFileInfo;
   if (value.LowPart <> fFixedInfo^.dwProductVersionLS) or (value.HighPart <> fFixedInfo^.dwProductVersionMS) then
