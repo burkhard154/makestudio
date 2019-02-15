@@ -1,4 +1,4 @@
-(* -----------------------------------------------------------------------------
+  (* -----------------------------------------------------------------------------
   The contents of this file are subject to the Mozilla Public License
   Version 1.1 (the "License"); you may not use this file except in compliance
   with the License. You may obtain a copy of the License at
@@ -37,7 +37,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, ActnList, ImgList, makestudio_TLB, wizard_vars, ActiveX, AxCtrls,
-  JvBaseDlg, JvBrowseFolder, JclShell, System.Actions;
+  JvBaseDlg, JvBrowseFolder, JclShell, System.Actions, System.ImageList;
 
 type
   TForm3 = class(TForm, IActionCallback)
@@ -179,7 +179,7 @@ procedure TForm3.acNewDelphiCommandExecute(Sender: TObject);
 var
   ParameterList: TStringList;
   BmpCommand, BmpAction: TBitmap;
-  TargetModuleFilename, TargetEditFilename: String;
+  TargetModuleFilename, TargetEditFilename, TargetTlbFilename: String;
 
   procedure CreateTarget(aIdent, aTarget: String);
   begin
@@ -256,6 +256,12 @@ var
       aFilename, ParameterList);
   end;
 
+  procedure CreateTargetDirect(aIdent, aFilename: String);
+  begin
+    ParameterList.Values['MODULEIDENT'] := ChangeFileExt(FilesPrefix + aFilename, '');
+    CreateTemplateSourceFromRessource(AIdent, TargetFolder + aFilename, ParameterList);
+  end;
+
   function GetUsesStr(aFilename: String; FormName: String): String;
   begin
     if FormName <> '' then
@@ -298,6 +304,7 @@ begin
           CreateTarget(sRESID_DFM_EDIT,sEditDfm);
           CreateTarget(sRESID_PAS_MODULE,sModulePas);
           CreateTarget(sRESID_PAS_VARS,sVarsPas);
+          CreateTargetDirect(sRESID_PAS_TLB, sTlbPas);
 
           ParameterList.Values['USEVARS'] := GetUsesStr(sVarsPas, '');
           ParameterList.Values['USEEDIT'] := GetUsesStr(sEditPas, 'FormEditParams');

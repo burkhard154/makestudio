@@ -38,7 +38,7 @@ uses
   Classes,
   ComServ,
   Forms,
-  makestudio_TLB in '..\..\framework\makestudio_TLB',
+  makestudio_TLB,
   {$IFDEF BLOCKEXTERNALWIZARD}
   %USEVARS%,
   %USEMODULE%,

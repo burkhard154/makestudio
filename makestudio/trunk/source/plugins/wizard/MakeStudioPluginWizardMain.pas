@@ -721,6 +721,8 @@ begin
           FilesPrefix + 'Module.pas', FParameterList));
         CreateModule(TMakeStudioDxWin32VCLPluginModuleCreator.Create('MakeStudioPLUGINSRC_VARS', '',
           FilesPrefix + 'Vars.pas', FParameterList));
+        CreateModule(TMakeStudioDxWin32VCLPluginModuleCreator.Create('', '',
+          'makestudio_tlb.pas', nil));
         {$ENDIF IDE_SUPPORTS_DELPHI}
       end
       else

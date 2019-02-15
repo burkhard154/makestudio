@@ -379,7 +379,7 @@ end;
 procedure TPluginVersionsresourcenndern.DecodeVersion(Version: ULARGE_INTEGER;
   var v1, v2, v3, v4: Word);
 begin
-  with Version do
+  with ULARGE_INTEGER(Version) do
   begin
     v1 := HiWord(HighPart);
     v2 := LoWord(HighPart);
@@ -390,8 +390,8 @@ end;
 
 function TPluginVersionsresourcenndern.EncodeVersion(v1, v2, v3, v4: Word): ULARGE_INTEGER;
 begin
-  Result.HighPart := (v1 shl 16) + v2;
-  Result.LowPart := (v3 shl 16) + v4;
+  ULARGE_INTEGER(Result).HighPart := (v1 shl 16) + v2;
+  ULARGE_INTEGER(Result).LowPart := (v3 shl 16) + v4;
 end;
 
 function TPluginVersionsresourcenndern.ProceedWin32Res: Boolean;

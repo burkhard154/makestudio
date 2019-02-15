@@ -32,6 +32,11 @@ library zip_Plugin;
 {$R *.dres}
 
 uses
+  madExcept,
+  madLinkDisAsm,
+  madListHardware,
+  madListProcesses,
+  madListModules,
   SysUtils,
   Classes,
   ComServ,
