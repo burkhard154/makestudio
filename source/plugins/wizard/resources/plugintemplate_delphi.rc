@@ -7,3 +7,4 @@ PAS_EDIT RCDATA template_Edit.pas
 DFM_EDIT RCDATA template_Edit.dfm
 PAS_MODULE RCDATA template_Module.pas
 PAS_VARS RCDATA template_Vars.pas
+PAS_TLB RCDATA ..\..\..\framework\makestudio_TLB.pas

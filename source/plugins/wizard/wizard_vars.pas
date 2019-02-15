@@ -58,6 +58,7 @@ const
   sEditDfm = 'edit.dfm';
   sModulePas = 'module.pas';
   sVarsPas = 'vars.pas';
+  sTlbPas = 'makestudio_TLB.pas';
 
   // C#
   sTemplatePrefixCs = 'template_cs_';
@@ -92,6 +93,7 @@ const
   sRESID_DFM_EDIT = 'DFM_EDIT';
   sRESID_PAS_MODULE = 'PAS_MODULE';
   sRESID_PAS_VARS = 'PAS_VARS';
+  sRESID_PAS_TLB = 'PAS_TLB';
 
 implementation
 

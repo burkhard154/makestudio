@@ -125,7 +125,7 @@ end;
 
 procedure TPlugin%COMMANDIDENTIFIER%Callback.SetCanceled(aCanceled: WordBool);
 begin
-  Canceled := aCanceled; //set by the server if the user press "Cancel" oder "Stop"
+  FCanceled := aCanceled; //set by the server if the user press "Cancel" oder "Stop"
 end;
 
 constructor TPlugin%COMMANDIDENTIFIER%.Create(AOwner: TComponent);

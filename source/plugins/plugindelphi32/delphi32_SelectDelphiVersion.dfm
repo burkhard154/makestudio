@@ -158,6 +158,7 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
         end
         item
           Brush.Style = bsClear
+          ImageIndex = 4
           Indent = 0
           Text = 'Delphi 10.3 Rio'
         end>

@@ -277,23 +277,23 @@ end;
 function TVersionInfoResourceDetails.GetFileVersion: ULARGE_INTEGER;
 begin
   GetFixedFileInfo;
-  result.LowPart := fFixedInfo^.dwFileVersionLS;
-  result.HighPart := fFixedInfo^.dwFileVersionMS;
+  ULARGE_INTEGER(Result).LowPart := fFixedInfo^.dwFileVersionLS;
+  ULARGE_INTEGER(Result).HighPart := fFixedInfo^.dwFileVersionMS;
 end;
 
 procedure TVersionInfoResourceDetails.GetFixedFileInfo;
 var
-  p : PAnsiChar;
+  p : PChar;
   t, wLength, wValueLength, wType : word;
   key : string;
 
   varwLength, varwValueLength, varwType : word;
   varKey : string;
 
-  function GetVersionHeader (var p : PAnsiChar; var wLength, wValueLength, wType : word; var key : string) : Integer;
+  function GetVersionHeader (var p : PChar; var wLength, wValueLength, wType : word; var key : string) : Integer;
   var
     szKey : PWideChar;
-    baseP : PAnsiChar;
+    baseP : PChar;
   begin
     baseP := p;
     wLength := PWord (p)^;
@@ -310,9 +310,9 @@ var
     key := szKey;
   end;
 
-  procedure GetStringChildren (var base : PAnsiChar; len : word);
+  procedure GetStringChildren (var base : PChar; len : word);
   var
-    p, strBase : PAnsiChar;
+    p, strBase : PChar;
     t, wLength, wValueLength, wType, wStrLength, wStrValueLength, wStrType : word;
     key, value : string;
     langID, codePage : Integer;
@@ -352,9 +352,9 @@ var
     base := p
   end;
 
-  procedure GetVarChildren (var base : PAnsiChar; len : word);
+  procedure GetVarChildren (var base : PChar; len : word);
   var
-    p, strBase : PAnsiChar;
+    p, strBase : PChar;
     t, wLength, wValueLength, wType: word;
     key : string;
     v : DWORD;
@@ -382,7 +382,7 @@ begin
   if fFixedInfo <> nil then Exit;
 
   p := data.memory;
-  GetVersionHeader( p, wLength, wValueLength, wType, key);
+  GetVersionHeader (p, wLength, wValueLength, wType, key);
 
   if wValueLength <> 0 then
   begin
@@ -428,8 +428,8 @@ end;
 function TVersionInfoResourceDetails.GetProductVersion: ULARGE_INTEGER;
 begin
   GetFixedFileInfo;
-  result.LowPart := fFixedInfo^.dwProductVersionLS;
-  result.HighPart := fFixedInfo^.dwProductVersionMS
+  ULARGE_INTEGER(Result).LowPart := fFixedInfo^.dwProductVersionLS;
+  ULARGE_INTEGER(Result).HighPart := fFixedInfo^.dwProductVersionMS
 end;
 
 function TVersionInfoResourceDetails.IndexOf(
@@ -524,10 +524,10 @@ procedure TVersionInfoResourceDetails.SetFileVersion(
   const Value: ULARGE_INTEGER);
 begin
   GetFixedFileInfo;
-  if (value.LowPart <> fFixedInfo^.dwFileVersionLS) or (value.HighPart <> fFixedInfo^.dwFileVersionMS) then
+  if (ULARGE_INTEGER(Value).LowPart <> fFixedInfo^.dwFileVersionLS) or (ULARGE_INTEGER(Value).HighPart <> fFixedInfo^.dwFileVersionMS) then
   begin
-    fFixedInfo^.dwFileVersionLS := value.LowPart;
-    fFixedInfo^.dwFileVersionMS := value.HighPart;
+    fFixedInfo^.dwFileVersionLS := ULARGE_INTEGER(Value).LowPart;
+    fFixedInfo^.dwFileVersionMS := ULARGE_INTEGER(Value).HighPart;
   end
 end;
 
@@ -562,10 +562,10 @@ procedure TVersionInfoResourceDetails.SetProductVersion(
   const Value: ULARGE_INTEGER);
 begin
   GetFixedFileInfo;
-  if (value.LowPart <> fFixedInfo^.dwProductVersionLS) or (value.HighPart <> fFixedInfo^.dwProductVersionMS) then
+  if (ULARGE_INTEGER(Value).LowPart <> fFixedInfo^.dwProductVersionLS) or (ULARGE_INTEGER(value).HighPart <> fFixedInfo^.dwProductVersionMS) then
   begin
-    fFixedInfo^.dwProductVersionLS := value.LowPart;
-    ffixedInfo^.dwProductVersionMS := value.HighPart;
+    fFixedInfo^.dwProductVersionLS := ULARGE_INTEGER(value).LowPart;
+    ffixedInfo^.dwProductVersionMS := ULARGE_INTEGER(value).HighPart;
   end
 end;
 

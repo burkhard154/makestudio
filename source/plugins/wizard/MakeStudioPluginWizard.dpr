@@ -35,6 +35,11 @@ library MakeStudioPluginWizard;
 
 uses
   ShareMem,
+  madExcept,
+  madLinkDisAsm,
+  madListHardware,
+  madListProcesses,
+  madListModules,
   ToolsAPI,
   msPluginWizardOptions in 'msPluginWizardOptions.pas' {msPluginWizardOptionsForm},
   msPluginWizardCommon in 'msPluginWizardCommon.pas',
