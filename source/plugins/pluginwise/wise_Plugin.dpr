@@ -11,7 +11,7 @@ the specific language governing rights and limitations under the License.
 The Original Code is: wise.dpr
 
 The Initial Developer of the original code (JEDI VCS) is:
-  Jeremy Dünow (jeremy.duenow@optimeas.de)
+  Jeremy Dï¿½now (jeremy.duenow@optimeas.de)
 
 Componentes and used code which is used in this code are explictly stated to
 be copyright of the respective author(s).
@@ -34,11 +34,6 @@ library wise_Plugin;
 {$I jedi.inc}
 
 uses
-  madExcept,
-  madLinkDisAsm,
-  madListHardware,
-  madListProcesses,
-  madListModules,
   SysUtils,
   Classes,
   makestudio_TLB in '..\..\framework\makestudio_TLB.pas',

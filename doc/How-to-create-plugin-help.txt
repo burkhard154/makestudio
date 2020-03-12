@@ -9,5 +9,5 @@ chapter=<mychapter>
 
 See .\doc\help\example
 
-Our current help-creation-software is "Help and Manual 6"
+Our current help-creation-software is "Help and Manual xx"
 http://www.helpandmanual.com/

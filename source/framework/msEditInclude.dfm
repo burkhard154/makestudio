@@ -1,9 +1,9 @@
 object FormEditInclude: TFormEditInclude
   Left = 561
   Top = 236
-  Width = 455
-  Height = 138
   Caption = 'Include File...'
+  ClientHeight = 99
+  ClientWidth = 439
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -49,6 +49,7 @@ object FormEditInclude: TFormEditInclude
     DialogKind = dkSave
     DefaultExt = 'txt'
     TabOrder = 2
+    Text = ''
   end
   object btEdit: TButton
     Left = 360

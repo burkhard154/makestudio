@@ -31,11 +31,7 @@ Unit history:
 library pscript_Plugin;
 
 uses
-  madExcept,
-  madLinkDisAsm,
-  madListHardware,
-  madListProcesses,
-  madListModules,
+
   SysUtils,
   Classes,
   ComServ,

@@ -36,7 +36,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Mask, JvExMask, JvToolEdit, msProgram,
-  ShellApi;
+  ShellApi, msGlobals;
 
 type
   TFormEditInclude = class(TForm)
@@ -76,9 +76,9 @@ end;
 
 procedure TFormEditInclude.btEditClick(Sender: TObject);
 begin
-  if FileExists( edFilename.Text) then
+  if FileExists( Varhandler.ReplaceVarsInString( edFilename.Text)) then
     ShellExecute( Application.Handle, 'OPEN', PChar(Application.Exename),
-                   PChar( '"'+edFilename.Text+'"'), '', SW_SHOW);
+                   PChar( '"'+Varhandler.ReplaceVarsInString( edFilename.Text)+'"'), '', SW_SHOW);
 end;
 
 end.

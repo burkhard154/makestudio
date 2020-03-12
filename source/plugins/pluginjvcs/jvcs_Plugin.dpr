@@ -34,11 +34,6 @@ library jvcs_Plugin;
 {$I jedi.inc}
 
 uses
-  madExcept,
-  madLinkDisAsm,
-  madListHardware,
-  madListProcesses,
-  madListModules,
   SysUtils,
   Classes,
   makestudio_TLB in '..\..\framework\makestudio_TLB.pas',

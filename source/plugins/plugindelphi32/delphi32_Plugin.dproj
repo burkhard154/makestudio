@@ -4,7 +4,7 @@
         <MainSource>delphi32_Plugin.dpr</MainSource>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
-        <ProjectVersion>18.4</ProjectVersion>
+        <ProjectVersion>18.7</ProjectVersion>
         <Basis>True</Basis>
         <AppType>Library</AppType>
         <FrameworkType>VCL</FrameworkType>

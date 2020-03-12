@@ -51,7 +51,7 @@ program jmak;
 {$IFDEF VCL}
 fdsa
 {$ENDIF}
-  uses madExcept, madLinkDisAsm, madListHardware, madListProcesses, madListModules, SysUtils, Classes, msProgram, msGlobals, msUtils, msResources, DateUtils, JclAnsiStrings, makestudio_TLB;
+  uses SysUtils, Classes, msProgram, msGlobals, msUtils, msResources, DateUtils, JclAnsiStrings, makestudio_TLB;
 
 var
   stGlobalLog: TStringList;

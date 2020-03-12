@@ -33,11 +33,6 @@ library delphi32_Plugin;
 {$I jedi.inc}
 
 uses
-  madExcept,
-  madLinkDisAsm,
-  madListHardware,
-  madListProcesses,
-  madListModules,
   SysUtils,
   Classes,
   ComServ,

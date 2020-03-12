@@ -1,11 +1,6 @@
 library msbuild_plugin;
 
 uses
-  madExcept,
-  madLinkDisAsm,
-  madListHardware,
-  madListProcesses,
-  madListModules,
   SysUtils,
   Classes,
   ComServ,

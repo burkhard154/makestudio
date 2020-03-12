@@ -47,11 +47,6 @@ program makestudio;
 {$R 'msver.res' 'msver.rc'}
 
 uses
-  madExcept,
-  madLinkDisAsm,
-  madListHardware,
-  madListProcesses,
-  madListModules,
   Forms,
   msMain in 'msMain.pas' {FormMain},
   msRunListEdit in 'msRunListEdit.pas' {FormMemo},

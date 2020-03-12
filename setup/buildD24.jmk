@@ -2,7 +2,7 @@
 begin Delphi32.SetDelphiVersion
   Caption=Delphi32 Version setzten
   Ignore=0
-  Delphiversion=17
+  Delphiversion=18
 end
 begin delphi.SelectDelphiPlatform
   Caption=Select Delphi Platform

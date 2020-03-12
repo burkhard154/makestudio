@@ -37,11 +37,6 @@ library CodeWizard;
 {$R 'plugintemplate_delphi.res' 'resources\plugintemplate_delphi.rc'}
 
 uses
-  madExcept,
-  madLinkDisAsm,
-  madListHardware,
-  madListProcesses,
-  madListModules,
   SysUtils,
   Classes,
   makestudio_TLB in '..\..\framework\makestudio_TLB.pas',
