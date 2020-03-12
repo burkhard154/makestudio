@@ -1,16 +1,17 @@
-Building is tested with Delphi XE5 and XE7
+Building is should run from Delphi XE5...Tokyo 10.3
+Lower Delphi Versions are not tested.
 
-First synchronize SVN: https://optimeas.de/public/makestudio to your favorite local folder.
-<makestuditrunk>=<your folder>\trunk
+First synchronize this repo.
 
 Take care, that all third party components and toos are installed for your favorite development environment!
+See https://github.com/burkhard154/makestudio/tree/master/thirdparty 
 
 Settings for Namespaces (Tools-Options)
 System;Xml;Data;Datasnap;Web;Soap;Winapi;Vcl;System.Win;Vcl.Imaging
 
 A. Build from Source
 
-  1. Open MakeStudioGroup.groupproj in ..\makestudio\trunk\source\framework
+  1. Open MakeStudioGroup.groupproj from ..\makestudio\trunk\source\framework
   2. Compile All
   3. Generate makestudio.dll assembly: 
       "<DOTNETBINPATH>\tlbimp" <makestuditrunk>\source\framework\makestudio.tlb /transform:dispret /verbose /namespace:makestudio
@@ -21,8 +22,11 @@ A. Build from Source
 B. Build with MakeStudio
 
   1. Install the latest MakeStudio version from 
-    http://www.optimeas.de/de/service/downloads.html?view=document&id=29:makestudio-4-0&catid=109:makestudio 
-  2. For XE5 Load <makestuditrunk>\setup\buildD19.jmk
-  2. For XE7 Load <makestuditrunk>\setup\buildD21.jmk
-  3. Run <makestuditrunk>\setup\build<xx>.jmk
+    https://github.com/burkhard154/makestudio/tree/master/setup/output 
+  2. Run <makestudio>\setup\build<xx>.jmk
+    2.1. For XE5 Load <makestudio>\setup\buildD19.jmk
+    2.2. For XE7 Load <makestudio>\setup\buildD21.jmk
+    2.3. For Delphi 10.1 Berlin <makestudio>\setup\buildD24.jmk
+    2.4. For Delphi 10.2 Tokyo <makestudio>\setup\buildD25.jmk
+    2.5. For Delphi 10.3 Rio Load <makestudio>\setup\buildD26.jmk
   4. You will find your setup in <makestuditrunk>\setup\output 
