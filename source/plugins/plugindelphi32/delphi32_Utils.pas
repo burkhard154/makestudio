@@ -663,6 +663,9 @@ begin
       begin
         S := S + S1 + ';';
         MakeStudio.LogMessage(Format(stdAddingSearchPath, [S1]));
+      end
+      else begin
+        MakeStudio.LogMessage(Format(stdSearchPathAlreadyAdded, [S1]));
       end;
     end;
     try

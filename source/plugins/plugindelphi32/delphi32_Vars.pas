@@ -94,6 +94,7 @@ resourcestring
   stdPackageUnRegistered = 'Package %s unregistered from Delphi';
   stdStartingCompiler = 'Compiler started...';
   stdAddingSearchPath = 'Search path added: %s';
+  stdSearchPathAlreadyAdded = '%s already in search path';
   stdStartingBatch = 'Bat started';
   stdMovingFiles = 'Files are moved';
   stdForceDirectories = 'Directories are created';
