@@ -147,12 +147,16 @@ begin
   with TFormEditSelectDelphiPlatform.Create(nil) do
   try
     case FPlatform of
-      dpOSX32: cbPlatform.ItemIndex := 2;
       dpWin32: cbPlatform.ItemIndex := 0;
       dpWin64: cbPlatform.ItemIndex := 1;
-      dpiOSDevice: cbPlatform.ItemIndex := 3;
-      dpiOSSimulator: cbPlatform.ItemIndex := 4;
-      dpAndroid32: cbPlatform.ItemIndex := 5;
+      dpOSX32: cbPlatform.ItemIndex := 2;
+      dpOSX64: cbPlatform.ItemIndex := 3;
+      dpiOSDevice: cbPlatform.ItemIndex := 4;
+      dpiOSDevice32: cbPlatform.ItemIndex := 5;
+      dpiOSDevice64: cbPlatform.ItemIndex := 6;
+      dpiOSSimulator: cbPlatform.ItemIndex := 7;
+      dpAndroid32: cbPlatform.ItemIndex := 8;
+      dpAndroid64: cbPlatform.ItemIndex := 9;
     end;
     if ShowModal = mrOk then
     begin
@@ -160,9 +164,13 @@ begin
         0: FPlatform := dpWin32;
         1: FPlatform := dpWin64;
         2: FPlatform := dpOSX32;
-        3: FPlatform := dpiOSDevice;
-        4: FPlatform := dpiOSSimulator;
-        5: FPlatform := dpAndroid32;
+        3: FPlatform := dpOSX64;
+        4: FPlatform := dpiOSDevice;
+        5: FPlatform := dpiOSDevice32;
+        6: FPlatform := dpiOSDevice64;
+        7: FPlatform := dpiOSSimulator;
+        8: FPlatform := dpAndroid32;
+        9: FPlatform := dpAndroid64;
       end;
       Result := True;
     end;
@@ -202,16 +210,24 @@ begin
   case _p of
     dpOSX32:
       Result := stdPlatformOSX32;
+    dpOSX64:
+      Result := stdPlatformOSX64;
     dpWin32:
       Result := stdPlatformWIN32;
     dpWin64:
       Result := stdPlatformWIN64;
     dpiOSDevice:
       Result := stdPlatformIOSDevice;
+    dpiOSDevice32:
+      Result := stdPlatformIOSDevice32;
+    dpiOSDevice64:
+      Result := stdPlatformIOSDevice64;
     dpiOSSimulator:
       Result := stdPlatformIOSSimulator;
     dpAndroid32:
       Result := stdPlatformAndroid32;
+    dpAndroid64:
+      Result := stdPlatformAndroid64;
   end;
 end;
 

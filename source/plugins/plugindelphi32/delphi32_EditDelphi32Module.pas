@@ -46,7 +46,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   ComCtrls, ToolWin, StdCtrls, ExtCtrls, ImgList, delphi32_Compile,
   Buttons, JvBaseDlg, JvBrowseFolder, delphi32_Vars, JvComponent,
-  JvComponentBase;
+  JvComponentBase, System.ImageList, System.Types, System.UITypes;
 
 type
   TFormEditModule = class(TForm)
@@ -56,9 +56,6 @@ type
     Label4: TLabel;
     Panel5: TPanel;
     edCompilerSwitch: TEdit;
-    Panel1: TPanel;
-    Button1: TButton;
-    Button2: TButton;
     Panel2: TPanel;
     Panel4: TPanel;
     ToolBar2: TToolBar;
@@ -71,11 +68,14 @@ type
     OpenDialog: TOpenDialog;
     BrowseDir: TJvBrowseForFolderDialog;
     SpeedButton2: TSpeedButton;
-    btRequires: TButton;
     ListDirectories: TMemo;
     Panel6: TPanel;
     Panel7: TPanel;
     cbAction: TComboBox;
+    cbAllPlatforms: TCheckBox;
+    Button1: TButton;
+    Button2: TButton;
+    btRequires: TButton;
     procedure btRequiresClick(Sender: TObject);
     procedure edFilenameChange(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
@@ -86,6 +86,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
   private
+    procedure DoUpdateControls;
   public
     procedure RemoveEmptySearchdirs;
   end;
@@ -117,9 +118,11 @@ begin
     edOutputdir.Text := M.OutputDir;
     edCompilerSwitch.Text := M.CompilerSwitch;
     cbAction.ItemIndex := Ord(M.DMakAction);
+    cbAllPlatforms.Checked := M.AllPlatforms;
     ListDirectories.Lines.Clear;
     for I := 0 to M.SearchDirs.Count - 1 do
       ListDirectories.Lines.Add(M.SearchDirs[I]);
+    DoUpdateControls;
     if ShowModal = mrOk then
     begin
       RemoveEmptySearchdirs;
@@ -127,6 +130,7 @@ begin
       M.OutputDir := edOutputdir.Text;
       M.CompilerSwitch := edCompilerSwitch.Text;
       M.DMakAction := TDMakAction(cbAction.ItemIndex);
+      M.AllPlatforms := cbAllPlatforms.Checked;
       M.SearchDirs.Clear;
       for I := 0 to ListDirectories.Lines.Count - 1 do
         M.SearchDirs.Add(ListDirectories.Lines[I]);
@@ -170,10 +174,18 @@ end;
 
 procedure TFormEditModule.cbActionChange(Sender: TObject);
 begin
-  if cbAction.ItemIndex = 9 then
-    lbCompilerswitch.Caption := strCommandLine
-  else
-    lbCompilerswitch.Caption := strCompilerswitch;
+  DoUpdateControls;
+end;
+
+procedure TFormEditModule.DoUpdateControls;
+begin
+  cbAllPlatforms.Visible := false;
+  lbCompilerswitch.Caption := strCompilerswitch;
+
+  case TDMakAction(cbAction.ItemIndex) of
+    dmaSetSearchPath: cbAllPlatforms.Visible := true;
+    dmaRunBat: lbCompilerswitch.Caption := strCommandLine;
+  end;
 end;
 
 procedure TFormEditModule.FormShow(Sender: TObject);

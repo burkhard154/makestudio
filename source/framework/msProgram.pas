@@ -781,6 +781,10 @@ const
   IDINCLUDEBlock = IDBlock + 'include';
   IDCOMMENT = 'command.comment';
 
+  //Variables
+  stdcActiveScriptFile = 'ActiveScriptFile';
+  stdcActiveScriptDir = 'ActiveScriptDir';
+
 var
   ProgramAddLog: procedure(S: string) = nil;
   ProgramClearLog: procedure = nil;
@@ -1849,7 +1853,8 @@ begin
     finally
       IncludeProgram.Free;
       //restore actual filename
-      VarhandlerRef.SetVar( 'ActiveScriptFile', OldFilename);
+      VarhandlerRef.SetVar( stdcActiveScriptFile, OldFilename);
+      VarhandlerRef.SetVar( stdcActiveScriptDir, ExcludeTrailingPathDelimiter( ExtractFilePath( OldFilename)));
     end;
 
   end
@@ -1976,7 +1981,8 @@ begin
       Modified := False;
       LoadFromStrings(sl);
       Result := True;
-      VarhandlerRef.SetVar( 'ActiveScriptFile', FFilename);
+      VarhandlerRef.SetVar( stdcActiveScriptFile, FFilename);
+      VarhandlerRef.SetVar( stdcActiveScriptDir, ExcludeTrailingPathDelimiter( ExtractFilePath( FFilename)));
     except
       On E: Exception do
         DoLogbookMessage(E.Message);

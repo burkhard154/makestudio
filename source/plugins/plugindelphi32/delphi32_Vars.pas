@@ -179,9 +179,15 @@ resourcestring
   stdPlatformWin32 = 'Windows 32 bit';
   stdPlatformWin64 = 'Windows 64 bit';
   stdPlatformOSX32 = 'MacOS X 32 bit';
-  stdPlatformIOSDevice = 'iOSDevice';
+  stdPlatformOSX64 = 'MacOS X 64 bit';
+  stdPlatformIOSDevice = 'iOSDevice (depricated, only for Delphi Versions < 10.1 Berlin)';
+  stdPlatformIOSDevice32 = 'iOSDevice 32 bit';
+  stdPlatformIOSDevice64 = 'iOSDevice 64 bit';
   stdPlatformIOSSimulator = 'iOSSimulator';
   stdPlatformAndroid32 = 'Android 32 bit';
+  stdPlatformAndroid64 = 'Android 64 bit';
+  StrRegistryKeyNotExist = 'Registry Key %s does not exist';
+
 
 const
   stdcFilename = 'Filename';
@@ -190,16 +196,21 @@ const
   stdcOutputDir = 'OutputDir';
   stdcSearchDirs = 'SearchPath%d';
   stdcSearchCount = 'SearchPathCount';
+  stdcAllPlatforms = 'AllPlattforms';
   stdcDelphiversion = 'Delphiversion';
   stdcBdsProjectsDir = 'BDSPROJECTSDIR';
   stdcBdsCommonDir = 'BDSCOMMONDIR';
   stdcBdsUserDir = 'BDSUSERDIR';
   stdcPlatformOSX32 = 'OSX32';
+  stdcPlatformOSX64 = 'OSX64';
   stdcPlatformWIN32 = 'Win32';
   stdcPlatformWIN64 = 'Win64';
   stdcPlatformIOSDevice = 'iOSDevice';
+  stdcPlatformIOSDevice32 = 'iOSDevice32';
+  stdcPlatformIOSDevice64 = 'iOSDevice64';
   stdcPlatformIOSSimulator = 'iOSSimulator';
   stdcPlatformAndroid32 = 'Android32';
+  stdcPlatformAndroid64 = 'Android64';
   stdcRCFile = 'RCFile';
   stdcOptions = 'Options';
   stdcSearchPath = 'Search Path';
@@ -287,7 +298,7 @@ type
     dverXE4, dverXE5, dverXE6, dverXE7, dverXE8, dverD10S, dverD101B, dverD102T, dverD103R);
 
   // starting with XE2
-  TCompilerPlatform = (dpOSX32, dpWin32, dpWin64, dpiOSDevice, dpiOSSimulator, dpAndroid32);
+  TCompilerPlatform = (dpOSX32, dpWin32, dpWin64, dpiOSDevice, dpiOSSimulator, dpAndroid32, dpOSX64, dpiOSDevice32, dpiOSDevice64, dpAndroid64);
 
 var
   stActions: array [dmaNone .. dmaResetSearchPath] of string = (

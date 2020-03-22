@@ -33,7 +33,8 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ImgList, JvExStdCtrls, JvCombobox, JvListComb;
+  Dialogs, StdCtrls, ImgList, JvExStdCtrls, JvCombobox, JvListComb,
+  System.ImageList;
 
 type
   TFormEditSelectDelphiPlatform = class(TForm)

@@ -111,7 +111,9 @@ begin
   //Help Folder
   Varhandler.AddVar( tvar_HelpPath, stSystemCategory, IncludeTrailingPathDelimiter( ExtractFilePath( Paramstr(0))) + stHelpPath);
   //ActiveScriptFile
-  Varhandler.AddVar( 'ActiveScriptFile', stSystemCategory, '');
+  Varhandler.AddVar( stdcActiveScriptFile, stSystemCategory, '');
+  //ActiveScriptDir
+  Varhandler.AddVar( stdcActiveScriptDir, stSystemCategory, '');
 
 
   //all Plugins as Variables?

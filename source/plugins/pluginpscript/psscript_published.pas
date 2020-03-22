@@ -62,6 +62,7 @@ function VarExists( VarName:String):Boolean;
 procedure VarSet( VarName:String; Content:Variant);
 function VarReplace( S:String):String;
 function Exec( App, Args, Dir:String):Integer;
+function xyz( s1:String; s2:Variant):String;
 
 implementation
 
@@ -195,9 +196,10 @@ begin
   af(@VarByIdx, 'VarByIdx', 'Function VarByIdx( Idx : Integer) : Variant');
   af(@VarAdd, 'VarAdd', 'Procedure VarAdd( VarName : String)');
   af(@VarExists, 'VarExists', 'Function VarExists( VarName : String) : Boolean');
-  af(@VarSet, 'VarSet', 'Procedure VarSet( VarName : String; Content : Variant)');
+  af(@VarSet, 'VarSet', 'Procedure VarSet( VarName : String; Content:Variant);');
   af(@VarReplace, 'VarReplace', 'Function VarReplace( S : String) : String');
   af(@Exec, 'Exec', 'Function Exec( App, Args, Dir : String) : Integer');
+  af(@xyz, 'xyz', 'Function xyz( s1:String; s2:Variant):String;');
 
   af(@Format, 'Format', 'function Format(const Format: string; const Args: array of const): string;');
   af(@SameText, 'SameText', 'function SameText(const S1, S2: string): Boolean;');
@@ -295,6 +297,11 @@ end;
 function Exec( App, Args, Dir:String):Integer;
 begin
   Result := MakeStudio.ExecCmdLine( App, Args, Dir, nil);
+end;
+
+function xyz( s1:String; s2:Variant):String;
+begin
+  Result := s1+s2;
 end;
 
 

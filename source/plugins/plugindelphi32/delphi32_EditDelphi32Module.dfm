@@ -1,11 +1,10 @@
 object FormEditModule: TFormEditModule
   Left = 509
   Top = 155
-  BorderIcons = []
-  BorderStyle = bsDialog
+  BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Delphi32 Command Properties'
-  ClientHeight = 491
-  ClientWidth = 457
+  ClientHeight = 546
+  ClientWidth = 383
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -16,17 +15,25 @@ object FormEditModule: TFormEditModule
   Position = poScreenCenter
   OnCreate = FormCreate
   OnShow = FormShow
+  DesignSize = (
+    383
+    546)
   PixelsPerInch = 96
   TextHeight = 13
   object Panel3: TPanel
     Left = 0
-    Top = 57
-    Width = 457
+    Top = 75
+    Width = 383
     Height = 144
     Align = alTop
     BevelOuter = bvNone
     BorderWidth = 4
-    TabOrder = 1
+    TabOrder = 0
+    ExplicitTop = 57
+    ExplicitWidth = 457
+    DesignSize = (
+      383
+      144)
     object Label1: TLabel
       Left = 8
       Top = 24
@@ -49,20 +56,23 @@ object FormEditModule: TFormEditModule
       Caption = 'Output directory'
     end
     object SpeedButton1: TSpeedButton
-      Left = 424
-      Top = 40
+      Left = 348
+      Top = 39
       Width = 23
       Height = 22
+      Anchors = [akTop, akRight]
       Caption = '...'
       Flat = True
       OnClick = SpeedButton1Click
+      ExplicitLeft = 424
     end
     object SpeedButton2: TSpeedButton
-      Left = 424
+      Left = 348
       Top = 120
       Width = 23
       Height = 22
       Hint = 'Nachschlagen'
+      Anchors = [akTop, akRight]
       Flat = True
       Glyph.Data = {
         36050000424D3605000000000000360400002800000010000000100000000100
@@ -110,11 +120,12 @@ object FormEditModule: TFormEditModule
       ParentShowHint = False
       ShowHint = True
       OnClick = SpeedButton2Click
+      ExplicitLeft = 424
     end
     object Panel5: TPanel
       Left = 4
       Top = 4
-      Width = 449
+      Width = 375
       Height = 17
       Align = alTop
       BevelOuter = bvNone
@@ -128,81 +139,53 @@ object FormEditModule: TFormEditModule
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      ExplicitWidth = 449
     end
     object edCompilerSwitch: TEdit
       Left = 8
       Top = 120
-      Width = 417
+      Width = 339
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
       TabOrder = 3
+      ExplicitWidth = 417
     end
     object edFilename: TEdit
       Left = 8
       Top = 40
-      Width = 417
+      Width = 339
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
       TabOrder = 1
       OnChange = edFilenameChange
+      ExplicitWidth = 417
     end
     object edOutputdir: TEdit
       Left = 8
       Top = 80
-      Width = 417
+      Width = 339
       Height = 21
+      Anchors = [akLeft, akTop, akRight]
       TabOrder = 2
-    end
-  end
-  object Panel1: TPanel
-    Left = 0
-    Top = 448
-    Width = 457
-    Height = 43
-    Align = alBottom
-    BevelOuter = bvNone
-    TabOrder = 0
-    object Button1: TButton
-      Left = 16
-      Top = 8
-      Width = 75
-      Height = 25
-      Caption = '&Ok'
-      ModalResult = 1
-      TabOrder = 0
-    end
-    object Button2: TButton
-      Left = 96
-      Top = 8
-      Width = 75
-      Height = 25
-      Cancel = True
-      Caption = '&Cancel'
-      ModalResult = 2
-      TabOrder = 1
-    end
-    object btRequires: TButton
-      Left = 304
-      Top = 8
-      Width = 123
-      Height = 25
-      Caption = 'Package Requires...'
-      Enabled = False
-      TabOrder = 2
-      OnClick = btRequiresClick
+      ExplicitWidth = 417
     end
   end
   object Panel2: TPanel
     Left = 0
-    Top = 201
-    Width = 457
-    Height = 247
-    Align = alClient
+    Top = 219
+    Width = 383
+    Height = 279
+    Align = alTop
+    Anchors = [akLeft, akTop, akRight, akBottom]
     BevelOuter = bvNone
     BorderWidth = 4
-    TabOrder = 2
+    TabOrder = 1
+    ExplicitWidth = 463
+    ExplicitHeight = 310
     object Panel4: TPanel
       Left = 4
       Top = 4
-      Width = 449
+      Width = 375
       Height = 17
       Align = alTop
       BevelOuter = bvNone
@@ -216,18 +199,21 @@ object FormEditModule: TFormEditModule
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      ExplicitWidth = 449
     end
     object ToolBar2: TToolBar
-      Left = 422
+      Left = 348
       Top = 21
       Width = 31
-      Height = 222
+      Height = 254
       Align = alRight
       AutoSize = True
       BorderWidth = 2
       Caption = 'ToolBar2'
       Images = ImageList1
       TabOrder = 1
+      ExplicitLeft = 422
+      ExplicitHeight = 222
       object ToolButton9: TToolButton
         Left = 0
         Top = 0
@@ -244,8 +230,8 @@ object FormEditModule: TFormEditModule
     object ListDirectories: TMemo
       Left = 4
       Top = 21
-      Width = 418
-      Height = 222
+      Width = 344
+      Height = 254
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
@@ -258,21 +244,27 @@ object FormEditModule: TFormEditModule
       ScrollBars = ssBoth
       TabOrder = 2
       WordWrap = False
+      ExplicitWidth = 418
+      ExplicitHeight = 222
     end
   end
   object Panel6: TPanel
     Left = 0
     Top = 0
-    Width = 457
-    Height = 57
+    Width = 383
+    Height = 75
     Align = alTop
     BevelOuter = bvNone
     BorderWidth = 4
-    TabOrder = 3
+    TabOrder = 2
+    ExplicitWidth = 457
+    DesignSize = (
+      383
+      75)
     object Panel7: TPanel
       Left = 4
       Top = 4
-      Width = 449
+      Width = 375
       Height = 17
       Align = alTop
       BevelOuter = bvNone
@@ -286,19 +278,20 @@ object FormEditModule: TFormEditModule
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      ExplicitWidth = 449
     end
     object cbAction: TComboBox
       Left = 5
       Top = 27
-      Width = 448
+      Width = 368
       Height = 21
       Style = csDropDownList
+      Anchors = [akLeft, akTop, akRight]
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
-      ItemHeight = 13
       ParentFont = False
       TabOrder = 1
       OnChange = cbActionChange
@@ -314,13 +307,58 @@ object FormEditModule: TFormEditModule
         'Just Compile'
         'Run Batch File'
         'Register Expert Dll')
+      ExplicitWidth = 448
     end
+    object cbAllPlatforms: TCheckBox
+      Left = 5
+      Top = 52
+      Width = 139
+      Height = 17
+      Caption = 'For all Platforms'
+      TabOrder = 2
+    end
+  end
+  object Button1: TButton
+    Left = 6
+    Top = 513
+    Width = 75
+    Height = 25
+    Anchors = [akLeft, akBottom]
+    Caption = '&Ok'
+    ModalResult = 1
+    TabOrder = 3
+    ExplicitTop = 588
+  end
+  object Button2: TButton
+    Left = 87
+    Top = 513
+    Width = 75
+    Height = 25
+    Anchors = [akLeft, akBottom]
+    Cancel = True
+    Caption = '&Cancel'
+    ModalResult = 2
+    TabOrder = 4
+    ExplicitTop = 588
+  end
+  object btRequires: TButton
+    Left = 252
+    Top = 513
+    Width = 123
+    Height = 25
+    Anchors = [akRight, akBottom]
+    Caption = 'Package Requires...'
+    Enabled = False
+    TabOrder = 5
+    OnClick = btRequiresClick
+    ExplicitLeft = 330
+    ExplicitTop = 588
   end
   object ImageList1: TImageList
     Left = 16
     Top = 280
     Bitmap = {
-      494C01010C000E00040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010C001100040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -436,6 +436,8 @@ begin
   end
   else
     _CompilerPlatform := dpWin32;
+
+  MakeStudio.LogMessage( 'Compiler platform set to: '+ GetPlatformString);
 end;
 
 procedure SetDelphiVersion(AVersion: TDelphiVersion);
@@ -469,8 +471,8 @@ begin
       begin
         Var_Delphi := GetDelphiRootPathLong;
       end;
-    dver2005, dver2006, dver2007, dver2009, dver2010, dverXE, dverXE2, dverXE3, dverXE4, dverXE5, dverXE6, dverXE7, dverXE8,
-      dverD10S, dverD101B, dverD102T, dverD103R:
+    dver2005, dver2006, dver2007, dver2009, dver2010, dverXE, dverXE2, dverXE3, dverXE4, dverXE5, dverXE6, dverXE7, dverXE8, dverD10S,
+      dverD101B, dverD102T, dverD103R:
       begin
         Var_BDS := GetDelphiRootPathLong;
 
@@ -652,6 +654,7 @@ begin
   reg := TRegistry.Create;
   try
     reg.RootKey := HKEY_CURRENT_USER;
+    if reg.KeyExists(GetDelphiRootKey + GetLibraryKey) then begin
     reg.OpenKey(GetDelphiRootKey + GetLibraryKey, False);
     S := GetDelphiSearchPath;
     if (S <> '') and (S[Length(S)] <> ';') then
@@ -664,7 +667,8 @@ begin
         S := S + S1 + ';';
         MakeStudio.LogMessage(Format(stdAddingSearchPath, [S1]));
       end
-      else begin
+      else
+      begin
         MakeStudio.LogMessage(Format(stdSearchPathAlreadyAdded, [S1]));
       end;
     end;
@@ -673,7 +677,13 @@ begin
         SetLength(S, Length(S) - 1);
       reg.WriteString(stdcSearchPath, S);
     except
+      On E:Exception do begin
+        MakeStudio.LogMessage( E.Message);
+      end;
     end;
+    end
+    else
+      MakeStudio.LogMessage( Format( StrRegistryKeyNotExist, [GetDelphiRootKey + GetLibraryKey]));
   finally
     reg.Free;
   end;
@@ -766,7 +776,6 @@ end;
 function GetDelphiSearchPath: string;
 begin
   Result := ReplaceDelphiPathVars(ReadRegStringLM(GetDelphiRootKey + GetLibraryKey, stdcSearchPath, ''));
-
   Result := StringReplace(Result, ';;', ';', [rfReplaceAll]);
 end;
 
@@ -855,7 +864,7 @@ end;
 
 function GetLibraryKey: String;
 begin
-  if GetDelphiVersion > dverXE then
+  if (GetDelphiVersion > dverXE) and (GetDelphiVersion < dverD103R) then
   begin
     case _CompilerPlatform of
       dpOSX32:
@@ -872,6 +881,31 @@ begin
         Result := stdLibraryKey + '\' + stdcPlatformAndroid32;
     end;
   end
+  else if GetDelphiVersion > dverD102T then
+  begin
+    case _CompilerPlatform of
+      dpOSX32:
+        Result := stdLibraryKey + '\' + stdcPlatformOSX32;
+      dpOSX64:
+        Result := stdLibraryKey + '\' + stdcPlatformOSX64;
+      dpWin32:
+        Result := stdLibraryKey + '\' + stdcPlatformWIN32;
+      dpWin64:
+        Result := stdLibraryKey + '\' + stdcPlatformWIN64;
+      dpiOSDevice:
+        Result := stdLibraryKey + '\' + stdcPlatformIOSDevice;
+      dpiOSDevice32:
+        Result := stdLibraryKey + '\' + stdcPlatformIOSDevice32;
+      dpiOSDevice64:
+        Result := stdLibraryKey + '\' + stdcPlatformIOSDevice64;
+      dpiOSSimulator:
+        Result := stdLibraryKey + '\' + stdcPlatformIOSSimulator;
+      dpAndroid32:
+        Result := stdLibraryKey + '\' + stdcPlatformAndroid32;
+      dpAndroid64:
+        Result := stdLibraryKey + '\' + stdcPlatformAndroid64;
+    end;
+  end
   else
     Result := stdLibraryKey;
 end;
@@ -881,16 +915,24 @@ begin
   case _CompilerPlatform of
     dpOSX32:
       Result := stdcPlatformOSX32;
+    dpOSX64:
+      Result := stdcPlatformOSX64;
     dpWin32:
       Result := stdcPlatformWIN32;
     dpWin64:
       Result := stdcPlatformWIN64;
     dpiOSDevice:
       Result := stdcPlatformIOSDevice;
+    dpiOSDevice32:
+      Result := stdcPlatformIOSDevice32;
+    dpiOSDevice64:
+      Result := stdcPlatformIOSDevice64;
     dpiOSSimulator:
       Result := stdcPlatformIOSSimulator;
     dpAndroid32:
       Result := stdcPlatformAndroid32;
+    dpAndroid64:
+      Result := stdcPlatformAndroid64;
   else
     Result := '';
   end;
@@ -1211,16 +1253,24 @@ begin
   case GetCompilerPlatform of
     dpOSX32:
       Result := stdcPlatformOSX32;
+    dpOSX64:
+      Result := stdcPlatformOSX64;
     dpWin32:
       Result := stdcPlatformWIN32;
     dpWin64:
       Result := stdcPlatformWIN64;
     dpiOSDevice:
       Result := stdcPlatformIOSDevice;
+    dpiOSDevice32:
+      Result := stdcPlatformIOSDevice32;
+    dpiOSDevice64:
+      Result := stdcPlatformIOSDevice64;
     dpiOSSimulator:
       Result := stdcPlatformIOSSimulator;
     dpAndroid32:
       Result := stdcPlatformAndroid32;
+    dpAndroid64:
+      Result := stdcPlatformAndroid64;
   end;
 end;
 

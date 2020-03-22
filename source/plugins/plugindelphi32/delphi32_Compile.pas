@@ -55,12 +55,14 @@ type
     FSearchDirs: TStringList;
 
     FLastProcessOutput: string;
+    FAllPlatforms: Boolean;
     procedure SetDMakAction(Value: TDMakAction);
     function GetFilename: string;
     function GetOutputDir: string;
     procedure aSetFilename(const Value: string);
     function GetRealDelphiFilename: String;
     function GetRealOutputDir: String;
+    procedure SetAllPlatforms(const Value: Boolean);
 
   protected
     // ICommand
@@ -105,6 +107,7 @@ type
     property CompilerSwitch: string read FCompilerSwitch write FCompilerSwitch;
     property OutputDir: string read GetOutputDir write FOutputDir;
     property SearchDirs: TStringList read FSearchDirs write FSearchDirs;
+    property AllPlatforms: Boolean read FAllPlatforms write SetAllPlatforms;
     property _DelphiFilename: String read GetRealDelphiFilename;
     property _OutputDir: String read GetRealOutputDir;
 
@@ -128,6 +131,9 @@ implementation
 uses
   ComServ, delphi32_EditDelphi32Module, delphi32_Utils, system.IOUtils;
 
+resourcestring
+  StrForAllPlatforms = 'For all Platforms';
+
 function TDelphi32ModuleCallback.CreateCommand: IDispatch;
 begin
   Result := ICommand(TDelphi32Module.Create(nil));
@@ -148,6 +154,7 @@ begin
   OutputDir := '';
   SearchDirs := TStringList.Create;
   FLastProcessOutput := '';
+  FAllPlatforms := false;
 end;
 
 destructor TDelphi32Module.Destroy;
@@ -235,6 +242,8 @@ begin
     Result := Result + Canvas.TextHeight(DelphiFilename) + 2;
     Canvas.Font.Style := [];
 
+    if AllPlatforms then
+      Result := Result + Canvas.TextHeight(StrForAllPlatforms) + 2;
     if CompilerSwitch <> '' then
       Result := Result + Canvas.TextHeight(CompilerSwitch) + 2;
     if OutputDir <> '' then
@@ -258,8 +267,8 @@ begin
   end;
 end;
 
-function TDelphi32Module.DrawItem(Handle: Integer; Left: Integer; Top: Integer; Right: Integer; Bottom: Integer;
-  Selected: WordBool; BriefView: WordBool; BkColor: OLE_COLOR): WordBool;
+function TDelphi32Module.DrawItem(Handle: Integer; Left: Integer; Top: Integer; Right: Integer; Bottom: Integer; Selected: WordBool;
+  BriefView: WordBool; BkColor: OLE_COLOR): WordBool;
 var
   Offset: Integer;
   Canvas: TCanvas;
@@ -275,7 +284,7 @@ var
   end;
 
 begin
-  Result := False; // ownerdraw
+  Result := false; // ownerdraw
 
   Canvas := TCanvas.Create;
   try
@@ -300,6 +309,14 @@ begin
     Offset := Offset + Canvas.TextHeight(Caption) + 2;
     if not BriefView then
     begin
+      if AllPlatforms then
+      begin
+        SetCanvasTextColor(clBlue);
+        Canvas.TextOut(aRect.Left + iDefaultIndent + 10, aRect.Top + Offset, StrForAllPlatforms);
+        Offset := Offset + Canvas.TextHeight(StrForAllPlatforms) + 2;
+        Canvas.Font.Style := [];
+      end;
+
       SetCanvasTextColor(clBlue);
       Canvas.TextOut(aRect.Left + iDefaultIndent + 10, aRect.Top + Offset, DelphiFilename);
       Offset := Offset + Canvas.TextHeight(DelphiFilename) + 2;
@@ -341,6 +358,11 @@ begin
   finally
     Canvas.Free;
   end;
+end;
+
+procedure TDelphi32Module.SetAllPlatforms(const Value: Boolean);
+begin
+  FAllPlatforms := Value;
 end;
 
 procedure TDelphi32Module.SetDMakAction(Value: TDMakAction);
@@ -473,16 +495,16 @@ var
   VAR
     pList: TStringList;
   begin
-//    sl1.Add('-U"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + UPath + '"');
-//    sl1.Add('-R"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + RPath + '"');
-//    sl1.Add('-I"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + IPath + '"');
-//    sl1.Add('-O"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + OPath + '"');
-//
+    // sl1.Add('-U"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + UPath + '"');
+    // sl1.Add('-R"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + RPath + '"');
+    // sl1.Add('-I"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + IPath + '"');
+    // sl1.Add('-O"' + GetDelphiDCPPath + ';' + GetDelphiSearchPath + OPath + '"');
+    //
     pList := TStringList.Create;
     try
-      omParseString( GetDelphiDCPPath,    ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim, omPoUniqueOnly]);
-      omParseString( GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim, omPoUniqueOnly]);
-      omParseString( UPath,               ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim, omPoUniqueOnly]);
+      omParseString(GetDelphiDCPPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim, omPoUniqueOnly]);
+      omParseString(GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim, omPoUniqueOnly]);
+      omParseString(UPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim, omPoUniqueOnly]);
 
       omPrefixStrings('-I', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
       omPrefixStrings('-R', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
@@ -528,8 +550,7 @@ var
 
     // Compiler switch
     if CompilerSwitch <> '' then
-      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13,
-        [rfReplaceAll, rfIgnoreCase]));
+      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
     sl1.SaveToFile(SrcPath + 'dcc32.cfg');
   end;
 
@@ -537,21 +558,21 @@ var
   VAR
     pList: TStringList;
   begin
-//    sl1.Add('-I' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-//      GetDelphiDCPPath));
-//    sl1.Add('-R' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-//      GetDelphiDCPPath));
-//    sl1.Add('-U' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-//      GetDelphiDCPPath));
-//    sl1.Add('-O' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-//      GetDelphiDCPPath));
+    // sl1.Add('-I' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+    // GetDelphiDCPPath));
+    // sl1.Add('-R' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+    // GetDelphiDCPPath));
+    // sl1.Add('-U' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+    // GetDelphiDCPPath));
+    // sl1.Add('-O' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+    // GetDelphiDCPPath));
 
     pList := TStringList.Create;
     try
-      omParseString( GetDelphiLangPath,   ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
-      omParseString( GetDelphiDCPPath,    ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
-      omParseString( GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
-      omParseString( UPath,               ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+      omParseString(GetDelphiLangPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+      omParseString(GetDelphiDCPPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+      omParseString(GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+      omParseString(UPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
 
       omPrefixStrings('-I', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
       omPrefixStrings('-R', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
@@ -602,8 +623,7 @@ var
 
     // Compiler switch
     if CompilerSwitch <> '' then
-      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13,
-        [rfReplaceAll, rfIgnoreCase]));
+      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
 
     // FileDelete( SrcPath + 'dcc32.cfg');
     case GetCompilerPlatform of
@@ -621,33 +641,33 @@ var
   VAR
     pList: TStringList;
   begin
-//    if GetLANGDIR <> '' then
-//    begin
-//      sl1.Add('-I' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-//        GetDelphiDCPPath));
-//      sl1.Add('-R' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-//        GetDelphiDCPPath));
-//      sl1.Add('-U' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-//        GetDelphiDCPPath));
-//      sl1.Add('-O' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
-//        GetDelphiDCPPath));
-//    end
-//    else
-//    begin
-//      sl1.Add('-I' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-//      sl1.Add('-R' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-//      sl1.Add('-U' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-//      sl1.Add('-O' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
-//    end;
-//
+    // if GetLANGDIR <> '' then
+    // begin
+    // sl1.Add('-I' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+    // GetDelphiDCPPath));
+    // sl1.Add('-R' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+    // GetDelphiDCPPath));
+    // sl1.Add('-U' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+    // GetDelphiDCPPath));
+    // sl1.Add('-O' + QuoteSeparetedList(GetDelphiLangPath + ';' + GetDelphiSearchPath + ';' + UPath + ';' +
+    // GetDelphiDCPPath));
+    // end
+    // else
+    // begin
+    // sl1.Add('-I' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+    // sl1.Add('-R' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+    // sl1.Add('-U' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+    // sl1.Add('-O' + QuoteSeparetedList(GetDelphiSearchPath + ';' + UPath + ';' + GetDelphiDCPPath));
+    // end;
+    //
 
     pList := TStringList.Create;
     try
       if GetLANGDIR <> '' then
-        omParseString( GetDelphiLangPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
-      omParseString( GetDelphiDCPPath,    ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
-      omParseString( GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
-      omParseString( UPath,               ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+        omParseString(GetDelphiLangPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+      omParseString(GetDelphiDCPPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+      omParseString(GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+      omParseString(UPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
 
       omPrefixStrings('-I', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
       omPrefixStrings('-R', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
@@ -698,8 +718,7 @@ var
 
     // Compiler switch
     if CompilerSwitch <> '' then
-      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13,
-        [rfReplaceAll, rfIgnoreCase]));
+      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
 
     // FileDelete( SrcPath + 'dcc32.cfg');
     case GetCompilerPlatform of
@@ -720,7 +739,7 @@ var
   end;
 
 begin
-  Result := False;
+  Result := false;
 
   UPath := '';
   RPath := '';
@@ -819,10 +838,10 @@ begin
   sl := TStringList.Create;
   try
     reg.RootKey := HKEY_CURRENT_USER;
-    if reg.OpenKey(GetDelphiRootKey + stdPackagesKey, False) then
+    if reg.OpenKey(GetDelphiRootKey + stdPackagesKey, false) then
       try
         reg.GetValueNames(sl);
-        Found := False;
+        Found := false;
         for I := 0 to sl.Count - 1 do
         begin
           S := ReplaceDelphiPathVars(sl[I]);
@@ -882,7 +901,7 @@ begin
   sl := TStringList.Create;
   try
     reg.RootKey := HKEY_CURRENT_USER;
-    reg.OpenKey(GetDelphiRootKey + stdPackagesKey, False);
+    reg.OpenKey(GetDelphiRootKey + stdPackagesKey, false);
     try
       reg.GetValueNames(sl);
       for I := 0 to sl.Count - 1 do
@@ -1036,13 +1055,29 @@ begin
 end;
 
 procedure TDelphi32Module.SetSearchPath;
+var
+  pf, pfStored: TCompilerPlatform;
 begin
   MakeStudio.LogMessage('');
   MakeStudio.LogMessage(stdBreak);
 
   if SearchDirs.Count > 0 then
   begin
-    AddPathListToDelphiPath(SearchDirs);
+    if AllPlatforms then
+    begin
+
+      pfStored := GetCompilerPlatform;
+
+      for pf := Low(TCompilerPlatform) to High(TCompilerPlatform) do
+      begin
+        SetCompilerPlatform(pf);
+        AddPathListToDelphiPath(SearchDirs);
+      end;
+
+      SetCompilerPlatform(pfStored);
+    end
+    else
+      AddPathListToDelphiPath(SearchDirs);
   end;
 end;
 
@@ -1052,8 +1087,7 @@ begin
   MakeStudio.LogMessage(_DelphiFilename + ' ' + CompilerSwitch);
 
   // Executing Batch
-  if MakeStudio.ExecCmdLine(_DelphiFilename, CompilerSwitch, ExtractFilePath(_DelphiFilename), IExecCallback(Self)) < 0
-  then
+  if MakeStudio.ExecCmdLine(_DelphiFilename, CompilerSwitch, ExtractFilePath(_DelphiFilename), IExecCallback(Self)) < 0 then
     MakeStudio.LogMessage(stderrRunningBatch);
 end;
 
@@ -1068,7 +1102,7 @@ procedure TDelphi32Module.CaptureOutput(const Line: WideString; var Aborted: Wor
     for I := 0 to High(Values) do
       if Pos(Values[I], Text) > 0 then
         Exit;
-    Result := False;
+    Result := false;
   end;
 
   function IsCompileFileLine(const AText: string): Boolean;
@@ -1084,7 +1118,7 @@ procedure TDelphi32Module.CaptureOutput(const Line: WideString; var Aborted: Wor
   var
     ps, psEnd: Integer;
   begin
-    Result := False;
+    Result := false;
     ps := PosLast('(', AText);
     if (ps > 0) and (Pos(': ', AText) = 0) and (Pos('.', AText) > 0) then
     begin
@@ -1142,6 +1176,8 @@ begin
     Result := IntToStr(Ord(DMakAction))
   else if ParamName = stdcCompilerSwitch then
     Result := CompilerSwitch
+  else if ParamName = stdcAllPlatforms then
+    Result := BoolToStr(AllPlatforms, True)
   else if ParamName = stdcOutputDir then
     Result := OutputDir
   else if ParamName = stdcSearchCount then
@@ -1169,6 +1205,8 @@ begin
     DMakAction := TDMakAction(StrToInt(Value))
   else if ParamName = stdcCompilerSwitch then
     CompilerSwitch := Value
+  else if ParamName = stdcAllPlatforms then
+    AllPlatforms := StrToBool(Value)
   else if ParamName = stdcOutputDir then
     OutputDir := Value
   else if ParamName = stdcSearchCount then
@@ -1201,16 +1239,18 @@ begin
       Result := stdcOutputDir;
     4:
       Result := stdcSearchCount;
+    5:
+      Result := stdcAllPlatforms;
   else
     begin
-      Result := Format(stdcSearchDirs, [Index - 4]);
+      Result := Format(stdcSearchDirs, [Index - 5]);
     end;
   end;
 end;
 
 function TDelphi32Module.Get_ParamCount: Integer;
 begin
-  Result := 5 + SearchDirs.Count;
+  Result := 6 + SearchDirs.Count;
 end;
 
 function TDelphi32ModuleCallback.GetIdentifier: WideString;
@@ -1241,7 +1281,7 @@ begin
     if reg.OpenKey(GetDelphiRootKey + stdExpertsKey, True) then
       try
         reg.GetValueNames(sl);
-        Found := False;
+        Found := false;
         for I := 0 to sl.Count - 1 do
         begin
           S := ReplaceDelphiPathVars(sl[I]);
@@ -1319,7 +1359,7 @@ procedure TDelphi32Module.RemoveAllUserPackages;
     reg := TRegistry.Create;
     try
       reg.RootKey := HKEY_CURRENT_USER;
-      if reg.OpenKey(GetDelphiRootKey + stdPackagesKey, False) then
+      if reg.OpenKey(GetDelphiRootKey + stdPackagesKey, false) then
         try
           reg.GetValueNames(sl);
           for I := 0 to sl.Count - 1 do
@@ -1337,7 +1377,7 @@ procedure TDelphi32Module.RemoveAllUserPackages;
     I: Integer;
   begin
     // Delete only packages in the given search path
-    Result := False;
+    Result := false;
     for I := 0 to SearchDirs.Count - 1 do
     begin
       s1 := UpperCase(IncludeTrailingPathDelimiter(SearchDirs[I]));
@@ -1382,7 +1422,7 @@ procedure TDelphi32Module.RemoveAllUserPackages;
     sl := TStringList.Create;
     try
       reg.RootKey := HKEY_CURRENT_USER;
-      reg.OpenKey(GetDelphiRootKey + stdPackagesKey, False);
+      reg.OpenKey(GetDelphiRootKey + stdPackagesKey, false);
       try
         reg.GetValueNames(sl);
         for I := 0 to sl.Count - 1 do
@@ -1442,7 +1482,7 @@ procedure TDelphi32Module.RemoveSearchPath;
 begin
   if SearchDirs.Count > 0 then
     if DMakAction = dmaRemoveSearchPath then
-      RemovePathListFromDelphiPath(SearchDirs, False)
+      RemovePathListFromDelphiPath(SearchDirs, false)
     else
       RemovePathListFromDelphiPath(SearchDirs, True);
 end;

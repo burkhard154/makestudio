@@ -7,10 +7,12 @@ http://www.delphi-jedi.org/
 Download at GitHub:
 https://github.com/project-jedi
 
-2. Delphi ZIP:
+2. Delphi ZIP (Zipmstr):
 Used in ZIP Plugin
 http://www.delphizip.org
 Current Version is Delphi Zip v1.9.1
+
+IMPORTANT: Actually discontinued, has to be replaced some time
 
 3. Microsoft HTML Help Workshop
 http://www.microsoft.com/en-us/download/details.aspx?id=21138

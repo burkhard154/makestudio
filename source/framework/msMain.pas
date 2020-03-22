@@ -211,6 +211,12 @@ type
     MainFormPanel: TJvEmbeddedFormPanel;
     acComment: TAction;
     ToolButton1: TToolButton;
+    acReplaceScriptDirWithVariable: TAction;
+    acReplace: TAction;
+    ReplaceDialog: TReplaceDialog;
+    ReplacewithActiveScriptDir1: TMenuItem;
+    Replace1: TMenuItem;
+    N1: TMenuItem;
     procedure acHelpExecute(Sender: TObject);
     procedure JvDragDrop1Drop(Sender: TObject; Pos: TPoint; Value: TStrings);
     procedure acDebugCurrentExecute(Sender: TObject);
@@ -221,8 +227,7 @@ type
     procedure acCopyExecute(Sender: TObject);
     procedure acCutExecute(Sender: TObject);
     procedure acSaveAsExecute(Sender: TObject);
-    procedure JvMRUManagerClick(Sender: TObject; const RecentName, Caption: string;
-      UserData: Integer);
+    procedure JvMRUManagerClick(Sender: TObject; const RecentName, Caption: string; UserData: Integer);
     procedure acCommandListExecute(Sender: TObject);
     procedure acStopExecute(Sender: TObject);
     procedure ToolButton2Click(Sender: TObject);
@@ -253,6 +258,9 @@ type
     procedure acToggleBreakpointExecute(Sender: TObject);
     procedure acEditScheduleExecute(Sender: TObject);
     procedure acCommentExecute(Sender: TObject);
+    procedure acReplaceExecute(Sender: TObject);
+    procedure acReplaceScriptDirWithVariableExecute(Sender: TObject);
+    procedure ReplaceDialogReplace(Sender: TObject);
   private
     function CheckOpenModified: Boolean;
     procedure CheckHelpSystem;
@@ -268,8 +276,7 @@ type
     procedure OnAfterStopProgram; stdcall;
     procedure OnProgramPaused; stdcall;
     procedure OnSetProgramPosition(const ItemIndex: Integer); stdcall;
-    procedure OnSetProgress(const ACaption: string; const ProgressMin, ProgressMax,
-      ProgressPosition: Integer); stdcall;
+    procedure OnSetProgress(const ACaption: string; const ProgressMin, ProgressMax, ProgressPosition: Integer); stdcall;
     procedure OnClearItems; stdcall;
     procedure OnRefresh; stdcall;
     procedure OnAddItem(const ItemIndex: Integer); stdcall;
@@ -722,8 +729,7 @@ begin
   Err := True;
   if mst <> nil then
   begin
-    mst.ApplicationName := PathAddSeparator(ExtractFilePath(Forms.Application.ExeName)) +
-      'MakeStudioe.exe';
+    mst.ApplicationName := PathAddSeparator(ExtractFilePath(Forms.Application.ExeName)) + 'MakeStudioe.exe';
     mst.Parameters := '"' + Programhandler.Filename + '"';
     mst.WorkingDirectory := ExtractFilePath(Forms.Application.ExeName);
     mst.Save;
@@ -783,7 +789,8 @@ procedure TFormMain.acCommentExecute(Sender: TObject);
 var
   I: Integer;
 begin
-  if Programhandler.SelectedCount > 0 then begin
+  if Programhandler.SelectedCount > 0 then
+  begin
     for I := 0 to Programhandler.Count - 1 do
       if Programhandler.Items[I].Selected then
         Programhandler.Items[I].IsIgnored := not Programhandler.Items[I].IsIgnored;
@@ -876,12 +883,10 @@ begin
   begin
     if not CommandTypes.Items[I].Bitmap.Empty then
     begin
-      if (CommandTypes.Items[I].Bitmap.Width = ImageList1.Width) and
-        (CommandTypes.Items[I].Bitmap.Height = ImageList1.Height) then
+      if (CommandTypes.Items[I].Bitmap.Width = ImageList1.Width) and (CommandTypes.Items[I].Bitmap.Height = ImageList1.Height) then
       begin
         CommandTypes.Items[I].Bitmap.PixelFormat := pf8bit;
-        ImageList1.AddMasked(CommandTypes.Items[I].Bitmap,
-          CommandTypes.Items[I].Bitmap.TransparentColor);
+        ImageList1.AddMasked(CommandTypes.Items[I].Bitmap, CommandTypes.Items[I].Bitmap.TransparentColor);
       end;
     end;
 
@@ -999,8 +1004,7 @@ begin
   UpdateCaption;
 end;
 
-procedure TFormMain.OnSetProgress(const ACaption: string;
-  const ProgressMin, ProgressMax, ProgressPosition: Integer);
+procedure TFormMain.OnSetProgress(const ACaption: string; const ProgressMin, ProgressMax, ProgressPosition: Integer);
 begin
   StatusBar.Panels[1].Text := ACaption;
   Forms.Application.ProcessMessages;
@@ -1011,8 +1015,7 @@ begin
   UpdateCaption;
 end;
 
-procedure TFormMain.JvMRUManagerClick(Sender: TObject; const RecentName, Caption: string;
-  UserData: Integer);
+procedure TFormMain.JvMRUManagerClick(Sender: TObject; const RecentName, Caption: string; UserData: Integer);
 begin
   if CheckOpenModified then
     Programhandler.LoadFromFile(RecentName);
@@ -1032,20 +1035,15 @@ end;
 procedure TFormMain.UpdateActionList;
 begin
   acStop.Enabled := Programhandler.ActiveProgram.IsRun;
-  acRun.Enabled := Programhandler.ActiveProgram.ActiveProgram.IsPaused or
-    not Programhandler.ActiveProgram.IsRun;
-  acDebugNext.Enabled := Programhandler.ActiveProgram.IsPaused or
-    not Programhandler.ActiveProgram.IsRun;
+  acRun.Enabled := Programhandler.ActiveProgram.ActiveProgram.IsPaused or not Programhandler.ActiveProgram.IsRun;
+  acDebugNext.Enabled := Programhandler.ActiveProgram.IsPaused or not Programhandler.ActiveProgram.IsRun;
   acDebugCurrent.Enabled := not Programhandler.ActiveProgram.IsRun;
-  acToggleBreakpoint.Enabled := Programhandler.ActiveProgram.IsPaused or
-    not(Programhandler.ActiveProgram.IsRun);
+  acToggleBreakpoint.Enabled := Programhandler.ActiveProgram.IsPaused or not(Programhandler.ActiveProgram.IsRun);
   acEditModule.Enabled := Programhandler.ActiveProgram.SelectedCount > 0;
   acCopy.Enabled := not Programhandler.ActiveProgram.IsRun and Programhandler.ActiveProgram.CanCopy;
   acCut.Enabled := not Programhandler.ActiveProgram.IsRun and Programhandler.ActiveProgram.CanCopy;
-  acPaste.Enabled := not Programhandler.ActiveProgram.IsRun and
-    Programhandler.ActiveProgram.CanPaste;
-  acDeleteSelection.Enabled := (not Programhandler.ActiveProgram.IsRun) and
-    (Programhandler.ActiveProgram.SelectedCount > 0);
+  acPaste.Enabled := not Programhandler.ActiveProgram.IsRun and Programhandler.ActiveProgram.CanPaste;
+  acDeleteSelection.Enabled := (not Programhandler.ActiveProgram.IsRun) and (Programhandler.ActiveProgram.SelectedCount > 0);
 end;
 
 procedure TFormMain.acCutExecute(Sender: TObject);
@@ -1137,10 +1135,76 @@ end;
 
 procedure TFormMain.acHelpExecute(Sender: TObject);
 begin
-  Application.HelpFile := GetHelpFile;
-  ShellExecute( 0, 'open', PChar(Application.HelpFile), nil, nil, SW_NORMAL);
-//  Application.HelpSystem.ShowTableOfContents;
-//  HelpContent(GetHelpFile);
+  Application.Helpfile := GetHelpFile;
+  ShellExecute(0, 'open', PChar(Application.Helpfile), nil, nil, SW_NORMAL);
+  // Application.HelpSystem.ShowTableOfContents;
+  // HelpContent(GetHelpFile);
+end;
+
+procedure TFormMain.acReplaceExecute(Sender: TObject);
+begin
+  ReplaceDialog.Position := Point(MainFormPanel.Left, MainFormPanel.Top);
+  ReplaceDialog.Execute;
+end;
+
+procedure TFormMain.acReplaceScriptDirWithVariableExecute(Sender: TObject);
+var
+  sl: TStringList;
+  ActiveDir: String;
+begin
+  if Varhandler.VarExists(stdcActiveScriptDir) then
+  begin
+    ActiveDir := Varhandler.GetVar(stdcActiveScriptDir);
+
+    if ActiveDir <> '' then
+    begin
+      if MessageDlg(Format('Do you want to replace "%s" with the placeholder %%%s%%?', [ActiveDir, stdcActiveScriptDir]), mtConfirmation,
+        [mbYes,mbNo], 0) = mrYes then
+      begin
+
+        sl := TStringList.Create;
+        try
+          // Get Text from Program
+          Programhandler.SaveToStrings(sl);
+
+          // Do Replace
+          sl.Text := StringReplace(sl.Text, ActiveDir, '%' + stdcActiveScriptDir + '%', [rfReplaceAll, rfIgnoreCase]);
+
+          // Set Text to Program
+          Programhandler.LoadFromStrings(sl);
+        finally
+          sl.Free;
+        end;
+      end;
+    end
+    else
+      MessageDlg('Please save the script first!', mtError, [mbOK], 0);
+  end;
+end;
+
+procedure TFormMain.ReplaceDialogReplace(Sender: TObject);
+var
+  sl: TStringList;
+  Flags: TReplaceFlags;
+begin
+  sl := TStringList.Create;
+  try
+    // Get Text from Program
+    Programhandler.SaveToStrings(sl);
+
+    // Do Replace
+    Flags := [];
+    if not(frMatchCase in ReplaceDialog.Options) then
+      Include(Flags, rfIgnoreCase);
+    if frReplaceAll in ReplaceDialog.Options then
+      Include(Flags, rfReplaceAll);
+    sl.Text := StringReplace(sl.Text, ReplaceDialog.FindText, ReplaceDialog.ReplaceText, Flags);
+
+    // Set Text to Program
+    Programhandler.LoadFromStrings(sl);
+  finally
+    sl.Free;
+  end;
 end;
 
 end.
