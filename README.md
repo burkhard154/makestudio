@@ -9,7 +9,7 @@ All Build commands are placed in external plugins which could be written either 
 ## What are the differences to other Build tools? ##
 
 The original idea for makestudio was born during multiple installations of the Delphi IDE. Many packages had to be compiled and registered which took a lot of time. The first version for automated setup of the Delphi IDE was created and saved a lot of work and time.
-This is the case today until Delphi version 10.3 and within 2020 10.4. 
+This is still the case today until Delphi version 10.3 and within 2020 10.4. 
 
 In the following years makestudio developed into a comfortable open source build tool for Windows projects. With focus not only on Delphi.
 
