@@ -37,7 +37,7 @@ uses
   Variants, Types,
   {$ENDIF DELPHI6_UP}
   Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ShellApi;
+  Dialogs, StdCtrls, ShellApi, JvExControls, JvLinkLabel;
 
 type
   TFormHelpWorkshopError = class(TForm)
@@ -71,7 +71,7 @@ end;
 procedure TFormHelpWorkshopError.Label1Click(Sender: TObject);
 begin
   ShellExecute(0, 'open',
-    'http://msdn.microsoft.com/library/default.asp?url=/library/en-us/htmlhelp/html/hwMicrosoftHTMLHelpDownloads.asp',
+    'http://go.microsoft.com/fwlink/p/?linkid=14188',
     nil, nil, SW_SHOWNORMAL);
 end;
 

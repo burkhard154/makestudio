@@ -50,8 +50,8 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
     TabOrder = 1
   end
   object cbVersion: TJvImageComboBox
-    Left = 16
-    Top = 24
+    Left = 17
+    Top = 27
     Width = 305
     Height = 23
     Style = csOwnerDrawVariable
@@ -184,6 +184,12 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
         ImageIndex = 5
         Indent = 0
         Text = 'Delphi 10.3 Rio'
+      end
+      item
+        Brush.Style = bsClear
+        ImageIndex = 5
+        Indent = 0
+        Text = 'Delphi 10.4 Sydney'
       end>
   end
   object cbVar: TComboBox

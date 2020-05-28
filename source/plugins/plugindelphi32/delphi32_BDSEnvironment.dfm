@@ -238,6 +238,12 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
           ImageIndex = 4
           Indent = 0
           Text = 'Delphi 10.3 Rio'
+        end
+        item
+          Brush.Style = bsClear
+          ImageIndex = 4
+          Indent = 0
+          Text = 'Delphi 10.4 Sydney'
         end>
     end
     object d5: TCheckBox
@@ -419,6 +425,15 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
       Caption = 'Delphi 10.3 Rio'
       Enabled = False
       TabOrder = 20
+    end
+    object dD104S: TCheckBox
+      Left = 255
+      Top = 165
+      Width = 113
+      Height = 15
+      Caption = 'Delphi 10.4 Sydney'
+      Enabled = False
+      TabOrder = 21
     end
   end
   object edProjectDir: TJvDirectoryEdit

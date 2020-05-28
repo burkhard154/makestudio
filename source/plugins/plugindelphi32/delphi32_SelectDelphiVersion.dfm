@@ -2,7 +2,7 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
   Left = 661
   Top = 214
   Caption = 'Delphi Version'
-  ClientHeight = 453
+  ClientHeight = 479
   ClientWidth = 274
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,14 +15,14 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
   OnCreate = FormCreate
   DesignSize = (
     274
-    453)
+    479)
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
-    Left = 16
-    Top = 11
+    Left = 8
+    Top = 12
     Width = 241
-    Height = 403
+    Height = 429
     Anchors = [akLeft, akTop, akBottom]
     Caption = 'Aktuelle Delphi Version'
     TabOrder = 0
@@ -161,6 +161,12 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
           ImageIndex = 4
           Indent = 0
           Text = 'Delphi 10.3 Rio'
+        end
+        item
+          Brush.Style = bsClear
+          ImageIndex = 4
+          Indent = 0
+          Text = 'Delphi 10.4 Sydney'
         end>
     end
     object d5: TCheckBox
@@ -343,10 +349,19 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
       Enabled = False
       TabOrder = 20
     end
+    object dD104S: TCheckBox
+      Left = 16
+      Top = 389
+      Width = 140
+      Height = 18
+      Caption = 'Delphi 10.4 Sydney'
+      Enabled = False
+      TabOrder = 21
+    end
   end
   object Button1: TButton
     Left = 16
-    Top = 421
+    Top = 447
     Width = 75
     Height = 25
     Anchors = [akLeft, akBottom]
@@ -354,10 +369,11 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
     Default = True
     ModalResult = 1
     TabOrder = 1
+    ExplicitTop = 421
   end
   object Button2: TButton
     Left = 97
-    Top = 421
+    Top = 447
     Width = 75
     Height = 25
     Anchors = [akLeft, akBottom]
@@ -365,6 +381,7 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
     Caption = 'Cancel'
     ModalResult = 2
     TabOrder = 2
+    ExplicitTop = 421
   end
   object ImageList1: TImageList
     Left = 216
