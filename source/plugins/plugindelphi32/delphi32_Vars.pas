@@ -124,6 +124,8 @@ resourcestring
   stdverSetErr = 'Delphi Version %s not selected';
   stderrNoDelphi = 'ERROR: Selected Delphi Version seems not to be installed?';
   stdBPLDirNotInPath = 'Selected BPL directory not in Search path.'#10#13 + 'Shall it be added?';
+  stdBPLDirNotExist = 'BPL directory "%s" of %s does not exist.'#10#13 + 'Create it?';
+  stdverBPLDirNotInPath = 'BPL of %s directory is not in Search path.'#10#13 + 'Edit Environment Variables for %s?';
   stderrPathEmpty = 'Path name cannot be empty!';
   stderrCompile = 'Error compiling!';
   stderrRegister = 'Error registering Server!';
@@ -246,7 +248,7 @@ const
   stDelphi24Key: string = '18.0\'; //D10.1 Berlin
   stDelphi25Key: string = '19.0\'; //D10.2 Tokyo
   stDelphi26Key: string = '20.0\'; //D10.3 Rio
-  stDelphi27Key: string = '21.0';
+  stDelphi27Key: string = '21.0\'; //D10.4 Sydney
   stDelphiInstallKey: string = 'RootDir';
   stdPackagesKey: string = 'Known Packages';
   stdExpertsKey: string = 'Experts';

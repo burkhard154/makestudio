@@ -619,7 +619,7 @@ begin
               Result := StringReplace(Result, '$(BDSLIB)', GetBDSLIB, [rfReplaceAll, rfIgnoreCase]);
               // Platform, LANGDIR, BDSLIB, BDSBIN
             end;
-          dverXE2 .. dverD103R:
+          dverXE2 .. dverD104S:
             begin
               Result := StringReplace(Result, '$(PLATFORM)', GetPlatformString, [rfReplaceAll, rfIgnoreCase]);
               Result := StringReplace(Result, '$(LANGDIR)', GetLANGDIR, [rfReplaceAll, rfIgnoreCase]);
@@ -873,7 +873,7 @@ end;
 
 function GetLibraryKey: String;
 begin
-  if (GetDelphiVersion > dverXE) and (GetDelphiVersion < dverD104S) then
+  if (GetDelphiVersion > dverXE) and (GetDelphiVersion < dverD103R) then
   begin
     case _CompilerPlatform of
       dpOSX32:
@@ -1438,19 +1438,14 @@ begin
         // find out if the BPL Path is in the Pathlist
         if not IsInPathList(ExcludeTrailingPathDelimiter(GetDelphiBPLPath)) then
         begin
-          if MessageDlg(stdBPLDirNotInPath, mtError, [mbYes, mbNo], 0) = mrNo then
-            Result := True
-          else
-          begin
-            Result := False;
+          if MessageDlg(Format( stdverBPLDirNotInPath, [ GetVersionText, GetVersionText]), mtError, [mbYes, mbNo], 0) = mrYes then
             DlgBDSEnvironment(GetDelphiVersion);
-          end;
         end;
 
         // Check if the directory exists
         if not DirectoryExists(GetDelphiBPLPath) then
         begin
-          if MessageDlg(stdBPLDirNotInPath, mtError, [mbYes, mbNo], 0) = mrYes then
+          if MessageDlg(Format( stdBPLDirNotExist, [ GetDelphiBPLPath, GetVersionText]) , mtError, [mbYes, mbNo], 0) = mrYes then
           begin
             ForceDirectories(GetDelphiBPLPath);
           end
