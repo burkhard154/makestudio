@@ -7,26 +7,19 @@ http://www.delphi-jedi.org/
 Download at GitHub:
 https://github.com/project-jedi
 
-2. Delphi ZIP (Zipmstr):
+2. (optional) Delphi ZIP (Zipmstr):
 Used in ZIP Plugin
-http://www.delphizip.org
-Current Version is Delphi Zip v1.9.1
+https://github.com/geoffsmith82/delphizip
 
-IMPORTANT: Actually discontinued, has to be replaced some time
-
-3. Microsoft HTML Help Workshop
+3. (optional) Microsoft HTML Help Workshop
 http://www.microsoft.com/en-us/download/details.aspx?id=21138
 
-or do a Web search...
-
-4. Inno Setup
+4. (optional) Inno Setup
 http://www.jrsoftware.org/isinfo.php
 
-5. Pascal Script
-http://www.remobjects.com/ps.aspx
-or
+5. (optional) Pascal Script
 https://github.com/remobjects/pascalscript
 
-6. Help Tool
+6. (optional) Help Tool
 There are a couple of Help processors on the market
 Currently we are using Help&Manual 6
