@@ -23,28 +23,40 @@ Another outstanding feature are the **process control structures like if, while 
 
 - The pascal scripting plugin will produce an exception ("could not call proc") when executing a script using variants (see <https://github.com/remobjects/pascalscript/issues/232>)
 
+## Download
+
+Latest binary setup can be downloaded [here](https://github.com/burkhard154/makestudio/releases)
+
 ## Screenshots
 
-### Setting up Delphi IDE
+#### Setting up Delphi IDE
+
+Setting up search path, registering all components in the IDE using one script.
 
 ![Setting up Delphi IDE](doc/images/screenshots/main_Delphi_Setup.png "Setting up Delphi IDE")
 
-### Build and deploy project
+If you don't want to re write the all scripts everytime the compiler version has changed, you can use variables to install the packages correponding to your IDE version:
+
+![Getting installed IDE version](doc/images/screenshots/auto_choose_packages.png "Getting installed IDE version")
+
+#### Build and deploy project
+
+Build the project, update version number, svn commit with comment, iss setup build, deployment... and more. All that with one script.
 
 ![Build and deploy project](doc/images/screenshots/main_build.png "Build and deploy project")
 
-### Script editor
+#### Script editor
 
 ![Script editor](doc/images/screenshots/scripteditor.png "Script editor")
 
-### Commands tree
+#### Commands tree
 
 ![Commands tree](doc/images/screenshots/Tree.png "Commands tree")
 
-### Delphi module
+#### Delphi module
 
 ![Delphi module](doc/images/screenshots/Delphi_Module.png "Delphi module")
 
-### Add component folder dialog
+#### Add component folder dialog
 
 ![Add component folder dialog](doc/images/screenshots/Add_Component_Folder.png "Add component folder dialog")
