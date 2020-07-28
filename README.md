@@ -47,7 +47,7 @@ Build the project, update version number, svn commit with comment, iss setup bui
 
 #### Script editor
 
-![Script editor](doc/images/screenshots/scripteditor.png "Script editor")
+![Script editor](doc/images/screenshots/Scripteditor.png "Script editor")
 
 #### Commands tree
 
