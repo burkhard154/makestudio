@@ -23,8 +23,6 @@ Another outstanding feature are the **process control structures like if, while 
 
 - The pascal scripting plugin will produce an exception ("could not call proc") when executing a script using variants (see <https://github.com/remobjects/pascalscript/issues/232>)
 
-- The ZIP Plugin using  
-
 ## Screenshots
 
 ### Setting up Delphi IDE
