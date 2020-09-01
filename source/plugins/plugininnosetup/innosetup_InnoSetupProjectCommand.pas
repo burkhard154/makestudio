@@ -126,7 +126,7 @@ end;
 
 procedure SetInnoSetupCompiler(Compiler: string);
 begin
-  RegWriteString(HKCR, MakeStudio.ApplicationRegKey, stdcRegIsccExe, Compiler);
+  RegWriteString(HKCU, MakeStudio.ApplicationRegKey, stdcRegIsccExe, Compiler);
 end;
 
 
