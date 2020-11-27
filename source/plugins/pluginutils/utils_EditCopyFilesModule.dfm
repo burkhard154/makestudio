@@ -54,8 +54,10 @@ object FormCopyFilesEdit: TFormCopyFilesEdit
           Caption = 'Target'
           Width = 250
         end>
-      TabOrder = 0
+      TabOrder = 1
       ViewStyle = vsReport
+      OnClick = lvFilesClick
+      ExplicitTop = 30
     end
     object Panel2: TPanel
       Left = 4
@@ -72,7 +74,7 @@ object FormCopyFilesEdit: TFormCopyFilesEdit
       Font.Name = 'MS Sans Serif'
       Font.Style = []
       ParentFont = False
-      TabOrder = 1
+      TabOrder = 0
     end
   end
   object edSource: TJvFilenameEdit
@@ -84,6 +86,7 @@ object FormCopyFilesEdit: TFormCopyFilesEdit
     DialogOptions = [ofPathMustExist, ofFileMustExist]
     ButtonFlat = True
     TabOrder = 1
+    Text = ''
   end
   object edTarget: TJvFilenameEdit
     Left = 8
@@ -95,6 +98,7 @@ object FormCopyFilesEdit: TFormCopyFilesEdit
     DialogOptions = []
     ButtonFlat = True
     TabOrder = 2
+    Text = ''
   end
   object Button1: TButton
     Left = 8

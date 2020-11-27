@@ -57,6 +57,7 @@ type
     procedure btAddClick(Sender: TObject);
     procedure btDeleteClick(Sender: TObject);
     procedure btReplaceClick(Sender: TObject);
+    procedure lvFilesClick(Sender: TObject);
   private
     { Private-Deklarationen }
   public
@@ -124,6 +125,15 @@ begin
   begin
     lvFiles.Selected.Caption := edSource.FileName;
     lvFiles.Selected.SubItems[0] := edTarget.FileName;
+  end;
+end;
+
+procedure TFormCopyFilesEdit.lvFilesClick(Sender: TObject);
+begin
+  if lvFiles.Selected <> nil then
+  begin
+    edSource.FileName := lvFiles.Selected.Caption;
+    edTarget.FileName := lvFiles.Selected.SubItems[0];
   end;
 end;
 
