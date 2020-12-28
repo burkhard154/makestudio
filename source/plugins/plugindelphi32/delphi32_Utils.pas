@@ -45,7 +45,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   ComCtrls, ActnList, StdCtrls, ImgList, ExtCtrls, Menus, ToolWin, Contnrs,
   ShellAPI, Registry, makestudio_TLB, ActiveX, delphi32_Vars, JclFileUtils,
-  JclSysInfo, JclShell, JclWin32, JvJclUtils;
+  JclSysInfo, JclShell, JclWin32, JvJclUtils, System.UITypes;
 
 Type
   // :Options to control omParseString
@@ -53,8 +53,10 @@ Type
     , omPoTrimFields // :each field is cleaned from white space (leading, trailing)
     , omPoNoEmptyFields // :empty fields are not added
     , omPoDequote // :remove any pair of quotes "..." or '...' (extra trim before and omPoTrimFields applied after)
-    , omPoAddPathDelim // :treating entries as path name: verify and fix that path ends on delimiter           <path>\<name>\
-    , omPoRemPathDelim // :treating entries as path name: verify and fix that path does not end on delimiter   <path>\<name>
+    , omPoAddPathDelim
+    // :treating entries as path name: verify and fix that path ends on delimiter           <path>\<name>\
+    , omPoRemPathDelim
+    // :treating entries as path name: verify and fix that path does not end on delimiter   <path>\<name>
     , omPoUniqueOnly // :Add entry only, if not already contained
     , omPoCaseSensitive // :Handle Unique search case sensitive (default: SameText-compare)
     , omPoClear // :Clear list first (default: append elements)
@@ -66,8 +68,10 @@ Type
     , omPrDoubleQuotes // :Force "..." - quotes for each entry (removing other quotes)
     , omPrDequoteTrimFields // :each field is cleaned from quotes and white space (leading, trailing)
     , omPrNoEmptyFields // :empty fields are not added
-    , omPrAddPathDelim // :treating entries as path name: verify and fix that path ends on delimiter           <path>\<name>\
-    , omPrRemPathDelim // :treating entries as path name: verify and fix that path does not end on delimiter   <path>\<name>
+    , omPrAddPathDelim
+    // :treating entries as path name: verify and fix that path ends on delimiter           <path>\<name>\
+    , omPrRemPathDelim
+    // :treating entries as path name: verify and fix that path does not end on delimiter   <path>\<name>
     , omPrUniqueOnly // :Add entry only, if not already contained
     , omPrCaseSensitive // :Handle Unique search case sensitive (default: SameText-compare)
     , omPrClear // :clear AStringsOut first (default: append elements)
@@ -140,6 +144,8 @@ function GetIsPackage(Filename: string): Boolean;
 function GetIsProject(Filename: string): Boolean;
 // :Determines if the file is a .dll IDE Expert
 function GetIsProjectExpert(Filename: string): Boolean;
+// :Compiler Version needed for "Libsuffix=Auto" in Packages >= Delphi 10.4 / Sydney
+function GetCompilerVersion: String;
 
 function GetBDSProjectsPath: string;
 function GetBDSCommonPath: string;
@@ -175,8 +181,10 @@ function QuoteSeparetedList(Separated: String): String;
 
 // functions copied from om/omUtils, an optiMEAS private framework (JAK, 2016)
 procedure omParseString(const S: string; Separator: char; AStrings: TStrings); overload;
-procedure omParseString(const S: string; Separator: string; AStrings: TStrings; parseOptions: TomParseOptions); overload;
-procedure omPrefixStrings(prefix: string; AStringsIn: TStrings; prefixOptions: TomPrefixOptions; AStringsOut: TStrings = nil);
+procedure omParseString(const S: string; Separator: string; AStrings: TStrings; parseOptions: TomParseOptions);
+  overload;
+procedure omPrefixStrings(prefix: string; AStringsIn: TStrings; prefixOptions: TomPrefixOptions;
+  AStringsOut: TStrings = nil);
 
 var
   XUTILSROOTKEY: DWORD = HKEY_CURRENT_USER;
@@ -219,15 +227,16 @@ begin
 end;
 
 procedure SetSystemEnvironmentVariable(const Name, Value: string);
-var
-  rv: DWORD;
 begin
   with TRegistry.Create do
     try
       RootKey := HKEY_LOCAL_MACHINE;
-      OpenKey('SYSTEM\CurrentControlSet\Control\Session ' + 'Manager\Environment', False);
+      OpenKey('SYSTEM\CurrentControlSet\Control\Session Manager\Environment', False);
       WriteString(Name, Value);
-      SendMessageTimeout(HWND_BROADCAST, WM_SETTINGCHANGE, 0, LParam(PChar('Environment')), SMTO_ABORTIFHUNG, 5000, rv);
+      SetEnvironmentVariable(PChar(Name), PChar(Value));
+
+      { Send Message To All Top Window for Refresh }
+      SendMessage(HWND_BROADCAST, WM_SETTINGCHANGE, 0, Integer(PChar('Environment')));
     finally
       Free;
     end
@@ -383,7 +392,7 @@ begin
       Result := stdverD102T;
     dverD103R:
       Result := stdverD103R;
-    dverD104S :
+    dverD104S:
       Result := stdverD104S;
   end;
 end;
@@ -427,8 +436,8 @@ begin
       Result := PathRemoveSeparator(stDelphi26Key);
     dverD104S:
       Result := PathRemoveSeparator(stDelphi27Key);
-    else
-      Result := '';
+  else
+    Result := '';
   end;
 end;
 
@@ -441,7 +450,7 @@ begin
   else
     _CompilerPlatform := dpWin32;
 
-  MakeStudio.LogMessage( 'Compiler platform set to: '+ GetPlatformString);
+  MakeStudio.LogMessage('Compiler platform set to: ' + GetPlatformString);
 end;
 
 procedure SetDelphiVersion(AVersion: TDelphiVersion);
@@ -475,8 +484,8 @@ begin
       begin
         Var_Delphi := GetDelphiRootPathLong;
       end;
-    dver2005, dver2006, dver2007, dver2009, dver2010, dverXE, dverXE2, dverXE3, dverXE4, dverXE5, dverXE6, dverXE7, dverXE8, dverD10S,
-      dverD101B, dverD102T, dverD103R, dverD104S:
+    dver2005, dver2006, dver2007, dver2009, dver2010, dverXE, dverXE2, dverXE3, dverXE4, dverXE5, dverXE6, dverXE7,
+      dverXE8, dverD10S, dverD101B, dverD102T, dverD103R, dverD104S:
       begin
         Var_BDS := GetDelphiRootPathLong;
 
@@ -539,53 +548,53 @@ begin
         stDelphiCompiler + '.exe';
 
     dver2009:
-      S := PathAddSeparator(ReadRegStringLM(stCodeGearDelphiRootKeyLMBDS + stDelphi12Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stCodeGearDelphiRootKeyLMBDS + stDelphi12Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
 
     dver2010:
-      S := PathAddSeparator(ReadRegStringLM(stCodeGearDelphiRootKeyLMBDS + stDelphi14Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stCodeGearDelphiRootKeyLMBDS + stDelphi14Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
 
     dverXE:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi15Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi15Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
     dverXE2:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi16Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi16Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
     dverXE3:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi17Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi17Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
     dverXE4:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi18Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi18Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
     dverXE5:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi19Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi19Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
     dverXE6:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi20Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi20Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
     dverXE7:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi21Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi21Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
     dverXE8:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi22Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi22Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
     dverD10S:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi23Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi23Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
     dverD101B:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi24Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi24Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
     dverD102T:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi25Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi25Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
     dverD103R:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi26Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi26Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
     dverD104S:
-      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi27Key, stDelphiInstallKey, '')) + 'bin\' +
-        stDelphiCompiler + '.exe';
-   end;
+      S := PathAddSeparator(ReadRegStringLM(stEmbarcaderoDelphiRootKeyLMBDS + stDelphi27Key, stDelphiInstallKey, '')) +
+        'bin\' + stDelphiCompiler + '.exe';
+  end;
   if S <> '' then
     Result := FileExists(S);
 end;
@@ -661,36 +670,38 @@ begin
   reg := TRegistry.Create;
   try
     reg.RootKey := HKEY_CURRENT_USER;
-    if reg.KeyExists(GetDelphiRootKey + GetLibraryKey) then begin
-    reg.OpenKey(GetDelphiRootKey + GetLibraryKey, False);
-    S := GetDelphiSearchPath;
-    if (S <> '') and (S[Length(S)] <> ';') then
-      S := S + ';';
-    for I := 0 to PathList.Count - 1 do
+    if reg.KeyExists(GetDelphiRootKey + GetLibraryKey) then
     begin
-      S1 := MakeStudio.Variables.ReplaceVarsInString(PathList[I]);
-      if Pos(UpperCase(S1 + ';'), UpperCase(S)) = 0 then
+      reg.OpenKey(GetDelphiRootKey + GetLibraryKey, False);
+      S := GetDelphiSearchPath;
+      if (S <> '') and (S[Length(S)] <> ';') then
+        S := S + ';';
+      for I := 0 to PathList.Count - 1 do
       begin
-        S := S + S1 + ';';
-        MakeStudio.LogMessage(Format(stdAddingSearchPath, [S1]));
-      end
-      else
-      begin
-        MakeStudio.LogMessage(Format(stdSearchPathAlreadyAdded, [S1]));
+        S1 := MakeStudio.Variables.ReplaceVarsInString(PathList[I]);
+        if Pos(UpperCase(S1 + ';'), UpperCase(S)) = 0 then
+        begin
+          S := S + S1 + ';';
+          MakeStudio.LogMessage(Format(stdAddingSearchPath, [S1]));
+        end
+        else
+        begin
+          MakeStudio.LogMessage(Format(stdSearchPathAlreadyAdded, [S1]));
+        end;
       end;
-    end;
-    try
-      if S[Length(S)] = ';' then
-        SetLength(S, Length(S) - 1);
-      reg.WriteString(stdcSearchPath, S);
-    except
-      On E:Exception do begin
-        MakeStudio.LogMessage( E.Message);
+      try
+        if S[Length(S)] = ';' then
+          SetLength(S, Length(S) - 1);
+        reg.WriteString(stdcSearchPath, S);
+      except
+        On E: Exception do
+        begin
+          MakeStudio.LogMessage(E.Message);
+        end;
       end;
-    end;
     end
     else
-      MakeStudio.LogMessage( Format( StrRegistryKeyNotExist, [GetDelphiRootKey + GetLibraryKey]));
+      MakeStudio.LogMessage(Format(StrRegistryKeyNotExist, [GetDelphiRootKey + GetLibraryKey]));
   finally
     reg.Free;
   end;
@@ -776,7 +787,8 @@ function GetDelphiLangPath: string;
 begin
   Result := '';
   if GetDelphiVersion > dverXE then
-    Result := ReplaceDelphiPathVars(ReadRegStringLM(GetDelphiRootKey + GetLibraryKey, stdcLanguageLibraryPath, '')) + ';';
+    Result := ReplaceDelphiPathVars(ReadRegStringLM(GetDelphiRootKey + GetLibraryKey, stdcLanguageLibraryPath,
+      '')) + ';';
   Result := StringReplace(Result, ';;', ';', [rfReplaceAll]);
 end;
 
@@ -1056,7 +1068,7 @@ begin
       Result := '260';
     dverD104S:
       Result := '270';
-    end;
+  end;
 end;
 
 function GetBDSProjectsDirResID: Integer;
@@ -1102,7 +1114,7 @@ begin
       Result := 64392;
     dver2009:
       Result := 64363;
-    dver2010..dverD104S:
+    dver2010 .. dverD104S:
       Result := 0; // N.A. fixed: ..\RAD Studio\7.0\
   end;
 end;
@@ -1194,7 +1206,8 @@ begin
       dver2009, dver2010, dverXE, dverXE2 .. dverXE5:
         Result := PathAddSeparator(GetSpecialFolderLocation(CSIDL_COMMON_DOCUMENTS)) + 'RAD Studio\' + GetBDSVersion;
       dverXE6 .. dverD104S:
-        Result := PathAddSeparator(GetSpecialFolderLocation(CSIDL_COMMON_DOCUMENTS)) + 'Embarcadero\Studio\' + GetBDSVersion;
+        Result := PathAddSeparator(GetSpecialFolderLocation(CSIDL_COMMON_DOCUMENTS)) + 'Embarcadero\Studio\' +
+          GetBDSVersion;
     end;
 end;
 
@@ -1228,12 +1241,14 @@ end;
 
 function GetDelphiBPLPath: string;
 begin
-  Result := PathAddSeparator(ReplaceDelphiPathVars(ReadRegStringLM(GetDelphiRootKey + GetLibraryKey, stdDPLOutValue, '')));
+  Result := PathAddSeparator(ReplaceDelphiPathVars(ReadRegStringLM(GetDelphiRootKey + GetLibraryKey,
+    stdDPLOutValue, '')));
 end;
 
 function GetDelphiDCPPath: string;
 begin
-  Result := PathAddSeparator(ReplaceDelphiPathVars(ReadRegStringLM(GetDelphiRootKey + GetLibraryKey, stdDCPOutValue, '')));
+  Result := PathAddSeparator(ReplaceDelphiPathVars(ReadRegStringLM(GetDelphiRootKey + GetLibraryKey,
+    stdDCPOutValue, '')));
 end;
 
 // Platform, LANGDIR, BDSLIB, BDSBIN
@@ -1342,6 +1357,15 @@ begin
   end;
 end;
 
+function GetCompilerVersion: String;
+begin
+  Assert(_DelphiVersion > dverD103R, 'Not working for Delphi less than "Sydney"');
+  case _DelphiVersion of
+    dverD104S:
+      Result := '270';
+  end;
+end;
+
 function GetPackageRunOnly(Filename: string): Boolean;
 var
   sl: TStringList;
@@ -1365,7 +1389,7 @@ end;
 function GetPackageInfo(Filename: string; Key: string): string;
 var
   sl: TStringList;
-  I: Integer;
+  I, p1, p2: Integer;
 begin
   Result := '';
   sl := TStringList.Create;
@@ -1374,8 +1398,9 @@ begin
     for I := 0 to sl.Count - 1 do
       if Pos('$' + Key, sl[I]) <> 0 then
       begin
-        Result := Copy(sl[I], Pos('''', sl[I]) + 1, Length(sl[I]) - Pos('''', sl[I]) + 1);
-        Result := Copy(Result, 1, Pos('''', Result) - 1);
+        p1 := Pos(' ', sl[I]);
+        p2 := Pos('}', sl[I]);
+        Result := Copy(sl[I], p1 + 1, p2 - p1 - 1);
       end;
   finally
     sl.Free;
@@ -1390,6 +1415,9 @@ end;
 function GetPackageSuffix(Filename: string): string;
 begin
   Result := GetPackageInfo(Filename, 'LIBSUFFIX');
+  if SameText(Result, 'auto') then
+    if _DelphiVersion >= dverD104S then
+      Result := GetCompilerVersion;
 end;
 
 function GetPackagePrefix(Filename: string): string;
@@ -1438,14 +1466,16 @@ begin
         // find out if the BPL Path is in the Pathlist
         if not IsInPathList(ExcludeTrailingPathDelimiter(GetDelphiBPLPath)) then
         begin
-          if MessageDlg(Format( stdverBPLDirNotInPath, [ GetVersionText, GetVersionText]), mtError, [mbYes, mbNo], 0) = mrYes then
+          if MessageDlg(Format(stdverBPLDirNotInPath, [GetVersionText, GetVersionText]), mtError, [mbYes, mbNo], 0) = mrYes
+          then
             DlgBDSEnvironment(GetDelphiVersion);
         end;
 
         // Check if the directory exists
         if not DirectoryExists(GetDelphiBPLPath) then
         begin
-          if MessageDlg(Format( stdBPLDirNotExist, [ GetDelphiBPLPath, GetVersionText]) , mtError, [mbYes, mbNo], 0) = mrYes then
+          if MessageDlg(Format(stdBPLDirNotExist, [GetDelphiBPLPath, GetVersionText]), mtError, [mbYes, mbNo], 0) = mrYes
+          then
           begin
             ForceDirectories(GetDelphiBPLPath);
           end
@@ -1726,7 +1756,8 @@ begin
   end;
 end;
 
-procedure omParseString(const S: string; Separator: string; AStrings: TStrings; parseOptions: TomParseOptions); overload;
+procedure omParseString(const S: string; Separator: string; AStrings: TStrings; parseOptions: TomParseOptions);
+  overload;
 var
   I: Integer;
 begin

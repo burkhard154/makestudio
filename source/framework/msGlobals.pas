@@ -52,6 +52,7 @@ var
   Varhandler: TxVarHandler; //handles variables
   HelpFile : String = '';
 
+
 //:Initialize all global vars
 procedure InitGlobals(AMakeKind: EMakeKind = mkGUI);
 //:Free all gobal vars
@@ -133,6 +134,9 @@ begin
   CommandTypes.Clear;
   PluginHandler.FreeAllLibs;
 end;
+
+initialization
+
 
 end.
 

@@ -641,6 +641,10 @@ begin
   FPlugins := TMakeStudioPlugins.Create;
   FAdditionalInfo := TStringList.Create;
   FCredits := TStringList.Create;
+
+  FCredits.Add( 'This project was launched in 2001. With the original goal to simplify and automate the installation of many packages in the Delphi development environment. Today it is a software that manages the build and setup/deployment.');
+  FCredits.Add( 'Thanks to Uwe Schuster, for the code review in the first years. Thanks to Jean-Pierre Robin and Steffen Hornig for supporting the project until today.');
+  FCredits.Add('');
 end;
 
 destructor TMakeStudioPluginHandler.Destroy;

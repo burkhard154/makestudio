@@ -44,7 +44,7 @@ interface
 
 uses
   Windows, SysUtils, Classes, Graphics, Forms, Controls, StdCtrls, Buttons,
-  ExtCtrls, JclFileUtils, JvComponent, JvBaseDlg, JvJVCLAboutForm;
+  ExtCtrls, JclFileUtils, JvComponent, JvBaseDlg, JvJVCLAboutForm, Vcl.Dialogs;
 
 type
   TAboutBox = class(TForm)

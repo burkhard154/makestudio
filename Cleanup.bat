@@ -10,5 +10,6 @@ del /S dcc32.cfg
 del /S *.tvsconfig
 del /S *.skincfg
 del /S *.2007
+del /S *.stat
 
 
