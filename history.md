@@ -1,9 +1,7 @@
 # History - Makestudio
 
-(Re-)Started with moving the project to GitHub.
-
-
-
+## Dez 2020 ##
+Changes in parsing .dpk files. {$LIBSUFFIX AUTO} now provides the appropriate results as of Delphi 10.4.
 
 
 ## Mar 2020
@@ -20,7 +18,7 @@
 ## 2019
 
 Updated to Delphi 10.3 Rio
-
+(Re-)Started with moving the project to GitHub.
 ...
 
 ## Dez. 2014
