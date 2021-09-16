@@ -10,7 +10,6 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poMainFormCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -190,6 +189,11 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
         ImageIndex = 5
         Indent = 0
         Text = 'Delphi 10.4 Sydney'
+      end
+      item
+        Brush.Style = bsClear
+        Indent = 0
+        Text = 'Delphi 11 Alexandria'
       end>
   end
   object cbVar: TComboBox

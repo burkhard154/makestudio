@@ -11,7 +11,6 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poMainFormCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -244,6 +243,12 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
           ImageIndex = 4
           Indent = 0
           Text = 'Delphi 10.4 Sydney'
+        end
+        item
+          Brush.Style = bsClear
+          ImageIndex = 4
+          Indent = 0
+          Text = 'Delphi 11 Alexandria'
         end>
     end
     object d5: TCheckBox
@@ -434,6 +439,15 @@ object FormSelectBDSEnvironment: TFormSelectBDSEnvironment
       Caption = 'Delphi 10.4 Sydney'
       Enabled = False
       TabOrder = 21
+    end
+    object dD11A: TCheckBox
+      Left = 253
+      Top = 186
+      Width = 113
+      Height = 15
+      Caption = 'Delphi 11'
+      Enabled = False
+      TabOrder = 22
     end
   end
   object edProjectDir: TJvDirectoryEdit

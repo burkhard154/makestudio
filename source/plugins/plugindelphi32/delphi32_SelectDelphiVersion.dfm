@@ -10,13 +10,12 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
   Font.Height = -11
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poMainFormCenter
   OnCreate = FormCreate
+  PixelsPerInch = 96
   DesignSize = (
     274
     479)
-  PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
     Left = 8
@@ -167,6 +166,12 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
           ImageIndex = 4
           Indent = 0
           Text = 'Delphi 10.4 Sydney'
+        end
+        item
+          Brush.Style = bsClear
+          ImageIndex = 4
+          Indent = 0
+          Text = 'Delphi 11 Alexandria'
         end>
     end
     object d5: TCheckBox
@@ -358,6 +363,15 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
       Enabled = False
       TabOrder = 21
     end
+    object dD11A: TCheckBox
+      Left = 16
+      Top = 408
+      Width = 140
+      Height = 18
+      Caption = 'Delphi 11'
+      Enabled = False
+      TabOrder = 22
+    end
   end
   object Button1: TButton
     Left = 16
@@ -369,7 +383,6 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
     Default = True
     ModalResult = 1
     TabOrder = 1
-    ExplicitTop = 421
   end
   object Button2: TButton
     Left = 97
@@ -381,7 +394,6 @@ object FormSelectDelphiVersion: TFormSelectDelphiVersion
     Caption = 'Cancel'
     ModalResult = 2
     TabOrder = 2
-    ExplicitTop = 421
   end
   object ImageList1: TImageList
     Left = 216

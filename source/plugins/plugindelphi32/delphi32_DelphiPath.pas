@@ -43,7 +43,8 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   Registry, ImgList, ComCtrls, ToolWin, StdCtrls, ExtCtrls, delphi32_Utils,
-  JvBaseDlg, JvBrowseFolder, Menus, JvComponent, JvComponentBase, delphi32_vars;
+  JvBaseDlg, JvBrowseFolder, Menus, JvComponent, JvComponentBase, delphi32_vars,
+  System.ImageList;
 
 type
   TFormSearchPathDelphi = class(TForm)
