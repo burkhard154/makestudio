@@ -1429,7 +1429,8 @@ end;
 
 function GetPackageSuffix(Filename: string): string;
 begin
-  Result := GetPackageInfo(Filename, 'LIBSUFFIX');
+  Result := GetPackageInfo(Filename, 'LIBSUFFIX').Replace('''', '');
+
   if SameText(Result, 'auto') then
     if _DelphiVersion >= dverD11A then
       Result := GetCompilerVersion;
