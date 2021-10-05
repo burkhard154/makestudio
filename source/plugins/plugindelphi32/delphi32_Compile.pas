@@ -133,6 +133,9 @@ uses
 
 resourcestring
   StrForAllPlatforms = 'For all Platforms';
+  StrRegisteredPackages = 'Registered Packages:';
+  StrUserPackageFound = 'User Package found: %s';
+  StrNOUserPackageS = 'NO User Package: %s';
 
 function TDelphi32ModuleCallback.CreateCommand: IDispatch;
 begin
@@ -267,8 +270,8 @@ begin
   end;
 end;
 
-function TDelphi32Module.DrawItem(Handle: Integer; Left: Integer; Top: Integer; Right: Integer; Bottom: Integer; Selected: WordBool;
-  BriefView: WordBool; BkColor: OLE_COLOR): WordBool;
+function TDelphi32Module.DrawItem(Handle: Integer; Left: Integer; Top: Integer; Right: Integer; Bottom: Integer;
+  Selected: WordBool; BriefView: WordBool; BkColor: OLE_COLOR): WordBool;
 var
   Offset: Integer;
   Canvas: TCanvas;
@@ -502,9 +505,12 @@ var
     //
     pList := TStringList.Create;
     try
-      omParseString(GetDelphiDCPPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim, omPoUniqueOnly]);
-      omParseString(GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim, omPoUniqueOnly]);
-      omParseString(UPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim, omPoUniqueOnly]);
+      omParseString(GetDelphiDCPPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim,
+        omPoUniqueOnly]);
+      omParseString(GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim,
+        omPoUniqueOnly]);
+      omParseString(UPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoDequote, omPoRemPathDelim,
+        omPoUniqueOnly]);
 
       omPrefixStrings('-I', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
       omPrefixStrings('-R', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
@@ -550,7 +556,8 @@ var
 
     // Compiler switch
     if CompilerSwitch <> '' then
-      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
+      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13,
+        [rfReplaceAll, rfIgnoreCase]));
     sl1.SaveToFile(SrcPath + 'dcc32.cfg');
   end;
 
@@ -569,10 +576,14 @@ var
 
     pList := TStringList.Create;
     try
-      omParseString(GetDelphiLangPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
-      omParseString(GetDelphiDCPPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
-      omParseString(GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
-      omParseString(UPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+      omParseString(GetDelphiLangPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote,
+        omPoUniqueOnly]);
+      omParseString(GetDelphiDCPPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote,
+        omPoUniqueOnly]);
+      omParseString(GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote,
+        omPoUniqueOnly]);
+      omParseString(UPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote,
+        omPoUniqueOnly]);
 
       omPrefixStrings('-I', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
       omPrefixStrings('-R', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
@@ -623,7 +634,8 @@ var
 
     // Compiler switch
     if CompilerSwitch <> '' then
-      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
+      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13,
+        [rfReplaceAll, rfIgnoreCase]));
 
     // FileDelete( SrcPath + 'dcc32.cfg');
     case GetCompilerPlatform of
@@ -664,10 +676,14 @@ var
     pList := TStringList.Create;
     try
       if GetLANGDIR <> '' then
-        omParseString(GetDelphiLangPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
-      omParseString(GetDelphiDCPPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
-      omParseString(GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
-      omParseString(UPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote, omPoUniqueOnly]);
+        omParseString(GetDelphiLangPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote,
+          omPoUniqueOnly]);
+      omParseString(GetDelphiDCPPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote,
+        omPoUniqueOnly]);
+      omParseString(GetDelphiSearchPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote,
+        omPoUniqueOnly]);
+      omParseString(UPath, ';', pList, [omPoTrimFields, omPoNoEmptyFields, omPoRemPathDelim, omPoDequote,
+        omPoUniqueOnly]);
 
       omPrefixStrings('-I', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
       omPrefixStrings('-R', pList, [omPrDoubleQuotes, omPrNoEmptyFields], sl1);
@@ -718,7 +734,8 @@ var
 
     // Compiler switch
     if CompilerSwitch <> '' then
-      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13, [rfReplaceAll, rfIgnoreCase]));
+      sl1.Add(StringReplace(MakeStudio.Variables.ReplaceVarsInString(CompilerSwitch), ' ', #10#13,
+        [rfReplaceAll, rfIgnoreCase]));
 
     // FileDelete( SrcPath + 'dcc32.cfg');
     case GetCompilerPlatform of
@@ -1087,7 +1104,8 @@ begin
   MakeStudio.LogMessage(_DelphiFilename + ' ' + CompilerSwitch);
 
   // Executing Batch
-  if MakeStudio.ExecCmdLine(_DelphiFilename, CompilerSwitch, ExtractFilePath(_DelphiFilename), IExecCallback(Self)) < 0 then
+  if MakeStudio.ExecCmdLine(_DelphiFilename, CompilerSwitch, ExtractFilePath(_DelphiFilename), IExecCallback(Self)) < 0
+  then
     MakeStudio.LogMessage(stderrRunningBatch);
 end;
 
@@ -1355,6 +1373,7 @@ procedure TDelphi32Module.RemoveAllUserPackages;
     reg: TRegistry;
     I: Integer;
   begin
+    MakeStudio.LogMessage(StrRegisteredPackages);
     sl.Clear;
     reg := TRegistry.Create;
     try
@@ -1362,8 +1381,10 @@ procedure TDelphi32Module.RemoveAllUserPackages;
       if reg.OpenKey(GetDelphiRootKey + stdPackagesKey, false) then
         try
           reg.GetValueNames(sl);
-          for I := 0 to sl.Count - 1 do
+          for I := 0 to sl.Count - 1 do begin
             sl[I] := ReplaceDelphiPathVars(sl[I]);
+            MakeStudio.LogMessage(sl[I]);
+          end;
         except
         end;
     finally
@@ -1386,15 +1407,11 @@ procedure TDelphi32Module.RemoveAllUserPackages;
       if Result then
         Break;
     end;
-    // // Check if D7 or less
-    // if GetDelphiVersion < dver2005 then
-    // s1 := UpperCase(GetDelphiRootPathLong + 'bin')
-    // else
-    // s1 := UpperCase( GetDelphiRootPathLong);
-    //
-    // s2 := UpperCase( ExtractShortPathName(s1));
-    // s3 := UpperCase( aFilename);
-    // Result := not((Pos(s1, s3) <> 0) or (Pos(s2, s3) <> 0));
+
+    if Result then
+      MakeStudio.LogMessage(Format(StrUserPackageFound, [aFilename]))
+    else
+      MakeStudio.LogMessage(Format(StrNOUserPackageS, [aFilename]));
   end;
 
   function GetDCPFile(aBPLFilename: String): String;

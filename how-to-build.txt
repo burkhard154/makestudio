@@ -21,12 +21,7 @@ A. Build from Source
 
 B. Build with MakeStudio
 
-  1. Install the latest MakeStudio version from 
-    https://github.com/burkhard154/makestudio/tree/master/setup/output 
-  2. Run <makestudio>\setup\build<xx>.jmk
-    2.1. For XE5 Load <makestudio>\setup\buildD19.jmk
-    2.2. For XE7 Load <makestudio>\setup\buildD21.jmk
-    2.3. For Delphi 10.1 Berlin <makestudio>\setup\buildD24.jmk
-    2.4. For Delphi 10.2 Tokyo <makestudio>\setup\buildD25.jmk
-    2.5. For Delphi 10.3 Rio Load <makestudio>\setup\buildD26.jmk
+  1. Install the latest MakeStudio version from https://github.com/burkhard154/makestudio
+  2. Open <makestudio>\setup\build.jmk and select your Delphi Version
+  2. Run <makestudio>\setup\build.jmk
   4. You will find your setup in <makestuditrunk>\setup\output 
