@@ -88,9 +88,6 @@ begin
 end;
 
 procedure InitializeApplication;
-var
-  S: string;
-  I: Integer;
 begin
   //load all Plugins
   PluginHandler.LoadAllLibs;

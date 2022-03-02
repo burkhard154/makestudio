@@ -338,7 +338,6 @@ var
   M: TCommand;
   m1: TCommandTypeItem;
   li: TCommandTypeItemList;
-  I: Integer;
   ext:String;
 begin
   with Programhandler do
@@ -368,8 +367,6 @@ procedure TJApplication.AddCommand(const CommandID: WideString);
 var
   M: TCommand;
   m1: TCommandTypeItem;
-  li: TCommandTypeItemList;
-  I: Integer;
 begin
   m1 := CommandTypes.GetItemByID( CommandID);
   if m1<>nil then begin

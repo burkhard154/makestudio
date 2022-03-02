@@ -39,7 +39,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, ImgList, ComCtrls, StdCtrls, ExtCtrls, ToolWin,
   JvComponent, JvDockControlForm, msVarhandler, msglobals,
-  JvComponentBase, JvEmbeddedForms;
+  JvComponentBase, JvEmbeddedForms, System.ImageList;
 
 type
   TFormVarlistInspect = class(TForm, IVarCallback)
@@ -83,8 +83,8 @@ procedure TFormVarlistInspect.FillList;
     end;
 
 var
-  sl1, sl: TStringList;
-  I, K: Integer;
+  sl: TStringList;
+  I: Integer;
 begin
   sl := TStringList.Create;
 

@@ -71,7 +71,7 @@ end;
 procedure TFormHelpWorkshopError.Label1Click(Sender: TObject);
 begin
   ShellExecute(0, 'open',
-    'http://go.microsoft.com/fwlink/p/?linkid=14188',
+    'https://www.helpandmanual.com/downloads_mscomp.html',
     nil, nil, SW_SHOWNORMAL);
 end;
 

@@ -69,6 +69,7 @@ type
 
 implementation
 
+uses System.Actions, System.UITypes;
 function CharDelete(const S: string; ToDelete: Char): string;
 var
   I: Integer;

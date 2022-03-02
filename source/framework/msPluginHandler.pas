@@ -183,7 +183,7 @@ type
 implementation
 
 uses
-  msApplication_impl, msResources, msUtils;
+  msApplication_impl, msResources, msUtils, System.Types, System.UITypes;
 
 type
   Exception = SysUtils.Exception;

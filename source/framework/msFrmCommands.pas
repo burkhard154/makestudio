@@ -42,7 +42,8 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms,
   Dialogs, JvComponent, JvDockControlForm, ComCtrls, msGlobals, msprogram,
-  ImgList, msutils, jclStrings, JvComponentBase, JvEmbeddedForms;
+  ImgList, msutils, jclStrings, JvComponentBase, JvEmbeddedForms,
+  System.ImageList;
 
 type
   TFormCommands = class(TForm)
@@ -198,11 +199,11 @@ end;
 
 procedure TFormCommands.lvModulesStartDrag(Sender: TObject;
   var DragObject: TDragObject);
-var M:TCommand;
-    Idx:Integer;
+//var M:TCommand;
+    //Idx:Integer;
 begin
   if (lvModules.Selected<>nil) then begin
-    Idx := Integer(lvModules.Selected.Data);
+    //Idx := Integer(lvModules.Selected.Data);
     DragObject := TCommandTypeDragObject.Create;
     if Integer(lvModules.Selected.Data)>=0 then
       TCommandTypeDragObject(DragObject).CommandType :=

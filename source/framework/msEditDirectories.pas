@@ -47,7 +47,7 @@ interface
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, ComCtrls, ToolWin, ExtCtrls, ImgList, Buttons, JvBaseDlg,
-  JvBrowseFolder, msGlobals, JvComponent, JclFileUtils;
+  JvBrowseFolder, msGlobals, JvComponent, JclFileUtils, System.ImageList;
 
 type
   TFormEditDirectories = class(TForm)
@@ -85,8 +85,7 @@ implementation
 
 procedure TFormEditDirectories.FillDirList;
 var
-  I, K: Integer;
-  S: string;
+  I: Integer;
 
   function IsDirInList(ADir: string): Boolean;
   var
@@ -182,9 +181,6 @@ begin
 end;
 
 procedure TFormEditDirectories.ToolButton1Click(Sender: TObject);
-var
-  I, K: Integer;
-  S: string;
 
   //todo - is equal to FillDirList.IsDirInList
   function IsDirInList(ADir: string): Boolean;
@@ -227,7 +223,7 @@ begin
   with Programhandler do
   begin
 
-    for I := 0 to Count - 1 do
+    for var I := 0 to Count - 1 do
 {    begin
       if Items[I] is TDMakNormalModule then
       begin

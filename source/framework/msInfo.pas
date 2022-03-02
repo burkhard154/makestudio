@@ -94,7 +94,7 @@ implementation
 {$R *.dfm}
 
 uses
-  msGlobals, msPluginHandler;
+  msGlobals, msPluginHandler, System.IOUtils;
 
 procedure TAboutBox.FormCreate(Sender: TObject);
 var
@@ -109,7 +109,7 @@ begin
     lbDescription.Caption := verinfo.FileDescription;
     Label7.Caption := Application.Title;
 
-    lbDatetime.Caption := DateTimeToStr(FileDateToDateTime(FileAge(Application.ExeName)));
+    lbDatetime.Caption := DateTimeToStr(TFile.GetLastWriteTime(Application.ExeName));
   finally
     verinfo.Free;
   end;

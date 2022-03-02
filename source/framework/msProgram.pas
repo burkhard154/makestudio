@@ -846,7 +846,8 @@ uses
   FileCtrl,
 {$ENDIF DELPHI5}
   msEditIf, msEditFor, msEditWhile, msEditInclude,
-  msEditComment;
+  msEditComment,
+  System.UITypes;
 
 resourcestring
   StrErrorSettingParam = 'Error in "%s":Property=%s - %s';
@@ -904,7 +905,6 @@ var
   S: string;
   L: Integer;
 begin
-  Result := 0;
   Tokens.Clear;
   S := Trim(Input);
   L := Pos(Separator, S);
@@ -1943,7 +1943,6 @@ function TProgram.CreateCommandFromStringList(sl: TStrings; CommandType: string)
 var
   LCommandType: string;
 begin
-  Result := nil;
 
   if CommandType <> '' then
     LCommandType := CommandType

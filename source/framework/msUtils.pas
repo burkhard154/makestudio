@@ -132,7 +132,6 @@ var
   S: string;
   L: Integer;
 begin
-  Result := 0;
   Tokens.Clear;
   S := Trim(Input);
   L := Pos(Separator, S);

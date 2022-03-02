@@ -61,6 +61,7 @@ implementation
 
 {$R *.dfm}
 
+uses System.UITypes;
 resourcestring
   strClose = 'Close';
   strNeedCompile = 'The help system has been modified and will be recompiled...';
