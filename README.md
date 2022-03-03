@@ -19,10 +19,6 @@ You simply **drop files from the explorer** window into the MakeStudio editor an
 
 Another outstanding feature are the **process control structures like if, while or loop**. With these control commands it is possible to create more flexible build, compile and installation sequences.
 
-## Current limitation
-
-- The pascal scripting plugin will produce an exception ("could not call proc") when executing a script using variants (see <https://github.com/remobjects/pascalscript/issues/232>)
-
 ## Download
 
 Latest binary setup can be downloaded [here](https://github.com/burkhard154/makestudio/releases)
