@@ -12,7 +12,7 @@ Used in ZIP Plugin
 https://github.com/geoffsmith82/delphizip
 
 3. (optional) Microsoft HTML Help Workshop
-http://www.microsoft.com/en-us/download/details.aspx?id=21138
+https://www.helpandmanual.com/downloads_mscomp.html
 
 4. (optional) Inno Setup
 http://www.jrsoftware.org/isinfo.php
