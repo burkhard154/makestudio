@@ -3822,10 +3822,6 @@ begin
   f := VarhandlerRef.ReplaceVarsInString(Filename);
   DoLogbookMessage(Format(stdDoInclude, [f]));
   Result := FileExists(f);
-
-  if FileExists(f) then
-  begin
-  end;
 end;
 
 function TINCLUDEBlock.Get_Caption: WideString;
@@ -3942,7 +3938,7 @@ end;
 
 function TCOMMENTBlock.ExecuteItem: WordBool;
 begin
-  //
+  result := true
 end;
 
 function TCOMMENTBlock.Get_Caption: WideString;
