@@ -89,8 +89,6 @@ end;
 
 //:Register an initialize Plugin
 function RegisterPlugin(aMakeStudioApp: IJApplication): Integer; stdcall;
-var
-  P: Picture;
 begin
   Result := 0;
   MakeStudio := aMakeStudioApp;
