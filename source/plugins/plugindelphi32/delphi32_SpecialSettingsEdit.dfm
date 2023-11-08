@@ -1,60 +1,78 @@
 object FormEditSpecialSettingsParams: TFormEditSpecialSettingsParams
   Left = 441
   Top = 306
-  Width = 344
-  Height = 223
   Caption = 'Get Delphi32 Info'
+  ClientHeight = 251
+  ClientWidth = 483
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -17
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poDesktopCenter
   OnCreate = FormCreate
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 144
+  TextHeight = 20
   object Label1: TLabel
-    Left = 16
-    Top = 72
-    Width = 13
-    Height = 13
+    Left = 24
+    Top = 108
+    Width = 18
+    Height = 20
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'To'
   end
   object Label2: TLabel
-    Left = 16
-    Top = 24
-    Width = 57
-    Height = 13
+    Left = 24
+    Top = 36
+    Width = 87
+    Height = 20
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Set Variable'
   end
   object Button1: TButton
-    Left = 16
-    Top = 136
-    Width = 75
-    Height = 25
+    Left = 24
+    Top = 204
+    Width = 113
+    Height = 38
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Ok'
     Default = True
     ModalResult = 1
     TabOrder = 0
   end
   object Button2: TButton
-    Left = 96
-    Top = 136
-    Width = 75
-    Height = 25
+    Left = 144
+    Top = 204
+    Width = 113
+    Height = 38
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Cancel = True
     Caption = 'Cancel'
     ModalResult = 2
     TabOrder = 1
   end
   object cbOperation: TComboBox
-    Left = 16
-    Top = 88
-    Width = 305
-    Height = 21
-    ItemHeight = 13
+    Left = 24
+    Top = 132
+    Width = 458
+    Height = 28
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     TabOrder = 2
     Text = 'cbOperation'
     Items.Strings = (
@@ -65,11 +83,14 @@ object FormEditSpecialSettingsParams: TFormEditSpecialSettingsParams
       'BDS Project Directory')
   end
   object cbVars: TComboBox
-    Left = 16
-    Top = 40
-    Width = 305
-    Height = 21
-    ItemHeight = 13
+    Left = 24
+    Top = 60
+    Width = 458
+    Height = 28
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     TabOrder = 3
     Text = 'ComboBox1'
   end

@@ -3,79 +3,101 @@ object FormAddComponentFolder: TFormAddComponentFolder
   Top = 0
   Anchors = [akLeft, akBottom]
   Caption = 'Add Component Folder'
-  ClientHeight = 458
-  ClientWidth = 543
+  ClientHeight = 687
+  ClientWidth = 830
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -17
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poMainFormCenter
+  PixelsPerInch = 144
   DesignSize = (
-    543
-    458)
-  PixelsPerInch = 96
-  TextHeight = 13
+    830
+    687)
+  TextHeight = 21
   object Label1: TLabel
-    Left = 8
-    Top = 95
-    Width = 88
-    Height = 13
+    Left = 12
+    Top = 143
+    Width = 135
+    Height = 21
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Component Folder'
   end
   object Label2: TLabel
-    Left = 8
-    Top = 141
-    Width = 71
-    Height = 13
+    Left = 12
+    Top = 212
+    Width = 111
+    Height = 21
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Directory Mask'
   end
   object Label3: TLabel
-    Left = 232
-    Top = 141
-    Width = 83
-    Height = 13
+    Left = 348
+    Top = 212
+    Width = 131
+    Height = 21
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'File Mask (+.dpk)'
   end
   object Label4: TLabel
-    Left = 8
-    Top = 189
-    Width = 133
-    Height = 13
+    Left = 12
+    Top = 284
+    Width = 203
+    Height = 21
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Found and sorted Packages'
   end
   object Label5: TLabel
-    Left = 8
-    Top = 309
-    Width = 82
-    Height = 13
+    Left = 12
+    Top = 464
+    Width = 129
+    Height = 21
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Anchors = [akLeft, akBottom]
     Caption = 'Missing Packages'
-    ExplicitTop = 365
   end
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 543
-    Height = 89
+    Width = 830
+    Height = 134
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 579
+    ExplicitWidth = 820
     object JvHTLabel1: TJvHTLabel
       AlignWithMargins = True
-      Left = 8
-      Top = 8
-      Width = 527
-      Height = 73
-      Margins.Left = 8
-      Margins.Top = 8
-      Margins.Right = 8
-      Margins.Bottom = 8
+      Left = 12
+      Top = 12
+      Width = 806
+      Height = 110
+      Margins.Left = 12
+      Margins.Top = 12
+      Margins.Right = 12
+      Margins.Bottom = 12
       Align = alClient
       AutoSize = False
       Caption = 
@@ -86,90 +108,126 @@ object FormAddComponentFolder: TFormAddComponentFolder
         '(e.g. *D15.* or just *.*) and the file mask (*D7, *D16, *). <br>' +
         #13#10'The file mask always adds ".dpk" automatically. '
       SuperSubScriptRatio = 0.666666666666666600
-      ExplicitTop = 11
-      ExplicitWidth = 563
+      ExplicitWidth = 791
     end
   end
   object edCompFolder: TJvDirectoryEdit
-    Left = 8
-    Top = 112
-    Width = 522
-    Height = 21
+    Left = 12
+    Top = 168
+    Width = 783
+    Height = 29
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
+    ButtonWidth = 32
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 1
     Text = ''
-    ExplicitWidth = 558
+    ExplicitWidth = 773
   end
   object edDirectoryMask: TEdit
-    Left = 8
-    Top = 160
-    Width = 209
-    Height = 21
+    Left = 12
+    Top = 240
+    Width = 314
+    Height = 29
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     TabOrder = 2
     Text = '*.*'
   end
   object edFileMask: TEdit
-    Left = 232
-    Top = 160
-    Width = 298
-    Height = 21
+    Left = 348
+    Top = 240
+    Width = 447
+    Height = 29
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 3
     Text = '*'
-    ExplicitWidth = 334
+    ExplicitWidth = 437
   end
   object lbFound: TListBox
-    Left = 8
-    Top = 208
-    Width = 522
-    Height = 94
+    Left = 12
+    Top = 312
+    Width = 783
+    Height = 141
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Anchors = [akLeft, akTop, akRight, akBottom]
-    ItemHeight = 13
+    ItemHeight = 21
     TabOrder = 4
+    ExplicitWidth = 773
+    ExplicitHeight = 139
   end
   object lbMissing: TListBox
-    Left = 8
-    Top = 328
-    Width = 522
-    Height = 81
+    Left = 12
+    Top = 492
+    Width = 783
+    Height = 122
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Anchors = [akLeft, akRight, akBottom]
-    ItemHeight = 13
+    ItemHeight = 21
     TabOrder = 5
+    ExplicitTop = 490
+    ExplicitWidth = 773
   end
   object btOk: TButton
-    Left = 8
-    Top = 428
-    Width = 88
-    Height = 25
+    Left = 12
+    Top = 642
+    Width = 132
+    Height = 38
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Anchors = [akLeft]
     Caption = 'Ok'
     TabOrder = 6
     OnClick = btOkClick
-    ExplicitTop = 422
+    ExplicitTop = 640
   end
   object btCancel: TButton
-    Left = 102
-    Top = 428
-    Width = 91
-    Height = 25
+    Left = 153
+    Top = 642
+    Width = 137
+    Height = 38
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Anchors = [akLeft]
     Cancel = True
     Caption = 'Cancel'
     ModalResult = 2
     TabOrder = 7
-    ExplicitTop = 422
+    ExplicitTop = 640
   end
   object btFind: TButton
-    Left = 432
-    Top = 425
-    Width = 98
-    Height = 25
+    Left = 648
+    Top = 638
+    Width = 147
+    Height = 37
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Anchors = [akLeft, akRight, akBottom]
     Caption = 'Search'
     TabOrder = 8
     OnClick = btFindClick
-    ExplicitTop = 419
-    ExplicitWidth = 134
+    ExplicitTop = 636
+    ExplicitWidth = 137
   end
   object FileSearcher: TJvSearchFiles
     DirParams.MinSize = 0

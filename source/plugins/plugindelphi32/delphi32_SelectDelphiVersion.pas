@@ -68,6 +68,7 @@ type
     dD103R: TCheckBox;
     dD104S: TCheckBox;
     dD11A: TCheckBox;
+    dD12A: TCheckBox;
     procedure FormCreate(Sender: TObject);
   private
     { Private-Deklarationen }
@@ -109,6 +110,7 @@ begin
       dverD103R: cbVer.ItemIndex := 19;
       dverD104S: cbVer.ItemIndex := 20;
       dverD11A: cbVer.ItemIndex := 21;
+      dverD12A: cbVer.ItemIndex := 22;
     end;
     if ShowModal = mrOk then
     begin
@@ -135,6 +137,7 @@ begin
         19: dVersion := dverD103R;
         20: dVersion := dverD104S;
         21: dVersion := dverD11A;
+        22: dVersion := dverD12A;
         else
           dVersion := dver5;
       end;
@@ -169,6 +172,7 @@ begin
   dD103R.Checked := CheckDelphiVersion(dverD103R);
   dD104S.Checked := CheckDelphiVersion(dverD104S);
   dD11A.Checked :=  CheckDelphiVersion(dverD11A);
+  dD12A.Checked :=  CheckDelphiVersion(dverD12A);
 end;
 
 end.

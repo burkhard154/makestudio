@@ -1,26 +1,29 @@
 object FormCompilerSwitches: TFormCompilerSwitches
   Left = 419
   Top = 277
-  Width = 379
-  Height = 251
   BorderStyle = bsSizeToolWin
   Caption = 'Compiler switches'
+  ClientHeight = 293
+  ClientWidth = 536
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -17
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 144
+  TextHeight = 21
   object lb: TListBox
     Left = 0
     Top = 0
-    Width = 363
-    Height = 174
+    Width = 536
+    Height = 231
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alClient
-    ItemHeight = 13
+    ItemHeight = 21
     Items.Strings = (
       'Allgemeine Optionen'
       '--------------------------------------------'
@@ -55,30 +58,46 @@ object FormCompilerSwitches: TFormCompilerSwitches
       '')
     TabOrder = 0
     OnClick = lbClick
+    ExplicitWidth = 522
+    ExplicitHeight = 214
   end
   object Panel1: TPanel
     Left = 0
-    Top = 174
-    Width = 363
-    Height = 41
+    Top = 231
+    Width = 536
+    Height = 62
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitTop = 214
+    ExplicitWidth = 522
     object Button1: TButton
-      Left = 8
-      Top = 8
-      Width = 75
-      Height = 25
+      Left = 12
+      Top = 12
+      Width = 113
+      Height = 38
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Ok'
       Default = True
       ModalResult = 1
       TabOrder = 0
     end
     object Button2: TButton
-      Left = 88
-      Top = 8
-      Width = 75
-      Height = 25
+      Left = 132
+      Top = 12
+      Width = 113
+      Height = 38
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Cancel = True
       Caption = 'Cancel'
       ModalResult = 2

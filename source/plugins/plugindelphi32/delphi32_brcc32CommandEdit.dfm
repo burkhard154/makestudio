@@ -4,72 +4,102 @@ object FormEditbrcc32Command: TFormEditbrcc32Command
   BorderIcons = []
   BorderStyle = bsDialog
   Caption = 'Borland Resource Compiler 32 Bit'
-  ClientHeight = 356
-  ClientWidth = 562
+  ClientHeight = 534
+  ClientWidth = 858
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -17
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poMainFormCenter
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 144
+  TextHeight = 20
   object Label1: TLabel
-    Left = 16
-    Top = 8
-    Width = 42
-    Height = 13
+    Left = 24
+    Top = 12
+    Width = 65
+    Height = 20
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Filename'
   end
   object Label3: TLabel
-    Left = 16
-    Top = 51
-    Width = 83
-    Height = 13
+    Left = 24
+    Top = 77
+    Width = 126
+    Height = 20
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Additional options'
   end
   object Button1: TButton
-    Left = 16
-    Top = 320
-    Width = 75
-    Height = 25
+    Left = 24
+    Top = 480
+    Width = 113
+    Height = 38
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Ok'
     Default = True
     ModalResult = 1
     TabOrder = 0
   end
   object Button2: TButton
-    Left = 96
-    Top = 320
-    Width = 75
-    Height = 25
+    Left = 144
+    Top = 480
+    Width = 113
+    Height = 38
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Cancel = True
     Caption = 'Abbrechen'
     ModalResult = 2
     TabOrder = 1
   end
   object edFilename: TJvFilenameEdit
-    Left = 16
-    Top = 24
-    Width = 529
-    Height = 21
+    Left = 24
+    Top = 36
+    Width = 794
+    Height = 28
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
+    ButtonWidth = 32
     TabOrder = 2
+    Text = ''
   end
   object edOptions: TJvEdit
-    Left = 16
-    Top = 70
-    Width = 529
-    Height = 21
+    Left = 24
+    Top = 105
+    Width = 794
+    Height = 28
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     TabOrder = 3
+    Text = ''
   end
   object JvEditor1: TJvEditor
-    Left = 16
-    Top = 112
-    Width = 529
-    Height = 193
+    Left = 24
+    Top = 168
+    Width = 794
+    Height = 290
     Cursor = crIBeam
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     BorderStyle = bsNone
     Lines.Strings = (
       '  -r                    (ignored for compatibility)'
@@ -103,7 +133,7 @@ object FormEditbrcc32Command: TFormEditbrcc32Command
     Color = 15066597
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
-    Font.Height = -11
+    Font.Height = -17
     Font.Name = 'Courier New'
     Font.Style = []
   end

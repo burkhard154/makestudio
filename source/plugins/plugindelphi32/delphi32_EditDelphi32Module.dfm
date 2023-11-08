@@ -3,75 +3,96 @@ object FormEditModule: TFormEditModule
   Top = 155
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'Delphi32 Command Properties'
-  ClientHeight = 546
-  ClientWidth = 383
+  ClientHeight = 819
+  ClientWidth = 590
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -17
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
   OnShow = FormShow
+  PixelsPerInch = 144
   DesignSize = (
-    383
-    546)
-  PixelsPerInch = 96
-  TextHeight = 13
+    590
+    819)
+  TextHeight = 21
   object Panel3: TPanel
     Left = 0
-    Top = 75
-    Width = 383
-    Height = 144
+    Top = 113
+    Width = 590
+    Height = 216
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alTop
     BevelOuter = bvNone
     BorderWidth = 4
     TabOrder = 0
-    ExplicitTop = 57
-    ExplicitWidth = 457
+    ExplicitWidth = 580
     DesignSize = (
-      383
-      144)
+      590
+      216)
     object Label1: TLabel
-      Left = 8
-      Top = 24
-      Width = 42
-      Height = 13
+      Left = 12
+      Top = 36
+      Width = 67
+      Height = 21
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Filename'
     end
     object lbCompilerswitch: TLabel
-      Left = 8
-      Top = 104
-      Width = 136
-      Height = 13
+      Left = 12
+      Top = 156
+      Width = 215
+      Height = 21
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Additional Compiler Switches'
     end
     object Label4: TLabel
-      Left = 8
-      Top = 64
-      Width = 80
-      Height = 13
+      Left = 12
+      Top = 96
+      Width = 121
+      Height = 21
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'Output directory'
     end
     object SpeedButton1: TSpeedButton
-      Left = 348
-      Top = 39
-      Width = 23
-      Height = 22
+      Left = 522
+      Top = 59
+      Width = 35
+      Height = 33
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Anchors = [akTop, akRight]
       Caption = '...'
       Flat = True
       OnClick = SpeedButton1Click
-      ExplicitLeft = 424
     end
     object SpeedButton2: TSpeedButton
-      Left = 348
-      Top = 120
-      Width = 23
-      Height = 22
+      Left = 522
+      Top = 180
+      Width = 35
+      Height = 33
       Hint = 'Nachschlagen'
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Anchors = [akTop, akRight]
       Flat = True
       Glyph.Data = {
@@ -120,13 +141,16 @@ object FormEditModule: TFormEditModule
       ParentShowHint = False
       ShowHint = True
       OnClick = SpeedButton2Click
-      ExplicitLeft = 424
     end
     object Panel5: TPanel
       Left = 4
       Top = 4
-      Width = 375
-      Height = 17
+      Width = 582
+      Height = 26
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Align = alTop
       BevelOuter = bvNone
       BorderStyle = bsSingle
@@ -134,59 +158,79 @@ object FormEditModule: TFormEditModule
       Color = clGray
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -11
+      Font.Height = -17
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 449
+      ExplicitWidth = 572
     end
     object edCompilerSwitch: TEdit
-      Left = 8
-      Top = 120
-      Width = 339
-      Height = 21
+      Left = 12
+      Top = 180
+      Width = 509
+      Height = 29
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 3
-      ExplicitWidth = 417
+      ExplicitWidth = 499
     end
     object edFilename: TEdit
-      Left = 8
-      Top = 40
-      Width = 339
-      Height = 21
+      Left = 12
+      Top = 60
+      Width = 509
+      Height = 29
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 1
       OnChange = edFilenameChange
-      ExplicitWidth = 417
+      ExplicitWidth = 499
     end
     object edOutputdir: TEdit
-      Left = 8
-      Top = 80
-      Width = 339
-      Height = 21
+      Left = 12
+      Top = 120
+      Width = 509
+      Height = 29
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Anchors = [akLeft, akTop, akRight]
       TabOrder = 2
-      ExplicitWidth = 417
+      ExplicitWidth = 499
     end
   end
   object Panel2: TPanel
     Left = 0
-    Top = 219
-    Width = 383
-    Height = 279
+    Top = 329
+    Width = 590
+    Height = 418
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alTop
     Anchors = [akLeft, akTop, akRight, akBottom]
     BevelOuter = bvNone
     BorderWidth = 4
     TabOrder = 1
-    ExplicitWidth = 463
-    ExplicitHeight = 310
+    ExplicitWidth = 580
+    ExplicitHeight = 416
     object Panel4: TPanel
       Left = 4
       Top = 4
-      Width = 375
-      Height = 17
+      Width = 582
+      Height = 26
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Align = alTop
       BevelOuter = bvNone
       BorderStyle = bsSingle
@@ -194,48 +238,66 @@ object FormEditModule: TFormEditModule
       Color = clGray
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -11
+      Font.Height = -17
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 449
+      ExplicitWidth = 572
     end
     object ToolBar2: TToolBar
-      Left = 348
-      Top = 21
-      Width = 31
-      Height = 254
+      Left = 543
+      Top = 30
+      Width = 43
+      Height = 384
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Align = alRight
       AutoSize = True
       BorderWidth = 2
+      ButtonHeight = 33
+      ButtonWidth = 35
       Caption = 'ToolBar2'
       Images = ImageList1
       TabOrder = 1
-      ExplicitLeft = 422
-      ExplicitHeight = 222
+      ExplicitLeft = 533
+      ExplicitHeight = 382
       object ToolButton9: TToolButton
         Left = 0
         Top = 0
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         ImageIndex = 0
         Wrap = True
         OnClick = ToolButton9Click
       end
       object ToolButton10: TToolButton
         Left = 0
-        Top = 22
+        Top = 33
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         ImageIndex = 3
       end
     end
     object ListDirectories: TMemo
       Left = 4
-      Top = 21
-      Width = 344
-      Height = 254
+      Top = 30
+      Width = 539
+      Height = 384
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Align = alClient
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -17
       Font.Name = 'Courier New'
       Font.Style = []
       Lines.Strings = (
@@ -244,28 +306,36 @@ object FormEditModule: TFormEditModule
       ScrollBars = ssBoth
       TabOrder = 2
       WordWrap = False
-      ExplicitWidth = 418
-      ExplicitHeight = 222
+      ExplicitWidth = 529
+      ExplicitHeight = 382
     end
   end
   object Panel6: TPanel
     Left = 0
     Top = 0
-    Width = 383
-    Height = 75
+    Width = 590
+    Height = 113
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alTop
     BevelOuter = bvNone
     BorderWidth = 4
     TabOrder = 2
-    ExplicitWidth = 457
+    ExplicitWidth = 580
     DesignSize = (
-      383
-      75)
+      590
+      113)
     object Panel7: TPanel
       Left = 4
       Top = 4
-      Width = 375
-      Height = 17
+      Width = 582
+      Height = 26
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Align = alTop
       BevelOuter = bvNone
       BorderStyle = bsSingle
@@ -273,23 +343,27 @@ object FormEditModule: TFormEditModule
       Color = clGray
       Font.Charset = ANSI_CHARSET
       Font.Color = clWhite
-      Font.Height = -11
+      Font.Height = -17
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 449
+      ExplicitWidth = 572
     end
     object cbAction: TComboBox
-      Left = 5
-      Top = 27
-      Width = 368
-      Height = 21
+      Left = 8
+      Top = 41
+      Width = 552
+      Height = 29
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Style = csDropDownList
       Anchors = [akLeft, akTop, akRight]
       Font.Charset = ANSI_CHARSET
       Font.Color = clWindowText
-      Font.Height = -11
+      Font.Height = -17
       Font.Name = 'Tahoma'
       Font.Style = [fsBold]
       ParentFont = False
@@ -307,52 +381,68 @@ object FormEditModule: TFormEditModule
         'Just Compile'
         'Run Batch File'
         'Register Expert Dll')
-      ExplicitWidth = 448
+      ExplicitWidth = 542
     end
     object cbAllPlatforms: TCheckBox
-      Left = 5
-      Top = 52
-      Width = 139
-      Height = 17
+      Left = 8
+      Top = 78
+      Width = 208
+      Height = 26
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'For all Platforms'
       TabOrder = 2
     end
   end
   object Button1: TButton
-    Left = 6
-    Top = 513
-    Width = 75
-    Height = 25
+    Left = 9
+    Top = 770
+    Width = 113
+    Height = 37
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Anchors = [akLeft, akBottom]
     Caption = '&Ok'
     ModalResult = 1
     TabOrder = 3
-    ExplicitTop = 588
+    ExplicitTop = 768
   end
   object Button2: TButton
-    Left = 87
-    Top = 513
-    Width = 75
-    Height = 25
+    Left = 131
+    Top = 770
+    Width = 112
+    Height = 37
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Anchors = [akLeft, akBottom]
     Cancel = True
     Caption = '&Cancel'
     ModalResult = 2
     TabOrder = 4
-    ExplicitTop = 588
+    ExplicitTop = 768
   end
   object btRequires: TButton
-    Left = 252
-    Top = 513
-    Width = 123
-    Height = 25
+    Left = 378
+    Top = 770
+    Width = 185
+    Height = 37
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Anchors = [akRight, akBottom]
     Caption = 'Package Requires...'
     Enabled = False
     TabOrder = 5
     OnClick = btRequiresClick
-    ExplicitLeft = 330
-    ExplicitTop = 588
+    ExplicitLeft = 368
+    ExplicitTop = 768
   end
   object ImageList1: TImageList
     Left = 16
