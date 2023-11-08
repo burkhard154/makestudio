@@ -76,6 +76,7 @@
         <DCC_MapFile>3</DCC_MapFile>
         <DCC_DebugInformation>2</DCC_DebugInformation>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
+        <DCC_Namespace>VCL;$(DCC_Namespace)</DCC_Namespace>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">

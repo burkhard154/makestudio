@@ -47,8 +47,9 @@ uses
 {$IFDEF DELPHI6_UP}
   Variants, Types,
 {$ENDIF DELPHI6_UP}
-  SysUtils, Windows, Graphics, msvarhandler, Clipbrd, Forms,
-  Dialogs, Controls, msResources;
+  Graphics, Clipbrd,Forms, Dialogs, Controls,
+  SysUtils, Windows, msvarhandler,
+  msResources;
 
 {
   ***************
@@ -433,7 +434,7 @@ type
     FName: string;
     FHint: string;
     FCategory: string;
-    FBitmap: TBitmap;
+    FBitmap: Graphics.TBitmap;
     FCompatibilityIndex: Integer;
     // for compatibility with older file format versions
     FFileExtensions: string;
@@ -444,7 +445,7 @@ type
     constructor Create(Collection: TCollection); override;
     destructor Destroy; override;
 
-    property Bitmap: TBitmap read FBitmap write FBitmap;
+    property Bitmap: Graphics.TBitmap read FBitmap write FBitmap;
     property Name: string read FName write FName;
     property Identifier: string read GetIdentifier;
     property Hint: string read FHint write FHint;
@@ -483,7 +484,7 @@ type
     constructor Create; reintroduce; virtual;
     destructor Destroy; override;
     procedure Add(const CommandName: WideString; const CommandHint: WideString;
-      const CommandCategory: WideString; const ModuleBitmap: TBitmap;
+      const CommandCategory: WideString; const ModuleBitmap: Graphics.TBitmap;
       const DragDropFileExtensions: WideString; CompatibilityIndex: Integer;
       const Callback: IDispatch); reintroduce; overload;
     function Add: TCommandTypeItem; reintroduce; overload;
@@ -635,9 +636,9 @@ type
     FBriefView: Boolean;
     FShowLines: Boolean;
     // FShowBreakpoints: Boolean;
-    FBreakpointBmp: TBitmap;
-    FPositionBmp: TBitmap;
-    FCommentBmp: TBitmap;
+    FBreakpointBmp: Graphics.TBitmap;
+    FPositionBmp: Graphics.TBitmap;
+    FCommentBmp: Graphics.TBitmap;
     FIsRun: Boolean;
     FIsPaused: Boolean;
     FInitialized: Boolean;
@@ -731,8 +732,8 @@ type
     property Canceled: Boolean read FCanceled write SetCanceled;
     property BriefView: Boolean read FBriefView write SetBriefView;
     property ShowLines: Boolean read FShowLines write SetShowLines;
-    property BreakpointBmp: TBitmap read FBreakpointBmp;
-    property CommentBmp: TBitmap read FCommentBmp;
+    property BreakpointBmp: Graphics.TBitmap read FBreakpointBmp;
+    property CommentBmp: Graphics.TBitmap read FCommentBmp;
     property IsRun: Boolean read FIsRun write FIsRun;
     property Selected: TCommand read GetSelected write SetSelected;
     property SelectedCount: Integer read GetSelectedCount;
@@ -1050,9 +1051,9 @@ end;
 
 procedure TCommandTypes.AddSystemCommands;
 var
-  bmp: TBitmap;
+  bmp: Graphics.TBitmap;
 begin
-  bmp := TBitmap.Create;
+  bmp := Graphics.TBitmap.Create;
   try
     bmp.LoadFromResourceName(HInstance, UpperCase(IDIFBlock));
     Add(stdIFCaption, '', stProgramControlCategory, bmp, '', -1,
@@ -1082,7 +1083,7 @@ end;
 
 procedure TCommandTypes.Add(const CommandName: WideString;
   const CommandHint: WideString; const CommandCategory: WideString;
-  const ModuleBitmap: TBitmap; const DragDropFileExtensions: WideString;
+  const ModuleBitmap: Graphics.TBitmap; const DragDropFileExtensions: WideString;
   CompatibilityIndex: Integer; const Callback: IDispatch);
 var
   M: TCommandTypeItem;
@@ -1100,7 +1101,7 @@ begin
   // Add the bitmap
   if (ModuleBitmap <> nil) then
   begin
-    M.Bitmap := TBitmap.Create;
+    M.Bitmap := Graphics.TBitmap.Create;
     M.Bitmap.Assign(ModuleBitmap);
     M.Bitmap.PixelFormat := pf8bit;
   end;
@@ -1872,11 +1873,11 @@ begin
   FCanceled := False;
   FBriefView := False;
   FShowLines := True;
-  FBreakpointBmp := TBitmap.Create;
+  FBreakpointBmp := Graphics.TBitmap.Create;
   FBreakpointBmp.LoadFromResourceName(HInstance, 'BULLETRED');
-  FCommentBmp := TBitmap.Create;
+  FCommentBmp := Graphics.TBitmap.Create;
   FCommentBmp.LoadFromResourceName(HInstance, 'COMMENT');
-  FPositionBmp := TBitmap.Create;
+  FPositionBmp := Graphics.TBitmap.Create;
   FPositionBmp.LoadFromResourceName(HInstance, 'ARROWGREEN');
   FClearLogbookOnStart := True;
   FRootProgram := nil;
