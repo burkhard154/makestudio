@@ -61,7 +61,7 @@ const
 
   // stdcRegKey = 'Software\JEDI\MakeStudio';
   stdcRegISCCExe = 'Iscc.exe';
-  stdcPathIscc = 'Inno Setup 5'; 
+  stdcPathIscc = 'Inno Setup 6';
 
 implementation
 
