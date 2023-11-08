@@ -2,17 +2,16 @@ object FormActions: TFormActions
   Left = 700
   Top = 181
   Caption = 'FormActions'
-  ClientHeight = 163
-  ClientWidth = 230
+  ClientHeight = 245
+  ClientWidth = 360
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -17
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 144
+  TextHeight = 20
   object ActionList1: TActionList
     Images = ImageList1
     Left = 48
@@ -26,7 +25,7 @@ object FormActions: TFormActions
     Left = 88
     Top = 24
     Bitmap = {
-      494C010103000400080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000400040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
