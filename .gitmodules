@@ -1,0 +1,6 @@
+[submodule "thirdparty/delphizip"]
+	path = thirdparty/delphizip
+	url = https://github.com/geoffsmith82/delphizip
+[submodule "thirdparty/pascalscript"]
+	path = thirdparty/pascalscript
+	url = https://github.com/remobjects/pascalscript
