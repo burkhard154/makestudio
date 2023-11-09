@@ -772,6 +772,12 @@ begin
   Path := PathAddSeparator(MakeStudio.ApplicationDataFolder);
   SrcPath := ExtractFilePath(_DelphiFilename);
 
+  if not TDirectory.Exists(SrcPath) then
+  begin
+    MakeStudio.LogMessage(Format(stdPathNotExists, [SrcPath]));
+    exit;
+  end;
+
   MakeStudio.LogMessage(stdStartingCompiler);
 
   // create directory for the compiler results

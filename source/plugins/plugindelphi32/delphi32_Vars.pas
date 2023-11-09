@@ -93,6 +93,7 @@ resourcestring
   stdPackageAlreadyRegistered = 'Package %s already registered';
   stdPackageUnRegistered = 'Package %s unregistered from Delphi';
   stdStartingCompiler = 'Compiler started...';
+  stdPathNotExists = 'Invalid path: %s';
   stdAddingSearchPath = 'Search path added: %s';
   stdSearchPathAlreadyAdded = '%s already in search path';
   stdStartingBatch = 'Bat started';
