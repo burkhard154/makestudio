@@ -2,16 +2,16 @@ object Form3: TForm3
   Left = 700
   Top = 181
   Caption = 'Form3'
-  ClientHeight = 245
-  ClientWidth = 360
+  ClientHeight = 327
+  ClientWidth = 499
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -17
+  Font.Height = -22
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  PixelsPerInch = 144
-  TextHeight = 20
+  PixelsPerInch = 192
+  TextHeight = 26
   object ActionList1: TActionList
     Images = ImageList1
     Left = 48

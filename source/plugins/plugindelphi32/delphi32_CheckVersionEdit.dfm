@@ -2,85 +2,85 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
   Left = 654
   Top = 292
   Caption = 'Check Delphi Version'
-  ClientHeight = 218
-  ClientWidth = 510
+  ClientHeight = 291
+  ClientWidth = 699
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -17
+  Font.Height = -22
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   Position = poMainFormCenter
   OnCreate = FormCreate
-  PixelsPerInch = 144
-  TextHeight = 20
+  PixelsPerInch = 192
+  TextHeight = 26
   object Label1: TLabel
-    Left = 24
-    Top = 84
-    Width = 191
-    Height = 20
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Left = 32
+    Top = 112
+    Width = 254
+    Height = 26
+    Margins.Left = 7
+    Margins.Top = 7
+    Margins.Right = 7
+    Margins.Bottom = 7
     Caption = 'Return Variable (true/false)'
   end
   object Label2: TLabel
-    Left = 24
-    Top = 12
-    Width = 121
-    Height = 20
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Left = 32
+    Top = 16
+    Width = 160
+    Height = 26
+    Margins.Left = 7
+    Margins.Top = 7
+    Margins.Right = 7
+    Margins.Bottom = 7
     Caption = 'Delphi32 Version'
   end
   object Button1: TButton
-    Left = 24
-    Top = 168
-    Width = 113
-    Height = 38
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Left = 32
+    Top = 224
+    Width = 151
+    Height = 51
+    Margins.Left = 7
+    Margins.Top = 7
+    Margins.Right = 7
+    Margins.Bottom = 7
     Caption = 'Ok'
     Default = True
     ModalResult = 1
     TabOrder = 0
   end
   object Button2: TButton
-    Left = 144
-    Top = 168
-    Width = 113
-    Height = 38
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Left = 192
+    Top = 224
+    Width = 151
+    Height = 51
+    Margins.Left = 7
+    Margins.Top = 7
+    Margins.Right = 7
+    Margins.Bottom = 7
     Cancel = True
     Caption = 'Cancel'
     ModalResult = 2
     TabOrder = 1
   end
   object cbVersion: TJvImageComboBox
-    Left = 26
-    Top = 41
-    Width = 457
-    Height = 30
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Left = 35
+    Top = 55
+    Width = 609
+    Height = 36
+    Margins.Left = 7
+    Margins.Top = 7
+    Margins.Right = 7
+    Margins.Bottom = 7
     Style = csOwnerDrawVariable
     ButtonStyle = fsLighter
-    DroppedWidth = 457
+    DroppedWidth = 609
     DropDownCount = 20
     ImageHeight = 0
     ImageWidth = 0
     Images = ImageList1
-    ItemHeight = 24
+    ItemHeight = 30
     ItemIndex = 0
     TabOrder = 2
     Items = <
@@ -212,19 +212,26 @@ object FormEditDelphi32CheckVersionParams: TFormEditDelphi32CheckVersionParams
       end
       item
         Brush.Style = bsClear
+        ImageIndex = 5
         Indent = 0
         Text = 'Delphi 11 Alexandria'
+      end
+      item
+        Brush.Style = bsClear
+        ImageIndex = 5
+        Indent = 0
+        Text = 'Delphi 12 Athens'
       end>
   end
   object cbVar: TComboBox
-    Left = 24
-    Top = 108
-    Width = 458
-    Height = 28
-    Margins.Left = 5
-    Margins.Top = 5
-    Margins.Right = 5
-    Margins.Bottom = 5
+    Left = 32
+    Top = 144
+    Width = 611
+    Height = 34
+    Margins.Left = 7
+    Margins.Top = 7
+    Margins.Right = 7
+    Margins.Bottom = 7
     TabOrder = 3
     Text = 'cbVar'
   end
