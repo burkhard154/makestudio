@@ -4,7 +4,7 @@
         <MainSource>delphi32_Plugin.dpr</MainSource>
         <Config Condition="'$(Config)'==''">Debug</Config>
         <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
-        <ProjectVersion>19.5</ProjectVersion>
+        <ProjectVersion>20.3</ProjectVersion>
         <Basis>True</Basis>
         <AppType>Library</AppType>
         <FrameworkType>VCL</FrameworkType>
@@ -12,6 +12,7 @@
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
         <TargetedPlatforms>1</TargetedPlatforms>
         <Platform>Win32</Platform>
+        <ProjectName Condition="'$(ProjectName)'==''">delphi32_Plugin</ProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>

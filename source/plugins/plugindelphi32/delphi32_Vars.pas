@@ -122,6 +122,7 @@ resourcestring
   stdverD104S = 'Delphi 10.4 Sydney';
   stdverD11A  = 'Delphi 11 Alexandria';
   stdverD12A  = 'Delphi 12 Athens';
+  stdverD13  = 'Delphi 13 Florence';
   stdverUnknown = 'Delphi Version not supported';
   stdverSet = 'Delphi Version selected: ';
   stdverSetErr = 'Delphi Version %s not selected';
@@ -252,8 +253,9 @@ const
   stDelphi25Key: string = '19.0\'; //D10.2 Tokyo
   stDelphi26Key: string = '20.0\'; //D10.3 Rio
   stDelphi27Key: string = '21.0\'; //D10.4 Sydney
-  stDelphi28Key: string = '22.0\';
-  stDelphi29Key: string = '23.0\';
+  stDelphi28Key: string = '22.0\'; //D11
+  stDelphi29Key: string = '23.0\'; //D12
+  stDelphi30Key: string = '37.0\'; //D13
   stDelphiInstallKey: string = 'RootDir';
   stdPackagesKey: string = 'Known Packages';
   stdExpertsKey: string = 'Experts';
@@ -304,7 +306,7 @@ type
   TGetVarOperationType = (otBPLDir, otDCPDir, otRootPath, otSearchPath, otBDSPROJECTSDIR);
 
   TDelphiVersion = (dver5, dver6, dver7, dver2005, dver2006, dver2007, dver2009, dver2010, dverXE, dverXE2, dverXE3,
-    dverXE4, dverXE5, dverXE6, dverXE7, dverXE8, dverD10S, dverD101B, dverD102T, dverD103R, dverD104S, dverD11A, dverD12A);
+    dverXE4, dverXE5, dverXE6, dverXE7, dverXE8, dverD10S, dverD101B, dverD102T, dverD103R, dverD104S, dverD11A, dverD12A, dverD13);
 
   // starting with XE2
   TCompilerPlatform = (dpOSX32, dpWin32, dpWin64, dpiOSDevice, dpiOSSimulator, dpAndroid32, dpOSX64, dpiOSDevice32, dpiOSDevice64, dpAndroid64);
