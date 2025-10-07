@@ -7,7 +7,7 @@ end
 begin Delphi32.SetDelphiVersion
   Caption=Delphi32 Version setzten
   Ignore=0
-  Delphiversion=21
+  Delphiversion=23
 end
 begin delphi.SelectDelphiPlatform
   Caption=Select Delphi Platform
@@ -212,7 +212,7 @@ begin Delphi32.Module
   Ignore=0
   Filename=%BASEPATH%\source\plugins\pluginzip\zip_Plugin.dpr
   Action=8
-  CompilerSwitch=-B -V- -N%BASEPATH%\lib
+  CompilerSwitch=-B -V- -N%BASEPATH%\lib  -U%BASEPATH%\thirdparty\delphizip
   OutputDir=%BASEPATH%\bin
   SearchPathCount=0
   AllPlattforms=False
