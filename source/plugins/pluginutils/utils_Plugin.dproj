@@ -85,7 +85,7 @@
         <VerInfo_Locale>1033</VerInfo_Locale>
         <VerInfo_Keys>CompanyName=;FileVersion=1.1.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductVersion=1.0.0.0;Comments=;ProgramID=com.embarcadero.$(MSBuildProjectName);FileDescription=$(MSBuildProjectName);ProductName=$(MSBuildProjectName)</VerInfo_Keys>
         <VerInfo_Release>0</VerInfo_Release>
-        <Debugger_HostApplication>V:\public\makestudio\trunk\bin\makestudio.exe</Debugger_HostApplication>
+        <Debugger_HostApplication>..\..\..\bin\makestudio.exe</Debugger_HostApplication>
         <DCC_MapFile>3</DCC_MapFile>
         <AppDPIAwarenessMode>none</AppDPIAwarenessMode>
         <VerInfo_MinorVer>1</VerInfo_MinorVer>

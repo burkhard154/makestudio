@@ -1,13 +1,17 @@
 object FormMain: TFormMain
   Left = 438
   Top = 392
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Project Maker'
-  ClientHeight = 511
-  ClientWidth = 717
+  ClientHeight = 767
+  ClientWidth = 1085
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -17
   Font.Name = 'Tahoma'
   Font.Style = []
   Icon.Data = {
@@ -1014,35 +1018,43 @@ object FormMain: TFormMain
     0000000000000000000000000000000000000000000000000000000000000000
     000000000000}
   Menu = JvMainMenu1
-  OldCreateOrder = False
   Position = poDefault
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 144
+  TextHeight = 21
   object StatusBar: TJvStatusBar
     Left = 0
-    Top = 492
-    Width = 717
-    Height = 19
+    Top = 738
+    Width = 1085
+    Height = 29
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Panels = <
       item
-        Width = 100
+        Width = 150
       end
       item
-        Width = 500
+        Width = 750
       end>
   end
   object JvToolBar1: TJvToolBar
     Left = 0
     Top = 0
-    Width = 717
-    Height = 26
+    Width = 1085
+    Height = 37
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     AutoSize = True
     BorderWidth = 1
-    ButtonWidth = 24
+    ButtonHeight = 33
+    ButtonWidth = 36
     Caption = 'JvToolBar1'
     Images = ImageList1
     Indent = 2
@@ -1051,179 +1063,298 @@ object FormMain: TFormMain
     object ToolButton24: TToolButton
       Left = 2
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acNew
     end
     object ToolButton25: TToolButton
-      Left = 26
+      Left = 38
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acOpen
     end
     object ToolButton26: TToolButton
-      Left = 50
+      Left = 74
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acSave
     end
     object ToolButton28: TToolButton
-      Left = 74
+      Left = 110
       Top = 0
-      Width = 8
+      Width = 12
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'ToolButton28'
       ImageIndex = 4
       Style = tbsSeparator
     end
     object ToolButton27: TToolButton
-      Left = 82
+      Left = 122
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acCopy
     end
     object ToolButton29: TToolButton
-      Left = 106
+      Left = 158
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acCut
     end
     object ToolButton30: TToolButton
-      Left = 130
+      Left = 194
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acPaste
     end
     object ToolButton31: TToolButton
-      Left = 154
+      Left = 230
       Top = 0
-      Width = 8
+      Width = 12
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'ToolButton31'
       ImageIndex = 6
       Style = tbsSeparator
     end
     object ToolButton32: TToolButton
-      Left = 162
+      Left = 242
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acBriefView
     end
     object ToolButton1: TToolButton
-      Left = 186
+      Left = 278
       Top = 0
       Hint = 'Switch active/passive'
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acComment
       ImageIndex = 65
       ParentShowHint = False
       ShowHint = True
     end
     object ToolButton33: TToolButton
-      Left = 210
+      Left = 314
       Top = 0
-      Width = 8
+      Width = 12
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'ToolButton33'
       ImageIndex = 7
       Style = tbsSeparator
     end
     object ToolButton34: TToolButton
-      Left = 218
+      Left = 326
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acModuleUp
     end
     object ToolButton35: TToolButton
-      Left = 242
+      Left = 362
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acModuleDown
     end
     object ToolButton36: TToolButton
-      Left = 266
+      Left = 398
       Top = 0
-      Width = 8
+      Width = 12
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'ToolButton36'
       ImageIndex = 9
       Style = tbsSeparator
     end
     object ToolButton37: TToolButton
-      Left = 274
+      Left = 410
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acRun
     end
     object ToolButton38: TToolButton
-      Left = 298
+      Left = 446
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acStop
     end
     object ToolButton39: TToolButton
-      Left = 322
+      Left = 482
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acDebugNext
     end
     object ToolButton40: TToolButton
-      Left = 346
+      Left = 518
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acDebugCurrent
     end
     object ToolButton41: TToolButton
-      Left = 370
+      Left = 554
       Top = 0
-      Width = 8
+      Width = 12
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'ToolButton41'
       ImageIndex = 13
       Style = tbsSeparator
     end
     object ToolButton42: TToolButton
-      Left = 378
+      Left = 566
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acSyntaxCheck
     end
     object ToolButton43: TToolButton
-      Left = 402
+      Left = 602
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acToggleBreakpoint
     end
     object ToolButton44: TToolButton
-      Left = 426
+      Left = 638
       Top = 0
-      Width = 8
+      Width = 12
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = 'ToolButton44'
       ImageIndex = 15
       Style = tbsSeparator
     end
     object ToolButton45: TToolButton
-      Left = 434
+      Left = 650
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acHelp
     end
     object ToolButton46: TToolButton
-      Left = 458
+      Left = 686
       Top = 0
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Action = acExit
     end
   end
   object Panel1: TPanel
     Left = 0
-    Top = 26
-    Width = 717
-    Height = 466
+    Top = 37
+    Width = 1085
+    Height = 701
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alClient
     BevelOuter = bvNone
     BorderWidth = 4
     Caption = 'Panel1'
     TabOrder = 2
     object Splitter1: TSplitter
-      Left = 264
+      Left = 394
       Top = 4
-      Width = 4
-      Height = 458
+      Width = 6
+      Height = 693
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
+      MinSize = 45
       ResizeStyle = rsUpdate
-      ExplicitHeight = 473
+      ExplicitLeft = 396
+      ExplicitTop = 6
+      ExplicitHeight = 687
     end
     object PageControl1: TPageControl
       Left = 4
       Top = 4
-      Width = 260
-      Height = 458
+      Width = 390
+      Height = 693
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       ActivePage = tabCommands
       Align = alLeft
       TabOrder = 0
       object tabCommands: TTabSheet
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Caption = 'Commands'
         object FormPanelCommands: TJvEmbeddedFormPanel
           Left = 0
           Top = 0
-          Width = 252
-          Height = 430
+          Width = 382
+          Height = 657
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           AlwaysVisible = False
           Align = alClient
           Color = clBtnFace
@@ -1232,13 +1363,21 @@ object FormMain: TFormMain
         end
       end
       object tabVars: TTabSheet
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Caption = 'Variables'
         ImageIndex = 1
         object FormpanelVars: TJvEmbeddedFormPanel
           Left = 0
           Top = 0
-          Width = 252
-          Height = 430
+          Width = 378
+          Height = 645
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           AlwaysVisible = False
           Align = alClient
           Color = clBtnFace
@@ -1248,30 +1387,43 @@ object FormMain: TFormMain
       end
     end
     object Panel2: TPanel
-      Left = 268
+      Left = 400
       Top = 4
-      Width = 445
-      Height = 458
+      Width = 681
+      Height = 693
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Align = alClient
       BevelOuter = bvNone
       Caption = 'Panel2'
       TabOrder = 1
       object Splitter2: TSplitter
         Left = 0
-        Top = 256
-        Width = 445
-        Height = 4
+        Top = 390
+        Width = 681
+        Height = 6
         Cursor = crVSplit
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Align = alBottom
+        MinSize = 45
         ResizeStyle = rsUpdate
-        ExplicitTop = 271
-        ExplicitWidth = 569
+        ExplicitTop = 384
+        ExplicitWidth = 677
       end
       object Panel3: TPanel
         Left = 0
-        Top = 260
-        Width = 445
-        Height = 198
+        Top = 396
+        Width = 681
+        Height = 297
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Align = alBottom
         BevelOuter = bvNone
         Caption = 'Panel3'
@@ -1279,18 +1431,30 @@ object FormMain: TFormMain
         object PageControl2: TPageControl
           Left = 0
           Top = 0
-          Width = 445
-          Height = 198
+          Width = 681
+          Height = 297
+          Margins.Left = 5
+          Margins.Top = 5
+          Margins.Right = 5
+          Margins.Bottom = 5
           ActivePage = TabSheet1
           Align = alClient
           TabOrder = 0
           object TabSheet1: TTabSheet
+            Margins.Left = 5
+            Margins.Top = 5
+            Margins.Right = 5
+            Margins.Bottom = 5
             Caption = 'Output'
             object FormPanelLogbook: TJvEmbeddedFormPanel
               Left = 0
               Top = 0
-              Width = 437
-              Height = 170
+              Width = 673
+              Height = 261
+              Margins.Left = 5
+              Margins.Top = 5
+              Margins.Right = 5
+              Margins.Bottom = 5
               AlwaysVisible = False
               Align = alClient
               Color = clBtnFace
@@ -1303,8 +1467,12 @@ object FormMain: TFormMain
       object MainFormPanel: TJvEmbeddedFormPanel
         Left = 0
         Top = 0
-        Width = 445
-        Height = 256
+        Width = 681
+        Height = 390
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         AlwaysVisible = False
         Align = alClient
         Color = clBtnFace
