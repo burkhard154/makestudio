@@ -64,10 +64,9 @@ begin jvcsutils.batchinternal
   Caption=Internal Batch command list
   Ignore=0
   ReplaceVars=1
-  BatchLineCount=3
+  BatchLineCount=2
   BatchLine1=del %BASEPATH%\bin\*.jpl
   BatchLine2=del %BASEPATH%\bin\*.dll
-  BatchLine3=svn update %BASEPATH%
 end
 begin resources.EditVersion
   Caption=Edit Version Resource
