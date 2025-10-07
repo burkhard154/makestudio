@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 [Setup]
-OutputBaseFilename=.\MakeStudioSetup_Actual
+OutputBaseFilename=MakeStudioSetup_Actual
 AppName=Make Studio
 AppVerName=Make Studio
 DefaultDirName={pf}\optiMEAS\MakeStudio
@@ -295,7 +295,7 @@ begin
   if FileExists( s) then
     DeleteFile( s);
 
-  FileCopy( aFilename, s, False);
+  CopyFile( aFilename, s, False);
 
   //create Chapter File
   CreateMergedHelpFileChapter( s, aChapter, aContentFile);
@@ -366,7 +366,6 @@ Var
   bUseVCSManager : Boolean;
   sIDEDLL : String;
   sRegKey : String;
-  sValue : String;
 begin
   bUseVCSManager := false;
   sIDEDll := AddBackSlash(ExpandConstant('{app}'));
@@ -424,9 +423,6 @@ End;
 procedure CurPageChanged(CurPage: Integer);
 Var
   sSelTasks   : String;
-  sSrc : String;
-  sDst : String;
-  bMigrateSuccess : Boolean;
 Begin
   Case CurPage of
   wpSelectDir :
