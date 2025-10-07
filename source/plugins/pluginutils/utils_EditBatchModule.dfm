@@ -1,42 +1,57 @@
 object FormEditBatchModule: TFormEditBatchModule
   Left = 385
   Top = 227
-  Width = 511
-  Height = 193
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   Caption = 'Select Batch File'
+  ClientHeight = 206
+  ClientWidth = 734
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -17
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poScreenCenter
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 144
+  TextHeight = 20
   object Panel1: TPanel
     Left = 0
-    Top = 118
-    Width = 503
-    Height = 41
+    Top = 144
+    Width = 734
+    Height = 62
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 0
     object Button1: TButton
-      Left = 8
-      Top = 8
-      Width = 75
-      Height = 25
+      Left = 12
+      Top = 12
+      Width = 113
+      Height = 38
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Caption = '&Ok'
       Default = True
       ModalResult = 1
       TabOrder = 0
     end
     object Button2: TButton
-      Left = 88
-      Top = 8
-      Width = 75
-      Height = 25
+      Left = 132
+      Top = 12
+      Width = 113
+      Height = 38
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Cancel = True
       Caption = '&Cancel'
       ModalResult = 2
@@ -46,8 +61,12 @@ object FormEditBatchModule: TFormEditBatchModule
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 503
-    Height = 118
+    Width = 734
+    Height = 177
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Align = alTop
     BevelOuter = bvNone
     BorderWidth = 6
@@ -55,32 +74,46 @@ object FormEditBatchModule: TFormEditBatchModule
     object GroupBox1: TGroupBox
       Left = 6
       Top = 6
-      Width = 491
-      Height = 106
+      Width = 722
+      Height = 165
+      Margins.Left = 5
+      Margins.Top = 5
+      Margins.Right = 5
+      Margins.Bottom = 5
       Align = alClient
       Caption = 'Batch File'
       TabOrder = 0
       DesignSize = (
-        491
-        106)
+        722
+        165)
       object Label1: TLabel
-        Left = 16
-        Top = 24
-        Width = 42
-        Height = 13
+        Left = 24
+        Top = 36
+        Width = 65
+        Height = 20
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         Caption = 'Filename'
       end
       object edFilename: TJvFilenameEdit
-        Left = 16
-        Top = 40
-        Width = 453
-        Height = 21
+        Left = 24
+        Top = 60
+        Width = 665
+        Height = 28
+        Margins.Left = 5
+        Margins.Top = 5
+        Margins.Right = 5
+        Margins.Bottom = 5
         DefaultExt = 'bat'
         Filter = 'Batch Files (*.bat)|*.bat|All Files (*.*)|*.*'
         DialogOptions = [ofPathMustExist, ofFileMustExist]
         ButtonFlat = True
+        ButtonWidth = 32
         Anchors = [akLeft, akTop, akRight]
         TabOrder = 0
+        Text = ''
       end
     end
   end

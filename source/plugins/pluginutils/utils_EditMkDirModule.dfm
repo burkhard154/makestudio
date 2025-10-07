@@ -1,33 +1,44 @@
 object FormMkdirModuleEdit: TFormMkdirModuleEdit
   Left = 621
   Top = 330
+  Margins.Left = 5
+  Margins.Top = 5
+  Margins.Right = 5
+  Margins.Bottom = 5
   BorderStyle = bsDialog
   Caption = 'Create Directories'
-  ClientHeight = 313
-  ClientWidth = 459
+  ClientHeight = 470
+  ClientWidth = 698
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = -17
   Font.Name = 'MS Sans Serif'
   Font.Style = []
-  OldCreateOrder = False
   Position = poMainFormCenter
-  PixelsPerInch = 96
-  TextHeight = 13
+  PixelsPerInch = 144
+  TextHeight = 20
   object Label1: TLabel
-    Left = 8
-    Top = 232
-    Width = 42
-    Height = 13
+    Left = 12
+    Top = 348
+    Width = 63
+    Height = 20
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = 'Directory'
   end
   object btnAdd: TSpeedButton
-    Left = 407
-    Top = 248
-    Width = 23
-    Height = 22
+    Left = 611
+    Top = 372
+    Width = 34
+    Height = 33
     Hint = 'Add'
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Flat = True
     Glyph.Data = {
       36050000424D3605000000000000360000002800000015000000140000000100
@@ -77,11 +88,15 @@ object FormMkdirModuleEdit: TFormMkdirModuleEdit
     OnClick = btnAddClick
   end
   object btnRemove: TSpeedButton
-    Left = 430
-    Top = 248
-    Width = 23
-    Height = 22
+    Left = 645
+    Top = 372
+    Width = 35
+    Height = 33
     Hint = 'Remove'
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Flat = True
     Glyph.Data = {
       36050000424D3605000000000000360000002800000015000000140000000100
@@ -131,56 +146,77 @@ object FormMkdirModuleEdit: TFormMkdirModuleEdit
     OnClick = btnRemoveClick
   end
   object btnCancel: TButton
-    Left = 88
-    Top = 280
-    Width = 75
-    Height = 25
+    Left = 132
+    Top = 420
+    Width = 113
+    Height = 38
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Cancel = True
     Caption = '&Cancel'
     ModalResult = 2
     TabOrder = 1
   end
   object btnOk: TButton
-    Left = 8
-    Top = 280
-    Width = 75
-    Height = 25
+    Left = 12
+    Top = 420
+    Width = 113
+    Height = 38
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     Caption = '&Ok'
     Default = True
     ModalResult = 1
     TabOrder = 0
   end
   object ListDirectories: TListBox
-    Left = 4
-    Top = 22
-    Width = 449
-    Height = 201
-    ItemHeight = 13
+    Left = 6
+    Top = 33
+    Width = 674
+    Height = 302
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
+    ItemHeight = 20
     TabOrder = 3
   end
   object Panel3: TPanel
-    Left = 4
-    Top = 4
-    Width = 449
-    Height = 17
+    Left = 6
+    Top = 6
+    Width = 674
+    Height = 26
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
     BevelOuter = bvNone
     BorderStyle = bsSingle
     Caption = 'Directories'
     Color = clGray
     Font.Charset = ANSI_CHARSET
     Font.Color = clWhite
-    Font.Height = -11
+    Font.Height = -17
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
     TabOrder = 4
   end
   object edtDirectory: TJvDirectoryEdit
-    Left = 8
-    Top = 248
-    Width = 393
-    Height = 21
-    DialogKind = dkWin32
+    Left = 12
+    Top = 372
+    Width = 590
+    Height = 28
+    Margins.Left = 5
+    Margins.Top = 5
+    Margins.Right = 5
+    Margins.Bottom = 5
+    ButtonWidth = 32
     TabOrder = 2
+    Text = ''
   end
 end
