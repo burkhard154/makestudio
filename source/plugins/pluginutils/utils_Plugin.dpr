@@ -40,6 +40,7 @@ uses
   makestudio_TLB in '..\..\framework\makestudio_TLB.pas',
   ComServ,
   ActiveX,
+  synDWrite,
   utils_Vars in 'utils_Vars.pas',
   utils_MkDir in 'utils_MkDir.pas',
   utils_Actionedit in 'utils_Actionedit.pas' {Form2},
@@ -156,6 +157,7 @@ function UnregisterPlugin: Integer; stdcall;
 begin
   Result := 0;
   try
+    TsynDWrite.Finalize;
     Form3.Free;
     PluginMkDirCallback.Free;
     PluginCopyFilesCallback.Free;
